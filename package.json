@@ -6,6 +6,9 @@
   ],
   "scripts": {
     "test": "npm run test -w packages/core",
-    "build": "npm run build --workspaces"
+    "build": "npm run build --workspaces",
+    "web:sync": "node scripts/sync-skills.js",
+    "web:dev": "node scripts/sync-skills.js && npm run dev -w packages/web",
+    "web:build": "node scripts/sync-skills.js && npm run build -w packages/web"
   }
 }
