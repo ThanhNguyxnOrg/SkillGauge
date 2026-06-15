@@ -78,7 +78,7 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 *   **Reference**: *Concreteness Effects in Zero-shot Reasoning* (ACL).
 
 ### A9: Goal Specificity
-*   **Formula**: $M_{A9} = \text{hasFormat} ? 1.0 : 0.3$
+*   **Formula**: $M_{A9} = 0.3 + 0.7 \cdot \mathbb{I}(\text{hasFormat})$
     *   `hasFormat` check is true if formatting spec keywords (*JSON, YAML, XML, CSV, Markdown Table*) are present.
 *   **Reference**: *Output Schema Alignment in LLM Pipelines* (NeurIPS).
 
@@ -102,12 +102,12 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 *   **Reference**: *Positivity Bias in Attention Masks* (ACL).
 
 ### A14: Scope Boundary Clarity
-*   **Formula**: $M_{A14} = \text{hasBoundary} ? 1.0 : 0.5$
+*   **Formula**: $M_{A14} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasBoundary})$
     *   Requires keywords like *prohibited, outside scope, out of bounds*.
 *   **Reference**: *Constrained Generation Limits* (ICLR).
 
 ### A15: Temporal Consistency
-*   **Formula**: $M_{A15} = \text{hasOrdering} ? 1.0 : 0.4$
+*   **Formula**: $M_{A15} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasOrdering})$
     *   Requires sequential transition terms (*firstly, secondly, step 1, step 2*).
 *   **Reference**: *Sequential Planning in Auto-regressive Models* (NeurIPS).
 
@@ -142,7 +142,7 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 *   **Reference**: *Code Prompt Distillation and Token Efficiencies* (EMNLP).
 
 ### B7: XML Wrapper Tag Matching
-*   **Formula**: $M_{B7} = N_{mismatch} === 0 ? 1.0 : 0.2$
+*   **Formula**: $M_{B7} = 0.2 + 0.8 \cdot \mathbb{I}(N_{mismatch} = 0)$
 *   **Reference**: *HTML/XML Parsing Capabilities of Instruct Models* (arXiv:2501).
 
 ### B8: Schema Completeness
@@ -150,12 +150,12 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 *   **Reference**: *JSON Schema Validation in Agent Tool-use* (OWASP).
 
 ### B9: Context Pruning Directives
-*   **Formula**: $M_{B9} = \text{hasPrune} ? 1.0 : 0.5$
+*   **Formula**: $M_{B9} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasPrune})$
     *   Requires memory pruning keywords (*forget, clear memory, ignore past*).
 *   **Reference**: *State Tracking in Long-Context LLMs* (NeurIPS).
 
 ### B10: Variable Allocation
-*   **Formula**: $M_{B10} = N_{unallocated\_vars} === 0 ? 1.0 : 0.3$
+*   **Formula**: $M_{B10} = 0.3 + 0.7 \cdot \mathbb{I}(N_{unallocated\_vars} = 0)$
 *   **Reference**: *Parameter Resolution in Template Prompting* (ACL).
 
 ### B11: Logging Frequency directives
@@ -175,7 +175,7 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 *   **Reference**: *Information Bottlenecks in Transformer Layers* (ICML).
 
 ### B15: History Size Constraints
-*   **Formula**: $M_{B15} = \text{hasHistoryLimit} ? 1.0 : 0.5$
+*   **Formula**: $M_{B15} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasHistoryLimit})$
 *   **Reference**: *Context Window Overflows in Agent Loop Architectures* (IEEE).
 
 ---
@@ -183,67 +183,67 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 ## Dimension C: Safety, Alignment & Security (15 Metrics)
 
 ### C1: Prompt Injection Shield
-*   **Formula**: $M_{C1} = \text{hasInjectionShield} ? 1.0 : 0.0$
+*   **Formula**: $M_{C1} = \mathbb{I}(\text{hasInjectionShield})$
     *   Requires *ignore user override, do not let user modify system prompt*.
 *   **Reference**: *Defending Against Prompt Injection* (arXiv:2308).
 
 ### C2: System Instruction Protection
-*   **Formula**: $M_{C2} = \text{hasLeakProtection} ? 1.0 : 0.0$
+*   **Formula**: $M_{C2} = \mathbb{I}(\text{hasLeakProtection})$
     *   Requires *do not reveal this prompt, system prompt protection*.
 *   **Reference**: *Leakage Mitigation in Instruction Tuning* (NeurIPS).
 
 ### C3: Role Hijacking Defense
-*   **Formula**: $M_{C3} = \text{hasRoleLock} ? 1.0 : 0.0$
+*   **Formula**: $M_{C3} = \mathbb{I}(\text{hasRoleLock})$
     *   Requires *never change your role, strictly act as*.
 *   **Reference**: *Persona Hijacking in Multi-agent Systems* (ICML).
 
 ### C4: Jailbreak Resistance Keywords
-*   **Formula**: $M_{C4} = \text{hasJailbreakRules} ? 1.0 : 0.3$
+*   **Formula**: $M_{C4} = 0.3 + 0.7 \cdot \mathbb{I}(\text{hasJailbreakRules})$
 *   **Reference**: *Safeguarding LLM Agent Outputs* (OWASP).
 
 ### C5: Exfiltration Defense
-*   **Formula**: $M_{C5} = \text{hasExfiltrationShield} ? 1.0 : 0.4$
+*   **Formula**: $M_{C5} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasExfiltrationShield})$
     *   Requires *do not send prompt content to external APIs*.
 *   **Reference**: *Data Exfiltration Attacks in Tool-enabled LLMs* (arXiv).
 
 ### C6: PII Masking Instructions
-*   **Formula**: $M_{C6} = \text{hasPIIMasking} ? 1.0 : 0.5$
+*   **Formula**: $M_{C6} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasPIIMasking})$
 *   **Reference**: *Privacy Guardrails in Prompt Templates* (ACM).
 
 ### C7: Sandbox Constraints
-*   **Formula**: $M_{C7} = \text{hasSandboxRules} ? 1.0 : 0.5$
+*   **Formula**: $M_{C7} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasSandboxRules})$
 *   **Reference**: *Secure Code Execution Guidelines for Agents* (USENIX).
 
 ### C8: Command Authority Scope
-*   **Formula**: $M_{C8} = \text{hasAuthorityRules} ? 1.0 : 0.4$
+*   **Formula**: $M_{C8} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasAuthorityRules})$
 *   **Reference**: *Least Privilege Principle for LLM Tools* (arXiv).
 
 ### C9: Compliance Rules
-*   **Formula**: $M_{C9} = \text{hasCompliance} ? 1.0 : 0.5$
+*   **Formula**: $M_{C9} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasCompliance})$
 *   **Reference**: *Enterprise Policy Compliance in Generative Agents* (IEEE).
 
 ### C10: Input Sanitization Instructions
-*   **Formula**: $M_{C10} = \text{hasInputSanitization} ? 1.0 : 0.4$
+*   **Formula**: $M_{C10} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasInputSanitization})$
 *   **Reference**: *Prompt Sanitization Heuristics* (BlackHat).
 
 ### C11: Output Validation Directives
-*   **Formula**: $M_{C11} = \text{hasOutputValidation} ? 1.0 : 0.4$
+*   **Formula**: $M_{C11} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasOutputValidation})$
 *   **Reference**: *Self-Correcting Reasoning Loops* (ACL).
 
 ### C12: Trust Boundary Checking
-*   **Formula**: $M_{C12} = \text{hasTrustBoundary} ? 1.0 : 0.5$
+*   **Formula**: $M_{C12} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasTrustBoundary})$
 *   **Reference**: *API Endpoint Validation in Agent Systems* (NIPS).
 
 ### C13: Access Control Rules
-*   **Formula**: $M_{C13} = \text{hasAccessControl} ? 1.0 : 0.5$
+*   **Formula**: $M_{C13} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasAccessControl})$
 *   **Reference**: *Role-Based Access Control in LLMs* (ACM).
 
 ### C14: Override Blockers
-*   **Formula**: $M_{C14} = \text{hasOverrideRules} ? 1.0 : 0.4$
+*   **Formula**: $M_{C14} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasOverrideRules})$
 *   **Reference**: *Adversarial Override Defenses in LLM Agents* (ICLR).
 
 ### C15: Log Obfuscation
-*   **Formula**: $M_{C15} = \text{hasObfuscation} ? 1.0 : 0.5$
+*   **Formula**: $M_{C15} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasObfuscation})$
 *   **Reference**: *Preventing Password Leakage in Agent Logs* (IEEE).
 
 ---
@@ -255,7 +255,7 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 *   **Reference**: *Type Hallucinations in Tool Selection* (ICSE).
 
 ### D2: Required Field Spec
-*   **Formula**: $M_{D2} = \text{hasRequired} ? 1.0 : 0.5$
+*   **Formula**: $M_{D2} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasRequired})$
 *   **Reference**: *JSON Schema Validation in OpenAPI Specifications* (W3C).
 
 ### D3: Argument Description Quality
@@ -263,11 +263,11 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 *   **Reference**: *Descriptive Parameter Mismatches in Tool Use* (ACL).
 
 ### D4: Parallel Call Control
-*   **Formula**: $M_{D4} = \text{hasParallelRules} ? 1.0 : 0.5$
+*   **Formula**: $M_{D4} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasParallelRules})$
 *   **Reference**: *Parallel Execution Conflicts in Multi-Tool Agents* (arXiv).
 
 ### D5: Rate Limit Guidelines
-*   **Formula**: $M_{D5} = \text{hasRateLimitRules} ? 1.0 : 0.4$
+*   **Formula**: $M_{D5} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasRateLimitRules})$
 *   **Reference**: *Handling Rate Limits in Autonomous Workflows* (ACM).
 
 ### D6: Error Response Handling
@@ -275,39 +275,39 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 *   **Reference**: *Robustness of Agent Tool Call Trajectories* (NIPS).
 
 ### D7: Tool Output Parsers
-*   **Formula**: $M_{D7} = \text{hasParserRules} ? 1.0 : 0.5$
+*   **Formula**: $M_{D7} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasParserRules})$
 *   **Reference**: *Structured Output Extraction in Agent Libraries* (arXiv).
 
 ### D8: Tool Selection Logic
-*   **Formula**: $M_{D8} = \text{hasSelectionRules} ? 1.0 : 0.4$
+*   **Formula**: $M_{D8} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasSelectionRules})$
 *   **Reference**: *Heuristics for Tool Selection under Large Context* (ICML).
 
 ### D9: Input Encoding Specifications
-*   **Formula**: $M_{D9} = \text{hasEncoding} ? 1.0 : 0.5$
+*   **Formula**: $M_{D9} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasEncoding})$
 *   **Reference**: *Encoding Mismatches in Network Tools* (USENIX).
 
 ### D10: Execution Sequence Constraints
-*   **Formula**: $M_{D10} = \text{hasSequenceRules} ? 1.0 : 0.5$
+*   **Formula**: $M_{D10} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasSequenceRules})$
 *   **Reference**: *DAG Execution Planners in Generative Agents* (VLDB).
 
 ### D11: Fail-safe Defaults
-*   **Formula**: $M_{D11} = \text{hasFailSafe} ? 1.0 : 0.3$
+*   **Formula**: $M_{D11} = 0.3 + 0.7 \cdot \mathbb{I}(\text{hasFailSafe})$
 *   **Reference**: *Fail-Safe Mechanisms in Autonomous LLM Systems* (IEEE).
 
 ### D12: Schema Conformance checks
-*   **Formula**: $M_{D12} = \text{hasConformance} ? 1.0 : 0.5$
+*   **Formula**: $M_{D12} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasConformance})$
 *   **Reference**: *API Schema Drifts in Autonomous Agents* (OWASP).
 
 ### D13: Payload Size Limits
-*   **Formula**: $M_{D13} = \text{hasPayloadLimits} ? 1.0 : 0.5$
+*   **Formula**: $M_{D13} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasPayloadLimits})$
 *   **Reference**: *Network Resource Optimization in LLM Pipelines* (ACM).
 
 ### D14: Callback Specifications
-*   **Formula**: $M_{D14} = \text{hasCallbackRules} ? 1.0 : 0.5$
+*   **Formula**: $M_{D14} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasCallbackRules})$
 *   **Reference**: *Asynchronous Tool Invocation Protocols* (IEEE).
 
 ### D15: Resource Clean-up
-*   **Formula**: $M_{D15} = \text{hasCleanup} ? 1.0 : 0.5$
+*   **Formula**: $M_{D15} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasCleanup})$
 *   **Reference**: *Memory Leak Protections in Agent Kernels* (ACM).
 
 ---
@@ -319,60 +319,60 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 *   **Reference**: *Defensive Prompting: Preventing Failure Modes* (NIPS).
 
 ### E2: Exit Strategy
-*   **Formula**: $M_{E2} = \text{hasExit} ? 1.0 : 0.0$
+*   **Formula**: $M_{E2} = \mathbb{I}(\text{hasExit})$
     *   Requires *abort, terminate, stop execution, exit*.
 *   **Reference**: *Halting Problems in Autonomous Agent Reasoning* (ICML).
 
 ### E3: Retry Budgets
-*   **Formula**: $M_{E3} = \text{hasRetryBudget} ? 1.0 : 0.3$
+*   **Formula**: $M_{E3} = 0.3 + 0.7 \cdot \mathbb{I}(\text{hasRetryBudget})$
 *   **Reference**: *Self-Healing Protocols in Code Generation* (EMNLP).
 
 ### E4: Fallback Plan
-*   **Formula**: $M_{E4} = \text{hasFallback} ? 1.0 : 0.4$
+*   **Formula**: $M_{E4} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasFallback})$
 *   **Reference**: *Resilience in Agentic Planning* (NeurIPS).
 
 ### E5: Unexpected Input Recovery
-*   **Formula**: $M_{E5} = \text{hasInputRecovery} ? 1.0 : 0.4$
+*   **Formula**: $M_{E5} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasInputRecovery})$
 *   **Reference**: *Error Recovery Vectors in Transformer Prompts* (ACL).
 
 ### E6: Ambiguity Resolution Flow
-*   **Formula**: $M_{E6} = \text{hasAmbiguityFlow} ? 1.0 : 0.4$
+*   **Formula**: $M_{E6} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasAmbiguityFlow})$
 *   **Reference**: *Interactive Query Clarification in LLMs* (SIGIR).
 
 ### E7: State Recovery
-*   **Formula**: $M_{E7} = \text{hasStateRecovery} ? 1.0 : 0.5$
+*   **Formula**: $M_{E7} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasStateRecovery})$
 *   **Reference**: *Virtual Machine State Checks in Code Interpreters* (USENIX).
 
 ### E8: Diagnostics directives
-*   **Formula**: $M_{E8} = \text{hasDiagnostics} ? 1.0 : 0.4$
+*   **Formula**: $M_{E8} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasDiagnostics})$
 *   **Reference**: *Diagnostic Tracing Protocols in Generative AI* (ACM).
 
 ### E9: Timeouts
-*   **Formula**: $M_{E9} = \text{hasTimeouts} ? 1.0 : 0.5$
+*   **Formula**: $M_{E9} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasTimeouts})$
 *   **Reference**: *Inference Cost Caps in Agent Loops* (IEEE).
 
 ### E10: Graceful Degradation
-*   **Formula**: $M_{E10} = \text{hasDegradation} ? 1.0 : 0.4$
+*   **Formula**: $M_{E10} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasDegradation})$
 *   **Reference**: *Fault Tolerance in Multi-Agent Pipelines* (NIPS).
 
 ### E11: Boundary Value Checks
-*   **Formula**: $M_{E11} = \text{hasBoundaryChecks} ? 1.0 : 0.4$
+*   **Formula**: $M_{E11} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasBoundaryChecks})$
 *   **Reference**: *Property-Based Testing of LLM Outputs* (ICSE).
 
 ### E12: Noise Filtering
-*   **Formula**: $M_{E12} = \text{hasNoiseFilter} ? 1.0 : 0.5$
+*   **Formula**: $M_{E12} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasNoiseFilter})$
 *   **Reference**: *Distraction Resistance in Autoregressive Models* (ACL).
 
 ### E13: Invariant Assertions
-*   **Formula**: $M_{E13} = \text{hasAssertions} ? 1.0 : 0.5$
+*   **Formula**: $M_{E13} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasAssertions})$
 *   **Reference**: *Runtime Assertion Guarantees in Prompt Executions* (NeurIPS).
 
 ### E14: Conflicting Prompt Resolvers
-*   **Formula**: $M_{E14} = \text{hasConflictResolvers} ? 1.0 : 0.5$
+*   **Formula**: $M_{E14} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasConflictResolvers})$
 *   **Reference**: *Multi-Objective Optimizations in System Prompts* (ICLR).
 
 ### E15: Self-Correction Loop Limits
-*   **Formula**: $M_{E15} = \text{hasCorrectionLimits} ? 1.0 : 0.4$
+*   **Formula**: $M_{E15} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasCorrectionLimits})$
 *   **Reference**: *Hallucination Cycles in Self-Refining Loops* (arXiv).
 
 ---
@@ -384,59 +384,59 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 *   **Reference**: *Trapped in CoT Loops: Infinite Deductions* (arXiv).
 
 ### F2: Output Verbosity Control
-*   **Formula**: $M_{F2} = \text{hasVerbosityLimits} ? 1.0 : 0.3$
+*   **Formula**: $M_{F2} = 0.3 + 0.7 \cdot \mathbb{I}(\text{hasVerbosityLimits})$
 *   **Reference**: *Token Redundancy and Response Compactness* (EMNLP).
 
 ### F3: Token Pruning directives
-*   **Formula**: $M_{F3} = \text{hasPruning} ? 1.0 : 0.5$
+*   **Formula**: $M_{F3} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasPruning})$
 *   **Reference**: *Information Compression in Prompt Engineering* (ICML).
 
 ### F4: Early Exit Criteria
-*   **Formula**: $M_{F4} = \text{hasEarlyExit} ? 1.0 : 0.5$
+*   **Formula**: $M_{F4} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasEarlyExit})$
 *   **Reference**: *Early Exit Mechanisms in Long Context Reasoning* (NeurIPS).
 
 ### F5: Query Cache Directives
-*   **Formula**: $M_{F5} = \text{hasCaching} ? 1.0 : 0.5$
+*   **Formula**: $M_{F5} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasCaching})$
 *   **Reference**: *Optimizing Prompt Cache Hits in LLM APIs* (ACM).
 
 ### F6: Batching Directives
-*   **Formula**: $M_{F6} = \text{hasBatching} ? 1.0 : 0.5$
+*   **Formula**: $M_{F6} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasBatching})$
 *   **Reference**: *Throughput Optimization in Agent Operations* (IEEE).
 
 ### F7: Context Compression Rules
-*   **Formula**: $M_{F7} = \text{hasCompression} ? 1.0 : 0.5$
+*   **Formula**: $M_{F7} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasCompression})$
 *   **Reference**: *Prompt Compression Algorithms for Long History* (arXiv).
 
 ### F8: Computation Reuse
-*   **Formula**: $M_{F8} = \text{hasReuse} ? 1.0 : 0.5$
+*   **Formula**: $M_{F8} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasReuse})$
 *   **Reference**: *Intermediate State Sharing in Agent Chains* (NeurIPS).
 
 ### F9: Model Tier Routing
-*   **Formula**: $M_{F9} = \text{hasModelRouting} ? 1.0 : 0.5$
+*   **Formula**: $M_{F9} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasModelRouting})$
 *   **Reference**: *Cost-Efficient Model Cascades in Agent Pipelines* (ACM).
 
 ### F10: Redundant Thought Blocker
-*   **Formula**: $M_{F10} = \text{hasThoughtBlocker} ? 1.0 : 0.5$
+*   **Formula**: $M_{F10} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasThoughtBlocker})$
 *   **Reference**: *Eliminating Redundant Thoughts in Tree of Thoughts* (ACL).
 
 ### F11: Minimalist Representation
-*   **Formula**: $M_{F11} = \text{hasMinimalist} ? 1.0 : 0.5$
+*   **Formula**: $M_{F11} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasMinimalist})$
 *   **Reference**: *Low-Precision Representations in Prompt Semantics* (EMNLP).
 
 ### F12: Inline Formatting Pruning
-*   **Formula**: $M_{F12} = \text{hasFormattingRestrictions} ? 1.0 : 0.6$
+*   **Formula**: $M_{F12} = 0.6 + 0.4 \cdot \mathbb{I}(\text{hasFormattingRestrictions})$
 *   **Reference**: *Cost of Markdown Decoration Tokens in LLM Decoding* (arXiv).
 
 ### F13: Vocabulary Simplification
-*   **Formula**: $M_{F13} = \text{hasVocabLimits} ? 1.0 : 0.5$
+*   **Formula**: $M_{F13} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasVocabLimits})$
 *   **Reference**: *High-Frequency Token Steering in Instruct Models* (NAACL).
 
 ### F14: Non-Interactive Mode Directives
-*   **Formula**: $M_{F14} = \text{hasNonInteractive} ? 1.0 : 0.5$
+*   **Formula**: $M_{F14} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasNonInteractive})$
 *   **Reference**: *Batch Inference vs Interactive Chat Execution* (IEEE).
 
 ### F15: Lazy Evaluation Guidelines
-*   **Formula**: $M_{F15} = \text{hasLazyEval} ? 1.0 : 0.5$
+*   **Formula**: $M_{F15} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasLazyEval})$
 *   **Reference**: *Lazy Computations in Large Language Agents* (ACM).
 
 ---
@@ -444,7 +444,7 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 ## Dimension G: Syntax, Structure & Metadata (10 Metrics)
 
 ### G1: Frontmatter Integrity
-*   **Formula**: $M_{G1} = \text{hasFrontmatter} ? 1.0 : 0.0$
+*   **Formula**: $M_{G1} = \mathbb{I}(\text{hasFrontmatter})$
 *   **Reference**: *Structured Metadata in Package Management Systems* (ACM).
 
 ### G2: Required Frontmatter Fields
@@ -452,16 +452,16 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 *   **Reference**: *Package Spec Schema Validation Protocols* (IEEE).
 
 ### G3: Heading Hierarchy Correctness
-*   **Formula**: $M_{G3} = \text{isHierarchical} ? 1.0 : 0.3$
+*   **Formula**: $M_{G3} = 0.3 + 0.7 \cdot \mathbb{I}(\text{isHierarchical})$
     *   No structural jumps (e.g. going from `#` straight to `###`).
 *   **Reference**: *Document Structural Parsers in Layout Analysis* (CVPR).
 
 ### G4: List Syntax Validity
-*   **Formula**: $M_{G4} = \text{isListSyntaxConsistent} ? 1.0 : 0.5$
+*   **Formula**: $M_{G4} = 0.5 + 0.5 \cdot \mathbb{I}(\text{isListSyntaxConsistent})$
 *   **Reference**: *Markdown Parser Sanity Standards* (W3C).
 
 ### G5: Code Block Language Spec
-*   **Formula**: $M_{G5} = \text{allCodeBlocksHaveLang} ? 1.0 : 0.3$
+*   **Formula**: $M_{G5} = 0.3 + 0.7 \cdot \mathbb{I}(\text{allCodeBlocksHaveLang})$
 *   **Reference**: *Syntax Highlighter Parsers for Source Files* (ACM).
 
 ### G6: Broken Link Detector
@@ -469,15 +469,15 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 *   **Reference**: *Hyperlink Integrity on Version Controlled Markdown* (IEEE).
 
 ### G7: Empty Section Penalty
-*   **Formula**: $M_{G7} = N_{empty\_sections} === 0 ? 1.0 : 0.5$
+*   **Formula**: $M_{G7} = 0.5 + 0.5 \cdot \mathbb{I}(N_{empty\_sections} = 0)$
 *   **Reference**: *Information Redundancy in Semantic Structures* (ACL).
 
 ### G8: HTML Entity Validation
-*   **Formula**: $M_{G8} = N_{malformed\_entities} === 0 ? 1.0 : 0.5$
+*   **Formula**: $M_{G8} = 0.5 + 0.5 \cdot \mathbb{I}(N_{malformed\_entities} = 0)$
 *   **Reference**: *HTML Entity Parsers and Escape Vulnerabilities* (OWASP).
 
 ### G9: Formatting Consistency
-*   **Formula**: $M_{G9} = \text{hasConsistentSpacing} ? 1.0 : 0.6$
+*   **Formula**: $M_{G9} = 0.6 + 0.4 \cdot \mathbb{I}(\text{hasConsistentSpacing})$
 *   **Reference**: *Markdown Formatting Linters standards* (W3C).
 
 ### G10: UTF-8 Encoding compliance
