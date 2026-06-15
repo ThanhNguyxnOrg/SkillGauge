@@ -1,8 +1,38 @@
 # Scientific Specification: 100 Scored Metrics for SkillGauge
 
-This document details the mathematical formulations and scientific references for all **100 criteria** used to statically audit and score agent skills.
+This document details the mathematical formulations, evaluation dimensions, and academic literature references for all **100 criteria** used to statically audit and score agent process instruction files (`SKILL.md` or `.agent/skills/**/*.md`).
 
 ---
+
+## 📐 Mathematical Formulation
+
+SkillGauge computes the overall score of a skill using the **geometric mean (100th root)** of all 100 individual metric scores:
+
+$$\text{Overall Score} = 100.00 \times \left( \prod_{i=1}^{100} M_i^* \right)^{\frac{1}{100}}$$
+
+$$\text{where } M_i^* = \max(0.01, M_i)$$
+
+*   **Geometric Mean Advantage**: Unlike a simple arithmetic average, the geometric mean penalizes extreme weakness in any single critical metric. If a prompt has a fatal flaw (e.g. zero safety exfiltration guards or incorrect UTF-8 encoding), it will drag the final overall score down significantly.
+*   **The 0.01 Floor ($M_i^*$)**: Enforcing a small floor of $0.01$ ensures that a single $0.00$ score on any minor checklist item does not completely zero out the entire overall score, allowing the metric matrix to remain resilient and representative.
+
+---
+
+## 📊 Evaluation Matrix Summary
+
+The 100 criteria are structured into 7 dimensions. Each dimension calculates a raw normalized score:
+
+| ID | Dimension Name | Criteria count | Max Points | Core Focus |
+| --- | --- | --- | --- | --- |
+| **Dim A** | Instruction Quality & Clarity | 15 Metrics | 15.00 | Readability, imperatives, qualifer ambiguity, voice constructs. |
+| **Dim B** | Context & Memory Management | 15 Metrics | 15.00 | Token friction weight, XML matching, history bounds, stop-word footprint. |
+| **Dim C** | Safety, Alignment & Security | 15 Metrics | 15.00 | Injection shielding, role lock, exfiltration guard, PII masks. |
+| **Dim D** | Tool-Use & MCP Clarity | 15 Metrics | 15.00 | Parameter schemas, parallel calling rules, required fields, rate limits. |
+| **Dim E** | Robustness & Exception Handling | 15 Metrics | 15.00 | Exit strategies, retry budgets, fallback plans, diagnostics, timeouts. |
+| **Dim F** | Operational & Inference Economy | 15 Metrics | 15.00 | CoT loop blockers, verbosity control, caching, model cascading & routing. |
+| **Dim G** | Syntax, Structure & Metadata | 10 Metrics | 10.00 | YAML frontmatter, heading jumps, list consistency, UTF-8 compliance. |
+
+---
+
 
 ## Dimension A: Instruction Quality & Clarity (15 Metrics)
 
