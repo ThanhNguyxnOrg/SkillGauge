@@ -13,5 +13,4 @@
 | IMP100-11 | Fix Skill Detection & Score Sums & Precision | completed | Filter valid skill files, convert packageScore to sum, remove rounding, fix G10 |
 | IMP100-12 | Implement Git URL cloning & auditing in CLI | completed | Clone, scan, audit and clean up remote repositories |
 | IMP100-13 | Write premium README.md & documentation | completed | Write complete and detailed guides and formulas |
-| IMP100-14 | Push to ThanhNguyxnOrg/SkillGauge | in-progress | Configure git origin and push main branch |
-
+| IMP100-14 | Push to ThanhNguyxnOrg/SkillGauge | completed | Configure git origin and push main branch |
