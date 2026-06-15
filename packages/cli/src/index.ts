@@ -5,6 +5,8 @@ import { glob } from 'glob';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
+import { execSync } from 'child_process';
+import * as os from 'os';
 import { auditSkill, auditSkillAsync, auditPackage, VirtualFile, optimizeSkill } from '@skillgauge/core';
 
 const program = new Command();
@@ -13,6 +15,7 @@ program
   .name('skillgauge')
   .description('Audit agent skills for efficacy and token costs')
   .version('0.1.0');
+
 
 // Normalize and hash helper for duplicate detection
 function getNormalizedHash(content: string): string {
@@ -25,6 +28,12 @@ function getNormalizedHash(content: string): string {
 
 function getRepositoryName(filePath: string): string {
   const normalized = filePath.replace(/\\/g, '/');
+  if (normalized.includes('/skillgauge-clones/')) {
+    const match = normalized.match(/\/skillgauge-clones\/[^/]+_([^/]+)/);
+    if (match && match[1]) {
+      return match[1];
+    }
+  }
   if (normalized.includes('.agent/skills/')) {
     return getGitOrWorkspaceRepoName(filePath);
   }
@@ -34,6 +43,58 @@ function getRepositoryName(filePath: string): string {
   }
   return getGitOrWorkspaceRepoName(filePath);
 }
+
+function parseGitUrl(url: string): { owner: string; repo: string } {
+  const normalized = url.trim();
+  if (!normalized.startsWith('http://') && !normalized.startsWith('https://') && !normalized.includes('@') && normalized.includes('/')) {
+    const parts = normalized.split('/');
+    if (parts.length === 2) {
+      return { owner: parts[0], repo: parts[1] };
+    }
+  }
+  const match = normalized.match(/(?:github\.com[\/:])([^\/]+)\/([^\/\.]+)/);
+  if (!match) {
+    throw new Error(`Unsupported Git repository URL or identifier "${url}". Use "owner/repo" or a GitHub HTTPS/SSH URL.`);
+  }
+  return { owner: match[1], repo: match[2].replace(/\.git$/, '') };
+}
+
+function getGitCloneUrl(url: string): string {
+  const { owner, repo } = parseGitUrl(url);
+  return `https://github.com/${owner}/${repo}.git`;
+}
+
+function isGitTarget(target: string): boolean {
+  const normalized = target.trim();
+  if (normalized.startsWith('http://') || normalized.startsWith('https://') || normalized.endsWith('.git')) {
+    return true;
+  }
+  if (fs.existsSync(normalized)) {
+    return false;
+  }
+  return /^[a-zA-Z0-9_\-\.]+[\/][a-zA-Z0-9_\-\.]+$/.test(normalized);
+}
+
+function cloneRepository(url: string): { tempDir: string; repoName: string } {
+  const { owner, repo } = parseGitUrl(url);
+  const cloneUrl = getGitCloneUrl(url);
+  const tempParent = path.join(os.tmpdir(), 'skillgauge-clones');
+  
+  if (!fs.existsSync(tempParent)) {
+    fs.mkdirSync(tempParent, { recursive: true });
+  }
+
+  const tempDir = path.join(tempParent, `${Date.now()}_${repo}`);
+  
+  try {
+    execSync(`git clone --depth 1 "${cloneUrl}" "${tempDir}"`, { stdio: 'ignore' });
+  } catch (err: any) {
+    throw new Error(`Failed to clone git repository from ${cloneUrl}: ${err.message}`);
+  }
+
+  return { tempDir, repoName: repo };
+}
+
 
 function getGitOrWorkspaceRepoName(filePath: string): string {
   let dir = path.resolve(filePath);
@@ -81,24 +142,41 @@ program
   .option('--summary <file>', 'Path to write a markdown summary report (great for GitHub Step Summary)')
   .option('-v, --verbose', 'Verbose mode: outputs all 100 individual scientific metrics')
   .action(async (target, options) => {
+    let tempDirToDelete: string | undefined;
     try {
-      const isDirectory = fs.existsSync(target) && fs.lstatSync(target).isDirectory();
+      let auditTarget = target;
+      let isTempDirectory = false;
+
+      if (isGitTarget(target)) {
+        const { tempDir } = cloneRepository(target);
+        tempDirToDelete = tempDir;
+        auditTarget = tempDir;
+        isTempDirectory = true;
+      }
+
+      const isDirectory = isTempDirectory || (fs.existsSync(auditTarget) && fs.lstatSync(auditTarget).isDirectory());
       const failUnderTier = parseInt(options.failUnder);
       let exitCode = 0;
       let summaryContent = '';
 
       if (isDirectory) {
         // Directory auditing mode
-        const normalizedTarget = path.join(target, '**/*').replace(/\\/g, '/');
+        const normalizedTarget = path.join(auditTarget, '**/*').replace(/\\/g, '/');
         const allFiles = await glob(normalizedTarget, { nodir: true });
         const virtualFiles: VirtualFile[] = allFiles.map(file => {
           return {
-            path: path.relative(target, file).replace(/\\/g, '/'),
+            path: path.relative(auditTarget, file).replace(/\\/g, '/'),
             content: fs.readFileSync(file, 'utf-8')
           };
         });
 
         const report = auditPackage(virtualFiles);
+        
+        if (report.individualAudits.length === 0) {
+          console.log(chalk.yellow('⚠️ No valid agent skill files found in the target directory/repository (files must start with "---" and have YAML frontmatter containing "name:" and "description:").'));
+          process.exit(0);
+        }
+
         let tierNum = 3;
         if (report.tier === 'Tier 1') tierNum = 1;
         else if (report.tier === 'Tier 2') tierNum = 2;
@@ -116,13 +194,14 @@ program
           let tierChalk = chalk.red(report.tier);
           if (report.tier === 'Tier 1') tierChalk = chalk.green(report.tier);
           else if (report.tier === 'Tier 2') tierChalk = chalk.yellow(report.tier);
+
           
           console.log(`Tier: ${tierChalk}`);
           console.log(`Integrity Score (Links validation): ${report.integrityScore.toFixed(2)}`);
           console.log(`Redundancy Penalty: ${report.redundancyPenalty.toFixed(2)}`);
           console.log('\nIndividual Skills Audited:');
           for (const ind of report.individualAudits) {
-            const fullPath = path.join(target, ind.path);
+            const fullPath = path.join(auditTarget, ind.path);
             const displayName = getIntelligentSkillName(fullPath, ind.report.name);
             console.log(`  - ${displayName} (${ind.path}): score ${ind.report.overallScore.toFixed(3)} (${ind.report.tier})`);
           }
@@ -146,13 +225,13 @@ program
           let indEmoji = '🔴';
           if (ind.report.tier === 'Tier 1') indEmoji = '🟢';
           else if (ind.report.tier === 'Tier 2') indEmoji = '🟡';
-          const fullPath = path.join(target, ind.path);
+          const fullPath = path.join(auditTarget, ind.path);
           const displayName = getIntelligentSkillName(fullPath, ind.report.name);
           summaryContent += `| \`${displayName}\` | \`${ind.path}\` | \`${ind.report.overallScore.toFixed(3)}\` | ${indEmoji} **${ind.report.tier}** |\n`;
         }
       } else {
         // File glob/pattern auditing mode
-        const files = await glob(target);
+        const files = await glob(auditTarget);
         if (files.length === 0) {
           console.log(chalk.yellow('No files found matching target.'));
           process.exit(0);
@@ -240,6 +319,10 @@ program
     } catch (err: any) {
       console.error(chalk.red(`Error running audit: ${err.message}`));
       process.exit(1);
+    } finally {
+      if (tempDirToDelete && fs.existsSync(tempDirToDelete)) {
+        fs.rmSync(tempDirToDelete, { recursive: true, force: true });
+      }
     }
   });
 
@@ -250,8 +333,16 @@ program
   .requiredOption('--target <target>', 'Glob pattern of files to check')
   .requiredOption('--db <db>', 'Path to leaderboard.json database')
   .action(async (options) => {
+    let tempDirToDelete: string | undefined;
     try {
-      const files = await glob(options.target);
+      let checkTarget = options.target;
+      if (isGitTarget(options.target)) {
+        const { tempDir } = cloneRepository(options.target);
+        tempDirToDelete = tempDir;
+        checkTarget = path.join(tempDir, '**/*.md').replace(/\\/g, '/');
+      }
+
+      const files = await glob(checkTarget);
       if (files.length === 0) {
         console.log(chalk.yellow('No files found to check.'));
         process.exit(0);
@@ -293,6 +384,10 @@ program
     } catch (err: any) {
       console.error(chalk.red(`Error checking duplicates: ${err.message}`));
       process.exit(1);
+    } finally {
+      if (tempDirToDelete && fs.existsSync(tempDirToDelete)) {
+        fs.rmSync(tempDirToDelete, { recursive: true, force: true });
+      }
     }
   });
 
@@ -305,8 +400,16 @@ program
   .requiredOption('--readme <readme>', 'Path to README.md')
   .requiredOption('--author <author>', 'GitHub username of contributor')
   .action(async (options) => {
+    let tempDirToDelete: string | undefined;
     try {
-      const files = await glob(options.target);
+      let updateTarget = options.target;
+      if (isGitTarget(options.target)) {
+        const { tempDir } = cloneRepository(options.target);
+        tempDirToDelete = tempDir;
+        updateTarget = path.join(tempDir, '**/*.md').replace(/\\/g, '/');
+      }
+
+      const files = await glob(updateTarget);
       if (files.length === 0) {
         console.log(chalk.yellow('No files found to add.'));
         process.exit(0);
@@ -407,6 +510,10 @@ program
     } catch (err: any) {
       console.error(chalk.red(`Error updating leaderboard: ${err.message}`));
       process.exit(1);
+    } finally {
+      if (tempDirToDelete && fs.existsSync(tempDirToDelete)) {
+        fs.rmSync(tempDirToDelete, { recursive: true, force: true });
+      }
     }
   });
 
