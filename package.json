@@ -1,0 +1,11 @@
+{
+  "name": "skillgauge-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "npm run test -w packages/core",
+    "build": "npm run build --workspaces"
+  }
+}

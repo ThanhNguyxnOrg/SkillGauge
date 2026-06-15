@@ -1,0 +1,92 @@
+name: SkillGauge Leaderboard Bot
+
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+    paths:
+      - 'skills/**/*.md'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  audit-and-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Run Anti-Spam Check
+        id: anti_spam
+        continue-on-error: true
+        run: |
+          node packages/cli/dist/index.js check-duplicate --target "skills/**/*.md" --db "leaderboard.json"
+          echo "exit_code=$?" >> $GITHUB_ENV
+
+      - name: Handle Duplicate PR
+        if: env.exit_code == '2'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --body "🚨 **SkillGauge Audit Warning:** This skill matches an existing entry on the leaderboard. To prevent spam and plagiarized content, duplicate submissions are automatically rejected. If you believe this is an error, please contact the maintainers."
+          gh pr close ${{ github.event.pull_request.number }}
+          exit 1
+
+      - name: Run SkillGauge Audit
+        run: |
+          node packages/cli/dist/index.js audit "skills/**/*.md" --fail-under 0 --summary summary.md
+
+      - name: Publish Step Summary
+        run: cat summary.md >> $GITHUB_STEP_SUMMARY
+
+      - name: Auto-Merge Pull Request
+        id: merge_pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr merge ${{ github.event.pull_request.number }} --squash --delete-branch
+
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+          clean: true
+
+      - name: Install Dependencies (main)
+        run: npm ci
+
+      - name: Build Project (main)
+        run: npm run build
+
+      - name: Run Auto-Optimizer on Main
+        run: |
+          node packages/cli/dist/index.js optimize "skills/**/*.md"
+
+      - name: Update Leaderboard JSON & README
+        run: |
+          node packages/cli/dist/index.js update-leaderboard --author "${{ github.event.pull_request.user.login }}" --db "leaderboard.json" --readme "README.md" --target "skills/**/*.md"
+
+      - name: Commit and Push Leaderboard Updates
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff-index --quiet HEAD || (git commit -m "chore: update leaderboard and optimize skills [skip ci]" && git push)
