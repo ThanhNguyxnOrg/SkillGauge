@@ -366,15 +366,15 @@ program
         const report = auditSkill(content);
         const parsedName = getIntelligentSkillName(file, report.name);
         const repoName = getRepositoryName(file);
-        const displayName = `${repoName} - ${parsedName}`;
+        const displayName = parsedName;
 
         const isDuplicate = db.skills.some((s: any) => {
           const sCleanName = String(s.name).replace('🌟 ', '');
-          return s.hash === hash || sCleanName === displayName;
+          return s.hash === hash || (sCleanName === displayName && s.repository === repoName);
         });
 
         if (isDuplicate) {
-          console.error(chalk.red(`🚨 Duplicate detected for file: ${file} (Name: "${displayName}" or content hash matches existing entry)`));
+          console.error(chalk.red(`🚨 Duplicate detected for file: ${file} (Name: "${displayName}" in repo "${repoName}" or content hash matches existing entry)`));
           process.exit(2); // Exit with code 2 to indicate duplicate
         }
       }
@@ -434,14 +434,14 @@ program
         const report = await auditSkillAsync(content);
         const parsedSkillName = getIntelligentSkillName(file, report.name);
         const repoName = getRepositoryName(file);
-        const displayName = `${repoName} - ${parsedSkillName}`;
+        const displayName = parsedSkillName;
         const skillName = report.tier === 'Tier 1' ? '🌟 ' + displayName : displayName;
 
         // Check if exists, update or add
-        const cleanName = displayName.replace('🌟 ', '');
+        const cleanName = displayName;
         const existingIndex = db.skills.findIndex((s: any) => {
           const sCleanName = String(s.name).replace('🌟 ', '');
-          return s.hash === hash || sCleanName === cleanName;
+          return s.hash === hash || (sCleanName === cleanName && s.repository === repoName);
         });
         const skillEntry = {
           name: skillName,

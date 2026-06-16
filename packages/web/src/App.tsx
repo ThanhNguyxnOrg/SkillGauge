@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Leaderboard } from './components/Leaderboard';
 import { SkillExplorer } from './components/SkillExplorer';
 import { AuditSandbox } from './components/AuditSandbox';
+import { SubmitSkill } from './components/SubmitSkill';
 import { SkillDetailModal } from './components/SkillDetailModal';
 import { auditSkill } from '@skillgauge/core';
 
@@ -27,7 +28,7 @@ interface SkillFile {
 }
 
 function App() {
-  const [activeTab, setActiveTab] = useState<'leaderboard' | 'explorer' | 'sandbox'>('leaderboard');
+  const [activeTab, setActiveTab] = useState<'leaderboard' | 'explorer' | 'sandbox' | 'submit'>('leaderboard');
   const [selectedSkillKey, setSelectedSkillKey] = useState<string | null>(null);
   
   // Custom sandbox audit result display in the same modal
@@ -92,13 +93,19 @@ function App() {
               className={`nav-link ${activeTab === 'explorer' ? 'active' : ''}`}
               onClick={() => setActiveTab('explorer')}
             >
-              Local Skills
+              Installed Skills
             </button>
             <button
               className={`nav-link ${activeTab === 'sandbox' ? 'active' : ''}`}
               onClick={() => setActiveTab('sandbox')}
             >
               Sandbox Auditor
+            </button>
+            <button
+              className={`nav-link ${activeTab === 'submit' ? 'active' : ''}`}
+              onClick={() => setActiveTab('submit')}
+            >
+              Submit Skill
             </button>
           </nav>
         </header>
@@ -140,6 +147,12 @@ function App() {
               <AuditSandbox
                 onShowResult={handleShowSandboxResult}
               />
+            </div>
+          )}
+
+          {activeTab === 'submit' && (
+            <div style={{ width: '100%', animation: 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+              <SubmitSkill />
             </div>
           )}
         </main>

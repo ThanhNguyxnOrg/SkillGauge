@@ -14,6 +14,9 @@
 | IMP100-12 | Implement Git URL cloning & auditing in CLI | completed | Clone, scan, audit and clean up remote repositories |
 | IMP100-13 | Write premium README.md & documentation | completed | Write complete and detailed guides and formulas |
 | IMP100-14 | Push to ThanhNguyxnOrg/SkillGauge | completed | Configure git origin and push main branch |
+| IMP100-15 | Remove leaderboard name prefixing in CLI | pending | Use clean skill names in leaderboard db and README |
+| IMP100-16 | Implement GitHub submission in Web Sandbox | pending | Add PAT login, target inputs, call submitContribution, display PR |
+
 | UI-BRAIN-1 | Explore project context | completed | Analyzed codebase, core engine, cli and metrics |
 | UI-BRAIN-2 | Ask clarifying questions | completed | Gathering user requirements and preferences |
 | UI-BRAIN-3 | Propose 2-3 approaches | completed | Design and architectural options |

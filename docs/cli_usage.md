@@ -122,8 +122,8 @@ An anti-spam and validation utility that scans a target file/repository and comp
 #### Verification Logic:
 1.  Loads the existing database.
 2.  Normalizes submitted file contents (strips markdown comments and whitespaces, converts to lowercase) and hashes it with SHA-256.
-3.  Resolves display names in the `[Repository] - [Skill Name]` format.
-4.  Rejects the submission (exits with code `2`) if the content hash OR the resolved display name already exists in the database.
+3.  Resolves clean skill display names.
+4.  Rejects the submission (exits with code `2`) if the content hash OR the clean skill name in the same repository already exists in the database.
 
 #### Example:
 ```bash

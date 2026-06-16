@@ -45,4 +45,4 @@ skills/
 │   └── SKILL.md
 ```
 * **Repository Detection**: The CLI parses the repository name from the subdirectory (e.g. `skills/superpowers/brainstorm.md` -> repository `superpowers`). For Git targets, the repo name is extracted directly from the repository URL.
-* **Leaderboard Name Format**: Entry names are rendered as `[Repository] - [Skill Name]` (e.g., `superpowers - brainstorm`).
+* **Leaderboard Name Format**: Entry names are rendered as clean skill names (e.g. `brainstorm`), and their origin repositories are displayed in the dedicated "Repository" column.

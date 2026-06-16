@@ -19,9 +19,11 @@ interface LeaderboardProps {
 
 export const Leaderboard: React.FC<LeaderboardProps> = ({ skills, onSelectSkill, localKeys }) => {
   const findLocalKey = (name: string) => {
-    // Renders as "Repo - SkillName" or similar
     const cleanName = name.replace('🌟 ', '').toLowerCase();
-    return localKeys.find(key => cleanName.includes(key.toLowerCase()));
+    return localKeys.find(key => {
+      const kLow = key.toLowerCase();
+      return kLow === cleanName || cleanName.includes(kLow) || kLow.includes(cleanName);
+    });
   };
 
   return (

@@ -26,7 +26,7 @@ export const SkillExplorer: React.FC<SkillExplorerProps> = ({ skills, onSelectSk
     <div style={{ width: '100%', marginBottom: '64px' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
         <Terminal style={{ color: '#10b981' }} />
-        <h2 className="section-subtitle" style={{ marginBottom: 0 }}>Local Installed Skills</h2>
+        <h2 className="section-subtitle" style={{ marginBottom: 0 }}>Installed Skills</h2>
       </div>
 
       <div className="skills-grid">
