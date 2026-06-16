@@ -55,11 +55,4 @@ jobs:
       - name: 📤 Publish Step Summary
         run: cat summary.md >> $GITHUB_STEP_SUMMARY
 
-      - name: 💬 Post Audit Summary as PR Comment
-        if: always()
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if [ -f summary.md ]; then
-            gh pr comment ${{ github.event.pull_request.number }} --body-file summary.md
-          fi
+

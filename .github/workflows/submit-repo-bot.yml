@@ -36,6 +36,6 @@ jobs:
 
       - name: 🤖 Process Submission
         env:
-          GITHUB_TOKEN: ${{ secrets.SUBMIT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           node scripts/submit-bot.mjs --repository "${{ github.event.inputs.repository }}"
