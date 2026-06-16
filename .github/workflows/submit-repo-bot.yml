@@ -1,0 +1,41 @@
+name: 🤖 SkillGauge PR Submission Bot
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: 'The URL of the repository to clone and scan'
+        required: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  process-submission:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📁 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      - name: 🔨 Build Core & CLI
+        run: |
+          npm run build -w packages/core
+          npm run build -w packages/cli
+
+      - name: 🤖 Process Submission
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node scripts/submit-bot.mjs --repository "${{ github.event.inputs.repository }}"

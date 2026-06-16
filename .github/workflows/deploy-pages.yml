@@ -41,6 +41,8 @@ jobs:
         run: npm install
 
       - name: 🔨 Build Core & Web Dashboard
+        env:
+          VITE_SUBMIT_TOKEN: ${{ secrets.SUBMIT_PAT }}
         run: |
           npm run build -w packages/core
           npm run web:build

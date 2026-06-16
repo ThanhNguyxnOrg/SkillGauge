@@ -1,0 +1,65 @@
+name: 🔍 Manual PR Skills Verification
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'skills/**/*.md'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📁 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      - name: 🔨 Build Core & CLI
+        run: |
+          npm run build -w packages/core
+          npm run build -w packages/cli
+
+      - name: 🛡️ Run Anti-Spam Check
+        id: anti_spam
+        continue-on-error: true
+        run: |
+          node packages/cli/dist/index.js check-duplicate --target "skills/**/*.md" --db "leaderboard.json"
+          echo "exit_code=$?" >> $GITHUB_ENV
+
+      - name: 🚨 Handle Duplicate PR
+        if: env.exit_code == '2'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --body "🚨 **SkillGauge Audit Warning:** This skill matches an existing entry on the leaderboard. To prevent spam and plagiarized content, duplicate submissions are automatically rejected."
+          exit 1
+
+      - name: 🔬 Run SkillGauge Audit
+        run: |
+          node packages/cli/dist/index.js audit "skills/**/*.md" --fail-under 0 --summary summary.md
+
+      - name: 📤 Publish Step Summary
+        run: cat summary.md >> $GITHUB_STEP_SUMMARY
+
+      - name: 💬 Post Audit Summary as PR Comment
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f summary.md ]; then
+            gh pr comment ${{ github.event.pull_request.number }} --body-file summary.md
+          fi
