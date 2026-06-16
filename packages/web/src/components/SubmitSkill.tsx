@@ -400,13 +400,13 @@ export const SubmitSkill: React.FC = () => {
             <FolderOpen style={{ color: '#10b981' }} /> GitHub Repository Scanner
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '20px' }}>
-            Scan a remote repository containing skill files (e.g. <code>affaan-m/ecc</code>). The scanner recursively scans the tree and audits files containing YAML headers.
+            Scan a remote repository containing skill files (e.g. <code>owner/repository</code>). The scanner recursively scans the tree and audits files containing YAML headers.
           </p>
 
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
             <input
               type="text"
-              placeholder="e.g., https://github.com/affaan-m/ecc or affaan-m/ecc"
+              placeholder="e.g., https://github.com/owner/repository or owner/repository"
               value={repoUrl}
               onChange={(e) => setRepoUrl(e.target.value)}
               disabled={isScanning}
