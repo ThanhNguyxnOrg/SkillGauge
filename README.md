@@ -15,6 +15,20 @@ The ranking table below is dynamically managed by the CI runner. Submissions are
 | Rank 🏆 | Skill Name 📦 | Repository 🏠 | Tier 🏷️ | Score ⭐️ | Author 👤 |
 | --- | --- | --- | --- | --- | --- |
 | 🏆 1 | `Math Solver` | `SkillGauge` | 🟡 **Tier 2** | **65.824** | @ThanhNguyxnOrg |
+| 🥈 2 | `writing-skills` | `SkillGauge` | 🟡 **Tier 2** | **60.583** | @obra |
+| 🥉 3 | `requesting-code-review` | `SkillGauge` | 🟡 **Tier 2** | **60.381** | @obra |
+| 4 | `using-git-worktrees` | `SkillGauge` | 🟡 **Tier 2** | **60.341** | @obra |
+| 5 | `verification-before-completion` | `SkillGauge` | 🟡 **Tier 2** | **60.244** | @obra |
+| 6 | `executing-plans` | `SkillGauge` | 🟡 **Tier 2** | **60.219** | @obra |
+| 7 | `receiving-code-review` | `SkillGauge` | 🟡 **Tier 2** | **60.079** | @obra |
+| 8 | `finishing-a-development-branch` | `SkillGauge` | 🔴 **Tier 3** | **59.770** | @obra |
+| 9 | `dispatching-parallel-agents` | `SkillGauge` | 🔴 **Tier 3** | **59.369** | @obra |
+| 10 | `writing-plans` | `SkillGauge` | 🔴 **Tier 3** | **58.645** | @obra |
+| 11 | `subagent-driven-development` | `SkillGauge` | 🔴 **Tier 3** | **58.228** | @obra |
+| 12 | `systematic-debugging` | `SkillGauge` | 🔴 **Tier 3** | **58.199** | @obra |
+| 13 | `test-driven-development` | `SkillGauge` | 🔴 **Tier 3** | **58.050** | @obra |
+| 14 | `using-superpowers` | `SkillGauge` | 🔴 **Tier 3** | **57.853** | @obra |
+| 15 | `brainstorming` | `SkillGauge` | 🔴 **Tier 3** | **57.321** | @obra |
 
 <!-- LEADERBOARD_END -->
 

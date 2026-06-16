@@ -8,6 +8,132 @@
       "tier": "Tier 2",
       "overallScore": 65.82396732960959,
       "submittedAt": "2026-06-16T04:00:20.133Z"
+    },
+    {
+      "name": "writing-skills",
+      "repository": "SkillGauge",
+      "hash": "7e5d51fe3af8861e41d1c512e8fa76820dafb07470a68cf72a3b60d69fb55ea8",
+      "author": "obra",
+      "tier": "Tier 2",
+      "overallScore": 60.583093318988624,
+      "submittedAt": "2026-06-16T09:18:18.934Z"
+    },
+    {
+      "name": "requesting-code-review",
+      "repository": "SkillGauge",
+      "hash": "c29640ee5916d6c8dfc71e4295cd2063125cb0dea75b9dfbbb1fa8895116e4f3",
+      "author": "obra",
+      "tier": "Tier 2",
+      "overallScore": 60.38128669253332,
+      "submittedAt": "2026-06-16T09:18:18.983Z"
+    },
+    {
+      "name": "using-git-worktrees",
+      "repository": "SkillGauge",
+      "hash": "7b6c45b22fb75b1acd0d3a527e384d85b13e9c6aa7f2ee787aae292d4019c74d",
+      "author": "obra",
+      "tier": "Tier 2",
+      "overallScore": 60.341124395930876,
+      "submittedAt": "2026-06-16T09:18:18.953Z"
+    },
+    {
+      "name": "verification-before-completion",
+      "repository": "SkillGauge",
+      "hash": "8c22836e81d462b61cebc5733a95e7ff44c96781d3df74c951efa2ac397d3321",
+      "author": "obra",
+      "tier": "Tier 2",
+      "overallScore": 60.244229154982925,
+      "submittedAt": "2026-06-16T09:18:18.943Z"
+    },
+    {
+      "name": "executing-plans",
+      "repository": "SkillGauge",
+      "hash": "dc8fc20125584bd1ecab80285309a7df1d39c1b31ded42f9030cb07eaae7c2a3",
+      "author": "obra",
+      "tier": "Tier 2",
+      "overallScore": 60.219391400828265,
+      "submittedAt": "2026-06-16T09:18:19.000Z"
+    },
+    {
+      "name": "receiving-code-review",
+      "repository": "SkillGauge",
+      "hash": "fe19ec3edad88806b3464b11f8cf81b526172636eaaf1903e8ddb23da90b3aa6",
+      "author": "obra",
+      "tier": "Tier 2",
+      "overallScore": 60.07910590915914,
+      "submittedAt": "2026-06-16T09:18:18.988Z"
+    },
+    {
+      "name": "finishing-a-development-branch",
+      "repository": "SkillGauge",
+      "hash": "5304bb0c6b0b0bfa1a6c01cc521e1cd9e500b67aeb662d24d6ade77dec54ba8a",
+      "author": "obra",
+      "tier": "Tier 3",
+      "overallScore": 59.77038364223906,
+      "submittedAt": "2026-06-16T09:18:18.993Z"
+    },
+    {
+      "name": "dispatching-parallel-agents",
+      "repository": "SkillGauge",
+      "hash": "50e7546401dc366367d4ad75453b4362696177242b8263801b36d8cf5aa1aefd",
+      "author": "obra",
+      "tier": "Tier 3",
+      "overallScore": 59.36912508433797,
+      "submittedAt": "2026-06-16T09:18:19.004Z"
+    },
+    {
+      "name": "writing-plans",
+      "repository": "SkillGauge",
+      "hash": "c187dd2378ff136b12edf3046092073f1c2bee62b70713feedd7ba9313213dc8",
+      "author": "obra",
+      "tier": "Tier 3",
+      "overallScore": 58.64481966061797,
+      "submittedAt": "2026-06-16T09:18:18.940Z"
+    },
+    {
+      "name": "subagent-driven-development",
+      "repository": "SkillGauge",
+      "hash": "1384800755db01649557f995ab0cca6c10bf809c148d89de18578d96d021ff4d",
+      "author": "obra",
+      "tier": "Tier 3",
+      "overallScore": 58.22773524201459,
+      "submittedAt": "2026-06-16T09:18:18.980Z"
+    },
+    {
+      "name": "systematic-debugging",
+      "repository": "SkillGauge",
+      "hash": "18fc211ca03f08dcf89485945a0e1c5ced82780fef58aec8fb87aed3076aede4",
+      "author": "obra",
+      "tier": "Tier 3",
+      "overallScore": 58.19942389830341,
+      "submittedAt": "2026-06-16T09:18:18.972Z"
+    },
+    {
+      "name": "test-driven-development",
+      "repository": "SkillGauge",
+      "hash": "25bd543f6452335f57d8d7df8814b630ecf10313eeeb63c8a9c0f375c6ab66e0",
+      "author": "obra",
+      "tier": "Tier 3",
+      "overallScore": 58.049530948327316,
+      "submittedAt": "2026-06-16T09:18:18.962Z"
+    },
+    {
+      "name": "using-superpowers",
+      "repository": "SkillGauge",
+      "hash": "4678573875755505db9545b30b91d13e5428e7e86c26991022de3e824e7f0ab1",
+      "author": "obra",
+      "tier": "Tier 3",
+      "overallScore": 57.853298694952,
+      "submittedAt": "2026-06-16T09:18:18.948Z"
+    },
+    {
+      "name": "brainstorming",
+      "repository": "SkillGauge",
+      "hash": "4da76122d5f47779001eac49e8f6ec48611654277c8c19ebf81dc731f50b7130",
+      "author": "obra",
+      "tier": "Tier 3",
+      "overallScore": 57.32068473117912,
+      "submittedAt": "2026-06-16T09:18:19.011Z"
     }
   ]
 }
