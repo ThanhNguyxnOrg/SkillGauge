@@ -483,3 +483,56 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 ### G10: UTF-8 Encoding compliance
 *   **Formula**: $M_{G10} = \text{isUtf8} ? 1.0 : 0.0$
 *   **Reference**: *Character Encoding Security and Robustness* (RFC 3629).
+
+---
+
+## 🧪 2-Phase Auditing & Dynamic Probing Calculations
+
+SkillGauge employs a hybrid evaluation methodology that combines static structural constraints with dynamic semantic checking.
+
+### 1. Unified 2-Phase Auditing Formulation
+When a Gemini API Key is configured, the overall quality score of a prompt is calculated in two sequential phases:
+
+```mermaid
+graph LR
+    Prompt[Skill Prompt] --> Phase1[Phase 1: Static Score]
+    Phase1 -->|S_static| Phase2[Phase 2: LLM Audit]
+    Phase2 -->|S_final = S_static x Multiplier| Final[Final Score & Tier]
+```
+
+#### Phase 1: Static Structural Audit ($S_{\text{static}}$)
+The static score is calculated using the geometric mean of the 100 criteria:
+$$S_{\text{static}} = 100.00 \times \left( \prod_{i=1}^{100} M_i^* \right)^{\frac{1}{100}}$$
+where $M_i^* = \max(0.01, M_i)$.
+
+#### Phase 2: Dynamic Semantic Audit ($M_{\text{semantic}}$)
+A cost-efficient model (`gemini-2.5-flash-lite`) is invoked to assess the prompt on qualitative properties. The model outputs a JSON payload containing:
+- **Coherence** ($C \in [0.0, 1.0]$): Readability, grammar, and instructions clarity.
+- **Depth** ($D \in [0.0, 1.0]$): Breadth, detail, and applicability.
+- **Gaming Flag** ($G \in \{0.15, 1.0\}$): Set to $0.15$ if the prompt is flagged for keyword stuffing or attempting to cheat the static checkers, $1.0$ otherwise.
+
+The semantic multiplier is computed as:
+$$M_{\text{semantic}} = C \times D \times G$$
+
+#### Final Grade
+The final unified score ($S_{\text{final}}$) is the product of both phases:
+$$S_{\text{final}} = S_{\text{static}} \times M_{\text{semantic}}$$
+
+If no API key is provided, the evaluation defaults to $S_{\text{final}} = S_{\text{static}}$.
+
+---
+
+### 2. Dynamic Probing & Scenario Testing
+Developers can define behavioral tests inside their skill frontmatter to stress-test prompt instructions against runtime jailbreaks, injections, or incorrect formats.
+
+#### Assertion Math
+For each defined scenario:
+1. The user input is passed as `contents` and the skill instructions are configured as `systemInstruction`.
+2. The model response text ($O$) is converted to lowercase.
+3. For each positive assertion $e_j \in \text{expected}$:
+   $$A_j = \mathbb{I}(e_j \in O)$$
+4. For each negative assertion $p_k \in \text{expected\_not}$:
+   $$B_k = \mathbb{I}(p_k \notin O)$$
+
+The scenario is marked as **Passed** if and only if:
+$$\sum_{j} A_j = |\text{expected}| \quad \wedge \quad \sum_{k} B_k = |\text{expected\_not}|$$
