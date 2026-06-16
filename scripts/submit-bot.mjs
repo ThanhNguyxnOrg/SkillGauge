@@ -1,7 +1,7 @@
 import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
-import { auditSkill } from './packages/core/dist/index.js';
+import { auditSkill } from '../packages/core/dist/index.js';
 
 // Parse arguments: node scripts/submit-bot.mjs --repository <url>
 const args = process.argv.slice(2);

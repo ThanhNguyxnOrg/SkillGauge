@@ -6,6 +6,7 @@ export const SubmitSkill: React.FC = () => {
   const [submitStep, setSubmitStep] = useState<'idle' | 'triggering' | 'bot_running' | 'success' | 'error'>('idle');
   const [submitError, setSubmitError] = useState('');
   const [prLink, setPrLink] = useState('');
+  const [runSteps, setRunSteps] = useState<any[]>([]);
 
   const parseGitUrl = (url: string): { owner: string; repo: string } => {
     const normalized = url.trim();
@@ -31,6 +32,15 @@ export const SubmitSkill: React.FC = () => {
     setSubmitStep('triggering');
     setSubmitError('');
     setPrLink('');
+    setRunSteps([]);
+
+    let prPoll: any = null;
+    let jobsInterval: any = null;
+
+    const clearAllIntervals = () => {
+      if (prPoll) clearInterval(prPoll);
+      if (jobsInterval) clearInterval(jobsInterval);
+    };
 
     try {
       const { owner, repo } = parseGitUrl(repoUrl);
@@ -65,19 +75,82 @@ export const SubmitSkill: React.FC = () => {
 
       setSubmitStep('bot_running');
 
-      // 2. Poll for the Pull Request
+      // 2. Fetch the newly triggered run ID
+      let fetchedRunId: number | null = null;
+      for (let i = 0; i < 6; i++) {
+        await new Promise(r => setTimeout(r, 2000));
+        try {
+          const runsRes = await fetch(`https://api.github.com/repos/${targetOwner}/${targetRepo}/actions/runs?event=workflow_dispatch&workflow_id=submit-repo-bot.yml`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              Accept: 'application/vnd.github.v3+json'
+            }
+          });
+          if (runsRes.ok) {
+            const data = await runsRes.json();
+            if (data.workflow_runs && data.workflow_runs.length > 0) {
+              const latestRun = data.workflow_runs[0];
+              const runTime = new Date(latestRun.created_at).getTime();
+              const now = Date.now();
+              // Verify it was triggered recently (within 60 seconds)
+              if (now - runTime < 60000) {
+                fetchedRunId = latestRun.id;
+                break;
+              }
+            }
+          }
+        } catch (e) {
+          console.error('Error fetching run ID:', e);
+        }
+      }
+
+      // 3. Poll Action run jobs/steps logs
+      if (fetchedRunId) {
+        const jobsUrl = `https://api.github.com/repos/${targetOwner}/${targetRepo}/actions/runs/${fetchedRunId}/jobs`;
+        jobsInterval = setInterval(async () => {
+          try {
+            const res = await fetch(jobsUrl, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                Accept: 'application/vnd.github.v3+json'
+              }
+            });
+            if (res.ok) {
+              const data = await res.json();
+              if (data.jobs && data.jobs.length > 0) {
+                const job = data.jobs[0];
+                if (job.steps && job.steps.length > 0) {
+                  setRunSteps(job.steps);
+                }
+                if (job.status === 'completed') {
+                  clearInterval(jobsInterval);
+                  if (job.conclusion !== 'success') {
+                    setSubmitStep('error');
+                    setSubmitError('The submission bot execution failed on GitHub Actions.');
+                    clearAllIntervals();
+                  }
+                }
+              }
+            }
+          } catch (e) {
+            console.error('Error polling run jobs:', e);
+          }
+        }, 3000);
+      }
+
+      // 4. Poll for the created Pull Request
       const branchName = `contrib-${repo.toLowerCase()}`;
       const prUrl = `https://api.github.com/repos/${targetOwner}/${targetRepo}/pulls?head=${targetOwner}:${branchName}`;
       
       let attempts = 0;
-      const maxAttempts = 60; // Poll for up to 5 minutes (5s interval)
+      const maxAttempts = 60; // Poll for up to 5 minutes
       
-      const poll = setInterval(async () => {
+      prPoll = setInterval(async () => {
         attempts++;
         if (attempts > maxAttempts) {
-          clearInterval(poll);
+          clearAllIntervals();
           setSubmitStep('error');
-          setSubmitError('The submission bot timed out. Please check GitHub Actions for details.');
+          setSubmitError('The Pull Request creation timed out. Please check GitHub Actions for details.');
           return;
         }
 
@@ -90,7 +163,7 @@ export const SubmitSkill: React.FC = () => {
           if (res.ok) {
             const prs = await res.json();
             if (prs && prs.length > 0) {
-              clearInterval(poll);
+              clearAllIntervals();
               setPrLink(prs[0].html_url);
               setSubmitStep('success');
             }
@@ -101,6 +174,7 @@ export const SubmitSkill: React.FC = () => {
       }, 5000);
 
     } catch (err: any) {
+      clearAllIntervals();
       setSubmitStep('error');
       setSubmitError(err.message || 'Failed to submit repository');
     }
@@ -269,6 +343,54 @@ export const SubmitSkill: React.FC = () => {
                 </div>
               </div>
             </div>
+
+            {/* Runner Execution Logs Console */}
+            {runSteps.length > 0 && (
+              <div style={{
+                marginTop: '20px',
+                padding: '16px',
+                background: '#0a0a0a',
+                border: '1px solid var(--border-muted)',
+                borderRadius: '8px',
+                fontFamily: 'var(--mono-font)',
+                fontSize: '12px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px',
+                maxWidth: '100%'
+              }}>
+                <div style={{ color: '#a78bfa', fontWeight: 'bold', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '1px solid var(--border-muted)', paddingBottom: '6px', marginBottom: '4px' }}>
+                  Runner Execution Log Console
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '180px', overflowY: 'auto' }}>
+                  {runSteps.map((step, idx) => {
+                    let emoji = '⚙️';
+                    let statusColor = 'var(--text-secondary)';
+                    if (step.status === 'completed') {
+                      if (step.conclusion === 'success') {
+                        emoji = '✅';
+                        statusColor = 'var(--color-tier-1)';
+                      } else {
+                        emoji = '❌';
+                        statusColor = 'var(--color-tier-3)';
+                      }
+                    } else if (step.status === 'in_progress') {
+                      emoji = '⚡';
+                      statusColor = '#a78bfa';
+                    }
+                    return (
+                      <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: statusColor }}>
+                        <span>{emoji}</span>
+                        <span>{step.name}</span>
+                        <span style={{ fontSize: '10px', color: 'var(--text-muted)', marginLeft: 'auto' }}>
+                          {step.status === 'completed' ? `Completed (${step.conclusion})` : 'Running...'}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
             {prLink && (
               <div style={{
