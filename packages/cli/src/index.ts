@@ -173,8 +173,8 @@ program
         const report = auditPackage(virtualFiles);
         
         if (report.individualAudits.length === 0) {
-          console.log(chalk.yellow('⚠️ No valid agent skill files found in the target directory/repository (files must start with "---" and have YAML frontmatter containing "name:" and "description:").'));
-          process.exit(0);
+          console.error(chalk.red('🚨 Error: No valid agent skill files found in the target directory/repository (files must start with "---" and have YAML frontmatter containing "name:" and "description:").'));
+          process.exit(1);
         }
 
         let tierNum = 3;
@@ -233,13 +233,14 @@ program
         // File glob/pattern auditing mode
         const files = await glob(auditTarget);
         if (files.length === 0) {
-          console.log(chalk.yellow('No files found matching target.'));
-          process.exit(0);
+          console.error(chalk.red('🚨 Error: No files found matching target.'));
+          process.exit(1);
         }
 
         summaryContent = `## 🏆 SkillGauge File Audit Report\n\n`;
         summaryContent += `| Skill Name 📦 | Repository 🏠 | File Path 📄 | Overall Score ⭐️ | Tier 🏷️ |\n| --- | --- | --- | --- | --- |\n`;
 
+        let validFileCount = 0;
         for (const file of files) {
           const content = fs.readFileSync(file, 'utf-8');
           
@@ -305,6 +306,12 @@ program
           if (report.explanation) {
             summaryContent += `| | | | *Notes: ${report.explanation}* | |\n`;
           }
+          validFileCount++;
+        }
+
+        if (validFileCount === 0) {
+          console.error(chalk.red('🚨 Error: No valid agent skill files found matching the target glob.'));
+          process.exit(1);
         }
       }
 
