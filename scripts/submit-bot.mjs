@@ -99,7 +99,11 @@ if (!fs.existsSync(destDir)) {
 }
 
 for (const skill of validSkills) {
-  const fileName = path.basename(skill.file);
+  const fileSlug = skill.name
+    .toLowerCase()
+    .replace(/[^a-z0-9_\-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  const fileName = `${fileSlug}.md`;
   const destPath = path.join(destDir, fileName);
   fs.writeFileSync(destPath, skill.content, 'utf-8');
 }
