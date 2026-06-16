@@ -376,8 +376,11 @@ program
         const displayName = parsedName;
 
         const isDuplicate = db.skills.some((s: any) => {
-          const sCleanName = String(s.name).replace('🌟 ', '');
-          return s.hash === hash || (sCleanName === displayName && s.repository === repoName);
+          // Duplicate content in a different repository is flagged as plagiarism
+          if (s.hash === hash && s.repository !== repoName) {
+            return true;
+          }
+          return false;
         });
 
         if (isDuplicate) {
