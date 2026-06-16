@@ -44,9 +44,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ skills, onSelectSkill,
                 <th>Skill Name</th>
                 <th>Repository</th>
                 <th>Tier</th>
-                <th style={{ textAlign: 'right' }}>Audit Score</th>
                 <th>Author</th>
-                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -56,7 +54,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ skills, onSelectSkill,
                 const tierClass = skill.tier === 'Tier 1' ? 'tier-1' : skill.tier === 'Tier 2' ? 'tier-2' : 'tier-3';
 
                 return (
-                  <tr key={skill.hash} onClick={() => localKey && onSelectSkill(localKey)}>
+                  <tr key={skill.hash} onClick={() => localKey && onSelectSkill(localKey)} style={{ cursor: localKey ? 'pointer' : 'default' }}>
                     <td>
                       <span className={`badge-rank ${rankClass}`}>
                         {index + 1}
@@ -74,27 +72,8 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ skills, onSelectSkill,
                         {skill.tier}
                       </span>
                     </td>
-                    <td style={{ textAlign: 'right', fontWeight: '700', fontFamily: 'var(--mono-font)' }}>
-                      {skill.overallScore.toFixed(3)}
-                    </td>
                     <td style={{ color: 'var(--text-secondary)' }}>
                       @{skill.author}
-                    </td>
-                    <td>
-                      {localKey ? (
-                        <button
-                          className="nav-link active"
-                          style={{ padding: '4px 12px', fontSize: '11px' }}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            onSelectSkill(localKey);
-                          }}
-                        >
-                          Analyze
-                        </button>
-                      ) : (
-                        <span style={{ color: 'var(--text-muted)', fontSize: '12px' }}>ReadOnly</span>
-                      )}
                     </td>
                   </tr>
                 );
