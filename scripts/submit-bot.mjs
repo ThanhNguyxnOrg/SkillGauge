@@ -132,7 +132,7 @@ try {
   execSync(`git checkout -b ${branchName}`);
   
   console.log('Staging changes...');
-  execSync('git add skills/ leaderboard.json README.md packages/web/src/data/');
+  execSync('git add skills/');
   
   console.log('Committing changes...');
   execSync(`git commit -m "feat: add skills from repository ${repoOwner}/${repoName}"`);

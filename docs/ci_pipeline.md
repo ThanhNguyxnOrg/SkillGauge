@@ -88,6 +88,16 @@ Compiles and deploys the frontend web interface.
     *   Builds the React application for production.
     *   Uploads the output bundle (`packages/web/dist`) and deploys it to GitHub Pages.
 
+### 6. Dynamic Runtime Tests (`dynamic-tests.yml`)
+Runs dynamic LLM tests on skill prompt files using the Gemini API.
+
+*   **Trigger**: Manual trigger via `workflow_dispatch`.
+*   **Permissions**: `contents: read`.
+*   **Core Logic**:
+    *   Builds the `@skillgauge/core` and `@skillgauge/cli` packages.
+    *   Runs the `dynamic-test` CLI command to evaluate the runtime output of skills using `secrets.GEMINI_API_KEY`.
+    *   Asserts expected keywords and safeguards against jailbreak or system prompt extraction.
+
 ---
 
 ## 🔒 Security Configuration Guide

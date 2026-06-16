@@ -7,7 +7,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import { execSync } from 'child_process';
 import * as os from 'os';
-import { auditSkill, auditSkillAsync, auditPackage, VirtualFile, optimizeSkill } from '@skillgauge/core';
+import { auditSkill, auditSkillAsync, auditPackage, VirtualFile, optimizeSkill, runDynamicTests } from '@skillgauge/core';
 
 const program = new Command();
 
@@ -555,6 +555,87 @@ program
       process.exit(0);
     } catch (err: any) {
       console.error(chalk.red(`Error optimizing files: ${err.message}`));
+      process.exit(1);
+    }
+  });
+
+program
+  .command('dynamic-test')
+  .description('Run dynamic runtime tests on skill prompt files using Gemini API')
+  .argument('<target>', 'Path or glob pattern of files to test')
+  .action(async (target) => {
+    try {
+      const apiKey = process.env.GEMINI_API_KEY || '';
+      if (!apiKey) {
+        console.log(chalk.yellow('⚠️ GEMINI_API_KEY is not configured. Skipping dynamic tests...'));
+        process.exit(0);
+      }
+
+      const files = await glob(target);
+      if (files.length === 0) {
+        console.log(chalk.yellow('No files found to dynamically test.'));
+        process.exit(0);
+      }
+
+      let failedAny = false;
+      console.log(chalk.bold(`\n🧪 Running Dynamic Test Suite on: ${target}\n`));
+
+      for (const file of files) {
+        const content = fs.readFileSync(file, 'utf-8');
+        
+        // Skip non-skill files
+        if (!content.trim().startsWith('---') || !content.includes('name:') || !content.includes('description:')) {
+          continue;
+        }
+
+        const report = await runDynamicTests(file, content, apiKey);
+        
+        if (report.results.length === 0) {
+          console.log(chalk.gray(`  - ${report.skillName} (${file}): No dynamic test scenarios configured.`));
+          continue;
+        }
+
+        console.log(chalk.bold(`📦 Skill: ${report.skillName} (${file})`));
+
+        for (const res of report.results) {
+          if (res.passed) {
+            console.log(chalk.green(`  ✅ Scenario: "${res.scenario}" - PASS`));
+          } else {
+            console.log(chalk.red(`  ❌ Scenario: "${res.scenario}" - FAIL`));
+            if (res.error) {
+              console.log(chalk.red(`     Error: ${res.error}`));
+            } else {
+              if (res.assertions.expected) {
+                res.assertions.expected.forEach(a => {
+                  if (!a.passed) {
+                    console.log(chalk.red(`     Assertion failed: Expected output to contain "${a.keyword}"`));
+                  }
+                });
+              }
+              if (res.assertions.expectedNot) {
+                res.assertions.expectedNot.forEach(a => {
+                  if (!a.passed) {
+                    console.log(chalk.red(`     Assertion failed: Expected output NOT to contain "${a.keyword}"`));
+                  }
+                });
+              }
+              console.log(chalk.gray(`     Actual Output:\n${res.output.trim().split('\n').map(l => '       ' + l).join('\n')}`));
+            }
+            failedAny = true;
+          }
+        }
+        console.log('');
+      }
+
+      if (failedAny) {
+        console.error(chalk.red('🚨 Dynamic tests execution failed.'));
+        process.exit(1);
+      } else {
+        console.log(chalk.green('✅ All dynamic tests passed successfully!'));
+        process.exit(0);
+      }
+    } catch (err: any) {
+      console.error(chalk.red(`Error running dynamic tests: ${err.message}`));
       process.exit(1);
     }
   });

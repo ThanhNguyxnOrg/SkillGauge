@@ -79,10 +79,19 @@ export function scoreE9(text: string): number {
 
 /**
  * E10: Graceful Degradation
+ * Upgraded logic: Checks if tool usage instructions contain fallback error-recovery paths.
  */
 export function scoreE10(text: string): number {
+  const cleanText = text.toLowerCase();
+  
+  const hasFailureTrigger = /\b(tool fails|api fails|command fails|if the tool returns an error|in case of error)\b/i.test(cleanText);
+  const hasRecoveryAction = /\b(fallback|alternative|gracefully|report error|retry|return default)\b/i.test(cleanText);
+  
+  if (hasFailureTrigger && hasRecoveryAction) return 1.0;
+  if (hasFailureTrigger || hasRecoveryAction) return 0.6;
+  
   const degradationPattern = /\b(graceful degradation|partial result|degrade performance|fail gracefully|partial output)\b/gi;
-  return degradationPattern.test(text) ? 1.0 : 0.4;
+  return degradationPattern.test(text) ? 0.4 : 0.2;
 }
 
 /**

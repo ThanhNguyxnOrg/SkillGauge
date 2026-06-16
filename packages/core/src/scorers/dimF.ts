@@ -86,10 +86,19 @@ export function scoreF10(text: string): number {
 
 /**
  * F11: Minimalist Representation
+ * Upgraded logic: Checks for loop/recursion exit constraints in reasoning/correction steps.
  */
 export function scoreF11(text: string): number {
+  const cleanText = text.toLowerCase();
+  
+  const hasLoopLimit = /\b(max attempts|max retries|up to \d+ times|limit your corrections|exit loop|stop refining)\b/i.test(cleanText);
+  const hasExitCondition = /\b(if satisfied|once corrected|stop if|exit condition|until successful)\b/i.test(cleanText);
+  
+  if (hasLoopLimit && hasExitCondition) return 1.0;
+  if (hasLoopLimit || hasExitCondition) return 0.6;
+  
   const minimalistPattern = /\b(minimalist|markdown table|bullet list|no prose|concise structure)\b/gi;
-  return minimalistPattern.test(text) ? 1.0 : 0.5;
+  return minimalistPattern.test(text) ? 0.5 : 0.3;
 }
 
 /**

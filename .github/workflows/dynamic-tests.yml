@@ -1,0 +1,40 @@
+name: 🧪 SkillGauge Dynamic Runtime Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      gemini_api_key:
+        description: 'Optional Gemini API Key for running dynamic tests'
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  dynamic-testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📁 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      - name: 🔨 Build Core & CLI
+        run: |
+          npm run build -w packages/core
+          npm run build -w packages/cli
+
+      - name: 🧪 Run Dynamic Prompt Tests
+        env:
+          GEMINI_API_KEY: ${{ github.event.inputs.gemini_api_key || secrets.GEMINI_API_KEY }}
+        run: |
+          node packages/cli/dist/index.js dynamic-test "skills/**/*.md"

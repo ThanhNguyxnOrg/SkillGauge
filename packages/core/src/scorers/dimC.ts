@@ -4,18 +4,38 @@
 
 /**
  * C1: Prompt Injection Shield
+ * Upgraded logic: Verify if prompt isolates user input via boundary delimiters
+ * and defines instructions to ignore content inside these boundaries.
  */
 export function scoreC1(text: string): number {
+  const cleanText = text.toLowerCase();
+  
+  const hasDelimiters = /("""|```|<[a-zA-Z0-9_\-]+>)/i.test(cleanText);
+  const hasIsolationDirective = /\b(ignore instructions|treat as raw|untrusted|data only|ignore system commands|not instructions)\b/i.test(cleanText);
+  
+  if (hasDelimiters && hasIsolationDirective) return 1.0;
+  if (hasDelimiters || hasIsolationDirective) return 0.5;
+  
   const injectionPattern = /\b(ignore user override|ignore instructions to override|do not let user modify|override protection|adversarial inputs)\b/gi;
-  return injectionPattern.test(text) ? 1.0 : 0.0;
+  return injectionPattern.test(text) ? 0.3 : 0.0;
 }
 
 /**
  * C2: System Instruction Protection
+ * Upgraded logic: Check for defense-in-depth rules to respond with a fixed fallback
+ * message when prompted with prompt-leakage triggers.
  */
 export function scoreC2(text: string): number {
+  const cleanText = text.toLowerCase();
+  
+  const hasLeakTriggerGuard = /\b(repeat the prompt|repeat instructions|reveal rules|under what instructions|translate rules|summarize instructions)\b/i.test(cleanText);
+  const hasFallbackResponse = /\b(sorry|cannot|error|i can't|refuse|fixed message)\b/i.test(cleanText);
+  
+  if (hasLeakTriggerGuard && hasFallbackResponse) return 1.0;
+  if (hasLeakTriggerGuard || hasFallbackResponse) return 0.5;
+  
   const protectionPattern = /\b(do not reveal|never reveal system prompt|prompt leakage|system prompt protection|do not share instructions)\b/gi;
-  return protectionPattern.test(text) ? 1.0 : 0.0;
+  return protectionPattern.test(text) ? 0.3 : 0.0;
 }
 
 /**

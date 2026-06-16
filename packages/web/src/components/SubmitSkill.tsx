@@ -1,12 +1,85 @@
 import React, { useState } from 'react';
-import { Send, AlertTriangle, Loader2, FolderOpen, CheckCircle, Info } from 'lucide-react';
+import { Send, AlertTriangle, Loader2, FolderOpen, CheckCircle, Info, Key, Terminal, ExternalLink, Zap } from 'lucide-react';
+
+// Self-contained parser for extracting YAML frontmatter and tests block
+function parseFrontmatter(markdown: string) {
+  const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!match) return { metadata: {} as any, body: markdown };
+  const yamlText = match[1];
+  const body = markdown.substring(match[0].length);
+  
+  const metadata: any = {};
+  const lines = yamlText.split('\n');
+  let inTests = false;
+  let currentTest: any = null;
+  
+  for (let line of lines) {
+    line = line.trim();
+    if (!line) continue;
+    
+    if (line.startsWith('name:')) {
+      metadata.name = line.substring(5).trim().replace(/^['"]|['"]$/g, '');
+      inTests = false;
+    } else if (line.startsWith('description:')) {
+      metadata.description = line.substring(12).trim().replace(/^['"]|['"]$/g, '');
+      inTests = false;
+    } else if (line.startsWith('tests:')) {
+      metadata.tests = [];
+      inTests = true;
+    } else if (inTests && line.startsWith('-')) {
+      currentTest = {};
+      metadata.tests.push(currentTest);
+      
+      const rest = line.substring(1).trim();
+      if (rest) {
+        parseYamlLine(rest, currentTest);
+      }
+    } else if (inTests && currentTest) {
+      parseYamlLine(line, currentTest);
+    }
+  }
+  
+  function parseYamlLine(line: string, testObj: any) {
+    const colonIdx = line.indexOf(':');
+    if (colonIdx === -1) return;
+    const key = line.substring(0, colonIdx).trim();
+    let val = line.substring(colonIdx + 1).trim();
+    
+    if (val.startsWith('[') && val.endsWith(']')) {
+      try {
+        testObj[key] = val
+          .substring(1, val.length - 1)
+          .split(',')
+          .map(s => s.trim().replace(/^['"]|['"]$/g, ''));
+      } catch {
+        testObj[key] = [val];
+      }
+    } else {
+      val = val.replace(/^['"]|['"]$/g, '');
+      if (val === 'true') testObj[key] = true;
+      else if (val === 'false') testObj[key] = false;
+      else testObj[key] = val;
+    }
+  }
+  
+  return { metadata, body };
+}
 
 export const SubmitSkill: React.FC = () => {
   const [repoUrl, setRepoUrl] = useState('');
+  const [geminiApiKey, setGeminiApiKey] = useState('');
   const [submitStep, setSubmitStep] = useState<'idle' | 'triggering' | 'bot_running' | 'success' | 'error'>('idle');
   const [submitError, setSubmitError] = useState('');
   const [prLink, setPrLink] = useState('');
+  const [prBranch, setPrBranch] = useState('');
   const [runSteps, setRunSteps] = useState<any[]>([]);
+
+  // Dynamic test states
+  const [prSkills, setPrSkills] = useState<any[]>([]);
+  const [dynamicRunning, setDynamicRunning] = useState(false);
+  const [dynamicConsoleLogs, setDynamicConsoleLogs] = useState<string[]>([]);
+  const [actionsTriggering, setActionsTriggering] = useState(false);
+  const [actionsRunLink, setActionsRunLink] = useState('');
 
   const parseGitUrl = (url: string): { owner: string; repo: string } => {
     const normalized = url.trim();
@@ -23,6 +96,172 @@ export const SubmitSkill: React.FC = () => {
     return { owner: match[1], repo: match[2].replace(/\.git$/, '') };
   };
 
+  const fetchPrFiles = async (prNumber: number) => {
+    try {
+      const response = await fetch(`https://api.github.com/repos/ThanhNguyxnOrg/SkillGauge/pulls/${prNumber}/files`);
+      if (!response.ok) return;
+      const files = await response.json();
+      
+      const skillsToTest: any[] = [];
+      for (const file of files) {
+        if (file.filename.startsWith('skills/') && file.filename.endsWith('.md')) {
+          const rawRes = await fetch(file.raw_url);
+          if (rawRes.ok) {
+            const rawContent = await rawRes.text();
+            const { metadata } = parseFrontmatter(rawContent);
+            if (metadata.tests && metadata.tests.length > 0) {
+              skillsToTest.push({
+                name: metadata.name || file.filename.split('/').pop().replace('.md', ''),
+                filePath: file.filename,
+                rawText: rawContent,
+                tests: metadata.tests
+              });
+            }
+          }
+        }
+      }
+      setPrSkills(skillsToTest);
+    } catch (err) {
+      console.error('Error fetching PR files:', err);
+    }
+  };
+
+  const triggerActionsDynamicTests = async () => {
+    if (!prBranch) return;
+    setActionsTriggering(true);
+    try {
+      const targetOwner = 'ThanhNguyxnOrg';
+      const targetRepo = 'SkillGauge';
+      const token = import.meta.env.VITE_SUBMIT_TOKEN || '';
+      
+      if (!token) {
+        throw new Error('Web submission token is not configured.');
+      }
+
+      const dispatchUrl = `https://api.github.com/repos/${targetOwner}/${targetRepo}/actions/workflows/dynamic-tests.yml/dispatches`;
+      const dispatchRes = await fetch(dispatchUrl, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ref: prBranch,
+          inputs: {
+            gemini_api_key: geminiApiKey.trim() || undefined
+          }
+        })
+      });
+
+      if (!dispatchRes.ok) {
+        throw new Error(`Failed to trigger dynamic tests: ${dispatchRes.statusText}`);
+      }
+
+      setActionsRunLink(`https://github.com/${targetOwner}/${targetRepo}/actions/workflows/dynamic-tests.yml`);
+    } catch (err: any) {
+      alert(err.message || 'Failed to trigger Actions run');
+    } finally {
+      setActionsTriggering(false);
+    }
+  };
+
+  const runBrowserDynamicTests = async () => {
+    if (!geminiApiKey.trim()) {
+      alert('Please enter your Gemini API Key first.');
+      return;
+    }
+    
+    setDynamicRunning(true);
+    setDynamicConsoleLogs([]);
+    const logs: string[] = [];
+
+    const addLog = (msg: string) => {
+      logs.push(msg);
+      setDynamicConsoleLogs([...logs]);
+    };
+
+    addLog('🧪 Starting browser-based dynamic runtime prompt testing...');
+
+    for (const skill of prSkills) {
+      addLog(`\n📦 Skill: ${skill.name} (${skill.filePath})`);
+      
+      for (let idx = 0; idx < skill.tests.length; idx++) {
+        const test = skill.tests[idx];
+        const scenario = test.scenario || `Scenario ${idx + 1}`;
+        const input = test.input || '';
+        const expectedList = Array.isArray(test.expected) ? test.expected : test.expected ? [String(test.expected)] : [];
+        const expectedNotList = Array.isArray(test.expected_not) ? test.expected_not : test.expected_not ? [String(test.expected_not)] : [];
+
+        addLog(`  🔄 Running Scenario: "${scenario}"`);
+        addLog(`     Input: "${input}"`);
+
+        try {
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${geminiApiKey}`;
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              contents: [
+                {
+                  role: 'user',
+                  parts: [{ text: input }]
+                }
+              ],
+              systemInstruction: {
+                parts: [{ text: skill.rawText }]
+              }
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error(`Gemini API call failed with status: ${response.status}`);
+          }
+
+          const resJson = await response.json();
+          const outputText = resJson.candidates?.[0]?.content?.parts?.[0]?.text || '';
+          const lowerOutput = outputText.toLowerCase();
+
+          addLog(`     Output: "${outputText.substring(0, 150).trim()}..."`);
+
+          let scenarioPassed = true;
+          for (const kw of expectedList) {
+            const passed = lowerOutput.includes(kw.toLowerCase());
+            if (passed) {
+              addLog(`     ✅ Expected keyword check: "${kw}" - PASS`);
+            } else {
+              addLog(`     ❌ Expected keyword check: "${kw}" - FAIL`);
+              scenarioPassed = false;
+            }
+          }
+
+          for (const kw of expectedNotList) {
+            const passed = !lowerOutput.includes(kw.toLowerCase());
+            if (passed) {
+              addLog(`     ✅ Negative keyword shield check: NOT "${kw}" - PASS`);
+            } else {
+              addLog(`     ❌ Negative keyword shield check: NOT "${kw}" - FAIL`);
+              scenarioPassed = false;
+            }
+          }
+
+          if (scenarioPassed) {
+            addLog(`  🟢 Scenario "${scenario}" PASSED`);
+          } else {
+            addLog(`  🔴 Scenario "${scenario}" FAILED`);
+          }
+        } catch (err: any) {
+          addLog(`  🔴 Scenario "${scenario}" ERRORED: ${err.message}`);
+        }
+      }
+    }
+    
+    addLog('\n🏁 Browser dynamic testing complete.');
+    setDynamicRunning(false);
+  };
+
   const handleSubmitToGitHub = async () => {
     if (!repoUrl.trim()) {
       setSubmitError('Please enter a repository URL or owner/repo shorthand.');
@@ -32,6 +271,10 @@ export const SubmitSkill: React.FC = () => {
     setSubmitStep('triggering');
     setSubmitError('');
     setPrLink('');
+    setPrBranch('');
+    setPrSkills([]);
+    setDynamicConsoleLogs([]);
+    setActionsRunLink('');
     setRunSteps([]);
 
     let prPoll: any = null;
@@ -92,7 +335,6 @@ export const SubmitSkill: React.FC = () => {
               const latestRun = data.workflow_runs[0];
               const runTime = new Date(latestRun.created_at).getTime();
               const now = Date.now();
-              // Verify it was triggered recently (within 60 seconds)
               if (now - runTime < 60000) {
                 fetchedRunId = latestRun.id;
                 break;
@@ -140,10 +382,11 @@ export const SubmitSkill: React.FC = () => {
 
       // 4. Poll for the created Pull Request
       const branchName = `contrib-${repo.toLowerCase()}`;
+      setPrBranch(branchName);
       const prUrl = `https://api.github.com/repos/${targetOwner}/${targetRepo}/pulls?head=${targetOwner}:${branchName}`;
       
       let attempts = 0;
-      const maxAttempts = 60; // Poll for up to 5 minutes
+      const maxAttempts = 60;
       
       prPoll = setInterval(async () => {
         attempts++;
@@ -164,8 +407,12 @@ export const SubmitSkill: React.FC = () => {
             const prs = await res.json();
             if (prs && prs.length > 0) {
               clearAllIntervals();
-              setPrLink(prs[0].html_url);
+              const prInfo = prs[0];
+              setPrLink(prInfo.html_url);
               setSubmitStep('success');
+              
+              // Load PR files and test specification definitions
+              fetchPrFiles(prInfo.number);
             }
           }
         } catch (err) {
@@ -191,38 +438,74 @@ export const SubmitSkill: React.FC = () => {
             Submit a public GitHub repository containing agent skill markdown files (e.g., Anthropic-style <code>SKILL.md</code> or files with YAML headers under <code>skills/</code>). Our automated bot will clone, audit, optimize, and generate a Pull Request for you.
           </p>
 
-          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
-            <input
-              type="text"
-              placeholder="e.g., https://github.com/owner/repository or owner/repository"
-              value={repoUrl}
-              onChange={(e) => setRepoUrl(e.target.value)}
-              disabled={submitStep === 'triggering' || submitStep === 'bot_running'}
-              style={{
-                flexGrow: 1,
-                minWidth: '280px',
-                background: 'rgba(0, 0, 0, 0.3)',
-                border: '1px solid var(--border-muted)',
-                borderRadius: '999px',
-                padding: '12px 18px',
-                color: '#fff',
-                fontSize: '14px',
-                outline: 'none',
-              }}
-            />
-            <button
-              className="btn-pill btn-primary"
-              onClick={handleSubmitToGitHub}
-              disabled={submitStep === 'triggering' || submitStep === 'bot_running'}
-              style={{ whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '8px' }}
-            >
-              {submitStep === 'triggering' || submitStep === 'bot_running' ? (
-                <Loader2 className="animate-spin" size={14} />
-              ) : (
-                <Send size={14} />
-              )}
-              {submitStep === 'triggering' || submitStep === 'bot_running' ? 'Submitting...' : 'Submit Repository'}
-            </button>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '20px' }}>
+            <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+              <input
+                type="text"
+                placeholder="Repository shorthand: owner/repo (e.g. obra/superpowers)"
+                value={repoUrl}
+                onChange={(e) => setRepoUrl(e.target.value)}
+                disabled={submitStep === 'triggering' || submitStep === 'bot_running'}
+                style={{
+                  flexGrow: 1,
+                  minWidth: '280px',
+                  background: 'rgba(0, 0, 0, 0.3)',
+                  border: '1px solid var(--border-muted)',
+                  borderRadius: '999px',
+                  padding: '12px 18px',
+                  color: '#fff',
+                  fontSize: '14px',
+                  outline: 'none',
+                }}
+              />
+              <button
+                className="btn-pill btn-primary"
+                onClick={handleSubmitToGitHub}
+                disabled={submitStep === 'triggering' || submitStep === 'bot_running'}
+                style={{ whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '8px' }}
+              >
+                {submitStep === 'triggering' || submitStep === 'bot_running' ? (
+                  <Loader2 className="animate-spin" size={14} />
+                ) : (
+                  <Send size={14} />
+                )}
+                {submitStep === 'triggering' || submitStep === 'bot_running' ? 'Submitting...' : 'Submit Repository'}
+              </button>
+            </div>
+
+            {/* Optional API Key configuration */}
+            <div style={{
+              background: 'rgba(255, 255, 255, 0.02)',
+              border: '1px solid var(--border-muted)',
+              borderRadius: '16px',
+              padding: '16px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '8px'
+            }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: 'bold', color: 'var(--text-secondary)' }}>
+                <Key size={14} style={{ color: '#a78bfa' }} /> Gemini API Key (Optional)
+              </label>
+              <input
+                type="password"
+                placeholder="Enter Gemini API Key to run dynamic tests locally in the browser"
+                value={geminiApiKey}
+                onChange={(e) => setGeminiApiKey(e.target.value)}
+                style={{
+                  background: 'rgba(0, 0, 0, 0.3)',
+                  border: '1px solid var(--border-muted)',
+                  borderRadius: '8px',
+                  padding: '10px 14px',
+                  color: '#fff',
+                  fontSize: '13px',
+                  outline: 'none',
+                  width: '100%'
+                }}
+              />
+              <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
+                Your API key remains local to your browser and is only used to directly query Google Gemini API.
+              </span>
+            </div>
           </div>
 
           {submitError && (
@@ -231,7 +514,7 @@ export const SubmitSkill: React.FC = () => {
             </div>
           )}
 
-          <div style={{ display: 'flex', alignItems: 'start', gap: '12px', background: 'rgba(167, 139, 250, 0.05)', border: '1px solid rgba(167, 139, 250, 0.15)', padding: '16px', borderRadius: '12px', color: '#c084fc', fontSize: '13px', marginTop: '24px' }}>
+          <div style={{ display: 'flex', alignItems: 'start', gap: '12px', background: 'rgba(167, 139, 250, 0.05)', border: '1px solid rgba(167, 139, 250, 0.15)', padding: '16px', borderRadius: '12px', color: '#c084fc', fontSize: '13px', marginTop: '16px' }}>
             <Info size={18} style={{ flexShrink: 0, marginTop: '2px' }} />
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <strong>How the Submission works:</strong>
@@ -239,10 +522,10 @@ export const SubmitSkill: React.FC = () => {
                 1. Clicking submit triggers our remote GitHub Actions runner bot.
               </span>
               <span style={{ color: 'var(--text-secondary)' }}>
-                2. The bot clones your repo, scans for markdown files starting with <code>---</code> YAML frontmatter containing <code>name:</code> and <code>description:</code>.
+                2. The bot clones your repo, audits all valid skills against the 100-criteria static matrix, and opens a Pull Request.
               </span>
               <span style={{ color: 'var(--text-secondary)' }}>
-                3. The bot grades the files, updates the leaderboard ranking, and creates a Pull Request.
+                3. Once the PR is ready, you can choose to run dynamic runtime tests either instantly in the browser or on the CI runner.
               </span>
             </div>
           </div>
@@ -396,6 +679,87 @@ export const SubmitSkill: React.FC = () => {
                     })
                   )}
                 </div>
+              </div>
+            )}
+
+            {/* Dynamic Prompts Verification Console (Step 4) */}
+            {submitStep === 'success' && prSkills.length > 0 && (
+              <div style={{
+                marginTop: '24px',
+                padding: '20px',
+                border: '1px solid rgba(139, 92, 246, 0.25)',
+                background: 'rgba(139, 92, 246, 0.02)',
+                borderRadius: '12px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '16px'
+              }}>
+                <h4 style={{ fontSize: '14px', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Zap size={16} style={{ color: '#a78bfa' }} /> Step 4: Dynamic Runtime Verification
+                </h4>
+                <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0 }}>
+                  We found <strong>{prSkills.length}</strong> skill prompt file(s) with dynamic test scenarios. You can run them either instantly in your browser or trigger them as a manual GitHub Actions test job.
+                </p>
+
+                {/* API Key Present or Missing Action Panel */}
+                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                  {geminiApiKey ? (
+                    <button
+                      className="btn-pill btn-primary"
+                      onClick={runBrowserDynamicTests}
+                      disabled={dynamicRunning}
+                      style={{ fontSize: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}
+                    >
+                      {dynamicRunning ? <Loader2 className="animate-spin" size={13} /> : <Terminal size={13} />}
+                      Run Browser-Based Dynamic Tests
+                    </button>
+                  ) : (
+                    <button
+                      className="btn-pill btn-secondary"
+                      onClick={triggerActionsDynamicTests}
+                      disabled={actionsTriggering}
+                      style={{ fontSize: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}
+                    >
+                      {actionsTriggering ? <Loader2 className="animate-spin" size={13} /> : <ExternalLink size={13} />}
+                      Trigger Dynamic Tests on GitHub Actions
+                    </button>
+                  )}
+                </div>
+
+                {/* Local Browser Logs Terminal */}
+                {dynamicConsoleLogs.length > 0 && (
+                  <div style={{
+                    padding: '16px',
+                    background: '#050505',
+                    border: '1px solid var(--border-muted)',
+                    borderRadius: '8px',
+                    fontFamily: 'var(--mono-font)',
+                    fontSize: '11px',
+                    maxHeight: '220px',
+                    overflowY: 'auto',
+                    whiteSpace: 'pre-wrap',
+                    color: '#a7f3d0'
+                  }}>
+                    {dynamicConsoleLogs.join('\n')}
+                  </div>
+                )}
+
+                {/* Actions Run Link */}
+                {actionsRunLink && (
+                  <div style={{
+                    padding: '12px 16px',
+                    background: 'rgba(16, 185, 129, 0.05)',
+                    border: '1px solid rgba(16, 185, 129, 0.2)',
+                    borderRadius: '8px',
+                    fontSize: '12px',
+                    color: 'var(--color-tier-1)'
+                  }}>
+                    🎉 Dynamic tests run triggered successfully! {' '}
+                    <a href={actionsRunLink} target="_blank" rel="noopener noreferrer" style={{ color: '#6ee7b7', fontWeight: 'bold', textDecoration: 'underline' }}>
+                      View GitHub Actions Test Logs <ExternalLink size={12} style={{ display: 'inline', marginLeft: '2px' }} />
+                    </a>
+                  </div>
+                )}
               </div>
             )}
 

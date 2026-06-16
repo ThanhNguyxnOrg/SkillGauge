@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Leaderboard } from './components/Leaderboard';
 import { SubmitSkill } from './components/SubmitSkill';
+import { ContributeTest } from './components/ContributeTest';
 import { SkillDetailModal } from './components/SkillDetailModal';
 import { auditSkill } from '@skillgauge/core';
 
@@ -26,7 +27,7 @@ interface SkillFile {
 }
 
 function App() {
-  const [activeTab, setActiveTab] = useState<'leaderboard' | 'submit'>('leaderboard');
+  const [activeTab, setActiveTab] = useState<'leaderboard' | 'submit' | 'contribute'>('leaderboard');
   const [selectedSkillKey, setSelectedSkillKey] = useState<string | null>(null);
 
   const leaderboardSkills = (leaderboardData as { skills: LeaderboardSkill[] }).skills;
@@ -79,6 +80,12 @@ function App() {
             >
               Submit Skill
             </button>
+            <button
+              className={`nav-link ${activeTab === 'contribute' ? 'active' : ''}`}
+              onClick={() => setActiveTab('contribute')}
+            >
+              Contribute Ideas
+            </button>
           </nav>
         </header>
 
@@ -108,6 +115,12 @@ function App() {
           {activeTab === 'submit' && (
             <div style={{ width: '100%', animation: 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1)' }}>
               <SubmitSkill />
+            </div>
+          )}
+
+          {activeTab === 'contribute' && (
+            <div style={{ width: '100%', animation: 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+              <ContributeTest />
             </div>
           )}
         </main>

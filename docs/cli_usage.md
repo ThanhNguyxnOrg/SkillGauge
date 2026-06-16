@@ -34,7 +34,7 @@ The CLI supports advanced behaviors using system environment variables:
 
 | Variable Name | Description | Default |
 | --- | --- | --- |
-| `GEMINI_API_KEY` | Optional. If provided, the `optimize` command uses the Gemini API (model `gemini-1.5-flash`) to perform high-quality LLM-driven prompt pruning and compression. | *None (falls back to heuristics)* |
+| `GEMINI_API_KEY` | Optional. If provided, the `optimize` command uses the Gemini API (model `gemini-2.5-flash-lite`) to perform high-quality LLM-driven prompt pruning and compression. | *None (falls back to heuristics)* |
 | `PAGER` | Configures output paging. The sandbox runtime automatically defaults to `cat` to prevent interactive shell blocking. | *None* |
 
 ---
