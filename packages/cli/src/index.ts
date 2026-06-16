@@ -450,14 +450,16 @@ program
           const sCleanName = String(s.name).replace('🌟 ', '');
           return s.hash === hash || (sCleanName === cleanName && s.repository === repoName);
         });
+
+        const existingEntry = existingIndex > -1 ? db.skills[existingIndex] : null;
         const skillEntry = {
           name: skillName,
           repository: repoName,
           hash,
-          author: options.author,
+          author: existingEntry ? existingEntry.author : options.author,
           tier: report.tier,
           overallScore: report.overallScore,
-          submittedAt: new Date().toISOString()
+          submittedAt: existingEntry ? existingEntry.submittedAt : new Date().toISOString()
         };
 
         if (existingIndex > -1) {

@@ -1,0 +1,45 @@
+name: 🔄 SkillGauge Re-Audit All Skills
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  re-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📁 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      - name: 🔨 Build Core & CLI
+        run: |
+          npm run build -w packages/core
+          npm run build -w packages/cli
+
+      - name: 🔄 Sync Local Data
+        run: |
+          node scripts/sync-skills.js
+
+      - name: 📈 Re-Audit and Update Leaderboard JSON
+        run: |
+          node packages/cli/dist/index.js update-leaderboard --author "SkillGauge Bot" --db "leaderboard.json" --readme "README.md" --target "skills/**/*.md"
+
+      - name: 💾 Commit and Push Leaderboard Updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add leaderboard.json packages/web/src/data/
+          git diff-index --quiet HEAD || (git commit -m "chore: re-audit all skills and update leaderboard database [skip ci]" && git push)

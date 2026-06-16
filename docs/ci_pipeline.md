@@ -6,7 +6,7 @@ SkillGauge uses a modular, multi-workflow GitHub Actions CI pipeline designed to
 
 ## 🔄 Pipeline Architecture & Submission Flow
 
-The system splits responsibilities into four dedicated GitHub Actions workflows to ensure clean separation of concerns, security isolation, and optimal performance:
+The system splits responsibilities into dedicated GitHub Actions workflows to ensure clean separation of concerns, security isolation, and optimal performance:
 
 ```mermaid
 graph TD
@@ -21,7 +21,7 @@ graph TD
 
     %% Merge / Update Leaderboard Flow
     PR -->|5. Merge to main| Merge[Push to main]
-    Merge -->|6. Trigger update-leaderboard.yml| UpdateLeaderboard[Run Auto-Optimizer & Update README/JSON]
+    Merge -->|6. Trigger update-leaderboard.yml| UpdateLeaderboard[Run Auto-Optimizer & Update Leaderboard JSON]
     UpdateLeaderboard -->|7. Commit back to main| MainRepo[main branch]
 
     %% Deploy Web Dashboard
@@ -33,260 +33,60 @@ graph TD
 
 ## ⚙️ Workflow Modules Reference
 
-### 1. PR Submission Bot (`.github/workflows/submit-repo-bot.yml`)
-This workflow is triggered via `workflow_dispatch` (usually from the SkillGauge website) to automatically scan, audit, and create a submission Pull Request for a remote repository.
+All workflow files are stored in the [.github/workflows/](file:///.github/workflows/) directory.
 
-*   **Trigger**: `workflow_dispatch` with a input `repository` (the URL to clone).
+### 1. PR Submission Bot (`submit-repo-bot.yml`)
+This workflow is triggered automatically from the SkillGauge website via the GitHub Actions workflow dispatch API. It executes the backend bot script to clone, evaluate, and open a submission Pull Request on behalf of the submitter.
+
+*   **Trigger**: `workflow_dispatch` with input `repository` (the URL of the target repository to scan).
 *   **Permissions**: `contents: write`, `pull-requests: write`.
-*   **Script Executed**: [submit-bot.mjs](file:///d:/Code/SkillGauge/scripts/submit-bot.mjs).
+*   **Core Logic**:
+    *   Clones the monorepo and sets up Node.js.
+    *   Builds the `@skillgauge/core` and `@skillgauge/cli` packages.
+    *   Executes the helper script [submit-bot.mjs](file:///scripts/submit-bot.mjs) which clones the target repository, extracts skill markdown files, audits them, syncs the web bundle, and creates a git commit.
+    *   Pushes a branch named `contrib-<repo-name>` and opens/updates a Pull Request on GitHub.
+*   **Author Identity**: Runs using `secrets.GITHUB_TOKEN` so that `github-actions[bot]` is the author of the commit and PR.
 
-```yaml
-name: 🤖 SkillGauge PR Submission Bot
+### 2. Manual PR Verification (`pr-verification.yml`)
+This workflow validates incoming Pull Requests that modify files inside the `skills/` directory.
 
-on:
-  workflow_dispatch:
-    inputs:
-      repository:
-        description: 'The URL of the repository to clone and scan'
-        required: true
-
-permissions:
-  contents: write
-  pull-requests: write
-
-jobs:
-  process-submission:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 📁 Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: 🟢 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: 📦 Install Dependencies
-        run: npm install
-
-      - name: 🔨 Build Core & CLI
-        run: |
-          npm run build -w packages/core
-          npm run build -w packages/cli
-
-      - name: 🤖 Process Submission
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          node scripts/submit-bot.mjs --repository "${{ github.event.inputs.repository }}"
-```
-
----
-
-### 2. Manual PR Verification (`.github/workflows/pr-verification.yml`)
-This workflow validates all incoming Pull Requests modifying the `skills/**/*.md` folder. It runs anti-spam duplicate checks and publishes a detailed audit report.
-
-*   **Trigger**: `pull_request` on branches targeting `main` with modifications in `skills/**/*.md`.
+*   **Trigger**: `pull_request` on `opened` or `synchronize` affecting `skills/**/*.md`.
 *   **Permissions**: `contents: read`, `pull-requests: write`.
+*   **Core Logic**:
+    *   Runs a duplication check (`check-duplicate`) to prevent plagiarized or duplicate skill prompt content.
+    *   Audits all changed skills using the CLI tool and outputs a detailed Markdown report to the GitHub Actions Job Summary.
 
-```yaml
-name: 🔍 Manual PR Skills Verification
+### 3. Update Leaderboard on Main (`update-leaderboard.yml`)
+When a Pull Request is merged into the `main` branch, this workflow automatically optimizes prompts, syncs data bundles, and updates the leaderboard database.
 
-on:
-  pull_request:
-    types: [opened, synchronize]
-    paths:
-      - 'skills/**/*.md'
-
-permissions:
-  contents: read
-  pull-requests: write
-
-jobs:
-  verify:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 📁 Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: 🟢 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: 📦 Install Dependencies
-        run: npm install
-
-      - name: 🔨 Build Core & CLI
-        run: |
-          npm run build -w packages/core
-          npm run build -w packages/cli
-
-      - name: 🛡️ Run Anti-Spam Check
-        id: anti_spam
-        continue-on-error: true
-        run: |
-          node packages/cli/dist/index.js check-duplicate --target "skills/**/*.md" --db "leaderboard.json"
-          echo "exit_code=$?" >> $GITHUB_ENV
-
-      - name: 🚨 Handle Duplicate PR
-        if: env.exit_code == '2'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh pr comment ${{ github.event.pull_request.number }} --body "🚨 **SkillGauge Audit Warning:** This skill matches an existing entry on the leaderboard. To prevent spam and plagiarized content, duplicate submissions are automatically rejected."
-          exit 1
-
-      - name: 🔬 Run SkillGauge Audit
-        run: |
-          node packages/cli/dist/index.js audit "skills/**/*.md" --fail-under 0 --summary summary.md
-
-      - name: 📤 Publish Step Summary
-        run: cat summary.md >> $GITHUB_STEP_SUMMARY
-```
-
----
-
-### 3. Update Leaderboard database (`.github/workflows/update-leaderboard.yml`)
-When changes are merged into the `main` branch, this workflow runs in-place prompt optimization, syncs local data bundles, regenerates the leaderboard JSON database and updates the root `README.md` ranking table.
-
-*   **Trigger**: `push` to `main` affecting `skills/**/*.md`.
+*   **Trigger**: `push` on branch `main` affecting files in `skills/**/*.md`.
 *   **Permissions**: `contents: write`.
+*   **Core Logic**:
+    *   Runs the CLI `optimize` command to apply standard heuristic and model-based optimizations to the prompts.
+    *   Regenerates the JSON and JS data bundles using [sync-skills.js](file:///scripts/sync-skills.js).
+    *   Executes the `update-leaderboard` CLI tool to write the new entry metadata, scores, and tiers into `leaderboard.json`.
+    *   Commits and pushes the modified database back to `main`.
 
-```yaml
-name: 📈 Update Leaderboard on Main
+### 4. Re-Audit All Skills (`re-audit-all.yml`)
+A manual workflow designed to recalculate scores for all existing skills in the repository when the scoring algorithm is updated.
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'skills/**/*.md'
+*   **Trigger**: Manual trigger via `workflow_dispatch`.
+*   **Permissions**: `contents: write`.
+*   **Core Logic**:
+    *   Performs a clean build of the core auditing engine and CLI.
+    *   Re-audits all markdown files under `skills/` using the updated CLI, recalculating all scores.
+    *   Preserves the original author and submission timestamp metadata for existing skills in `leaderboard.json` to prevent database pollution.
+    *   Commits and pushes the updated leaderboard back to `main`.
 
-permissions:
-  contents: write
+### 5. Deploy Web Dashboard (`deploy-pages.yml`)
+Compiles and deploys the frontend web interface.
 
-jobs:
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 📁 Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: 🟢 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: 📦 Install Dependencies
-        run: npm install
-
-      - name: 🔨 Build Core & CLI
-        run: |
-          npm run build -w packages/core
-          npm run build -w packages/cli
-
-      - name: 🚀 Run Auto-Optimizer
-        run: |
-          node packages/cli/dist/index.js optimize "skills/**/*.md"
-
-      - name: 🔄 Sync Local Data
-        run: |
-          node scripts/sync-skills.js
-
-      - name: 📈 Update Leaderboard JSON & README
-        run: |
-          # Extract author of the latest commit to record in the database
-          AUTHOR=$(git log -1 --pretty=format:'%an')
-          node packages/cli/dist/index.js update-leaderboard --author "$AUTHOR" --db "leaderboard.json" --readme "README.md" --target "skills/**/*.md"
-
-      - name: 💾 Commit and Push Leaderboard Updates
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .
-          git diff-index --quiet HEAD || (git commit -m "chore: update leaderboard and optimize skills [skip ci]" && git push)
-```
-
----
-
-### 4. Deploy Dashboard (`.github/workflows/deploy-pages.yml`)
-This workflow compiles the frontend packages, injects the build-time submission token, and publishes the static web dashboard assets to GitHub Pages.
-
-*   **Trigger**: `push` on `main` affecting web/core packages, leaderboard database, sync script, or the deploy workflow itself.
+*   **Trigger**: `push` on `main` affecting `packages/web/**`, `packages/core/**`, `leaderboard.json`, or the deploy script.
 *   **Permissions**: `contents: read`, `pages: write`, `id-token: write`.
-
-```yaml
-name: 🚀 Deploy Web Dashboard to GitHub Pages
-
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'packages/web/**'
-      - 'packages/core/**'
-      - 'leaderboard.json'
-      - 'scripts/sync-skills.js'
-      - '.github/workflows/deploy-pages.yml'
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: 'pages'
-  cancel-in-progress: true
-
-jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: 📁 Checkout Code
-        uses: actions/checkout@v4
-
-      - name: 🟢 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: 📦 Install Dependencies
-        run: npm install
-
-      - name: 🔨 Build Core & Web Dashboard
-        env:
-          VITE_SUBMIT_TOKEN: ${{ secrets.SUBMIT_PAT }}
-        run: |
-          npm run build -w packages/core
-          npm run web:build
-
-      - name: 🔧 Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: 📤 Upload Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'packages/web/dist'
-
-      - name: 🚀 Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
+*   **Core Logic**:
+    *   Injects the `SUBMIT_PAT` secret as a build-time environment variable `VITE_SUBMIT_TOKEN`.
+    *   Builds the React application for production.
+    *   Uploads the output bundle (`packages/web/dist`) and deploys it to GitHub Pages.
 
 ---
 
@@ -316,4 +116,3 @@ To keep the main repository secure, configure a **Fine-grained Personal Access T
 7. Click **New repository secret**, name it `SUBMIT_PAT`, and paste the copied token.
 
 During the compilation process, this token will be injected securely into the static HTML/JS bundle under the environment variable `VITE_SUBMIT_TOKEN`, allowing the website's Submit button to trigger the bot.
-
