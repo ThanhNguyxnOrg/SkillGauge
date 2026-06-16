@@ -1,41 +1,177 @@
 # 🤖 GitHub Actions Leaderboard CI Bot Guide
 
-SkillGauge provides a serverless continuous integration workflow designed to automate skill submissions, run anti-spam checks, execute quality auditing, perform prompt optimization, and publish scores to the leaderboard.
-
-This guide details the pipeline structure, event triggers, security considerations, and provides a production-ready GitHub Actions YAML configuration.
+SkillGauge uses a modular, multi-workflow GitHub Actions CI pipeline designed to handle automated, PR-driven repository submissions securely, run verification checks on manual contributions, maintain the global leaderboard ranking database, and deploy the web interface.
 
 ---
 
-## 🔄 Pipeline Workflow Overview
+## 🔄 Pipeline Architecture & Submission Flow
+
+The system splits responsibilities into four dedicated GitHub Actions workflows to ensure clean separation of concerns, security isolation, and optimal performance:
 
 ```mermaid
 graph TD
-    A[Pull Request opened targeting skills/] --> B[Checkout repository]
-    B --> C[Install dependencies]
-    C --> D[Compile packages/core & packages/cli]
-    D --> E[Check for Duplicate Submissions]
-    E -->|Duplicate Found (Exit 2)| F[Fail PR & Log Error]
-    E -->|No Duplicates| G[Execute Quality Audit]
-    G --> H[Check fail-under Tier]
-    H -->|Fails constraint (Exit 1)| I[Fail Build]
-    H -->|Passes| J[Run Auto-Optimizer]
-    J --> K[Update leaderboard.json & README.md]
-    K --> L[Commit & Push changes to main]
+    %% Web Submission Flow
+    Web[Web Dashboard] -->|1. Workflow Dispatch via VITE_SUBMIT_TOKEN| SubmitWorkflow[submit-repo-bot.yml]
+    SubmitWorkflow -->|2. Run submit-bot.mjs| BotScript[Clone, Audit & Sync]
+    BotScript -->|3. Push Branch & Create PR| PR[Pull Request]
+
+    %% PR Verification Flow
+    Manual[Manual Fork & PR] --> PR
+    PR -->|4. Trigger pr-verification.yml| Verify[Check Duplicates & Post Audit Comment]
+
+    %% Merge / Update Leaderboard Flow
+    PR -->|5. Merge to main| Merge[Push to main]
+    Merge -->|6. Trigger update-leaderboard.yml| UpdateLeaderboard[Run Auto-Optimizer & Update README/JSON]
+    UpdateLeaderboard -->|7. Commit back to main| MainRepo[main branch]
+
+    %% Deploy Web Dashboard
+    MainRepo -->|8. Trigger deploy-pages.yml| DeployPages[Build Web & Deploy Pages]
+    DeployPages -->|Inject secrets.SUBMIT_PAT as VITE_SUBMIT_TOKEN| Web
 ```
 
 ---
 
-## 📝 Production GitHub Action Configuration
+## ⚙️ Workflow Modules Reference
 
-Below is the complete, production-ready workflow file to be placed at `.github/workflows/leaderboard-bot.yml` in your repository:
+### 1. PR Submission Bot (`.github/workflows/submit-repo-bot.yml`)
+This workflow is triggered via `workflow_dispatch` (usually from the SkillGauge website) to automatically scan, audit, and create a submission Pull Request for a remote repository.
+
+*   **Trigger**: `workflow_dispatch` with a input `repository` (the URL to clone).
+*   **Permissions**: `contents: write`, `pull-requests: write`.
+*   **Script Executed**: [submit-bot.mjs](file:///d:/Code/SkillGauge/scripts/submit-bot.mjs).
 
 ```yaml
-name: 🏆 SkillGauge Leaderboard Auditor Bot
+name: 🤖 SkillGauge PR Submission Bot
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: 'The URL of the repository to clone and scan'
+        required: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  process-submission:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📁 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      - name: 🔨 Build Core & CLI
+        run: |
+          npm run build -w packages/core
+          npm run build -w packages/cli
+
+      - name: 🤖 Process Submission
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node scripts/submit-bot.mjs --repository "${{ github.event.inputs.repository }}"
+```
+
+---
+
+### 2. Manual PR Verification (`.github/workflows/pr-verification.yml`)
+This workflow validates all incoming Pull Requests modifying the `skills/**/*.md` folder. It runs anti-spam duplicate checks and publishes a detailed audit report as a PR comment.
+
+*   **Trigger**: `pull_request` on branches targeting `main` with modifications in `skills/**/*.md`.
+*   **Permissions**: `contents: read`, `pull-requests: write`.
+
+```yaml
+name: 🔍 Manual PR Skills Verification
 
 on:
   pull_request:
+    types: [opened, synchronize]
     paths:
       - 'skills/**/*.md'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📁 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      - name: 🔨 Build Core & CLI
+        run: |
+          npm run build -w packages/core
+          npm run build -w packages/cli
+
+      - name: 🛡️ Run Anti-Spam Check
+        id: anti_spam
+        continue-on-error: true
+        run: |
+          node packages/cli/dist/index.js check-duplicate --target "skills/**/*.md" --db "leaderboard.json"
+          echo "exit_code=$?" >> $GITHUB_ENV
+
+      - name: 🚨 Handle Duplicate PR
+        if: env.exit_code == '2'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --body "🚨 **SkillGauge Audit Warning:** This skill matches an existing entry on the leaderboard. To prevent spam and plagiarized content, duplicate submissions are automatically rejected."
+          exit 1
+
+      - name: 🔬 Run SkillGauge Audit
+        run: |
+          node packages/cli/dist/index.js audit "skills/**/*.md" --fail-under 0 --summary summary.md
+
+      - name: 📤 Publish Step Summary
+        run: cat summary.md >> $GITHUB_STEP_SUMMARY
+
+      - name: 💬 Post Audit Summary as PR Comment
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f summary.md ]; then
+            gh pr comment ${{ github.event.pull_request.number }} --body-file summary.md
+          fi
+```
+
+---
+
+### 3. Update Leaderboard database (`.github/workflows/update-leaderboard.yml`)
+When changes are merged into the `main` branch, this workflow runs in-place prompt optimization, syncs local data bundles, regenerates the leaderboard JSON database and updates the root `README.md` ranking table.
+
+*   **Trigger**: `push` to `main` affecting `skills/**/*.md`.
+*   **Permissions**: `contents: write`.
+
+```yaml
+name: 📈 Update Leaderboard on Main
+
+on:
   push:
     branches:
       - main
@@ -44,99 +180,149 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
-  audit-and-publish:
+  update:
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout repository content
       - name: 📁 Checkout Code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # 2. Setup Node.js workspace environment
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
-      # 3. Install Monorepo Dependencies
       - name: 📦 Install Dependencies
         run: npm install
 
-      # 4. Compile packages/core and packages/cli
-      - name: 🔨 Compile TypeScript Workspaces
+      - name: 🔨 Build Core & CLI
         run: |
           npm run build -w packages/core
           npm run build -w packages/cli
 
-      # 5. Check for Duplicate Submissions (Anti-Spam Filter)
-      - name: 🚨 Scan for Duplicates
-        run: |
-          node packages/cli/dist/index.js check-duplicate --target "skills/**/*.md" --db "leaderboard.json"
-
-      # 6. Audit Submissions and Write Summary Report
-      - name: 🔬 Audit Quality and Tier Grading
-        id: audit
-        run: |
-          node packages/cli/dist/index.js audit "skills/**/*.md" --summary "audit-summary.md" --fail-under 3
-          
-      # 7. Publish Audit Summary to GitHub Step Summary
-      - name: 📝 Publish Summary to Runner Panel
-        if: always()
-        run: |
-          if [ -f audit-summary.md ]; then
-            cat audit-summary.md >> $GITHUB_STEP_SUMMARY
-          fi
-
-      # 8. Optimize Skill Prompts
-      - name: ⚡ Run Auto-Optimizer
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      - name: 🚀 Run Auto-Optimizer
         run: |
           node packages/cli/dist/index.js optimize "skills/**/*.md"
 
-      # 9. Update Database and Rebuild README Leaderboard
-      - name: 📊 Rebuild Leaderboard
+      - name: 🔄 Sync Local Data
         run: |
-          # Use the PR author or committing git user name
-          AUTHOR_NAME="${{ github.event.pull_request.user.login || github.actor }}"
-          node packages/cli/dist/index.js update-leaderboard --target "skills/**/*.md" --db "leaderboard.json" --readme "README.md" --author "$AUTHOR_NAME"
+          node scripts/sync-skills.js
 
-      # 10. Commit and Push Changes back to the repository
-      - name: 🚀 Commit & Publish Updates
-        if: github.ref == 'refs/heads/main'
+      - name: 📈 Update Leaderboard JSON & README
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add leaderboard.json README.md "skills/**/*.md"
-          # Only commit and push if there are actual diff changes
-          if ! git diff-index --quiet HEAD; then
-            git commit -m "chore: auto-update leaderboard database & optimized skills [skip ci]"
-            git push origin main
-          else
-            echo "No leaderboard modifications detected. Skipping commit."
-          fi
+          # Extract author of the latest commit to record in the database
+          AUTHOR=$(git log -1 --pretty=format:'%an')
+          node packages/cli/dist/index.js update-leaderboard --author "$AUTHOR" --db "leaderboard.json" --readme "README.md" --target "skills/**/*.md"
+
+      - name: 💾 Commit and Push Leaderboard Updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff-index --quiet HEAD || (git commit -m "chore: update leaderboard and optimize skills [skip ci]" && git push)
 ```
 
 ---
 
-## 🔒 Security & Runner Configurations
+### 4. Deploy Dashboard (`.github/workflows/deploy-pages.yml`)
+This workflow compiles the frontend packages, injects the build-time submission token, and publishes the static web dashboard assets to GitHub Pages.
 
-### 1. Repository Write Permissions
-The CI runner requires write permissions to commit the updated `leaderboard.json` and `README.md` files back to the main branch. Ensure the following settings are active in your GitHub repository:
-*   Go to **Settings** > **Actions** > **General**.
-*   Under **Workflow permissions**, select **Read and write permissions**.
-*   Check the box **Allow GitHub Actions to create and approve pull requests**.
+*   **Trigger**: `push` on `main` affecting web/core packages, leaderboard database, sync script, or the deploy workflow itself.
+*   **Permissions**: `contents: read`, `pages: write`, `id-token: write`.
 
-### 2. Gemini API Secrets Setup
-To enable LLM-driven premium prompt optimization via the Gemini API, you must add your Gemini API Key as a repository secret:
-*   Go to **Settings** > **Secrets and variables** > **Actions**.
-*   Click **New repository secret**.
-*   Name: `GEMINI_API_KEY`.
-*   Value: Your personal API key obtained from Google AI Studio.
+```yaml
+name: 🚀 Deploy Web Dashboard to GitHub Pages
 
-If this secret is missing, the workflow will automatically fall back to the local, rule-based heuristics engine without failing the runner.
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/web/**'
+      - 'packages/core/**'
+      - 'leaderboard.json'
+      - 'scripts/sync-skills.js'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📁 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      - name: 🔨 Build Core & Web Dashboard
+        env:
+          VITE_SUBMIT_TOKEN: ${{ secrets.SUBMIT_PAT }}
+        run: |
+          npm run build -w packages/core
+          npm run web:build
+
+      - name: 🔧 Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: 📤 Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'packages/web/dist'
+
+      - name: 🚀 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
+
+---
+
+## 🔒 Security Configuration Guide
+
+To enable automated PR creation and support repository dispatch calls, you must set up correct repository variables and secrets on GitHub:
+
+### 1. Enable Pull Request Creation in Actions
+By default, GitHub Actions are restricted from creating or approving Pull Requests. To lift this constraint:
+1. Go to your repository **Settings** > **Actions** > **General**.
+2. Scroll to the **Workflow permissions** section.
+3. Select **Read and write permissions**.
+4. Check **Allow GitHub Actions to create and approve pull requests**.
+5. Click **Save**.
+
+### 2. Configure `SUBMIT_PAT` Secret
+Because the client-side website needs to trigger a `workflow_dispatch` on your repository to execute the bot, it requires an API token.
+To keep the main repository secure, configure a **Fine-grained Personal Access Token** with restricted scopes:
+1. Go to your GitHub account **Settings** > **Developer settings** > **Personal access tokens** > **Fine-grained tokens**.
+2. Click **Generate new token**.
+3. Set Repository access to **Only select repositories** and pick your `SkillGauge` repository.
+4. Under **Permissions**, select:
+   * **Actions**: **Read and write** (required to dispatch workflows).
+   * **Contents**: **Read and write** (required to checkout and read paths).
+5. Generate the token.
+6. Copy the token, then navigate to your repository's **Settings** > **Secrets and variables** > **Actions**.
+7. Click **New repository secret**, name it `SUBMIT_PAT`, and paste the copied token.
+
+During the compilation process, this token will be injected securely into the static HTML/JS bundle under the environment variable `VITE_SUBMIT_TOKEN`, allowing the website's Submit button to trigger the bot.
+

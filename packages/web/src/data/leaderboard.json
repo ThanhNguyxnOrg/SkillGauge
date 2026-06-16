@@ -1,3 +1,13 @@
 {
-  "skills": []
+  "skills": [
+    {
+      "name": "Math Solver",
+      "repository": "SkillGauge",
+      "hash": "415f2f583d00f671d400bf5b8024bb08d1338e7806ed3fe0f42c902d510ee4d2",
+      "author": "ThanhNguyxnOrg",
+      "tier": "Tier 2",
+      "overallScore": 65.82396732960959,
+      "submittedAt": "2026-06-16T04:00:20.133Z"
+    }
+  ]
 }

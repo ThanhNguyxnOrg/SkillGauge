@@ -11,6 +11,11 @@ Instead of evaluating AI agent executions dynamically (which is expensive and no
 The ranking table below is dynamically managed by the CI runner. Submissions are sorted by their overall audited scores.
 
 <!-- LEADERBOARD_START -->
+
+| Rank 🏆 | Skill Name 📦 | Repository 🏠 | Tier 🏷️ | Score ⭐️ | Author 👤 |
+| --- | --- | --- | --- | --- | --- |
+| 🏆 1 | `Math Solver` | `SkillGauge` | 🟡 **Tier 2** | **65.824** | @ThanhNguyxnOrg |
+
 <!-- LEADERBOARD_END -->
 
 ---
@@ -33,7 +38,24 @@ To learn more about the scientific methodology, CLI commands, and automated pipe
    How to install, compile, and run the CLI for local files, directories, or remote Git targets using either HTTPS links or `owner/repo` shorthand notation.
 
 3. **[GitHub Actions CI Bot](docs/ci_pipeline.md)**
-   How the serverless pipeline automatically performs validation, anti-spam duplicate checks, prompt optimization, and publishes results back to the leaderboard.
+   Detailed guide on how the modular, split GitHub Actions workflows (`submit-repo-bot.yml`, `pr-verification.yml`, `update-leaderboard.yml`, `deploy-pages.yml`) orchestrate automated scan-and-submit tasks and post-merge optimizations.
+
+---
+
+## 🚀 How to Submit a Skill
+
+Submitting your agent skills to the global leaderboard is incredibly simple and requires no login:
+
+1. **Via Web Dashboard (Recommended)**:
+   * Navigate to the **Submit Skill** tab on the live dashboard.
+   * Paste your GitHub repository URL (e.g., `https://github.com/owner/my-agent-skills`).
+   * Click **Submit**. The backend will trigger a background Action that clones your repository, audits all valid skills, and opens a Pull Request on your behalf.
+   * Follow the live Pull Request link returned by the website to view your detailed score report!
+
+2. **Via Manual Pull Request**:
+   * Place your markdown skill files (which must start with YAML frontmatter containing `name:` and `description:`) in a folder named `skills/<your-repo-name>/<skill-name>.md`.
+   * Open a Pull Request against the `main` branch.
+   * Our verification runner will automatically check for duplicate entries, score your skill against the 100-criteria scientific matrix, and comment with a detailed report card.
 
 ---
 
