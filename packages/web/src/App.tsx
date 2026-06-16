@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { Leaderboard } from './components/Leaderboard';
-import { SkillExplorer } from './components/SkillExplorer';
-import { AuditSandbox } from './components/AuditSandbox';
 import { SubmitSkill } from './components/SubmitSkill';
 import { SkillDetailModal } from './components/SkillDetailModal';
 import { auditSkill } from '@skillgauge/core';
@@ -28,12 +26,8 @@ interface SkillFile {
 }
 
 function App() {
-  const [activeTab, setActiveTab] = useState<'leaderboard' | 'explorer' | 'sandbox' | 'submit'>('leaderboard');
+  const [activeTab, setActiveTab] = useState<'leaderboard' | 'submit'>('leaderboard');
   const [selectedSkillKey, setSelectedSkillKey] = useState<string | null>(null);
-  
-  // Custom sandbox audit result display in the same modal
-  const [sandboxReport, setSandboxReport] = useState<any | null>(null);
-  const [sandboxContent, setSandboxContent] = useState<string>('');
 
   const leaderboardSkills = (leaderboardData as { skills: LeaderboardSkill[] }).skills;
   const localSkills = skillsData as { [key: string]: SkillFile };
@@ -54,20 +48,10 @@ function App() {
     } catch (err) {
       console.error('Failed to audit local skill', err);
     }
-  } else if (sandboxReport) {
-    activeReport = sandboxReport;
-    activeContent = sandboxContent;
-    activeName = sandboxReport.name || 'Sandbox Input';
   }
-
-  const handleShowSandboxResult = (report: any, content: string) => {
-    setSandboxReport(report);
-    setSandboxContent(content);
-  };
 
   const handleCloseModal = () => {
     setSelectedSkillKey(null);
-    setSandboxReport(null);
   };
 
   return (
@@ -88,18 +72,6 @@ function App() {
               onClick={() => setActiveTab('leaderboard')}
             >
               Leaderboard
-            </button>
-            <button
-              className={`nav-link ${activeTab === 'explorer' ? 'active' : ''}`}
-              onClick={() => setActiveTab('explorer')}
-            >
-              Installed Skills
-            </button>
-            <button
-              className={`nav-link ${activeTab === 'sandbox' ? 'active' : ''}`}
-              onClick={() => setActiveTab('sandbox')}
-            >
-              Sandbox Auditor
             </button>
             <button
               className={`nav-link ${activeTab === 'submit' ? 'active' : ''}`}
@@ -133,23 +105,6 @@ function App() {
             </div>
           )}
 
-          {activeTab === 'explorer' && (
-            <div style={{ width: '100%', animation: 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-              <SkillExplorer
-                skills={localSkills}
-                onSelectSkill={(key) => setSelectedSkillKey(key)}
-              />
-            </div>
-          )}
-
-          {activeTab === 'sandbox' && (
-            <div style={{ width: '100%', animation: 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-              <AuditSandbox
-                onShowResult={handleShowSandboxResult}
-              />
-            </div>
-          )}
-
           {activeTab === 'submit' && (
             <div style={{ width: '100%', animation: 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1)' }}>
               <SubmitSkill />
@@ -158,7 +113,7 @@ function App() {
         </main>
 
         {/* Detail Analysis Modal */}
-        {(selectedSkillKey || sandboxReport) && (
+        {selectedSkillKey && (
           <SkillDetailModal
             report={activeReport}
             skillName={activeName}

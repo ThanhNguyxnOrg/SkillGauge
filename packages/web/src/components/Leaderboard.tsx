@@ -26,6 +26,9 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ skills, onSelectSkill,
     });
   };
 
+  // Sort skills descending by score to guarantee correct ranking order
+  const sortedSkills = [...skills].sort((a, b) => b.overallScore - a.overallScore);
+
   return (
     <div className="bezel-outer">
       <div className="bezel-inner">
@@ -44,11 +47,12 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ skills, onSelectSkill,
                 <th>Skill Name</th>
                 <th>Repository</th>
                 <th>Tier</th>
+                <th>Score</th>
                 <th>Author</th>
               </tr>
             </thead>
             <tbody>
-              {skills.map((skill, index) => {
+              {sortedSkills.map((skill, index) => {
                 const localKey = findLocalKey(skill.name);
                 const rankClass = index === 0 ? 'rank-1' : index === 1 ? 'rank-2' : index === 2 ? 'rank-3' : '';
                 const tierClass = skill.tier === 'Tier 1' ? 'tier-1' : skill.tier === 'Tier 2' ? 'tier-2' : 'tier-3';
@@ -71,6 +75,9 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ skills, onSelectSkill,
                         {skill.tier === 'Tier 1' ? <CheckCircle2 size={12} /> : <ShieldAlert size={12} />}
                         {skill.tier}
                       </span>
+                    </td>
+                    <td style={{ fontWeight: '600', fontFamily: 'var(--mono-font)' }}>
+                      {skill.overallScore.toFixed(3)}
                     </td>
                     <td style={{ color: 'var(--text-secondary)' }}>
                       @{skill.author}

@@ -17,7 +17,7 @@ graph TD
 
     %% PR Verification Flow
     Manual[Manual Fork & PR] --> PR
-    PR -->|4. Trigger pr-verification.yml| Verify[Check Duplicates & Post Audit Comment]
+    PR -->|4. Trigger pr-verification.yml| Verify[Check Duplicates & Run Audit]
 
     %% Merge / Update Leaderboard Flow
     PR -->|5. Merge to main| Merge[Push to main]
@@ -87,7 +87,7 @@ jobs:
 ---
 
 ### 2. Manual PR Verification (`.github/workflows/pr-verification.yml`)
-This workflow validates all incoming Pull Requests modifying the `skills/**/*.md` folder. It runs anti-spam duplicate checks and publishes a detailed audit report as a PR comment.
+This workflow validates all incoming Pull Requests modifying the `skills/**/*.md` folder. It runs anti-spam duplicate checks and publishes a detailed audit report.
 
 *   **Trigger**: `pull_request` on branches targeting `main` with modifications in `skills/**/*.md`.
 *   **Permissions**: `contents: read`, `pull-requests: write`.
@@ -149,15 +149,6 @@ jobs:
 
       - name: 📤 Publish Step Summary
         run: cat summary.md >> $GITHUB_STEP_SUMMARY
-
-      - name: 💬 Post Audit Summary as PR Comment
-        if: always()
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if [ -f summary.md ]; then
-            gh pr comment ${{ github.event.pull_request.number }} --body-file summary.md
-          fi
 ```
 
 ---

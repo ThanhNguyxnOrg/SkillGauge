@@ -8,15 +8,9 @@ Instead of evaluating AI agent executions dynamically (which is expensive and no
 
 ## ⭐️ Top Agent Skills Leaderboard
 
-The ranking table below is dynamically managed by the CI runner. Submissions are sorted by their overall audited scores.
+The live ranking table is dynamically managed and updated on our web dashboard:
 
-<!-- LEADERBOARD_START -->
-
-| Rank 🏆 | Skill Name 📦 | Repository 🏠 | Tier 🏷️ | Score ⭐️ | Author 👤 |
-| --- | --- | --- | --- | --- | --- |
-| 🏆 1 | `Math Solver` | `SkillGauge` | 🟡 **Tier 2** | **65.824** | @ThanhNguyxnOrg |
-
-<!-- LEADERBOARD_END -->
+👉 **[View the Live Leaderboard](https://thanhnguyxnorg.github.io/SkillGauge/)**
 
 ---
 
