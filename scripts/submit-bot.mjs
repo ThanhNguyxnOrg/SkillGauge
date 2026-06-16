@@ -153,13 +153,22 @@ try {
     prBody += `| \`${s.name}\` | \`${s.file}\` | \`${s.score.toFixed(3)}\` | ${emoji} **${s.tier}** | ${s.explanation} |\n`;
   }
 
+  const prBodyFile = path.join(process.cwd(), 'pr-body.txt');
+  fs.writeFileSync(prBodyFile, prBody, 'utf-8');
+
   if (existingPrs && existingPrs.length > 0) {
     console.log(`PR already exists: ${existingPrs[0].url}. Updating branch instead...`);
   } else {
     console.log('Creating Pull Request...');
-    const prUrl = execSync(`gh pr create --title ${JSON.stringify(prTitle)} --body ${JSON.stringify(prBody)} --head "${branchName}" --base "main"`).toString().trim();
+    const prUrl = execSync(`gh pr create --title ${JSON.stringify(prTitle)} --body-file "${prBodyFile}" --head "${branchName}" --base "main"`).toString().trim();
     console.log(`All done! PR created: ${prUrl}`);
   }
+
+  // Clean up temporary file
+  if (fs.existsSync(prBodyFile)) {
+    fs.rmSync(prBodyFile, { force: true });
+  }
+
 } catch (err) {
   console.error('Failed to create PR or commit:', err);
   process.exit(1);

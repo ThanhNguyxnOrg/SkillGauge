@@ -80,7 +80,7 @@ export const SubmitSkill: React.FC = () => {
       for (let i = 0; i < 6; i++) {
         await new Promise(r => setTimeout(r, 2000));
         try {
-          const runsRes = await fetch(`https://api.github.com/repos/${targetOwner}/${targetRepo}/actions/runs?event=workflow_dispatch&workflow_id=submit-repo-bot.yml`, {
+          const runsRes = await fetch(`https://api.github.com/repos/${targetOwner}/${targetRepo}/actions/workflows/submit-repo-bot.yml/runs?event=workflow_dispatch`, {
             headers: {
               Authorization: `Bearer ${token}`,
               Accept: 'application/vnd.github.v3+json'
@@ -345,7 +345,7 @@ export const SubmitSkill: React.FC = () => {
             </div>
 
             {/* Runner Execution Logs Console */}
-            {runSteps.length > 0 && (
+            {(submitStep === 'bot_running' || runSteps.length > 0) && (
               <div style={{
                 marginTop: '20px',
                 padding: '16px',
@@ -363,31 +363,38 @@ export const SubmitSkill: React.FC = () => {
                   Runner Execution Log Console
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '180px', overflowY: 'auto' }}>
-                  {runSteps.map((step, idx) => {
-                    let emoji = '⚙️';
-                    let statusColor = 'var(--text-secondary)';
-                    if (step.status === 'completed') {
-                      if (step.conclusion === 'success') {
-                        emoji = '✅';
-                        statusColor = 'var(--color-tier-1)';
-                      } else {
-                        emoji = '❌';
-                        statusColor = 'var(--color-tier-3)';
+                  {runSteps.length === 0 ? (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-secondary)' }}>
+                      <Loader2 className="animate-spin" size={14} style={{ color: '#a78bfa' }} />
+                      <span>Connecting to GitHub Actions runner and fetching execution steps...</span>
+                    </div>
+                  ) : (
+                    runSteps.map((step, idx) => {
+                      let emoji = '⚙️';
+                      let statusColor = 'var(--text-secondary)';
+                      if (step.status === 'completed') {
+                        if (step.conclusion === 'success') {
+                          emoji = '✅';
+                          statusColor = 'var(--color-tier-1)';
+                        } else {
+                          emoji = '❌';
+                          statusColor = 'var(--color-tier-3)';
+                        }
+                      } else if (step.status === 'in_progress') {
+                        emoji = '⚡';
+                        statusColor = '#a78bfa';
                       }
-                    } else if (step.status === 'in_progress') {
-                      emoji = '⚡';
-                      statusColor = '#a78bfa';
-                    }
-                    return (
-                      <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: statusColor }}>
-                        <span>{emoji}</span>
-                        <span>{step.name}</span>
-                        <span style={{ fontSize: '10px', color: 'var(--text-muted)', marginLeft: 'auto' }}>
-                          {step.status === 'completed' ? `Completed (${step.conclusion})` : 'Running...'}
-                        </span>
-                      </div>
-                    );
-                  })}
+                      return (
+                        <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: statusColor }}>
+                          <span>{emoji}</span>
+                          <span>{step.name}</span>
+                          <span style={{ fontSize: '10px', color: 'var(--text-muted)', marginLeft: 'auto' }}>
+                            {step.status === 'completed' ? `Completed (${step.conclusion})` : 'Running...'}
+                          </span>
+                        </div>
+                      );
+                    })
+                  )}
                 </div>
               </div>
             )}
