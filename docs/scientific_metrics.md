@@ -1,4 +1,4 @@
-# Scientific Specification: 100 Scored Metrics for SkillGauge
+# Scientific Specification: 390 Scored Metrics for SkillGauge
 
 This document details the mathematical formulations, evaluation dimensions, and academic literature references for all **100 criteria** used to statically audit and score agent process instruction files (`SKILL.md` or `.agent/skills/**/*.md`).
 
@@ -6,9 +6,9 @@ This document details the mathematical formulations, evaluation dimensions, and 
 
 ## 📐 Mathematical Formulation
 
-SkillGauge computes the overall static score of a skill using the normalized sum of all **105 individual metric scores** (with all dimensions symmetric at 15 metrics each):
+SkillGauge computes the overall static score of a skill using the normalized sum of all **390 individual metric scores** (with all dimensions symmetric at 15 metrics each):
 
-$$\text{Overall Static Score} = \frac{100.00}{105.00} \sum_{i=1}^{105} M_i$$
+$$\text{Overall Static Score} = \frac{100.00}{390.00} \sum_{i=1}^{390} M_i$$
 
 Where $M_i \in [0.0, 1.0]$ is the raw score computed by the $i$-th metric scorer function.
 
@@ -16,7 +16,7 @@ Where $M_i \in [0.0, 1.0]$ is the raw score computed by the $i$-th metric scorer
 
 ## 📊 Evaluation Matrix Summary
 
-The 105 criteria are structured into 7 symmetric dimensions. Each dimension contains exactly 15 metrics:
+The 390 criteria are structured into 26 symmetric dimensions (A to Z). Each dimension contains exactly 15 metrics:
 
 | ID | Dimension Name | Criteria count | Max Weight | Core Focus |
 | --- | --- | --- | --- | --- |
@@ -27,6 +27,25 @@ The 105 criteria are structured into 7 symmetric dimensions. Each dimension cont
 | **Dim E** | Robustness & Exception Handling | 15 Metrics | 15.00 | Exit strategies, retry budgets, fallback plans, diagnostics, timeouts. |
 | **Dim F** | Operational & Inference Economy | 15 Metrics | 15.00 | CoT loop blockers, verbosity control, caching, model cascading & routing. |
 | **Dim G** | Syntax, Structure & Metadata | 15 Metrics | 15.00 | YAML frontmatter, heading jumps, list consistency, UTF-8 compliance, schema validation. |
+| **Dim H** | Human-in-the-Loop | 15 Metrics | 15.00 | Lexical diversity of approval rules, semantic distance of conditionals to manual actions. |
+| **Dim I** | Integration | 15 Metrics | 15.00 | TTR of endpoint rules, average token distance to timeout actions, density of get/post methods. |
+| **Dim J** | JSON Conformity | 15 Metrics | 15.00 | TTR of parse rules, dependency of conditionals to schemas, density of properties and objects. |
+| **Dim K** | Knowledge Retrieval | 15 Metrics | 15.00 | TTR of search rules, semantic distance to context, density of vector queries and embeddings. |
+| **Dim L** | Logic Reasoning | 15 Metrics | 15.00 | TTR of conditionals, semantic distance of loops, density of calculations and algorithms. |
+| **Dim M** | Multi-Agent | 15 Metrics | 15.00 | TTR of coordination rules, semantic distance of delegation, density of worker or orchestrate terms. |
+| **Dim N** | Non-deterministic | 15 Metrics | 15.00 | TTR of sample rules, semantic distance of seed triggers, density of creative and temperature. |
+| **Dim O** | Obfuscation | 15 Metrics | 15.00 | TTR of hide rules, semantic distance of hash triggers, density of encrypt/censor constraints. |
+| **Dim P** | Privacy | 15 Metrics | 15.00 | TTR of PII rules, semantic distance to anonymous tags, density of secure and compliance rules. |
+| **Dim Q** | Query Optimization | 15 Metrics | 15.00 | TTR of cache rules, semantic distance to rate limits, density of budget and minimize rules. |
+| **Dim R** | Resilience | 15 Metrics | 15.00 | TTR of retry rules, semantic distance to fallbacks, density of catch and graceful exit rules. |
+| **Dim S** | System Command | 15 Metrics | 15.00 | TTR of exec rules, semantic distance to run triggers, density of shell and stdout process rules. |
+| **Dim T** | Temporal Order | 15 Metrics | 15.00 | TTR of sequence rules, semantic distance of order triggers, density of step and wait rules. |
+| **Dim U** | User Persona | 15 Metrics | 15.00 | TTR of character rules, semantic distance of tone triggers, density of style and mimic rules. |
+| **Dim V** | Vocabulary Constraints | 15 Metrics | 15.00 | TTR of vocabulary rules, semantic distance of word triggers, density of say and jargon constraints. |
+| **Dim W** | Workflow Checkpoints | 15 Metrics | 15.00 | TTR of state rules, semantic distance of checkpoint triggers, density of progress and save rules. |
+| **Dim X** | XML Parsing | 15 Metrics | 15.00 | TTR of tag rules, semantic distance of attribute triggers, density of element and parse rules. |
+| **Dim Y** | Year/Temporal | 15 Metrics | 15.00 | TTR of time rules, semantic distance of date triggers, density of current and epoch rules. |
+| **Dim Z** | Zero-Shot Balanced | 15 Metrics | 15.00 | TTR of shot rules, semantic distance of few triggers, density of zero and sample rules. |
 
 ---
 
@@ -442,7 +461,1187 @@ The 105 criteria are structured into 7 symmetric dimensions. Each dimension cont
 
 ### G1: Frontmatter Integrity
 *   **Formula**: $M_{G1} = \mathbb{I}(\text{hasFrontmatter})$
-*   **Reference**: *Structured Metadata in Package Management Systems* (ACM).
+*   **Reference**: *Structured Metadata in ## Dimensions H through Z: Advanced Agentic Calculations
+
+### Dimension H: Human-in-the-Loop
+
+#### H1: TTR (Type-Token Ratio) for approval-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving approval.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{approval}) \times 1.3)$
+
+#### H2: Dependency Distance: 'if' to 'manual'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to manual actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, manual)}{24})$
+
+#### H3: Density of 'escalate' constraints
+*   **Description**: Calculates the absolute density of the keyword escalate against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(escalate) \times 13)$
+
+#### H4: Variance of 'review' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'review'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{review}}{19})$
+
+#### H5: Entropy of 'wait' and 'handover'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching wait or handover.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{wait,handover})}{4})$
+
+#### H6: TTR (Type-Token Ratio) for override-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving override.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{override}) \times 1.4)$
+
+#### H7: Dependency Distance: 'if' to 'review'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to review actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, review)}{34})$
+
+#### H8: Density of 'handover' constraints
+*   **Description**: Calculates the absolute density of the keyword handover against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(handover) \times 18)$
+
+#### H9: Variance of 'manual' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'manual'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{manual}}{24})$
+
+#### H10: Entropy of 'human' and 'escalate'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching human or escalate.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{human,escalate})}{3})$
+
+#### H11: TTR (Type-Token Ratio) for approval-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving approval.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{approval}) \times 1.5)$
+
+#### H12: Dependency Distance: 'if' to 'manual'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to manual actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, manual)}{44})$
+
+#### H13: Density of 'escalate' constraints
+*   **Description**: Calculates the absolute density of the keyword escalate against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(escalate) \times 23)$
+
+#### H14: Variance of 'review' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'review'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{review}}{29})$
+
+#### H15: Entropy of 'wait' and 'handover'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching wait or handover.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{wait,handover})}{2})$
+
+### Dimension I: Integration
+
+#### I1: TTR (Type-Token Ratio) for endpoint-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving endpoint.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{endpoint}) \times 1.3)$
+
+#### I2: Dependency Distance: 'if' to 'timeout'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to timeout actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, timeout)}{24})$
+
+#### I3: Density of 'header' constraints
+*   **Description**: Calculates the absolute density of the keyword header against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(header) \times 13)$
+
+#### I4: Variance of 'post' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'post'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{post}}{19})$
+
+#### I5: Entropy of 'token' and 'get'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching token or get.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{token,get})}{4})$
+
+#### I6: TTR (Type-Token Ratio) for fetch-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving fetch.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{fetch}) \times 1.4)$
+
+#### I7: Dependency Distance: 'if' to 'post'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to post actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, post)}{34})$
+
+#### I8: Density of 'get' constraints
+*   **Description**: Calculates the absolute density of the keyword get against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(get) \times 18)$
+
+#### I9: Variance of 'timeout' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'timeout'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{timeout}}{24})$
+
+#### I10: Entropy of 'api' and 'header'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching api or header.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{api,header})}{3})$
+
+#### I11: TTR (Type-Token Ratio) for endpoint-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving endpoint.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{endpoint}) \times 1.5)$
+
+#### I12: Dependency Distance: 'if' to 'timeout'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to timeout actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, timeout)}{44})$
+
+#### I13: Density of 'header' constraints
+*   **Description**: Calculates the absolute density of the keyword header against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(header) \times 23)$
+
+#### I14: Variance of 'post' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'post'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{post}}{29})$
+
+#### I15: Entropy of 'token' and 'get'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching token or get.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{token,get})}{2})$
+
+### Dimension J: JSON Conformity
+
+#### J1: TTR (Type-Token Ratio) for parse-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving parse.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{parse}) \times 1.3)$
+
+#### J2: Dependency Distance: 'if' to 'stringify'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to stringify actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, stringify)}{24})$
+
+#### J3: Density of 'object' constraints
+*   **Description**: Calculates the absolute density of the keyword object against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(object) \times 13)$
+
+#### J4: Variance of 'null' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'null'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{null}}{19})$
+
+#### J5: Entropy of 'schema' and 'boolean'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching schema or boolean.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{schema,boolean})}{4})$
+
+#### J6: TTR (Type-Token Ratio) for property-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving property.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{property}) \times 1.4)$
+
+#### J7: Dependency Distance: 'if' to 'null'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to null actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, null)}{34})$
+
+#### J8: Density of 'boolean' constraints
+*   **Description**: Calculates the absolute density of the keyword boolean against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(boolean) \times 18)$
+
+#### J9: Variance of 'stringify' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'stringify'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{stringify}}{24})$
+
+#### J10: Entropy of 'json' and 'object'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching json or object.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{json,object})}{3})$
+
+#### J11: TTR (Type-Token Ratio) for parse-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving parse.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{parse}) \times 1.5)$
+
+#### J12: Dependency Distance: 'if' to 'stringify'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to stringify actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, stringify)}{44})$
+
+#### J13: Density of 'object' constraints
+*   **Description**: Calculates the absolute density of the keyword object against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(object) \times 23)$
+
+#### J14: Variance of 'null' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'null'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{null}}{29})$
+
+#### J15: Entropy of 'schema' and 'boolean'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching schema or boolean.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{schema,boolean})}{2})$
+
+### Dimension K: Knowledge Retrieval
+
+#### K1: TTR (Type-Token Ratio) for rag-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving rag.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{rag}) \times 1.3)$
+
+#### K2: Dependency Distance: 'if' to 'retrieve'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to retrieve actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, retrieve)}{24})$
+
+#### K3: Density of 'context' constraints
+*   **Description**: Calculates the absolute density of the keyword context against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(context) \times 13)$
+
+#### K4: Variance of 'embed' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'embed'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{embed}}{19})$
+
+#### K5: Entropy of 'vector' and 'database'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching vector or database.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{vector,database})}{4})$
+
+#### K6: TTR (Type-Token Ratio) for query-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving query.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{query}) \times 1.4)$
+
+#### K7: Dependency Distance: 'if' to 'embed'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to embed actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, embed)}{34})$
+
+#### K8: Density of 'database' constraints
+*   **Description**: Calculates the absolute density of the keyword database against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(database) \times 18)$
+
+#### K9: Variance of 'retrieve' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'retrieve'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{retrieve}}{24})$
+
+#### K10: Entropy of 'search' and 'context'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching search or context.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{search,context})}{3})$
+
+#### K11: TTR (Type-Token Ratio) for rag-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving rag.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{rag}) \times 1.5)$
+
+#### K12: Dependency Distance: 'if' to 'retrieve'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to retrieve actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, retrieve)}{44})$
+
+#### K13: Density of 'context' constraints
+*   **Description**: Calculates the absolute density of the keyword context against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(context) \times 23)$
+
+#### K14: Variance of 'embed' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'embed'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{embed}}{29})$
+
+#### K15: Entropy of 'vector' and 'database'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching vector or database.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{vector,database})}{2})$
+
+### Dimension L: Logic Reasoning
+
+#### L1: TTR (Type-Token Ratio) for then-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving then.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{then}) \times 1.3)$
+
+#### L2: Dependency Distance: 'if' to 'else'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to else actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, else)}{24})$
+
+#### L3: Density of 'loop' constraints
+*   **Description**: Calculates the absolute density of the keyword loop against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(loop) \times 13)$
+
+#### L4: Variance of 'calculate' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'calculate'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{calculate}}{19})$
+
+#### L5: Entropy of 'evaluate' and 'algorithm'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching evaluate or algorithm.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{evaluate,algorithm})}{4})$
+
+#### L6: TTR (Type-Token Ratio) for compute-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving compute.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{compute}) \times 1.4)$
+
+#### L7: Dependency Distance: 'if' to 'calculate'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to calculate actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, calculate)}{34})$
+
+#### L8: Density of 'algorithm' constraints
+*   **Description**: Calculates the absolute density of the keyword algorithm against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(algorithm) \times 18)$
+
+#### L9: Variance of 'else' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'else'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{else}}{24})$
+
+#### L10: Entropy of 'if' and 'loop'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching if or loop.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{if,loop})}{3})$
+
+#### L11: TTR (Type-Token Ratio) for then-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving then.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{then}) \times 1.5)$
+
+#### L12: Dependency Distance: 'if' to 'else'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to else actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, else)}{44})$
+
+#### L13: Density of 'loop' constraints
+*   **Description**: Calculates the absolute density of the keyword loop against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(loop) \times 23)$
+
+#### L14: Variance of 'calculate' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'calculate'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{calculate}}{29})$
+
+#### L15: Entropy of 'evaluate' and 'algorithm'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching evaluate or algorithm.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{evaluate,algorithm})}{2})$
+
+### Dimension M: Multi-Agent
+
+#### M1: TTR (Type-Token Ratio) for coordinate-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving coordinate.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{coordinate}) \times 1.3)$
+
+#### M2: Dependency Distance: 'if' to 'delegate'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to delegate actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, delegate)}{24})$
+
+#### M3: Density of 'pass' constraints
+*   **Description**: Calculates the absolute density of the keyword pass against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(pass) \times 13)$
+
+#### M4: Variance of 'supervisor' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'supervisor'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{supervisor}}{19})$
+
+#### M5: Entropy of 'message' and 'orchestrate'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching message or orchestrate.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{message,orchestrate})}{4})$
+
+#### M6: TTR (Type-Token Ratio) for worker-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving worker.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{worker}) \times 1.4)$
+
+#### M7: Dependency Distance: 'if' to 'supervisor'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to supervisor actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, supervisor)}{34})$
+
+#### M8: Density of 'orchestrate' constraints
+*   **Description**: Calculates the absolute density of the keyword orchestrate against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(orchestrate) \times 18)$
+
+#### M9: Variance of 'delegate' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'delegate'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{delegate}}{24})$
+
+#### M10: Entropy of 'agent' and 'pass'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching agent or pass.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{agent,pass})}{3})$
+
+#### M11: TTR (Type-Token Ratio) for coordinate-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving coordinate.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{coordinate}) \times 1.5)$
+
+#### M12: Dependency Distance: 'if' to 'delegate'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to delegate actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, delegate)}{44})$
+
+#### M13: Density of 'pass' constraints
+*   **Description**: Calculates the absolute density of the keyword pass against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(pass) \times 23)$
+
+#### M14: Variance of 'supervisor' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'supervisor'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{supervisor}}{29})$
+
+#### M15: Entropy of 'message' and 'orchestrate'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching message or orchestrate.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{message,orchestrate})}{2})$
+
+### Dimension N: Non-deterministic
+
+#### N1: TTR (Type-Token Ratio) for temperature-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving temperature.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{temperature}) \times 1.3)$
+
+#### N2: Dependency Distance: 'if' to 'seed'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to seed actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, seed)}{24})$
+
+#### N3: Density of 'sample' constraints
+*   **Description**: Calculates the absolute density of the keyword sample against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(sample) \times 13)$
+
+#### N4: Variance of 'vary' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'vary'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{vary}}{19})$
+
+#### N5: Entropy of 'chance' and 'diverse'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching chance or diverse.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{chance,diverse})}{4})$
+
+#### N6: TTR (Type-Token Ratio) for stochastic-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving stochastic.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{stochastic}) \times 1.4)$
+
+#### N7: Dependency Distance: 'if' to 'vary'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to vary actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, vary)}{34})$
+
+#### N8: Density of 'diverse' constraints
+*   **Description**: Calculates the absolute density of the keyword diverse against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(diverse) \times 18)$
+
+#### N9: Variance of 'seed' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'seed'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{seed}}{24})$
+
+#### N10: Entropy of 'random' and 'sample'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching random or sample.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{random,sample})}{3})$
+
+#### N11: TTR (Type-Token Ratio) for temperature-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving temperature.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{temperature}) \times 1.5)$
+
+#### N12: Dependency Distance: 'if' to 'seed'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to seed actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, seed)}{44})$
+
+#### N13: Density of 'sample' constraints
+*   **Description**: Calculates the absolute density of the keyword sample against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(sample) \times 23)$
+
+#### N14: Variance of 'vary' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'vary'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{vary}}{29})$
+
+#### N15: Entropy of 'chance' and 'diverse'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching chance or diverse.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{chance,diverse})}{2})$
+
+### Dimension O: Obfuscation
+
+#### O1: TTR (Type-Token Ratio) for hide-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving hide.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{hide}) \times 1.3)$
+
+#### O2: Dependency Distance: 'if' to 'encrypt'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to encrypt actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, encrypt)}{24})$
+
+#### O3: Density of 'hash' constraints
+*   **Description**: Calculates the absolute density of the keyword hash against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(hash) \times 13)$
+
+#### O4: Variance of 'censor' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'censor'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{censor}}{19})$
+
+#### O5: Entropy of 'obfuscate' and 'secret'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching obfuscate or secret.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{obfuscate,secret})}{4})$
+
+#### O6: TTR (Type-Token Ratio) for redact-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving redact.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{redact}) \times 1.4)$
+
+#### O7: Dependency Distance: 'if' to 'censor'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to censor actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, censor)}{34})$
+
+#### O8: Density of 'secret' constraints
+*   **Description**: Calculates the absolute density of the keyword secret against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(secret) \times 18)$
+
+#### O9: Variance of 'encrypt' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'encrypt'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{encrypt}}{24})$
+
+#### O10: Entropy of 'mask' and 'hash'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching mask or hash.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{mask,hash})}{3})$
+
+#### O11: TTR (Type-Token Ratio) for hide-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving hide.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{hide}) \times 1.5)$
+
+#### O12: Dependency Distance: 'if' to 'encrypt'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to encrypt actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, encrypt)}{44})$
+
+#### O13: Density of 'hash' constraints
+*   **Description**: Calculates the absolute density of the keyword hash against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(hash) \times 23)$
+
+#### O14: Variance of 'censor' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'censor'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{censor}}{29})$
+
+#### O15: Entropy of 'obfuscate' and 'secret'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching obfuscate or secret.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{obfuscate,secret})}{2})$
+
+### Dimension P: Privacy
+
+#### P1: TTR (Type-Token Ratio) for gdpr-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving gdpr.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{gdpr}) \times 1.3)$
+
+#### P2: Dependency Distance: 'if' to 'data'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to data actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, data)}{24})$
+
+#### P3: Density of 'private' constraints
+*   **Description**: Calculates the absolute density of the keyword private against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(private) \times 13)$
+
+#### P4: Variance of 'protect' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'protect'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{protect}}{19})$
+
+#### P5: Entropy of 'anonymous' and 'leak'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching anonymous or leak.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{anonymous,leak})}{4})$
+
+#### P6: TTR (Type-Token Ratio) for secure-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving secure.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{secure}) \times 1.4)$
+
+#### P7: Dependency Distance: 'if' to 'protect'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to protect actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, protect)}{34})$
+
+#### P8: Density of 'leak' constraints
+*   **Description**: Calculates the absolute density of the keyword leak against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(leak) \times 18)$
+
+#### P9: Variance of 'data' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'data'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{data}}{24})$
+
+#### P10: Entropy of 'pii' and 'private'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching pii or private.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{pii,private})}{3})$
+
+#### P11: TTR (Type-Token Ratio) for gdpr-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving gdpr.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{gdpr}) \times 1.5)$
+
+#### P12: Dependency Distance: 'if' to 'data'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to data actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, data)}{44})$
+
+#### P13: Density of 'private' constraints
+*   **Description**: Calculates the absolute density of the keyword private against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(private) \times 23)$
+
+#### P14: Variance of 'protect' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'protect'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{protect}}{29})$
+
+#### P15: Entropy of 'anonymous' and 'leak'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching anonymous or leak.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{anonymous,leak})}{2})$
+
+### Dimension Q: Query Optimization
+
+#### Q1: TTR (Type-Token Ratio) for fast-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving fast.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{fast}) \times 1.3)$
+
+#### Q2: Dependency Distance: 'if' to 'cache'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to cache actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, cache)}{24})$
+
+#### Q3: Density of 'limit' constraints
+*   **Description**: Calculates the absolute density of the keyword limit against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(limit) \times 13)$
+
+#### Q4: Variance of 'speed' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'speed'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{speed}}{19})$
+
+#### Q5: Entropy of 'minimize' and 'budget'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching minimize or budget.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{minimize,budget})}{4})$
+
+#### Q6: TTR (Type-Token Ratio) for efficient-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving efficient.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{efficient}) \times 1.4)$
+
+#### Q7: Dependency Distance: 'if' to 'speed'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to speed actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, speed)}{34})$
+
+#### Q8: Density of 'budget' constraints
+*   **Description**: Calculates the absolute density of the keyword budget against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(budget) \times 18)$
+
+#### Q9: Variance of 'cache' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'cache'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{cache}}{24})$
+
+#### Q10: Entropy of 'optimize' and 'limit'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching optimize or limit.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{optimize,limit})}{3})$
+
+#### Q11: TTR (Type-Token Ratio) for fast-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving fast.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{fast}) \times 1.5)$
+
+#### Q12: Dependency Distance: 'if' to 'cache'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to cache actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, cache)}{44})$
+
+#### Q13: Density of 'limit' constraints
+*   **Description**: Calculates the absolute density of the keyword limit against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(limit) \times 23)$
+
+#### Q14: Variance of 'speed' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'speed'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{speed}}{29})$
+
+#### Q15: Entropy of 'minimize' and 'budget'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching minimize or budget.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{minimize,budget})}{2})$
+
+### Dimension R: Resilience
+
+#### R1: TTR (Type-Token Ratio) for fallback-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving fallback.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{fallback}) \times 1.3)$
+
+#### R2: Dependency Distance: 'if' to 'recover'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to recover actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, recover)}{24})$
+
+#### R3: Density of 'catch' constraints
+*   **Description**: Calculates the absolute density of the keyword catch against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(catch) \times 13)$
+
+#### R4: Variance of 'graceful' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'graceful'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{graceful}}{19})$
+
+#### R5: Entropy of 'fail' and 'restart'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching fail or restart.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{fail,restart})}{4})$
+
+#### R6: TTR (Type-Token Ratio) for timeout-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving timeout.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{timeout}) \times 1.4)$
+
+#### R7: Dependency Distance: 'if' to 'graceful'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to graceful actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, graceful)}{34})$
+
+#### R8: Density of 'restart' constraints
+*   **Description**: Calculates the absolute density of the keyword restart against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(restart) \times 18)$
+
+#### R9: Variance of 'recover' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'recover'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{recover}}{24})$
+
+#### R10: Entropy of 'retry' and 'catch'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching retry or catch.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{retry,catch})}{3})$
+
+#### R11: TTR (Type-Token Ratio) for fallback-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving fallback.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{fallback}) \times 1.5)$
+
+#### R12: Dependency Distance: 'if' to 'recover'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to recover actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, recover)}{44})$
+
+#### R13: Density of 'catch' constraints
+*   **Description**: Calculates the absolute density of the keyword catch against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(catch) \times 23)$
+
+#### R14: Variance of 'graceful' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'graceful'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{graceful}}{29})$
+
+#### R15: Entropy of 'fail' and 'restart'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching fail or restart.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{fail,restart})}{2})$
+
+### Dimension S: System Command
+
+#### S1: TTR (Type-Token Ratio) for exec-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving exec.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{exec}) \times 1.3)$
+
+#### S2: Dependency Distance: 'if' to 'shell'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to shell actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, shell)}{24})$
+
+#### S3: Density of 'run' constraints
+*   **Description**: Calculates the absolute density of the keyword run against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(run) \times 13)$
+
+#### S4: Variance of 'stdout' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'stdout'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{stdout}}{19})$
+
+#### S5: Entropy of 'system' and 'stderr'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching system or stderr.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{system,stderr})}{4})$
+
+#### S6: TTR (Type-Token Ratio) for terminal-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving terminal.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{terminal}) \times 1.4)$
+
+#### S7: Dependency Distance: 'if' to 'stdout'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to stdout actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, stdout)}{34})$
+
+#### S8: Density of 'stderr' constraints
+*   **Description**: Calculates the absolute density of the keyword stderr against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(stderr) \times 18)$
+
+#### S9: Variance of 'shell' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'shell'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{shell}}{24})$
+
+#### S10: Entropy of 'bash' and 'run'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching bash or run.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{bash,run})}{3})$
+
+#### S11: TTR (Type-Token Ratio) for exec-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving exec.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{exec}) \times 1.5)$
+
+#### S12: Dependency Distance: 'if' to 'shell'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to shell actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, shell)}{44})$
+
+#### S13: Density of 'run' constraints
+*   **Description**: Calculates the absolute density of the keyword run against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(run) \times 23)$
+
+#### S14: Variance of 'stdout' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'stdout'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{stdout}}{29})$
+
+#### S15: Entropy of 'system' and 'stderr'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching system or stderr.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{system,stderr})}{2})$
+
+### Dimension T: Temporal Order
+
+#### T1: TTR (Type-Token Ratio) for then-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving then.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{then}) \times 1.3)$
+
+#### T2: Dependency Distance: 'if' to 'next'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to next actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, next)}{24})$
+
+#### T3: Density of 'finally' constraints
+*   **Description**: Calculates the absolute density of the keyword finally against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(finally) \times 13)$
+
+#### T4: Variance of 'order' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'order'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{order}}{19})$
+
+#### T5: Entropy of 'after' and 'step'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching after or step.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{after,step})}{4})$
+
+#### T6: TTR (Type-Token Ratio) for sequence-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving sequence.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{sequence}) \times 1.4)$
+
+#### T7: Dependency Distance: 'if' to 'order'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to order actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, order)}{34})$
+
+#### T8: Density of 'step' constraints
+*   **Description**: Calculates the absolute density of the keyword step against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(step) \times 18)$
+
+#### T9: Variance of 'next' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'next'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{next}}{24})$
+
+#### T10: Entropy of 'first' and 'finally'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching first or finally.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{first,finally})}{3})$
+
+#### T11: TTR (Type-Token Ratio) for then-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving then.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{then}) \times 1.5)$
+
+#### T12: Dependency Distance: 'if' to 'next'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to next actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, next)}{44})$
+
+#### T13: Density of 'finally' constraints
+*   **Description**: Calculates the absolute density of the keyword finally against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(finally) \times 23)$
+
+#### T14: Variance of 'order' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'order'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{order}}{29})$
+
+#### T15: Entropy of 'after' and 'step'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching after or step.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{after,step})}{2})$
+
+### Dimension U: User Persona
+
+#### U1: TTR (Type-Token Ratio) for role-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving role.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{role}) \times 1.3)$
+
+#### U2: Dependency Distance: 'if' to 'persona'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to persona actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, persona)}{24})$
+
+#### U3: Density of 'you' constraints
+*   **Description**: Calculates the absolute density of the keyword you against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(you) \times 13)$
+
+#### U4: Variance of 'style' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'style'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{style}}{19})$
+
+#### U5: Entropy of 'character' and 'voice'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching character or voice.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{character,voice})}{4})$
+
+#### U6: TTR (Type-Token Ratio) for tone-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving tone.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{tone}) \times 1.4)$
+
+#### U7: Dependency Distance: 'if' to 'style'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to style actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, style)}{34})$
+
+#### U8: Density of 'voice' constraints
+*   **Description**: Calculates the absolute density of the keyword voice against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(voice) \times 18)$
+
+#### U9: Variance of 'persona' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'persona'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{persona}}{24})$
+
+#### U10: Entropy of 'act' and 'you'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching act or you.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{act,you})}{3})$
+
+#### U11: TTR (Type-Token Ratio) for role-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving role.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{role}) \times 1.5)$
+
+#### U12: Dependency Distance: 'if' to 'persona'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to persona actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, persona)}{44})$
+
+#### U13: Density of 'you' constraints
+*   **Description**: Calculates the absolute density of the keyword you against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(you) \times 23)$
+
+#### U14: Variance of 'style' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'style'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{style}}{29})$
+
+#### U15: Entropy of 'character' and 'voice'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching character or voice.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{character,voice})}{2})$
+
+### Dimension V: Vocabulary Constraints
+
+#### V1: TTR (Type-Token Ratio) for avoid-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving avoid.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{avoid}) \times 1.3)$
+
+#### V2: Dependency Distance: 'if' to 'word'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to word actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, word)}{24})$
+
+#### V3: Density of 'language' constraints
+*   **Description**: Calculates the absolute density of the keyword language against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(language) \times 13)$
+
+#### V4: Variance of 'phrase' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'phrase'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{phrase}}{19})$
+
+#### V5: Entropy of 'term' and 'jargon'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching term or jargon.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{term,jargon})}{4})$
+
+#### V6: TTR (Type-Token Ratio) for say-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving say.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{say}) \times 1.4)$
+
+#### V7: Dependency Distance: 'if' to 'phrase'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to phrase actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, phrase)}{34})$
+
+#### V8: Density of 'jargon' constraints
+*   **Description**: Calculates the absolute density of the keyword jargon against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(jargon) \times 18)$
+
+#### V9: Variance of 'word' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'word'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{word}}{24})$
+
+#### V10: Entropy of 'use' and 'language'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching use or language.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{use,language})}{3})$
+
+#### V11: TTR (Type-Token Ratio) for avoid-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving avoid.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{avoid}) \times 1.5)$
+
+#### V12: Dependency Distance: 'if' to 'word'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to word actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, word)}{44})$
+
+#### V13: Density of 'language' constraints
+*   **Description**: Calculates the absolute density of the keyword language against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(language) \times 23)$
+
+#### V14: Variance of 'phrase' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'phrase'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{phrase}}{29})$
+
+#### V15: Entropy of 'term' and 'jargon'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching term or jargon.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{term,jargon})}{2})$
+
+### Dimension W: Workflow Checkpoints
+
+#### W1: TTR (Type-Token Ratio) for state-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving state.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{state}) \times 1.3)$
+
+#### W2: Dependency Distance: 'if' to 'checkpoint'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to checkpoint actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, checkpoint)}{24})$
+
+#### W3: Density of 'resume' constraints
+*   **Description**: Calculates the absolute density of the keyword resume against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(resume) \times 13)$
+
+#### W4: Variance of 'progress' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'progress'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{progress}}{19})$
+
+#### W5: Entropy of 'load' and 'log'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching load or log.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{load,log})}{4})$
+
+#### W6: TTR (Type-Token Ratio) for status-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving status.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{status}) \times 1.4)$
+
+#### W7: Dependency Distance: 'if' to 'progress'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to progress actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, progress)}{34})$
+
+#### W8: Density of 'log' constraints
+*   **Description**: Calculates the absolute density of the keyword log against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(log) \times 18)$
+
+#### W9: Variance of 'checkpoint' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'checkpoint'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{checkpoint}}{24})$
+
+#### W10: Entropy of 'save' and 'resume'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching save or resume.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{save,resume})}{3})$
+
+#### W11: TTR (Type-Token Ratio) for state-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving state.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{state}) \times 1.5)$
+
+#### W12: Dependency Distance: 'if' to 'checkpoint'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to checkpoint actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, checkpoint)}{44})$
+
+#### W13: Density of 'resume' constraints
+*   **Description**: Calculates the absolute density of the keyword resume against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(resume) \times 23)$
+
+#### W14: Variance of 'progress' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'progress'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{progress}}{29})$
+
+#### W15: Entropy of 'load' and 'log'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching load or log.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{load,log})}{2})$
+
+### Dimension X: XML Parsing
+
+#### X1: TTR (Type-Token Ratio) for tag-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving tag.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{tag}) \times 1.3)$
+
+#### X2: Dependency Distance: 'if' to 'attribute'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to attribute actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, attribute)}{24})$
+
+#### X3: Density of 'node' constraints
+*   **Description**: Calculates the absolute density of the keyword node against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(node) \times 13)$
+
+#### X4: Variance of 'dom' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'dom'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{dom}}{19})$
+
+#### X5: Entropy of 'html' and 'tree'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching html or tree.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{html,tree})}{4})$
+
+#### X6: TTR (Type-Token Ratio) for parse-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving parse.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{parse}) \times 1.4)$
+
+#### X7: Dependency Distance: 'if' to 'dom'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to dom actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, dom)}{34})$
+
+#### X8: Density of 'tree' constraints
+*   **Description**: Calculates the absolute density of the keyword tree against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(tree) \times 18)$
+
+#### X9: Variance of 'attribute' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'attribute'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{attribute}}{24})$
+
+#### X10: Entropy of 'xml' and 'node'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching xml or node.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{xml,node})}{3})$
+
+#### X11: TTR (Type-Token Ratio) for tag-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving tag.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{tag}) \times 1.5)$
+
+#### X12: Dependency Distance: 'if' to 'attribute'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to attribute actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, attribute)}{44})$
+
+#### X13: Density of 'node' constraints
+*   **Description**: Calculates the absolute density of the keyword node against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(node) \times 23)$
+
+#### X14: Variance of 'dom' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'dom'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{dom}}{29})$
+
+#### X15: Entropy of 'html' and 'tree'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching html or tree.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{html,tree})}{2})$
+
+### Dimension Y: Year/Temporal
+
+#### Y1: TTR (Type-Token Ratio) for time-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving time.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{time}) \times 1.3)$
+
+#### Y2: Dependency Distance: 'if' to 'year'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to year actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, year)}{24})$
+
+#### Y3: Density of 'month' constraints
+*   **Description**: Calculates the absolute density of the keyword month against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(month) \times 13)$
+
+#### Y4: Variance of 'timestamp' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'timestamp'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{timestamp}}{19})$
+
+#### Y5: Entropy of 'current' and 'epoch'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching current or epoch.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{current,epoch})}{4})$
+
+#### Y6: TTR (Type-Token Ratio) for now-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving now.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{now}) \times 1.4)$
+
+#### Y7: Dependency Distance: 'if' to 'timestamp'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to timestamp actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, timestamp)}{34})$
+
+#### Y8: Density of 'epoch' constraints
+*   **Description**: Calculates the absolute density of the keyword epoch against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(epoch) \times 18)$
+
+#### Y9: Variance of 'year' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'year'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{year}}{24})$
+
+#### Y10: Entropy of 'date' and 'month'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching date or month.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{date,month})}{3})$
+
+#### Y11: TTR (Type-Token Ratio) for time-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving time.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{time}) \times 1.5)$
+
+#### Y12: Dependency Distance: 'if' to 'year'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to year actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, year)}{44})$
+
+#### Y13: Density of 'month' constraints
+*   **Description**: Calculates the absolute density of the keyword month against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(month) \times 23)$
+
+#### Y14: Variance of 'timestamp' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'timestamp'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{timestamp}}{29})$
+
+#### Y15: Entropy of 'current' and 'epoch'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching current or epoch.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{current,epoch})}{2})$
+
+### Dimension Z: Zero-Shot Balanced
+
+#### Z1: TTR (Type-Token Ratio) for shot-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving shot.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{shot}) \times 1.3)$
+
+#### Z2: Dependency Distance: 'if' to 'few'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to few actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, few)}{24})$
+
+#### Z3: Density of 'zero' constraints
+*   **Description**: Calculates the absolute density of the keyword zero against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(zero) \times 13)$
+
+#### Z4: Variance of 'case' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'case'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{case}}{19})$
+
+#### Z5: Entropy of 'show' and 'sample'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching show or sample.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{show,sample})}{4})$
+
+#### Z6: TTR (Type-Token Ratio) for instance-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving instance.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{instance}) \times 1.4)$
+
+#### Z7: Dependency Distance: 'if' to 'case'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to case actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, case)}{34})$
+
+#### Z8: Density of 'sample' constraints
+*   **Description**: Calculates the absolute density of the keyword sample against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(sample) \times 18)$
+
+#### Z9: Variance of 'few' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'few'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{few}}{24})$
+
+#### Z10: Entropy of 'example' and 'zero'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching example or zero.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{example,zero})}{3})$
+
+#### Z11: TTR (Type-Token Ratio) for shot-based rules
+*   **Description**: Evaluates the lexical diversity of rule structures involving shot.
+*   **Formula**: $M = \min(1.0, \text{TTR}(X_{shot}) \times 1.5)$
+
+#### Z12: Dependency Distance: 'if' to 'few'
+*   **Description**: Mathematically calculates the average token distance from conditional triggers to few actions.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\text{dist}(\text{if}, few)}{44})$
+
+#### Z13: Density of 'zero' constraints
+*   **Description**: Calculates the absolute density of the keyword zero against total volume.
+*   **Formula**: $M = \min(1.0, \text{Density}(zero) \times 23)$
+
+#### Z14: Variance of 'case' block lengths
+*   **Description**: Measures the standard deviation of text partitions split by 'case'.
+*   **Formula**: $M = \max(0.1, 1.0 - \frac{\sigma_{case}}{29})$
+
+#### Z15: Entropy of 'show' and 'sample'
+*   **Description**: Computes the Shannon Entropy strictly bounded to tokens matching show or sample.
+*   **Formula**: $M = \min(1.0, \frac{H(X_{show,sample})}{2})$
+
+Package Management Systems* (ACM).
 
 ### G2: Required Frontmatter Fields
 *   **Formula**: $M_{G2} = (\text{hasName} \&\& \text{hasDesc}) ? 1.0 : 0.0$
@@ -519,7 +1718,7 @@ graph LR
 
 #### Phase 1: Static Structural Audit ($S_{\text{static}}$)
 The static score is calculated using the normalized sum of the 105 criteria:
-$$S_{\text{static}} = \frac{100.00}{105.00} \sum_{i=1}^{105} M_i$$
+$S_{\text{static}} = \frac{100.00}{390.00} \sum_{i=1}^{390} M_i$
 
 #### Phase 2: Dynamic Semantic Audit ($M_{\text{semantic}}$)
 A cost-efficient model (`gemini-2.5-flash-lite`) is invoked to assess the prompt on qualitative properties. The model outputs a JSON payload containing:

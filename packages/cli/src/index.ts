@@ -140,7 +140,7 @@ program
   .option('-f, --format <format>', 'Output format: json, pretty', 'pretty')
   .option('--fail-under <tier>', 'Exit status fails (non-zero) if tier is below given value (1, 2, or 3)', '0')
   .option('--summary <file>', 'Path to write a markdown summary report (great for GitHub Step Summary)')
-  .option('-v, --verbose', 'Verbose mode: outputs all 100 individual scientific metrics')
+  .option('-v, --verbose', 'Verbose mode: outputs all 390 individual scientific metrics')
   .action(async (target, options) => {
     let tempDirToDelete: string | undefined;
     try {
@@ -288,7 +288,7 @@ program
             console.log(`  Dim G: Syntax, Structure & Metadata:    ${report.dimensions.dimG.toFixed(2)} / 15.00`);
             
             if (options.verbose) {
-              console.log('\nIndividual 105 Scientific Scores:');
+              console.log('\nIndividual 390 Scientific Scores:');
               const sortedKeys = Object.keys(report.scores).sort();
               for (const key of sortedKeys) {
                 console.log(`  ${key}: ${report.scores[key].toFixed(2)}`);

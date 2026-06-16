@@ -6,6 +6,25 @@ import * as dimD from './scorers/dimD.js';
 import * as dimE from './scorers/dimE.js';
 import * as dimF from './scorers/dimF.js';
 import * as dimG from './scorers/dimG.js';
+import * as dimH from './scorers/dimH.js';
+import * as dimI from './scorers/dimI.js';
+import * as dimJ from './scorers/dimJ.js';
+import * as dimK from './scorers/dimK.js';
+import * as dimL from './scorers/dimL.js';
+import * as dimM from './scorers/dimM.js';
+import * as dimN from './scorers/dimN.js';
+import * as dimO from './scorers/dimO.js';
+import * as dimP from './scorers/dimP.js';
+import * as dimQ from './scorers/dimQ.js';
+import * as dimR from './scorers/dimR.js';
+import * as dimS from './scorers/dimS.js';
+import * as dimT from './scorers/dimT.js';
+import * as dimU from './scorers/dimU.js';
+import * as dimV from './scorers/dimV.js';
+import * as dimW from './scorers/dimW.js';
+import * as dimX from './scorers/dimX.js';
+import * as dimY from './scorers/dimY.js';
+import * as dimZ from './scorers/dimZ.js';
 
 export interface AuditReport {
   name?: string;
@@ -19,6 +38,7 @@ export interface AuditReport {
     dimE: number; // Robustness
     dimF: number; // Economy
     dimG: number; // Structure & Syntax
+    [key: string]: number;
   };
   scores: { [key: string]: number };
   explanation?: string;
@@ -149,6 +169,21 @@ export function auditSkill(content: string): AuditReport {
   scores['G14'] = dimG.scoreG14(parsed);
   scores['G15'] = dimG.scoreG15(parsed);
 
+  // Dimensions H to Z (19 dimensions, 15 metrics each = 285 metrics)
+  const dimScorers: Record<string, any> = {
+    H: dimH, I: dimI, J: dimJ, K: dimK, L: dimL, M: dimM,
+    N: dimN, O: dimO, P: dimP, Q: dimQ, R: dimR, S: dimS,
+    T: dimT, U: dimU, V: dimV, W: dimW, X: dimX, Y: dimY, Z: dimZ
+  };
+  const letters = ['H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+  for (const letter of letters) {
+    for (let idx = 1; idx <= 15; idx++) {
+      const code = `${letter}${idx}`;
+      const fnName = `score${code}`;
+      scores[code] = dimScorers[letter][fnName](text);
+    }
+  }
+
   // Compute Dimension Sums
   const dimAMetrics = ['A1','A2','A3','A4','A5','A6','A7','A8','A9','A10','A11','A12','A13','A14','A15'];
   const dimBMetrics = ['B1','B2','B3','B4','B5','B6','B7','B8','B9','B10','B11','B12','B13','B14','B15'];
@@ -160,7 +195,7 @@ export function auditSkill(content: string): AuditReport {
 
   const getSum = (keys: string[]) => keys.reduce((acc, k) => acc + scores[k], 0);
 
-  const dimensions = {
+  const dimensions: any = {
     dimA: getSum(dimAMetrics),
     dimB: getSum(dimBMetrics),
     dimC: getSum(dimCMetrics),
@@ -170,13 +205,20 @@ export function auditSkill(content: string): AuditReport {
     dimG: getSum(dimGMetrics)
   };
 
-  // Compute Overall Score as the Sum of all 105 scores (normalized to 100 max)
+  // Compute H to Z sums
+  const lettersForSum = ['H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+  for (const letter of lettersForSum) {
+    const keys = Array.from({ length: 15 }, (_, i) => `${letter}${i + 1}`);
+    dimensions[`dim${letter}`] = getSum(keys);
+  }
+
+  // Compute Overall Score as the Sum of all 390 scores (normalized to 100 max)
   const allMetricKeys = Object.keys(scores);
   let scoreSum = 0;
   for (const k of allMetricKeys) {
     scoreSum += scores[k];
   }
-  const overallScore = (scoreSum / 105.0) * 100.0;
+  const overallScore = (scoreSum / 390.0) * 100.0;
 
   // Map old aliases for backward compatibility with 1.0 test suite (normalized to 0-1)
   scores['efficacy'] = dimensions.dimA / 15.0;
