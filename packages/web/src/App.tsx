@@ -80,7 +80,7 @@ function App() {
         {/* Floating Nav Pill */}
         <header className="floating-nav">
           <div className="nav-logo">
-            <img src="/favicon.png" alt="SkillGauge Logo" style={{ width: '24px', height: '24px', borderRadius: '4px', objectFit: 'cover', mixBlendMode: 'screen' }} /> SkillGauge
+            <img src={`${import.meta.env.BASE_URL}favicon.png`} alt="SkillGauge Logo" style={{ width: '24px', height: '24px', borderRadius: '4px', objectFit: 'cover', mixBlendMode: 'screen' }} /> SkillGauge
           </div>
           <nav className="nav-links">
             <button
