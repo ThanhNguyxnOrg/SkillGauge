@@ -6,6 +6,9 @@ on:
       repository:
         description: 'The URL of the repository to clone and scan'
         required: true
+      gemini_api_key:
+        description: 'Optional Gemini API Key for running Phase 2 dynamic/semantic audit'
+        required: false
 
 permissions:
   contents: write
@@ -37,5 +40,6 @@ jobs:
       - name: 🤖 Process Submission
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GEMINI_API_KEY: ${{ github.event.inputs.gemini_api_key || secrets.GEMINI_API_KEY }}
         run: |
           node scripts/submit-bot.mjs --repository "${{ github.event.inputs.repository }}"

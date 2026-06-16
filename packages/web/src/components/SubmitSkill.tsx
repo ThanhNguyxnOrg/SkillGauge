@@ -307,7 +307,8 @@ export const SubmitSkill: React.FC = () => {
         body: JSON.stringify({
           ref: 'main',
           inputs: {
-            repository: `https://github.com/${owner}/${repo}`
+            repository: `https://github.com/${owner}/${repo}`,
+            gemini_api_key: geminiApiKey.trim() || undefined
           }
         })
       });

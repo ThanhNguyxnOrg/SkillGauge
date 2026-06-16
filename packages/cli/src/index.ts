@@ -304,7 +304,11 @@ program
           const repoName = getRepositoryName(file);
           summaryContent += `| \`${displayName}\` | \`${repoName}\` | \`${file}\` | \`${report.overallScore.toFixed(3)}\` | ${tierEmoji} **${report.tier}** |\n`;
           if (report.explanation) {
-            summaryContent += `| | | | *Notes: ${report.explanation}* | |\n`;
+            let notesContent = report.explanation;
+            if (notesContent && notesContent !== 'Passes quality specifications.') {
+              notesContent = `<details><summary>🔍 View warnings</summary>${notesContent}</details>`;
+            }
+            summaryContent += `| | | | *Notes: ${notesContent}* | |\n`;
           }
           validFileCount++;
         }

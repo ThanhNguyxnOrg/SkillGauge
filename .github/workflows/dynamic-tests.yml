@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write
 
 jobs:
   dynamic-testing:
@@ -38,3 +39,10 @@ jobs:
           GEMINI_API_KEY: ${{ github.event.inputs.gemini_api_key || secrets.GEMINI_API_KEY }}
         run: |
           node packages/cli/dist/index.js dynamic-test "skills/**/*.md"
+
+      - name: 📈 Update PR Description with Phase 2 Scores
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GEMINI_API_KEY: ${{ github.event.inputs.gemini_api_key || secrets.GEMINI_API_KEY }}
+        run: |
+          node scripts/update-pr-dynamic.mjs

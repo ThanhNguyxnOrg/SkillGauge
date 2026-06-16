@@ -1,7 +1,7 @@
 import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
-import { auditSkill } from '../packages/core/dist/index.js';
+import { auditSkill, auditSkillAsync } from '../packages/core/dist/index.js';
 
 // Parse arguments: node scripts/submit-bot.mjs --repository <url>
 const args = process.argv.slice(2);
@@ -60,6 +60,7 @@ function findMarkdownFiles(dir) {
 
 const mdFiles = findMarkdownFiles(tempDir);
 const validSkills = [];
+const apiKey = process.env.GEMINI_API_KEY || '';
 
 for (const file of mdFiles) {
   const fullPath = path.join(tempDir, file);
@@ -67,7 +68,7 @@ for (const file of mdFiles) {
   
   if (content.trim().startsWith('---') && content.includes('name:') && content.includes('description:')) {
     try {
-      const report = auditSkill(content);
+      const report = apiKey ? await auditSkillAsync(content, apiKey) : auditSkill(content);
       const skillName = report.name || path.basename(file, '.md');
       validSkills.push({
         file,
@@ -154,7 +155,11 @@ try {
   prBody += `| --- | --- | --- | --- | --- |\n`;
   for (const s of validSkills) {
     let emoji = s.tier === 'Tier 1' ? '🟢' : s.tier === 'Tier 2' ? '🟡' : '🔴';
-    prBody += `| \`${s.name}\` | \`${s.file}\` | \`${s.score.toFixed(3)}\` | ${emoji} **${s.tier}** | ${s.explanation} |\n`;
+    let notesContent = s.explanation || 'Passes quality specifications.';
+    if (notesContent && notesContent !== 'Passes quality specifications.') {
+      notesContent = `<details><summary>🔍 View warnings</summary>${notesContent}</details>`;
+    }
+    prBody += `| \`${s.name}\` | \`${s.file}\` | \`${s.score.toFixed(3)}\` | ${emoji} **${s.tier}** | ${notesContent} |\n`;
   }
 
   const prBodyFile = path.join(process.cwd(), 'pr-body.txt');
