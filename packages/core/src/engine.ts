@@ -132,7 +132,7 @@ export function auditSkill(content: string): AuditReport {
   scores['F14'] = dimF.scoreF14(text);
   scores['F15'] = dimF.scoreF15(text);
 
-  // Dimension G: Structure & Syntax (10)
+  // Dimension G: Structure & Syntax (15)
   scores['G1'] = dimG.scoreG1(parsed);
   scores['G2'] = dimG.scoreG2(parsed);
   scores['G3'] = dimG.scoreG3(parsed);
@@ -143,6 +143,11 @@ export function auditSkill(content: string): AuditReport {
   scores['G8'] = dimG.scoreG8(parsed);
   scores['G9'] = dimG.scoreG9(parsed);
   scores['G10'] = dimG.scoreG10(parsed);
+  scores['G11'] = dimG.scoreG11(parsed);
+  scores['G12'] = dimG.scoreG12(parsed);
+  scores['G13'] = dimG.scoreG13(parsed);
+  scores['G14'] = dimG.scoreG14(parsed);
+  scores['G15'] = dimG.scoreG15(parsed);
 
   // Compute Dimension Sums
   const dimAMetrics = ['A1','A2','A3','A4','A5','A6','A7','A8','A9','A10','A11','A12','A13','A14','A15'];
@@ -151,7 +156,7 @@ export function auditSkill(content: string): AuditReport {
   const dimDMetrics = ['D1','D2','D3','D4','D5','D6','D7','D8','D9','D10','D11','D12','D13','D14','D15'];
   const dimEMetrics = ['E1','E2','E3','E4','E5','E6','E7','E8','E9','E10','E11','E12','E13','E14','E15'];
   const dimFMetrics = ['F1','F2','F3','F4','F5','F6','F7','F8','F9','F10','F11','F12','F13','F14','F15'];
-  const dimGMetrics = ['G1','G2','G3','G4','G5','G6','G7','G8','G9','G10'];
+  const dimGMetrics = ['G1','G2','G3','G4','G5','G6','G7','G8','G9','G10','G11','G12','G13','G14','G15'];
 
   const getSum = (keys: string[]) => keys.reduce((acc, k) => acc + scores[k], 0);
 
@@ -165,13 +170,13 @@ export function auditSkill(content: string): AuditReport {
     dimG: getSum(dimGMetrics)
   };
 
-  // Compute Overall Score as the Sum of all 100 scores
+  // Compute Overall Score as the Sum of all 105 scores (normalized to 100 max)
   const allMetricKeys = Object.keys(scores);
   let scoreSum = 0;
   for (const k of allMetricKeys) {
     scoreSum += scores[k];
   }
-  const overallScore = scoreSum;
+  const overallScore = (scoreSum / 105.0) * 100.0;
 
   // Map old aliases for backward compatibility with 1.0 test suite (normalized to 0-1)
   scores['efficacy'] = dimensions.dimA / 15.0;
@@ -179,7 +184,7 @@ export function auditSkill(content: string): AuditReport {
   scores['compactness'] = scores['B4'];
   scores['guardrails'] = scores['E1'];
   scores['schema'] = scores['B8'];
-  scores['cohesion'] = dimensions.dimG / 10.0;
+  scores['cohesion'] = dimensions.dimG / 15.0;
   scores['ambiguity'] = scores['A3'];
   scores['memory'] = scores['B11'];
   scores['protection'] = scores['C2'];
@@ -243,7 +248,7 @@ Skill content to evaluate:
 ${content}
 ---`;
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${finalApiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${finalApiKey}`;
     const response = await fetch(url, {
       method: 'POST',
       headers: {

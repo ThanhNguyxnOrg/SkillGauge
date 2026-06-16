@@ -285,10 +285,10 @@ program
             console.log(`  Dim D: Tool-Use & MCP Clarity:          ${report.dimensions.dimD.toFixed(2)} / 15.00`);
             console.log(`  Dim E: Robustness & Exception Handling: ${report.dimensions.dimE.toFixed(2)} / 15.00`);
             console.log(`  Dim F: Operational & Inference Economy: ${report.dimensions.dimF.toFixed(2)} / 15.00`);
-            console.log(`  Dim G: Syntax, Structure & Metadata:    ${report.dimensions.dimG.toFixed(2)} / 10.00`);
+            console.log(`  Dim G: Syntax, Structure & Metadata:    ${report.dimensions.dimG.toFixed(2)} / 15.00`);
             
             if (options.verbose) {
-              console.log('\nIndividual 100 Scientific Scores:');
+              console.log('\nIndividual 105 Scientific Scores:');
               const sortedKeys = Object.keys(report.scores).sort();
               for (const key of sortedKeys) {
                 console.log(`  ${key}: ${report.scores[key].toFixed(2)}`);

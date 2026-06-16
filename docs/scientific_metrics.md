@@ -6,30 +6,27 @@ This document details the mathematical formulations, evaluation dimensions, and 
 
 ## 📐 Mathematical Formulation
 
-SkillGauge computes the overall score of a skill using the **geometric mean (100th root)** of all 100 individual metric scores:
+SkillGauge computes the overall static score of a skill using the normalized sum of all **105 individual metric scores** (with all dimensions symmetric at 15 metrics each):
 
-$$\text{Overall Score} = 100.00 \times \left( \prod_{i=1}^{100} M_i^* \right)^{\frac{1}{100}}$$
+$$\text{Overall Static Score} = \frac{100.00}{105.00} \sum_{i=1}^{105} M_i$$
 
-$$\text{where } M_i^* = \max(0.01, M_i)$$
-
-*   **Geometric Mean Advantage**: Unlike a simple arithmetic average, the geometric mean penalizes extreme weakness in any single critical metric. If a prompt has a fatal flaw (e.g. zero safety exfiltration guards or incorrect UTF-8 encoding), it will drag the final overall score down significantly.
-*   **The 0.01 Floor ($M_i^*$)**: Enforcing a small floor of $0.01$ ensures that a single $0.00$ score on any minor checklist item does not completely zero out the entire overall score, allowing the metric matrix to remain resilient and representative.
+Where $M_i \in [0.0, 1.0]$ is the raw score computed by the $i$-th metric scorer function.
 
 ---
 
 ## 📊 Evaluation Matrix Summary
 
-The 100 criteria are structured into 7 dimensions. Each dimension calculates a raw normalized score:
+The 105 criteria are structured into 7 symmetric dimensions. Each dimension contains exactly 15 metrics:
 
-| ID | Dimension Name | Criteria count | Max Points | Core Focus |
+| ID | Dimension Name | Criteria count | Max Weight | Core Focus |
 | --- | --- | --- | --- | --- |
-| **Dim A** | Instruction Quality & Clarity | 15 Metrics | 15.00 | Readability, imperatives, qualifer ambiguity, voice constructs. |
+| **Dim A** | Instruction Quality & Clarity | 15 Metrics | 15.00 | Readability, imperatives, qualifier ambiguity, voice constructs. |
 | **Dim B** | Context & Memory Management | 15 Metrics | 15.00 | Token friction weight, XML matching, history bounds, stop-word footprint. |
 | **Dim C** | Safety, Alignment & Security | 15 Metrics | 15.00 | Injection shielding, role lock, exfiltration guard, PII masks. |
 | **Dim D** | Tool-Use & MCP Clarity | 15 Metrics | 15.00 | Parameter schemas, parallel calling rules, required fields, rate limits. |
 | **Dim E** | Robustness & Exception Handling | 15 Metrics | 15.00 | Exit strategies, retry budgets, fallback plans, diagnostics, timeouts. |
 | **Dim F** | Operational & Inference Economy | 15 Metrics | 15.00 | CoT loop blockers, verbosity control, caching, model cascading & routing. |
-| **Dim G** | Syntax, Structure & Metadata | 10 Metrics | 10.00 | YAML frontmatter, heading jumps, list consistency, UTF-8 compliance. |
+| **Dim G** | Syntax, Structure & Metadata | 15 Metrics | 15.00 | YAML frontmatter, heading jumps, list consistency, UTF-8 compliance, schema validation. |
 
 ---
 
@@ -484,6 +481,26 @@ The 100 criteria are structured into 7 dimensions. Each dimension calculates a r
 *   **Formula**: $M_{G10} = \text{isUtf8} ? 1.0 : 0.0$
 *   **Reference**: *Character Encoding Security and Robustness* (RFC 3629).
 
+### G11: YAML Schema Validation
+*   **Formula**: $M_{G11} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasTests} \wedge \text{isArray})$
+*   **Reference**: *Structured Schema Verification in Large Context Prompts* (IEEE).
+
+### G12: Code Block Closure Integrity
+*   **Formula**: $M_{G12} = \text{allClosed} ? 1.0 : 0.2$
+*   **Reference**: *Grammatical Parsing Integrity of Markdown Templates* (ACL).
+
+### G13: Inline Code Block Density
+*   **Formula**: $M_{G13} = 1.0 - \min\left(0.7, \max\left(0, \frac{N_{\text{backticks}}}{N_{\text{words}}} - 0.12\right) \times 5.0\right)$
+*   **Reference**: *Visual Density and Attention Allotment in Prompt Layouts* (CHI).
+
+### G14: URL Protocol Safety
+*   **Formula**: $M_{G14} = \max\left(0.4, 1.0 - 0.2 \times N_{\text{insecure}}\right)$
+*   **Reference**: *Secure Documentation Practices in Version Control* (USENIX).
+
+### G15: Blockquote Nesting Depth
+*   **Formula**: $M_{G15} = \max\left(0.3, 1.0 - 0.25 \times N_{\text{nested}}\right)$
+*   **Reference**: *Parsing Structural Hierarchy in Autoregressive Models* (EMNLP).
+
 ---
 
 ## 🧪 2-Phase Auditing & Dynamic Probing Calculations
@@ -501,9 +518,8 @@ graph LR
 ```
 
 #### Phase 1: Static Structural Audit ($S_{\text{static}}$)
-The static score is calculated using the geometric mean of the 100 criteria:
-$$S_{\text{static}} = 100.00 \times \left( \prod_{i=1}^{100} M_i^* \right)^{\frac{1}{100}}$$
-where $M_i^* = \max(0.01, M_i)$.
+The static score is calculated using the normalized sum of the 105 criteria:
+$$S_{\text{static}} = \frac{100.00}{105.00} \sum_{i=1}^{105} M_i$$
 
 #### Phase 2: Dynamic Semantic Audit ($M_{\text{semantic}}$)
 A cost-efficient model (`gemini-2.5-flash-lite`) is invoked to assess the prompt on qualitative properties. The model outputs a JSON payload containing:
@@ -531,8 +547,8 @@ For each defined scenario:
 2. The model response text ($O$) is converted to lowercase.
 3. For each positive assertion $e_j \in \text{expected}$:
    $$A_j = \mathbb{I}(e_j \in O)$$
-4. For each negative assertion $p_k \in \text{expected\_not}$:
+4. For each negative assertion $p_k \in \text{expected-not}$:
    $$B_k = \mathbb{I}(p_k \notin O)$$
 
 The scenario is marked as **Passed** if and only if:
-$$\sum_{j} A_j = |\text{expected}| \quad \wedge \quad \sum_{k} B_k = |\text{expected\_not}|$$
+$$\sum_{j} A_j = |\text{expected}| \quad \wedge \quad \sum_{k} B_k = |\text{expected-not}|$$

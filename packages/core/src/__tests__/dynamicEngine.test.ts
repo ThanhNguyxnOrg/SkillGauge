@@ -30,7 +30,7 @@ tests:
 This is mock skill content.
 `;
 
-    globalThis.fetch = jest.fn().mockImplementation(((url: any, options: any) => {
+    globalThis.fetch = jest.fn().mockImplementation((url: any, options: any) => {
       const body = JSON.parse(options.body);
       const input = body.contents[0].parts[0].text;
       

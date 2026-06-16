@@ -31,6 +31,7 @@ This is a sample skill. It has objective details and rules.
     expect(report.scores['E12']).toBeDefined();
     expect(report.scores['F11']).toBeDefined();
     expect(report.scores['G10']).toBeDefined();
+    expect(report.scores['G15']).toBeDefined();
 
     // Verify sum keeps the score bounded
     expect(report.overallScore).toBeGreaterThanOrEqual(0.0);

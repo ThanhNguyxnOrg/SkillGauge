@@ -32,7 +32,7 @@ const DIMENSION_METADATA = [
   { id: 'dimD', name: 'Dimension D: Tool-Use & MCP Clarity', max: 15, prefix: 'D', count: 15 },
   { id: 'dimE', name: 'Dimension E: Robustness & Exception Handling', max: 15, prefix: 'E', count: 15 },
   { id: 'dimF', name: 'Dimension F: Operational & Inference Economy', max: 15, prefix: 'F', count: 15 },
-  { id: 'dimG', name: 'Dimension G: Syntax, Structure & Metadata', max: 10, prefix: 'G', count: 10 },
+  { id: 'dimG', name: 'Dimension G: Syntax, Structure & Metadata', max: 15, prefix: 'G', count: 15 },
 ];
 
 const METRICS_DICTIONARY: { [key: string]: { name: string; desc: string } } = {
@@ -143,6 +143,11 @@ const METRICS_DICTIONARY: { [key: string]: { name: string; desc: string } } = {
   G8: { name: 'HTML Entity Validation', desc: 'Validates unescaped special characters.' },
   G9: { name: 'Formatting Consistency', desc: 'Checks for standard spacing rules.' },
   G10: { name: 'UTF-8 Encoding Compliance', desc: 'Fails if files have non-standard characters.' },
+  G11: { name: 'YAML Schema Validation', desc: 'Validates schema types in metadata.' },
+  G12: { name: 'Code Block Closure Integrity', desc: 'Ensures all opened code blocks are closed.' },
+  G13: { name: 'Inline Code Block Density', desc: 'Penalizes excessive inline formatting backticks.' },
+  G14: { name: 'URL Protocol Safety', desc: 'Checks for insecure HTTP links.' },
+  G15: { name: 'Blockquote Nesting Depth', desc: 'Penalizes excessively nested blockquotes.' },
 };
 
 export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({ report, skillName, content, onClose }) => {
@@ -183,7 +188,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({ report, skil
                 Skill Audit Report: {skillName}
               </h2>
               <p style={{ color: 'var(--text-secondary)', fontSize: '13px' }}>
-                Full scientific static audit breakdown (100 metrics matrix)
+                Full scientific static audit breakdown (105 metrics matrix)
               </p>
             </div>
             <button className="modal-close-btn" onClick={onClose}>
@@ -273,7 +278,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({ report, skil
           {/* Details Section */}
           <div className="criteria-list-section">
             <h3 className="section-subtitle" style={{ fontSize: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <BookOpen size={16} /> 100-Criteria Details
+              <BookOpen size={16} /> 105-Criteria Details
             </h3>
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '16px' }}>
