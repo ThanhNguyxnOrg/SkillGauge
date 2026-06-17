@@ -94,7 +94,8 @@ async function main() {
   prBody += `| Skill Name | Path | Static Score (P1) | Final Score (P2) | Tier | Notes |\n`;
   prBody += `| --- | --- | --- | --- | --- | --- |\n`;
   
-  for (const s of auditedSkills) {
+  const displaySkills = auditedSkills.slice(0, 15);
+  for (const s of displaySkills) {
     let emoji = s.tier === 'Tier 1' ? '🟢' : s.tier === 'Tier 2' ? '🟡' : '🔴';
     let notesContent = s.explanation;
     if (notesContent && notesContent !== 'Passes quality specifications.') {
@@ -102,6 +103,12 @@ async function main() {
     }
     prBody += `| \`${s.name}\` | \`${s.file}\` | \`${s.staticScore.toFixed(3)}\` | \`${s.dynamicScore.toFixed(3)}\` | ${emoji} **${s.tier}** | ${notesContent} |\n`;
   }
+
+  if (auditedSkills.length > 15) {
+    const remaining = auditedSkills.length - 15;
+    prBody += `| *...* | *...* | *...* | *...* | *...* | *and ${remaining} more skills. View all details on the [Live Leaderboard](https://thanhnguyxnorg.github.io/SkillGauge/).* |\n`;
+  }
+
 
   const bodyFilePath = path.join(process.cwd(), 'pr-body-dynamic.txt');
   fs.writeFileSync(bodyFilePath, prBody, 'utf-8');
