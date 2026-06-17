@@ -14,7 +14,7 @@ Use Manim for technical explainers where motion, structure, and clarity matter m
 - the user wants a technical explainer animation
 - the concept is a graph, workflow, architecture, metric progression, or system diagram
 - the user wants a short product or launch explainer for X or a landing page
-- the visual should feel precise instead of generically cinematic
+- the visual must feel precise instead of generically cinematic
 
 ## Tool Requirements
 
@@ -41,11 +41,11 @@ Use Manim for technical explainers where motion, structure, and clarity matter m
 
 ## Scene Planning Rules
 
-- each scene should prove one thing
+- each scene must prove one thing
 - avoid overstuffed diagrams
 - prefer progressive reveal over full-screen clutter
-- use motion to explain state change, not just to keep the screen busy
-- title cards should be short and loaded with meaning
+- use motion to explain state change, not  to keep the screen busy
+- title cards must be short and loaded with meaning
 
 ## Network Graph Default
 

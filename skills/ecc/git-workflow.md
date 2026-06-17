@@ -199,7 +199,7 @@ git fetch origin
 git rebase origin/main
 
 # Fix any conflicts
-# Tests should still pass
+# Tests must still pass
 
 # Force push (only if you're the only contributor)
 git push --force-with-lease origin feature/user-auth

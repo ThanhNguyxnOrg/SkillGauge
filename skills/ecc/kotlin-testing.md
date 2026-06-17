@@ -171,11 +171,11 @@ class OrderServiceTest : BehaviorSpec({
 
             val result = service.placeOrder(request)
 
-            Then("it should return a confirmed order") {
+            Then("it must return a confirmed order") {
                 result.status shouldBe OrderStatus.CONFIRMED
             }
 
-            Then("it should charge payment") {
+            Then("it must charge payment") {
                 coVerify(exactly = 1) { paymentService.charge(any()) }
             }
         }
@@ -183,7 +183,7 @@ class OrderServiceTest : BehaviorSpec({
         When("payment fails") {
             coEvery { paymentService.charge(any()) } returns PaymentResult.Declined
 
-            Then("it should throw PaymentException") {
+            Then("it must throw PaymentException") {
                 shouldThrow<PaymentException> {
                     service.placeOrder(request)
                 }
@@ -278,13 +278,13 @@ shouldNotThrow<Exception> {
 fun beActiveUser() = object : Matcher<User> {
     override fun test(value: User) = MatcherResult(
         value.isActive && value.lastLogin != null,
-        { "User ${value.id} should be active with a last login" },
-        { "User ${value.id} should not be active" },
+        { "User ${value.id} must be active with a last login" },
+        { "User ${value.id} must not be active" },
     )
 }
 
 // Usage
-user should beActiveUser()
+user must beActiveUser()
 ```
 
 ### MockK
@@ -449,7 +449,7 @@ class FlowServiceTest : FunSpec({
 
             queries.emit("a")
             queries.emit("ab")
-            queries.emit("abc") // Only this should trigger search
+            queries.emit("abc") // Only this must trigger search
             advanceTimeBy(500)
 
             results shouldHaveSize 1

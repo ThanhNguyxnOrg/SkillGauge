@@ -156,7 +156,7 @@ Use `loopVolumeCurveBehavior` to control how the frame count behaves when loopin
 
 ## Pitch
 
-Use `toneFrequency` to adjust the pitch without affecting speed. Values range from 0.01 to 2:
+Use `toneFrequency` to ad the pitch without affecting speed. Values range from 0.01 to 2:
 
 ```tsx
 <Audio

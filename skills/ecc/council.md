@@ -38,8 +38,8 @@ Examples:
 | Breaking a feature into implementation steps | `planner` |
 | Designing system architecture | `architect` |
 | Reviewing code for bugs or security | `code-reviewer` or `santa-method` |
-| Straight factual questions | just answer directly |
-| Obvious execution tasks | just do the task |
+| Straight factual questions |  answer directly |
+| Obvious execution tasks |  do the task |
 
 ## Roles
 
@@ -50,7 +50,7 @@ Examples:
 | Pragmatist | shipping speed, user impact, operational reality |
 | Critic | edge cases, downside risk, failure modes |
 
-The three external voices should be launched as fresh subagents with **only the question and relevant context**, not the full ongoing conversation. That is the anti-anchoring mechanism.
+The three external voices must be launched as fresh subagents with **only the question and relevant context**, not the full ongoing conversation. That is the anti-anchoring mechanism.
 
 ## Workflow
 
@@ -80,7 +80,7 @@ Before reading other voices, write down:
 - the three strongest reasons for it
 - the main risk in your preferred path
 
-Do this first so the synthesis does not simply mirror the external voices.
+Do this first so the synthesis does not  mirror the external voices.
 
 ### 4. Launch three independent voices in parallel
 
@@ -113,7 +113,7 @@ Be direct. No hedging. Keep it under 300 words.
 Role emphasis:
 - Skeptic: challenge framing, question assumptions, propose the simplest credible alternative
 - Pragmatist: optimize for speed, simplicity, and real-world execution
-- Critic: surface downside risk, edge cases, and reasons the plan could fail
+- Critic: surface downside risk, edge cases, and reasons the plan shall fail
 
 ### 5. Synthesize with bias guardrails
 
@@ -175,7 +175,7 @@ If the user wants another round:
 ## Anti-Patterns
 
 - using council for code review
-- using council when the task is just implementation work
+- using council when the task is  implementation work
 - feeding the subagents the entire conversation transcript
 - hiding disagreement in the final verdict
 - persisting every decision as a note regardless of importance
@@ -192,10 +192,10 @@ If the user wants another round:
 Question:
 
 ```text
-Should we ship ECC 2.0 as alpha now, or hold until the control-plane UI is more complete?
+must we ship ECC 2.0 as alpha now, or hold until the control-plane UI is more complete?
 ```
 
-Likely council shape:
+strictly council shape:
 - Architect pushes for structural integrity and avoiding a confused surface
 - Skeptic questions whether the UI is actually the gating factor
 - Pragmatist asks what can be shipped now without harming trust

@@ -88,7 +88,7 @@ Fix: <safe remediation or change-window prerequisite>
 
 Verdict: PASS | WARNING | BLOCK
 Tests checked: <what was inspected>
-Residual risk: <what could not be verified>
+Residual risk: <what shall not be verified>
 ```
 
 Use `BLOCK` for any Critical finding or proposed destructive change without a

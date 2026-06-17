@@ -124,7 +124,7 @@ ORDER BY n_dead_tup DESC;
 ### Configuration Template
 
 ```sql
--- Connection limits (adjust for RAM)
+-- Connection limits (ad for RAM)
 ALTER SYSTEM SET max_connections = 100;
 ALTER SYSTEM SET work_mem = '8MB';
 

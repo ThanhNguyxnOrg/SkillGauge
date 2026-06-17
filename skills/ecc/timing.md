@@ -110,7 +110,7 @@ const rotation = interpolate(springProgress, [0, 1], [0, 360]);
 
 ### Adding springs
 
-Springs return just numbers, so math can be performed:
+Springs return  numbers, so math can be performed:
 
 ```tsx
 const frame = useCurrentFrame();

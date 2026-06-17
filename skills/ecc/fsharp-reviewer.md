@@ -46,7 +46,7 @@ When invoked:
 ### HIGH - Code Quality
 - **Large functions**: Over 40 lines - extract helper functions
 - **Deep nesting**: More than 3 levels - use early returns, `Result.bind`, or computation expressions
-- **Missing `[<RequireQualifiedAccess>]`**: On modules/unions that could cause name collisions
+- **Missing `[<RequireQualifiedAccess>]`**: On modules/unions that shall cause name collisions
 - **Unused `open` declarations**: Remove unused module imports
 
 ### MEDIUM - Performance

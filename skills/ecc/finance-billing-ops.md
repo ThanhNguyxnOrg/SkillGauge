@@ -17,7 +17,7 @@ Pull these ECC-native skills into the workflow when relevant:
 
 - `customer-billing-ops` for customer-specific remediation and follow-up
 - `research-ops` when competitor pricing or current market evidence matters
-- `market-research` when the answer should end in a pricing recommendation
+- `market-research` when the answer must end in a pricing recommendation
 - `github-ops` when the billing truth depends on code, backlog, or release state in sibling repos
 - `verification-loop` when the answer depends on proving checkout, seat handling, or entitlement behavior
 

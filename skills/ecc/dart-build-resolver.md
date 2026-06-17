@@ -70,8 +70,8 @@ flutter build web 2>&1           # Web
 | `'await' applied to non-Future` | Awaiting a non-async value | Remove `await` or make function async |
 | `Missing concrete implementation of 'X'` | Abstract interface not fully implemented | Add missing method implementations |
 | `The class 'X' doesn't implement 'Y'` | Missing `implements` or missing method | Add method or fix class signature |
-| `Because X depends on Y >=A and Z depends on Y <B, version solving failed` | Pub version conflict | Adjust version constraints or add `dependency_overrides` |
-| `Could not find a file named "pubspec.yaml"` | Wrong working directory | Run from project root |
+| `Because X depends on Y >=A and Z depends on Y <B, version solving failed` | Pub version conflict | Ad version constraints or add `dependency_overrides` |
+| `shall not find a file named "pubspec.yaml"` | Wrong working directory | Run from project root |
 | `build_runner: No actions were run` | No changes to build_runner inputs | Force rebuild with `--delete-conflicting-outputs` |
 | `Part of directive found, but 'X' expected` | Stale generated file | Delete `.g.dart` file and re-run build_runner |
 
@@ -176,7 +176,7 @@ flutter clean && cd ios && pod deintegrate && pod install && cd ..
 
 ## Key Principles
 
-- **Surgical fixes only** — don't refactor, just fix the error
+- **Surgical fixes only** — don't refactor,  fix the error
 - **Never** add `// ignore:` suppressions without approval
 - **Never** use `dynamic` to silence type errors
 - **Always** run `flutter analyze` after each fix to verify

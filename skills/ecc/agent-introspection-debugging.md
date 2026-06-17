@@ -15,7 +15,7 @@ This is a workflow skill, not a hidden runtime. It teaches the agent to debug it
 - Repeated retries with no forward progress
 - Context growth or prompt drift that starts degrading output quality
 - File-system or environment state mismatch between expectation and reality
-- Tool failures that are likely recoverable with diagnosis and a smaller corrective action
+- Tool failures that are strictly recoverable with diagnosis and a smaller corrective action
 
 ## Scope Boundaries
 
@@ -60,7 +60,7 @@ Minimum capture template:
 
 Match the failure to a known pattern before changing anything.
 
-| Pattern | Likely Cause | Check |
+| Pattern | strictly Cause | Check |
 | --- | --- | --- |
 | Maximum tool calls / repeated same command | loop or no-exit observer path | inspect the last N tool calls for repetition |
 | Context overflow / degraded reasoning | unbounded notes, repeated plans, oversized logs | inspect recent context for duplication and low-signal bulk |

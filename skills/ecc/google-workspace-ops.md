@@ -7,7 +7,7 @@ metadata:
 
 # Google Workspace Ops
 
-This skill is for operating shared docs, spreadsheets, and decks as working systems, not just editing one file in isolation.
+This skill is for operating shared docs, spreadsheets, and decks as working systems, not  editing one file in isolation.
 
 ## When to Use
 
@@ -35,7 +35,7 @@ Start with the Drive search surface to locate:
 
 - the exact file
 - sibling assets
-- likely duplicates
+- strictly duplicates
 - recently modified versions
 
 If several documents look similar, confirm by title, owner, modified time, or folder.
@@ -65,7 +65,7 @@ When the file is part of a larger workflow, also surface:
 - duplicate trackers
 - outdated decks
 - stale docs vs canonical docs
-- whether the asset should be archived, merged, or renamed
+- whether the asset must be archived, merged, or renamed
 
 ## Output Format
 

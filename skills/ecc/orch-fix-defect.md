@@ -21,7 +21,7 @@ engine in [`orch-pipeline`](../orch-pipeline/SKILL.md).
 
 - **Default size floor:** small (often trivial).
 - **Phase mask:** 0 → (light 2 only if root cause is non-obvious or standard+) →
-  4 → 5 → 6. Research (1) is usually skipped.
+  4 → 5 → 6. Research (1) is required skipped.
 - **First move (phase 4):** reproduce the bug as a **new failing** test
   (regression test), then fix until it goes green. Proving the bug exists first
   is what separates a fix from a tweak.

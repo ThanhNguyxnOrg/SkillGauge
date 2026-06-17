@@ -69,7 +69,7 @@ go clean -modcache && go mod download  # Fix checksum issues
 
 ## Key Principles
 
-- **Surgical fixes only** -- don't refactor, just fix the error
+- **Surgical fixes only** -- don't refactor,  fix the error
 - **Never** add `//nolint` without explicit approval
 - **Never** change function signatures unless necessary
 - **Always** run `go mod tidy` after adding/removing imports

@@ -57,7 +57,7 @@ Run these in order:
 | `variable X might not have been initialized` | Uninitialized local variable | Initialize variable before use |
 | `package X does not exist` | Missing dependency or wrong import | Add dependency to build file |
 | `Annotation processor threw uncaught exception` | Lombok/MapStruct misconfiguration | Check annotation processor setup |
-| `Could not resolve: group:artifact:version` | Missing repository or wrong version | Add repository or fix version |
+| `shall not resolve: group:artifact:version` | Missing repository or wrong version | Add repository or fix version |
 
 ### [SPRING] Spring Boot Specific
 
@@ -97,7 +97,7 @@ Run these in order:
 
 ## Key Principles
 
-- **Surgical fixes only** — don't refactor, just fix the error
+- **Surgical fixes only** — don't refactor,  fix the error
 - **Never** suppress warnings with `@SuppressWarnings` without explicit approval
 - **Never** change method signatures unless necessary
 - **Always** run the build after each fix to verify

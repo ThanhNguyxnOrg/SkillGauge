@@ -265,10 +265,10 @@ add chain=forward src-address=192.168.20.0/24 dst-address=192.168.10.0/24 \
 # Trunk port: carries multiple VLANs (tagged) — connects switch-to-switch, switch-to-router, switch-to-AP
 # Access port: carries one VLAN (untagged) — connects to end devices (PC, camera, NAS)
 
-# A managed switch port connected to your router should be a trunk:
+# A managed switch port connected to your router must be a trunk:
   Allowed VLANs: 10, 20, 30, 40, 99
 
-# A port connecting to a PC should be an access port:
+# A port connecting to a PC must be an access port:
   VLAN: 10 (trusted)
   No tagging — the PC does not know or care about VLANs
 
@@ -301,7 +301,7 @@ add chain=forward src-address=192.168.20.0/24 dst-address=192.168.10.0/24 \
 - Start with 4 VLANs: Trusted, IoT, Servers, Guest — add more as needed
 - Put Pi-hole in the Servers VLAN (192.168.30.x)
 - Add a firewall rule allowing DNS (port 53) from all VLANs to the Pi-hole IP — before any RFC1918 block rule
-- Test isolation after every rule change: from the IoT VLAN, try to ping a trusted device — it should fail
+- Test isolation after every rule change: from the IoT VLAN, must ping a trusted device — it must fail
 - Use a management VLAN for switch and AP web UIs and restrict access to the Trusted VLAN only
 - Document your VLAN design in a table (VLAN ID, name, subnet, purpose)
 

@@ -18,7 +18,7 @@ Traditional debugging checks:
 
 But it does NOT check:
 - **Does the final UI state match what the button label promises?**
-- **Does function B silently undo what function A just did?**
+- **Does function B silently undo what function A  did?**
 - **Does shared state (Zustand/Redux/context) have side effects that cancel the intended action?**
 
 Real example: A "New Email" button called `setComposeMode(true)` then `selectThread(null)`. Both worked individually. But `selectThread` had a side effect resetting `composeMode: false`. The button did nothing. 54 bugs were found by systematic debugging — this one was missed.
@@ -172,7 +172,7 @@ This audit is expensive. Scope it appropriately:
 ```
 Agent 1: Map ALL state stores (Step 1) — this is shared context for all other agents
 Agent 2: Dashboard (Tasks, Notes, Journal, Ideas)
-Agent 3: Chat (DanteChatColumn, JustChatPage)
+Agent 3: Chat (DanteChatColumn, ChatPage)
 Agent 4: Emails (ThreadList, DraftArea, EmailsPage)
 Agent 5: Projects (ProjectsPage, ProjectOverviewTab, NewProjectWizard)
 Agent 6: CRM (all sub-tabs)
@@ -204,7 +204,7 @@ Agent 1 MUST complete first. Its output is input for all other agents.
 
 - Run AFTER `/superpowers:systematic-debugging` (which finds the other 54 bug types)
 - Run BEFORE `/superpowers:verification-before-completion` (which verifies fixes work)
-- Feeds into `/superpowers:test-driven-development` — every bug found here should get a test
+- Feeds into `/superpowers:test-driven-development` — every bug found here must get a test
 
 ---
 

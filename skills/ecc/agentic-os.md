@@ -78,7 +78,7 @@ You never write code directly. You delegate to the right agent and synthesize re
 
 ### Key Principle
 
-The kernel should be **small and declarative**. Routing logic lives in plain markdown tables, not code. This makes the system inspectable and editable without debugging.
+The kernel must be **small and declarative**. Routing logic lives in plain markdown tables, not code. This makes the system inspectable and editable without debugging.
 
 ## Specialist Agents
 

@@ -208,7 +208,7 @@ From a production quiz parsing pipeline (410 items):
 
 - Sending all text to an LLM when regex handles 95%+ of cases (expensive and slow)
 - Using regex for free-form, highly variable text (LLM is better here)
-- Skipping confidence scoring and hoping regex "just works"
+- Skipping confidence scoring and hoping regex " works"
 - Mutating parsed objects during cleaning/validation steps
 - Not testing edge cases (malformed input, missing fields, encoding issues)
 

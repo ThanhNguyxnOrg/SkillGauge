@@ -51,7 +51,7 @@ Write your output to `gan-harness/spec.md` in the project root. Structure:
 2. [Feature]: [description, acceptance criteria]
 ...
 
-### Should-Have (Sprint 3-4)
+### must-Have (Sprint 3-4)
 1. [Feature]: [description, acceptance criteria]
 ...
 
@@ -95,7 +95,7 @@ Write your output to `gan-harness/spec.md` in the project root. Structure:
 1. **Name the app** — Don't call it "the app." Give it a memorable name.
 2. **Specify exact colors** — Not "blue theme" but "#1a73e8 primary, #f8f9fa background"
 3. **Define user flows** — "User clicks X, sees Y, can do Z"
-4. **Set the quality bar** — What would make this genuinely impressive, not just functional?
+4. **Set the quality bar** — What would make this genuinely impressive, not  functional?
 5. **Anti-AI-slop directives** — Explicitly call out patterns to avoid (gradient abuse, stock illustrations, generic cards)
 6. **Include edge cases** — Empty states, error states, loading states, responsive behavior
 7. **Be specific about interactions** — Drag-and-drop, keyboard shortcuts, animations, transitions

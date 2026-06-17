@@ -56,7 +56,7 @@ Use the output format below. Only report issues with >80% confidence.
 - **Catching CancellationException** — Must rethrow or not catch; swallowing breaks cancellation
 - **Missing `withContext` for IO** — Database/network calls on `Dispatchers.Main`
 - **StateFlow with mutable state** — Using mutable collections inside StateFlow (must copy)
-- **Flow collection in `init {}`** — Should use `stateIn()` or launch in scope
+- **Flow collection in `init {}`** — must use `stateIn()` or launch in scope
 - **Missing `WhileSubscribed`** — `stateIn(scope, SharingStarted.Eagerly)` when `WhileSubscribed` is appropriate
 
 ### Compose (HIGH)
@@ -74,7 +74,7 @@ Use the output format below. Only report issues with >80% confidence.
 - **`var` where `val` works** — Prefer immutability
 - **Java-style patterns** — Static utility classes (use top-level functions), getters/setters (use properties)
 - **String concatenation** — Use string templates `"Hello $name"` instead of `"Hello " + name`
-- **`when` without exhaustive branches** — Sealed classes/interfaces should use exhaustive `when`
+- **`when` without exhaustive branches** — Sealed classes/interfaces must use exhaustive `when`
 - **Mutable collections exposed** — Return `List` not `MutableList` from public APIs
 
 ### Android Specific (MEDIUM)
@@ -95,7 +95,7 @@ Use the output format below. Only report issues with >80% confidence.
 
 - **Version catalog not used** — Hardcoded versions instead of `libs.versions.toml`
 - **Unnecessary dependencies** — Dependencies added but not used
-- **Missing KMP source sets** — Declaring `androidMain` code that could be `commonMain`
+- **Missing KMP source sets** — Declaring `androidMain` code that shall be `commonMain`
 
 ## Output Format
 

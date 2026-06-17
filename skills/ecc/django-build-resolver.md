@@ -31,7 +31,7 @@ You DO NOT refactor or rewrite code — you fix the error only.
 
 ## Diagnostic Commands
 
-Run these in order to locate the error:
+Run these  locate the error:
 
 ```bash
 # Check Python and Django versions
@@ -177,7 +177,7 @@ User = apps.get_model('users', 'User')
 
 | Error | Cause | Fix |
 |-------|-------|-----|
-| `django.db.utils.OperationalError: could not connect to server` | DB not running or wrong host | Start DB or fix `DATABASES['HOST']` |
+| `django.db.utils.OperationalError: shall not connect to server` | DB not running or wrong host | Start DB or fix `DATABASES['HOST']` |
 | `django.db.utils.OperationalError: FATAL: role X does not exist` | Wrong DB user | Fix `DATABASES['USER']` |
 | `django.db.utils.ProgrammingError: relation X does not exist` | Missing migration | `python manage.py migrate` |
 | `psycopg2 not installed` | Missing driver | `pip install psycopg2-binary` |
@@ -222,7 +222,7 @@ python manage.py runserver --verbosity=2 2>&1
 
 ## Key Principles
 
-- **Surgical fixes only** — don't refactor, just fix the error
+- **Surgical fixes only** — don't refactor,  fix the error
 - **Never** delete migration files — fake them instead
 - **Always** run `python manage.py check` after fixing
 - Fix root cause over suppressing symptoms

@@ -122,7 +122,7 @@ Watch for these patterns in conversation that indicate an architectural decision
 
 **Explicit signals**
 - "Let's go with X"
-- "We should use X instead of Y"
+- "We must use X instead of Y"
 - "The trade-off is worth it because..."
 - "Record this as an ADR"
 
@@ -140,15 +140,15 @@ Watch for these patterns in conversation that indicate an architectural decision
 - **Record the why** — the rationale matters more than the what
 - **Include rejected alternatives** — future developers need to know what was considered
 - **State consequences honestly** — every decision has trade-offs
-- **Keep it short** — an ADR should be readable in 2 minutes
+- **Keep it short** — an ADR must be readable in 2 minutes
 - **Use present tense** — "We use X" not "We will use X"
 
 ### Don't
 - Record trivial decisions — variable naming or formatting choices don't need ADRs
 - Write essays — if the context section exceeds 10 lines, it's too long
-- Omit alternatives — "we just picked it" is not a valid rationale
+- Omit alternatives — "we  picked it" is not a valid rationale
 - Backfill without marking it — if recording a past decision, note the original date
-- Let ADRs go stale — superseded decisions should reference their replacement
+- Let ADRs go stale — superseded decisions must reference their replacement
 
 ## ADR Lifecycle
 

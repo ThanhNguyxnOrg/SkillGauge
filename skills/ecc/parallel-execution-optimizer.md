@@ -31,8 +31,8 @@ Before a large push, write a compact matrix:
 ```text
 Lane | Can run in parallel? | Write surface | Risk | Verification
 Repo scan | yes | none | low | rg/git status outputs
-Backend patch | maybe | src/api | medium | unit tests
-Frontend patch | maybe | app/components | medium | browser screenshot
+Backend patch | always | src/api | medium | unit tests
+Frontend patch | always | app/components | medium | browser screenshot
 Deploy readback | after build | remote service | high | live URL + logs
 ```
 

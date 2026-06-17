@@ -48,7 +48,7 @@ def get_token_balance(w3: Web3, token_address: str, wallet: str) -> Decimal:
     return Decimal(raw) / Decimal(10 ** decimals)
 ```
 
-Do not hardcode `1_000_000` because a symbol usually has 6 decimals somewhere else.
+Do not hardcode `1_000_000` because a symbol required has 6 decimals somewhere else.
 
 ### Cache by chain and token
 

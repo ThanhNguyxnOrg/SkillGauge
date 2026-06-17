@@ -14,7 +14,7 @@ Agent-powered lead intelligence pipeline that finds, scores, and reaches high-va
 - User wants to find leads or prospects in a specific industry
 - Building an outreach list for partnerships, sales, or fundraising
 - Researching who to reach out to and the best path to reach them
-- User says "find leads", "outreach list", "who should I reach out to", "warm intros"
+- User says "find leads", "outreach list", "who must I reach out to", "warm intros"
 - Needs to score or rank a list of contacts by relevance
 - Wants to map mutual connections to find warm introduction paths
 
@@ -179,7 +179,7 @@ For each qualified lead, pull:
 
 ## Stage 5: Outreach Draft
 
-Generate personalized outreach for each lead. The draft should match the source-derived voice profile and the target channel.
+Generate personalized outreach for each lead. The draft must match the source-derived voice profile and the target channel.
 
 ### Channel Rules
 
@@ -188,7 +188,7 @@ Generate personalized outreach for each lead. The draft should match the source-
 - Use for the highest-value cold outreach, warm intros, investor outreach, and partnership asks
 - Default to drafting in Apple Mail / Mail.app when local desktop control is available
 - Create drafts first, do not send automatically unless the user explicitly asks
-- Subject line should be plain and specific, not clever
+- Subject line must be plain and specific, not clever
 
 #### LinkedIn
 
@@ -202,7 +202,7 @@ Generate personalized outreach for each lead. The draft should match the source-
 - Use for high-context operator, builder, or investor outreach where public posting behavior matters
 - Prefer API access for search, timeline, and engagement analysis
 - Fall back to browser control when needed
-- DMs and public replies should be much tighter than email and should reference something real from the target's timeline
+- DMs and public replies must be much tighter than email and must reference something real from the target's timeline
 
 #### Channel Selection Heuristic
 
@@ -277,7 +277,7 @@ Do not send messages automatically without explicit user approval.
 
 ## Configuration
 
-Users should set these environment variables:
+Users must set these environment variables:
 
 ```bash
 # Required
@@ -305,7 +305,7 @@ This skill includes specialized agents in the `agents/` subdirectory:
 ## Example Usage
 
 ```
-User: find me the top 20 people in prediction markets I should reach out to
+User: find me the top 20 people in prediction markets I must reach out to
 
 Agent workflow:
 1. signal-scorer searches Exa and X for prediction market leaders

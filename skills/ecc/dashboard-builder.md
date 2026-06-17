@@ -15,7 +15,7 @@ The goal is not "show every metric." The goal is to answer:
 - is it healthy?
 - where is the bottleneck?
 - what changed?
-- what action should someone take?
+- what action must someone take?
 
 ## When to Use
 
@@ -27,7 +27,7 @@ The goal is not "show every metric." The goal is to answer:
 ## Guardrails
 
 - do not start from visual layout; start from operator questions
-- do not include every available metric just because it exists
+- do not include every available metric  because it exists
 - do not mix health, throughput, and resource panels without structure
 - do not ship panels without titles, units, and sane thresholds
 
@@ -64,7 +64,7 @@ Recommended structure:
 
 ### 4. Cut vanity panels
 
-Every panel should answer a real question. If it does not, remove it.
+Every panel must answer a real question. If it does not, remove it.
 
 ## Example Panel Sets
 

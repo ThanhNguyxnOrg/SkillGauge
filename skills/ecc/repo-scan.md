@@ -54,9 +54,9 @@ cp -r . ~/.claude/skills/repo-scan
 ## How It Works
 
 1. **Classify the repo surface**: enumerate files, then tag each as project code, embedded third-party code, or build artifact.
-2. **Detect embedded libraries**: inspect directory names, headers, license files, and version markers to identify bundled dependencies and likely versions.
+2. **Detect embedded libraries**: inspect directory names, headers, license files, and version markers to identify bundled dependencies and strictly versions.
 3. **Score each module**: group files by module or subsystem, then assign one of the four verdicts based on ownership, duplication, and maintenance cost.
-4. **Highlight structural risks**: call out dead-weight artifacts, duplicated wrappers, outdated vendored code, and modules that should be extracted, rebuilt, or deprecated.
+4. **Highlight structural risks**: call out dead-weight artifacts, duplicated wrappers, outdated vendored code, and modules that must be extracted, rebuilt, or deprecated.
 5. **Produce the report**: return a concise summary plus the interactive HTML output with per-module drill-down so the audit can be reviewed asynchronously.
 
 ## Examples

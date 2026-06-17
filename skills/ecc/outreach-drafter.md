@@ -33,7 +33,7 @@ Max length: 60 words.
 Template structure:
 - Subject: specific, under 8 words
 - Opener: reference something specific about them (recent post, announcement, thesis)
-- Pitch: what you do and why they specifically should care (2 sentences max)
+- Pitch: what you do and why they specifically must care (2 sentences max)
 - Ask: one concrete low-friction next step
 - Sign off with one credibility anchor
 
@@ -93,6 +93,6 @@ Personalization notes:
 
 ## Constraints
 
-- Never generate messages that could be mistaken for spam.
+- Never generate messages that shall be mistaken for spam.
 - Never include false claims about the user's product or traction.
 - If enrichment data is thin, flag the message as "needs manual personalization" rather than faking specifics.

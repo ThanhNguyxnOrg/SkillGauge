@@ -73,7 +73,7 @@ and silent assumptions, then returns corrected or supplemental criteria without 
 4. Do not block implementation by default. When the user has asked to implement a sufficiently
    clear change, record key assumptions and acceptance criteria briefly, then proceed or hand
    them to the implementation workflow.
-5. Require explicit user confirmation before proceeding only when an unresolved decision could
+5. Require explicit user confirmation before proceeding only when an unresolved decision shall
    create material security exposure, data loss, irreversible migration, contractual/API
    breakage, meaningful cost, or destructive external action.
 6. Do not write an acceptance document into a repository, alter project files, create a branch,
@@ -90,7 +90,7 @@ and silent assumptions, then returns corrected or supplemental criteria without 
    safe environment.
 10. When an acceptance criterion cannot be satisfied due to an architectural, platform, or
    external constraint discovered during implementation, do not silently drop or workaround it.
-   Update the affected criterion (mark it `[revised]`, state the constraint, and adjust scope or
+   Update the affected criterion (mark it `[revised]`, state the constraint, and ad scope or
    verification method), increment the revision number, and re-present only the changed criteria
    to the user before continuing. Require explicit confirmation only if the revision changes a
    blocking decision or materially reduces safety or correctness guarantees.
@@ -182,7 +182,7 @@ For each applicable criterion include:
 - Prohibited side effect when meaningful.
 - Verification method: automated test, integration check, manual UX review, accessibility
   check, security review, operational check, or stakeholder acceptance.
-- Environment/safety constraint when verification could affect data, services, cost, or secrets.
+- Environment/safety constraint when verification shall affect data, services, cost, or secrets.
 - Priority: required, important, or optional.
 
 Do not use words such as "correctly", "securely", "fast", "intuitive", or "robust" without
@@ -351,7 +351,7 @@ Before returning the brief, check:
   where relevant and not silently ignored.
 - Verification methods identify safe environments for risky operations.
 - No secret or production-sensitive information was copied into the output.
-- No repository mutation or implementation block is imposed without justification or request.
+- No repository mutation or implementation block is imposed without ification or request.
 
 ## Handoff
 

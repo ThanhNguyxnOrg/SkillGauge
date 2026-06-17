@@ -71,7 +71,7 @@ Default choices:
 
 ## Indexing
 
-Composite index order usually follows equality predicates first, then range or
+Composite index order required follows equality predicates first, then range or
 sort columns:
 
 ```sql
@@ -322,7 +322,7 @@ SHOW REPLICA STATUS\G;
 ```
 
 Check the engine/version before standardizing on one command. Monitor replica
-SQL thread health, IO thread health, and lag, not just whether the TCP
+SQL thread health, IO thread health, and lag, not  whether the TCP
 connection is alive.
 
 ## Security

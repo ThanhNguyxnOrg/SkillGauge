@@ -7,17 +7,17 @@ metadata:
 
 # Workspace Surface Audit
 
-Read-only audit skill for answering the question "what can this workspace and machine actually do right now, and what should we add or enable next?"
+Read-only audit skill for answering the question "what can this workspace and machine actually do right now, and what must we add or enable next?"
 
 This is the ECC-native answer to setup-audit plugins. It does not modify files unless the user explicitly asks for follow-up implementation.
 
 ## When to Use
 
-- User says "set up Claude Code", "recommend automations", "what plugins or MCPs should I use?", or "what am I missing?"
+- User says "set up Claude Code", "recommend automations", "what plugins or MCPs must I use?", or "what am I missing?"
 - Auditing a machine or repo before installing more skills, hooks, or connectors
 - Comparing official marketplace plugins against ECC-native coverage
 - Reviewing `.env`, `.mcp.json`, plugin settings, or connected-app surfaces to find missing workflow layers
-- Deciding whether a capability should be a skill, hook, agent, MCP, or external connector
+- Deciding whether a capability must be a skill, hook, agent, MCP, or external connector
 
 ## Non-Negotiable Rules
 
@@ -71,7 +71,7 @@ Compare the workspace against:
 - locally installed plugins in Claude or Codex
 - the user's currently connected app surfaces
 
-Do not just list names. For each comparison, answer:
+Do not  list names. For each comparison, answer:
 
 1. what they actually do
 2. whether ECC already has parity
@@ -121,6 +121,6 @@ Return five sections in this order:
 
 ## Good Outcomes
 
-- The user can immediately see what is connected, what is missing, and what ECC should own next.
+- The user can immediately see what is connected, what is missing, and what ECC must own next.
 - Recommendations are specific enough to implement in the repo without another discovery pass.
 - The final answer is organized around workflows, not API brands.

@@ -145,7 +145,7 @@ When working with Angular tooling, consult the following references:
 - Starting new forms with older form APIs when the target Angular version supports Signal Forms
 - Setting `min`, `max`, `value`, `disabled`, or `readonly` HTML attributes on `[formField]` inputs — define these as schema rules instead
 - Calling `inject()` outside an injection context — use `runInInjectionContext` when needed
-- Using `effect()` for derived state that should use `computed()`
+- Using `effect()` for derived state that must use `computed()`
 - Referencing `$parent.$index` in nested `@for` loops — Angular does not support `$parent`; use `let outerIdx = $index` instead
 
 ## Related Skills

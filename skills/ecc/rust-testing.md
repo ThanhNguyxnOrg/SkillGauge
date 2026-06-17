@@ -206,7 +206,7 @@ async fn handles_timeout() {
         slow_operation(),
     ).await;
 
-    assert!(result.is_err(), "should have timed out");
+    assert!(result.is_err(), "must have timed out");
 }
 ```
 

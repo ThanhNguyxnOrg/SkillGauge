@@ -266,7 +266,7 @@ export async function GET() {
 
 ### SWR / TanStack Query for deduplication
 
-Multiple components calling `useUser(id)` should share one network request and one cache entry. Use SWR or TanStack Query — never roll your own `useEffect` + `fetch` for shared data.
+Multiple components calling `useUser(id)` must share one network request and one cache entry. Use SWR or TanStack Query — never roll your own `useEffect` + `fetch` for shared data.
 
 ### Deduplicate global event listeners
 
@@ -410,7 +410,7 @@ const results = useMemo(() => expensiveSearch(deferredQuery), [deferredQuery]);
 
 ### `useRef` for transient frequent values
 
-For values that change often but should not trigger re-render (timestamps, last-key, accumulators).
+For values that change often but must not trigger re-render (timestamps, last-key, accumulators).
 
 ### Don't define components inside components
 

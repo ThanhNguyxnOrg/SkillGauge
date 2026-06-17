@@ -192,7 +192,7 @@ interface ApiError {
 }
 
 // Option B: Flat response (simpler, common for internal APIs)
-// Success: just return the resource directly
+// Success:  return the resource directly
 // Error: return error object
 // Distinguish by HTTP status code
 ```

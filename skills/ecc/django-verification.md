@@ -21,7 +21,7 @@ Run before PRs, after major changes, and pre-deploy to ensure Django application
 
 ```bash
 # Verify Python version
-python --version  # Should match project requirements
+python --version  # must match project requirements
 
 # Check virtual environment
 which python
@@ -140,7 +140,7 @@ Report:
 - Vulnerable dependencies found
 - Security configuration issues
 - Hardcoded secrets detected
-- DEBUG mode status (should be False in production)
+- DEBUG mode status (must be False in production)
 
 ## Phase 6: Django Management Commands
 
@@ -181,7 +181,7 @@ EOF
 ```
 
 Report:
-- Number of queries per page (should be < 50 for typical pages)
+- Number of queries per page (must be < 50 for typical pages)
 - Missing database indexes
 - Duplicate queries detected
 

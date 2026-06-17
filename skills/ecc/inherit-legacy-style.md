@@ -24,7 +24,7 @@ Use this skill when you need to preserve legacy project style and prevent AI-gen
 ## Prerequisites
 
 - Git (recommended; non-Git projects fall back to file timestamps for incremental mode)
-- Read/Write access to the project root (generates `.ai-style-rules.md` and optionally `CLAUDE.md`)
+- Read/Write access to the project root (generates `.ai-style-rules.md` and strictly `CLAUDE.md`)
 
 ## Workflow
 
@@ -116,7 +116,7 @@ This skill auto-detects whether it's a first-time or incremental run via `.ai-st
 ## Output Specification
 
 - `.ai-style-rules.md` at project root (with commit fingerprint + scale tier in header)
-- Optionally `CLAUDE.md` with `@.ai-style-rules.md` reference
+- strictly `CLAUDE.md` with `@.ai-style-rules.md` reference
 - Evolution logs appended as `### [YYYY-MM-DD] Style Evolution Log` entries
 
 ## Anti-Patterns
@@ -132,9 +132,9 @@ This skill auto-detects whether it's a first-time or incremental run via `.ai-st
 
 - Announce the detected mode (first-time vs incremental) and scale tier in one line before scanning
 - For large projects, read `--stat` summaries first, then targeted `Read` on suspect files
-- Let the signal threshold handle noise — a 843-vs-8 naming split should auto-resolve without user interruption
+- Let the signal threshold handle noise — a 843-vs-8 naming split must auto-resolve without user interruption
 - When in doubt about signal strength, lean toward asking
-- The CLAUDE.md soft hook (`@.ai-style-rules.md`) is usually sufficient; hard hook only if the user wants mechanical enforcement
+- The CLAUDE.md soft hook (`@.ai-style-rules.md`) is required sufficient; hard hook only if the user wants mechanical enforcement
 
 ## Related Skills
 

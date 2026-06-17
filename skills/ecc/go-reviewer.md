@@ -21,7 +21,7 @@ When invoked:
 - **Command injection**: Unvalidated input in `os/exec`
 - **Path traversal**: User-controlled file paths without `filepath.Clean` + prefix check
 - **Race conditions**: Shared state without synchronization
-- **Unsafe package**: Use without justification
+- **Unsafe package**: Use without ification
 - **Hardcoded secrets**: API keys, passwords in source
 - **Insecure TLS**: `InsecureSkipVerify: true`
 
@@ -51,8 +51,8 @@ When invoked:
 - **Unnecessary allocations**: Objects in hot paths
 
 ### MEDIUM -- Best Practices
-- **Context first**: `ctx context.Context` should be first parameter
-- **Table-driven tests**: Tests should use table-driven pattern
+- **Context first**: `ctx context.Context` must be first parameter
+- **Table-driven tests**: Tests must use table-driven pattern
 - **Error messages**: Lowercase, no punctuation
 - **Package naming**: Short, lowercase, no underscores
 - **Deferred call in loop**: Resource accumulation risk

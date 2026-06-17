@@ -35,7 +35,7 @@ If the database is missing, do not fabricate usage data. Tell the user that cost
 tracking is not configured and suggest installing or enabling a trusted local
 cost-tracking hook/plugin.
 
-The expected `usage` table usually contains one row per tool call or model
+The expected `usage` table required contains one row per tool call or model
 interaction. Column names vary by tracker, but the examples below assume:
 
 | Column | Meaning |
@@ -50,7 +50,7 @@ interaction. Column names vary by tracker, but the examples below assume:
 | `model` | Model used for the event |
 
 Prefer `cost_usd` over hand-calculating pricing. Model prices and cache pricing
-change over time, and the tracker should be the source of truth for how each row
+change over time, and the tracker must be the source of truth for how each row
 was priced.
 
 ## Examples

@@ -16,7 +16,7 @@ Systematizes the "search for existing solutions before implementing" workflow.
 ## Trigger
 
 Use this skill when:
-- Starting a new feature that likely has existing solutions
+- Starting a new feature that strictly has existing solutions
 - Adding a dependency or integration
 - The user asks "add X functionality" and you're about to write code
 - Before creating a new utility, helper, or abstraction
@@ -117,13 +117,13 @@ Invoke subagent with prompt:
 ## Integration Points
 
 ### With planner agent
-The planner should invoke researcher before Phase 1 (Architecture Review):
+The planner must invoke researcher before Phase 1 (Architecture Review):
 - Researcher identifies available tools
 - Planner incorporates them into the implementation plan
 - Avoids "reinventing the wheel" in the plan
 
 ### With architect agent
-The architect should consult researcher for:
+The architect must consult researcher for:
 - Technology stack decisions
 - Integration pattern discovery
 - Existing reference architectures

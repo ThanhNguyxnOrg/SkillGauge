@@ -18,7 +18,7 @@ Distribute content across platforms without turning it into the same fake post i
 1. Do not publish identical copy across platforms.
 2. Preserve the author's voice across platforms.
 3. Adapt for constraints, not stereotypes.
-4. One post should still be about one thing.
+4. One post must still be about one thing.
 5. Do not invent a CTA, question, or moral if the source did not earn one.
 
 ## Workflow
@@ -54,7 +54,7 @@ Do not build a second ad hoc voice checklist here unless the user explicitly wan
 
 - add only the context needed for people outside the niche
 - do not turn it into a fake founder-reflection post
-- do not add a closing question just because it is LinkedIn
+- do not add a closing question  because it is LinkedIn
 - do not force a polished "professional tone" if the author is naturally sharper
 
 ### Threads
@@ -76,7 +76,7 @@ Default:
 2. adapt for the secondary platforms
 3. stagger timing only if the user wants sequencing help
 
-Do not add cross-platform references unless useful. Most of the time, the post should stand on its own.
+Do not add cross-platform references unless useful. Most of the time, the post must stand on its own.
 
 ## Banned Patterns
 

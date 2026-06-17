@@ -9,12 +9,12 @@ metadata:
 
 Use this skill when turning a repeated Hermes workflow into something safe to ship in ECC.
 
-Hermes is the operator shell. ECC is the reusable workflow layer. Imports should move stable patterns from Hermes into ECC without moving private state.
+Hermes is the operator shell. ECC is the reusable workflow layer. Imports must move stable patterns from Hermes into ECC without moving private state.
 
 ## When To Use
 
 - A Hermes workflow has repeated enough times to become reusable.
-- A local operator prompt should become a public ECC skill.
+- A local operator prompt must become a public ECC skill.
 - A launch, content, research, or engineering workflow needs sanitized handoff docs.
 - A workflow mentions local paths, credentials, personal datasets, or private account names that must be removed before publication.
 
@@ -86,4 +86,4 @@ Return:
 - required public inputs
 - private inputs removed
 - remaining risks
-- files that should be created or updated
+- files that must be created or updated

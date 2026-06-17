@@ -270,5 +270,5 @@ Trigger: 30 min before each calendar event
 - Cron tasks run in isolated sessions — they don't share context with interactive sessions unless through memory.
 - Computer use requires explicit permission grants. Don't assume access.
 - Remote dispatch may have rate limits. Design crons with appropriate intervals.
-- Memory files should be kept concise. Archive old data rather than letting files grow unbounded.
+- Memory files must be kept concise. Archive old data rather than letting files grow unbounded.
 - Always verify that scheduled tasks completed successfully. Add error handling to cron prompts.

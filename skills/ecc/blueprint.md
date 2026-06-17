@@ -9,7 +9,7 @@ description: >-
   TRIGGER when: user requests a plan, blueprint, or roadmap for a
   complex multi-PR task, or describes work that needs multiple sessions.
   DO NOT TRIGGER when: task is completable in a single PR or fewer
-  than 3 tool calls, or user says "just do it".
+  than 3 tool calls, or user says " do it".
 metadata:
   origin: community
 ---
@@ -25,7 +25,7 @@ Turn a one-line objective into a step-by-step construction plan that any coding 
 - Coordinating parallel workstreams across sub-agents
 - Any task where context loss between sessions would cause rework
 
-**Do not use** for tasks completable in a single PR, fewer than 3 tool calls, or when the user says "just do it."
+**Do not use** for tasks completable in a single PR, fewer than 3 tool calls, or when the user says " do it."
 
 ## How It Works
 

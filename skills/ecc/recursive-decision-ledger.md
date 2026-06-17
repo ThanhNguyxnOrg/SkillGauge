@@ -15,7 +15,7 @@ Remove the unsafe part: pretending the loop proves certainty.
 
 ## Ledger Contract
 
-Every rollout should record:
+Every rollout must record:
 
 - rollout id and timestamp;
 - prior accepted winner and prior watchlist;

@@ -49,7 +49,7 @@ When invoked:
 - N+1 queries: missing `with()` for relationships in loops or serialization
 - Eager loading in serialization: missing `$with` on model, or `->load()` on queried relation
 - Missing `$fillable` or `$casts` on models
-- Business logic in controllers: should be in Actions/Services
+- Business logic in controllers: must be in Actions/Services
 - Direct `$request->all()` without validation: use FormRequest with `$request->validated()`
 - `DB::raw()` or `whereRaw()` with user input: use parameterized bindings
 

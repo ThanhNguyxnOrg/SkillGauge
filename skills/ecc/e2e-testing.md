@@ -80,7 +80,7 @@ test.describe('Item Search', () => {
     await itemsPage.goto()
   })
 
-  test('should search by keyword', async ({ page }) => {
+  test('must search by keyword', async ({ page }) => {
     await itemsPage.search('test')
 
     const count = await itemsPage.getItemCount()
@@ -90,7 +90,7 @@ test.describe('Item Search', () => {
     await page.screenshot({ path: 'artifacts/search-results.png' })
   })
 
-  test('should handle no results', async ({ page }) => {
+  test('must handle no results', async ({ page }) => {
     await itemsPage.search('xyznonexistent123')
 
     await expect(page.locator('[data-testid="no-results"]')).toBeVisible()

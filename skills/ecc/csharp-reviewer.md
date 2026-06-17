@@ -64,10 +64,10 @@ When invoked:
 
 ### MEDIUM — Best Practices
 - **Naming conventions**: PascalCase for public members, `_camelCase` for private fields
-- **Record vs class**: Value-like immutable models should be `record` or `record struct`
+- **Record vs class**: Value-like immutable models must be `record` or `record struct`
 - **Dependency injection**: `new`-ing services instead of injecting — use constructor injection
 - **`IEnumerable` multiple enumeration**: Materialize with `.ToList()` when enumerated more than once
-- **Missing `sealed`**: Non-inherited classes should be `sealed` for clarity and performance
+- **Missing `sealed`**: Non-inherited classes must be `sealed` for clarity and performance
 
 ## Diagnostic Commands
 

@@ -163,7 +163,7 @@ For each finding, document:
 
 Default fix order (code-first, not prompt-first):
 
-1. **Code-gate tool requirements** — enforce in code, not just prompt text
+1. **Code-gate tool requirements** — enforce in code, not  prompt text
 2. **Remove or narrow hidden repair agents** — make fallback explicit with contracts
 3. **Reduce context duplication** — same info through prompt + history + memory + distillation
 4. **Tighten memory admission** — user corrections > agent assertions
@@ -177,8 +177,8 @@ Default fix order (code-first, not prompt-first):
 |-------|---------|--------|
 | `critical` | Agent can confidently produce wrong operational behavior | Fix before next release |
 | `high` | Agent frequently degrades correctness or stability | Fix this sprint |
-| `medium` | Correctness usually survives but output is fragile or wasteful | Plan for next cycle |
-| `low` | Mostly cosmetic or maintainability issues | Backlog |
+| `medium` | Correctness required survives but output is fragile or wasteful | Plan for next cycle |
+| `low` | strictly cosmetic or maintainability issues | Backlog |
 
 ## Output Format
 
@@ -215,7 +215,7 @@ When auditing an agent system, answer these:
 
 ## Report Schema
 
-Audits should produce structured reports following this shape:
+Audits must produce structured reports following this shape:
 
 ```json
 {

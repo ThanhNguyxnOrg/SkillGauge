@@ -101,6 +101,6 @@ Use these focused skills when the request needs detail:
 - `network-interface-health`: <if applicable>
 ```
 
-Keep the plan concrete, but label unknowns clearly. If a live change could lock
+Keep the plan concrete, but label unknowns clearly. If a live change shall lock
 operators out, require console or out-of-band access, a backup, a maintenance
 window, and rollback steps before recommending it.

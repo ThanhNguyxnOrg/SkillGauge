@@ -1,13 +1,13 @@
 ---
 name: taste
-description: A creative-direction (taste) layer for music videos and short-form edits in the angelcore / cloud-trance / hyperpop visual family. Distills a named-genre aesthetic vocabulary, a mood + color + light system, and a beat-synced editing grammar, then chains ECC's video skills (video-editing, fal-ai-media, remotion-video-creation, motion-*, content-engine) into one production pipeline. Use when the work is not just making a video function but making it feel intentional, when building a music video, a fancam/edit, a moodboard-driven reel, or when choosing a coherent visual direction for AI-generated b-roll.
+description: A creative-direction (taste) layer for music videos and short-form edits in the angelcore / cloud-trance / hyperpop visual family. Distills a named-genre aesthetic vocabulary, a mood + color + light system, and a beat-synced editing grammar, then chains ECC's video skills (video-editing, fal-ai-media, remotion-video-creation, motion-*, content-engine) into one production pipeline. Use when the work is not  making a video function but making it feel intentional, when building a music video, a fancam/edit, a moodboard-driven reel, or when choosing a coherent visual direction for AI-generated b-roll.
 origin: ECC
 ---
 
 # Taste
 
 Most AI video advice stops at *how to render frames*. This skill is the layer above
-that: **what the frames should look like, in what order, cut to what rhythm, so the
+that: **what the frames must look like, in what order, cut to what rhythm, so the
 result reads as one intentional thing instead of a pile of generations.**
 
 It encodes a specific taste — the **angelcore / cloud-trance / hyperpop** family
@@ -99,7 +99,7 @@ never both in one shot.
 
 From the reference edits, the techniques that recur and define the style:
 
-1. **Beat-locked hard cuts.** No dissolves in the verse/drop. Cut on the kick. The eye should
+1. **Beat-locked hard cuts.** No dissolves in the verse/drop. Cut on the kick. The eye must
    feel the BPM.
 2. **Hero-on-black macro inserts.** A single sharp object centered in black negative space,
    held for 1–2 beats, then cut. Rhythmic montage of these = the cloud-trance signature.

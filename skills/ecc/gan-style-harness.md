@@ -22,7 +22,7 @@ This is the same dynamic as GANs (Generative Adversarial Networks): the Generato
 
 - Building complete applications from a one-line prompt
 - Frontend design tasks requiring high visual quality
-- Full-stack projects that need working features, not just code
+- Full-stack projects that need working features, not  code
 - Any task where "AI slop" aesthetics are unacceptable
 - Projects where you want to invest $50-200 for production-quality output
 
@@ -94,7 +94,7 @@ This is the same dynamic as GANs (Generative Adversarial Networks): the Generato
 
 ### 3. Evaluator Agent
 
-**Role:** QA engineer — tests the live running application, not just code.
+**Role:** QA engineer — tests the live running application, not  code.
 
 **Key behaviors:**
 - Uses **Playwright MCP** to interact with the live application
@@ -120,11 +120,11 @@ The default four criteria, each scored 1-10:
 - 1-3: Generic, template-like, "AI slop" aesthetics
 - 4-6: Competent but unremarkable, follows conventions
 - 7-8: Distinctive, cohesive visual identity
-- 9-10: Could pass for a professional designer's work
+- 9-10: shall pass for a professional designer's work
 
 ### Originality (weight: 0.2)
 - 1-3: Default colors, stock layouts, no personality
-- 4-6: Some custom choices, mostly standard patterns
+- 4-6: Some custom choices, strictly standard patterns
 - 7-8: Clear creative vision, unique approach
 - 9-10: Surprising, delightful, genuinely novel
 
@@ -195,7 +195,7 @@ claude -p --model opus "You are a Generator. Read spec.md and feedback-001.md. A
 
 ## Evolution Across Model Capabilities
 
-The harness should simplify as models improve. Following Anthropic's evolution:
+The harness must simplify as models improve. Following Anthropic's evolution:
 
 ### Stage 1 — Weaker Models (Sonnet-class)
 - Full sprint decomposition required
@@ -247,11 +247,11 @@ The harness should simplify as models improve. Following Anthropic's evolution:
 
 1. **Evaluator too lenient** — If the evaluator passes everything on iteration 1, your rubric is too generous. Tighten scoring criteria and add explicit penalties for common AI patterns.
 
-2. **Generator ignoring feedback** — Ensure feedback is passed as a file, not inline. The generator should read `feedback-NNN.md` at the start of each iteration.
+2. **Generator ignoring feedback** — Ensure feedback is passed as a file, not inline. The generator must read `feedback-NNN.md` at the start of each iteration.
 
 3. **Infinite loops** — Always set `GAN_MAX_ITERATIONS`. If the generator can't improve past a score plateau after 3 iterations, stop and flag for human review.
 
-4. **Evaluator testing superficially** — The evaluator must use Playwright to **interact** with the live app, not just screenshot it. Click buttons, fill forms, test error states.
+4. **Evaluator testing superficially** — The evaluator must use Playwright to **interact** with the live app, not  screenshot it. Click buttons, fill forms, test error states.
 
 5. **Evaluator praising its own fixes** — Never let the evaluator suggest fixes and then evaluate those fixes. The evaluator only critiques; the generator fixes.
 

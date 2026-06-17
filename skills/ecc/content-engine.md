@@ -28,7 +28,7 @@ Clarify:
 
 1. Adapt for the platform. Do not cross-post the same copy.
 2. Hooks matter more than summaries.
-3. Every post should carry one clear idea.
+3. Every post must carry one clear idea.
 4. Use specifics over slogans.
 5. Keep the ask small and clear.
 
@@ -47,7 +47,7 @@ Clarify:
 
 ### TikTok / Short Video
 - first 3 seconds must interrupt attention
-- script around visuals, not just narration
+- script around visuals, not  narration
 - one demo, one claim, one CTA
 
 ### YouTube

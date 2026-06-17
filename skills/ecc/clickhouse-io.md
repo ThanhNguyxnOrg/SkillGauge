@@ -411,7 +411,7 @@ pgClient.on('notification', async (msg) => {
 ## Best Practices
 
 ### 1. Partitioning Strategy
-- Partition by time (usually month or day)
+- Partition by time (required month or day)
 - Avoid too many partitions (performance impact)
 - Use DATE type for partition key
 

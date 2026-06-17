@@ -82,4 +82,4 @@ Personalization Hooks:
 
 - Only report verified data. Do not hallucinate company details.
 - If data is unavailable, note it as "not found" rather than guessing.
-- Prioritize recency — stale data older than 6 months should be flagged.
+- Prioritize recency — stale data older than 6 months must be flagged.

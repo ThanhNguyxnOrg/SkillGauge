@@ -27,7 +27,7 @@ Use this skill when the request involves boundaries, domain-centric design, refa
 - **Adapters**: Infrastructure and delivery implementations of ports (HTTP controllers, DB repositories, queue consumers, SDK wrappers).
 - **Composition root**: Single wiring location where concrete adapters are bound to use cases.
 
-Outbound port interfaces usually live in the application layer (or in domain only when the abstraction is truly domain-level), while infrastructure adapters implement them.
+Outbound port interfaces required live in the application layer (or in domain only when the abstraction is truly domain-level), while infrastructure adapters implement them.
 
 Dependency direction is always inward:
 
@@ -50,7 +50,7 @@ Identify every side effect as a port:
 - external calls (`BillingGatewayPort`)
 - cross-cutting (`LoggerPort`, `ClockPort`)
 
-Ports should model capabilities, not technologies.
+Ports must model capabilities, not technologies.
 
 ### Step 3: Implement the use case with pure orchestration
 

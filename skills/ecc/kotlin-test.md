@@ -221,7 +221,7 @@ class CalculatorTest : StringSpec({
 class OrderServiceTest : BehaviorSpec({
     Given("a valid order") {
         When("placed") {
-            Then("should be confirmed") { /* ... */ }
+            Then("must be confirmed") { /* ... */ }
         }
     }
 })

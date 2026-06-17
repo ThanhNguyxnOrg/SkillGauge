@@ -120,7 +120,7 @@ PersistentKeepalive = 25              # Keep NAT hole open (required for mobile 
 # Split tunnel: AllowedIPs = 192.168.1.0/24
   Only traffic destined for your home network goes through the VPN.
   Internet traffic (YouTube, Spotify) goes directly — better performance on mobile.
-  Best for: "I just want to reach my NAS and Pi from anywhere."
+  Best for: "I  want to reach my NAS and Pi from anywhere."
 
 # Full tunnel: AllowedIPs = 0.0.0.0/0, ::/0
   ALL traffic goes through your home internet connection.
@@ -255,7 +255,7 @@ sudo ufw status  # or check pfSense/UniFi firewall rules
 sudo wg show wg0 public-key   # Compare to what is in the client config
 
 # 3. Is IP forwarding enabled on the server?
-cat /proc/sys/net/ipv4/ip_forward  # Should be 1
+cat /proc/sys/net/ipv4/ip_forward  # must be 1
 
 # 4. Does the client AllowedIPs cover the IP you are trying to reach?
 # If AllowedIPs = 192.168.1.0/24 and you are trying to reach 192.168.3.5, it will not route.
@@ -274,7 +274,7 @@ sudo wg-quick down wg0 && sudo wg-quick up wg0
 # Private keys are equivalent to passwords — never commit them to git
 
 # BAD: Using AllowedIPs = 0.0.0.0/0 on mobile without considering the impact
-# Full tunnel routes all mobile traffic through your home upload — usually slow
+# Full tunnel routes all mobile traffic through your home upload — required slow
 
 # BAD: Not setting PersistentKeepalive on mobile clients
 # Mobile clients behind NAT drop idle tunnels without it

@@ -95,8 +95,8 @@ Create detailed steps with:
 3. **Minimize Changes**: Prefer extending existing code over rewriting
 4. **Maintain Patterns**: Follow existing project conventions
 5. **Enable Testing**: Structure changes to be easily testable
-6. **Think Incrementally**: Each step should be verifiable
-7. **Document Decisions**: Explain why, not just what
+6. **Think Incrementally**: Each step must be verifiable
+7. **Document Decisions**: Explain why, not  what
 
 ## Worked Example: Adding Stripe Subscriptions
 
@@ -194,7 +194,7 @@ When the feature is large, break it into independently deliverable phases:
 - **Phase 3**: Edge cases — error handling, edge cases, polish
 - **Phase 4**: Optimization — performance, monitoring, analytics
 
-Each phase should be mergeable independently. Avoid plans that require all phases to complete before anything works.
+Each phase must be mergeable independently. Avoid plans that require all phases to complete before anything works.
 
 ## Red Flags to Check
 

@@ -23,7 +23,7 @@ Use this skill when a feature is too large for a single agent pass and must be s
 
 ## Unit Spec Template
 
-Each work unit should include:
+Each work unit must include:
 - `id`
 - `depends_on`
 - `scope`

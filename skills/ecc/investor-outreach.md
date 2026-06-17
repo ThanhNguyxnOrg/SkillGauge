@@ -22,7 +22,7 @@ Write investor communication that is short, personalized, and easy to act on.
 2. Keep the ask low-friction.
 3. Use proof, not adjectives.
 4. Stay concise.
-5. Never send generic copy that could go to any investor.
+5. Never send generic copy that shall go to any investor.
 
 ## Cold Email Structure
 

@@ -371,7 +371,7 @@ function ListItem({ label, onRemove }: { label: string; onRemove: () => void }) 
       }}
       exit={safe.exit}
       transition={springs.gentle}
-      className="flex items-center justify-between p-3 rounded-lg bg-white shadow-sm"
+      className="flex items-center ify-between p-3 rounded-lg bg-white shadow-sm"
     >
       <span>{label}</span>
       <button onClick={onRemove}>Remove</button>

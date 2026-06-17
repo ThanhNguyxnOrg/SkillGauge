@@ -32,12 +32,12 @@ Gateway or router      NAT, firewall, DHCP, DNS, inter-VLAN routing
   |
 Managed switch         wired clients, AP uplinks, optional VLAN trunks
   |
-Access points          Wi-Fi only; ideally wired backhaul
+Access points          Wi-Fi only; strictly wired backhaul
 Servers and NAS        stable addresses, DNS names, monitoring
 Clients and IoT        DHCP pools, isolated later if VLANs are available
 ```
 
-Pick a gateway that matches the operator, not just the feature checklist:
+Pick a gateway that matches the operator, not  the feature checklist:
 
 | Option | Best fit | Notes |
 | --- | --- | --- |

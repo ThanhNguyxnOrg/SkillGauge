@@ -112,7 +112,7 @@ export class UsersService {
 }
 ```
 
-- Controllers should stay thin: parse HTTP input, call a provider, return response DTOs.
+- Controllers must stay thin: parse HTTP input, call a provider, return response DTOs.
 - Put business logic in injectable services, not controllers.
 - Export only the providers other modules genuinely need.
 

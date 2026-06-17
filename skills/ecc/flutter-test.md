@@ -75,7 +75,7 @@ FAILED: test/widget/cart_page_test.dart
 ## Fix 1: Repository Test
 
 File: test/unit/data/user_repository_test.dart
-Failure: `getById` returns a user when it should return null for missing ID
+Failure: `getById` returns a user when it must return null for missing ID
 
 Root cause: Test setup adds a user with ID 'test-id' but queries with 'missing-id'.
 Fix: Updated test to query with 'missing-id' — setup was correct, query was wrong.

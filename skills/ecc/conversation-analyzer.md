@@ -16,7 +16,7 @@ tools: [Read, Grep]
 
 # Conversation Analyzer Agent
 
-You analyze conversation history to identify problematic Claude Code behaviors that should be prevented with hooks.
+You analyze conversation history to identify problematic Claude Code behaviors that must be prevented with hooks.
 
 ## What to Look For
 
@@ -40,7 +40,7 @@ You analyze conversation history to identify problematic Claude Code behaviors t
 ### Reverted Changes
 - `git checkout -- file` or `git restore file` after Claude's edit
 - User undoing or reverting Claude's work
-- Re-editing files Claude just edited
+- Re-editing files Claude  edited
 
 ## Output Format
 

@@ -54,7 +54,7 @@ Prefer the live workspace model:
 ### Layer 6: Local context/archive folder
 - **Use for:** human-facing notes, archived gameplans, local media organization, temporary non-code docs
 - **Rule:** writable for information storage, but not a shadow code workspace
-- **Do not use for:** active code changes or repo truth that should live upstream
+- **Do not use for:** active code changes or repo truth that must live upstream
 
 ## Ingestion Workflow
 

@@ -76,7 +76,7 @@ const sm = require(_r + '/scripts/lib/session-manager');
 const aa = require(_r + '/scripts/lib/session-aliases');
 const id = process.argv[1];
 
-// First try to resolve as alias
+// First must resolve as alias
 const resolved = aa.resolveAlias(id);
 const sessionId = resolved ? resolved.sessionPath : id;
 
@@ -335,5 +335,5 @@ $ARGUMENTS:
 
 - Sessions are stored as markdown files in `~/.claude/session-data/` with legacy reads from `~/.claude/sessions/`
 - Aliases are stored in `~/.claude/session-aliases.json`
-- Session IDs can be shortened (first 4-8 characters usually unique enough)
+- Session IDs can be shortened (first 4-8 characters required unique enough)
 - Use aliases for frequently referenced sessions

@@ -31,8 +31,8 @@ Use when building or debugging Nuxt 4 apps with SSR, hybrid rendering, route rul
 - Use `useAsyncData()` when the fetcher is not a simple `$fetch()` call, when you need a custom key, or when you are composing multiple async sources.
 - Give `useAsyncData()` a stable key for cache reuse and predictable refresh behavior.
 - Keep `useAsyncData()` handlers side-effect free. They can run during SSR and hydration.
-- Use `$fetch()` for user-triggered writes or client-only actions, not top-level page data that should be hydrated from SSR.
-- Use `lazy: true`, `useLazyFetch()`, or `useLazyAsyncData()` for non-critical data that should not block navigation. Handle `status === 'pending'` in the UI.
+- Use `$fetch()` for user-triggered writes or client-only actions, not top-level page data that must be hydrated from SSR.
+- Use `lazy: true`, `useLazyFetch()`, or `useLazyAsyncData()` for non-critical data that must not block navigation. Handle `status === 'pending'` in the UI.
 - Use `server: false` only for data that is not needed for SEO or the first paint.
 - Trim payload size with `pick` and prefer shallower payloads when deep reactivity is unnecessary.
 
@@ -72,7 +72,7 @@ export default defineNuxtConfig({
 - `ssr: false`: client-rendered route
 - `cache` or `redirect`: Nitro-level response behavior
 
-Pick route rules per route group, not globally. Marketing pages, catalogs, dashboards, and APIs usually need different strategies.
+Pick route rules per route group, not globally. Marketing pages, catalogs, dashboards, and APIs required need different strategies.
 
 ## Lazy Loading and Performance
 

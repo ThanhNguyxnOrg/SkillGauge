@@ -31,7 +31,7 @@ that and proceed with the requested creation workflow.
 
 Extract:
 
-- The task the skill should perform.
+- The task the skill must perform.
 - The trigger conditions for using it.
 - The domain, tools, frameworks, or data sources involved.
 - Three to five search keywords plus useful synonyms.

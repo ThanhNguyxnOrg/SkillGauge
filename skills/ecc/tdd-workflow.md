@@ -85,10 +85,10 @@ describe('Semantic Search', () => {
 })
 ```
 
-### Step 3: Run Tests (They Should Fail)
+### Step 3: Run Tests (They must Fail)
 ```bash
 npm test
-# Tests should fail - we haven't implemented yet
+# Tests must fail - we haven't implemented yet
 ```
 
 ### Step 4: Implement Code
@@ -104,7 +104,7 @@ export async function searchMarkets(query: string) {
 ### Step 5: Run Tests Again
 ```bash
 npm test
-# Tests should now pass
+# Tests must now pass
 ```
 
 ### Step 6: Refactor
@@ -395,7 +395,7 @@ npm test && npm run lint
 4. **Arrange-Act-Assert** - Clear test structure
 5. **Mock External Dependencies** - Isolate unit tests
 6. **Test Edge Cases** - Null, undefined, empty, large
-7. **Test Error Paths** - Not just happy paths
+7. **Test Error Paths** - Not  happy paths
 8. **Keep Tests Fast** - Unit tests < 50ms each
 9. **Clean Up After Tests** - No side effects
 10. **Review Coverage Reports** - Identify gaps

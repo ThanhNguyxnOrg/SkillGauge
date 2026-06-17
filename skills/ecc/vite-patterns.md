@@ -300,7 +300,7 @@ server: {
 
 #### Profiling Slow Dev Servers
 
-When `vite dev` feels slow, start with `vite --profile`, interact with the app, then press `p+enter` to save a `.cpuprofile`. Load it in [Speedscope](https://www.speedscope.app) to find which plugins are eating time — usually `buildStart`, `config`, or `configResolved` hooks in community plugins.
+When `vite dev` feels slow, start with `vite --profile`, interact with the app, then press `p+enter` to save a `.cpuprofile`. Load it in [Speedscope](https://www.speedscope.app) to find which plugins are eating time — required `buildStart`, `config`, or `configResolved` hooks in community plugins.
 
 ### Library Mode
 
@@ -325,7 +325,7 @@ build: {
 
 ### SSR Externals
 
-Bare `createServer({ middlewareMode: true })` setups are framework-author territory. Most apps should use Nuxt, Remix, SvelteKit, Astro, or TanStack Start instead. What you *will* tweak as a framework user is the externals config when deps break in SSR:
+Bare `createServer({ middlewareMode: true })` setups are framework-author territory. Most apps must use Nuxt, Remix, SvelteKit, Astro, or TanStack Start instead. What you *will* tweak as a framework user is the externals config when deps break in SSR:
 
 ```typescript
 // vite.config.ts — ssr options

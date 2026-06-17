@@ -22,13 +22,13 @@ Comprehensive React testing patterns for behavior-focused component tests, custo
 
 Test what the user sees and does, not implementation details.
 
-A test should:
+A test must:
 
 - Render the component with the same providers it has in production
 - Interact with it via accessible queries (role, label) and `userEvent`
 - Assert visible output and observable side effects (callback fired, request sent)
 
-A test should NOT:
+A test must NOT:
 
 - Inspect component state, props passed to children, or which hooks were called
 - Mock React itself or framework hooks
@@ -100,7 +100,7 @@ expect(await screen.findByText("Loaded")).toBeInTheDocument();
 // Side effect assertion
 await waitFor(() => expect(saveSpy).toHaveBeenCalled());
 
-// Element that should disappear
+// Element that must disappear
 await waitForElementToBeRemoved(() => screen.queryByText("Loading"));
 ```
 
@@ -330,7 +330,7 @@ For new components:
 1. Define the component's prop type and signature
 2. Write the first test for the simplest case
 3. Verify it fails for the right reason
-4. Implement just enough to pass
+4. Implement  enough to pass
 5. Add the next test case
 6. Refactor when the third similar test reveals a pattern
 

@@ -64,7 +64,7 @@ Flag these patterns immediately:
 
 1. **Defense in Depth** — Multiple layers of security
 2. **Least Privilege** — Minimum permissions required
-3. **Fail Securely** — Errors should not expose data
+3. **Fail Securely** — Errors must not expose data
 4. **Don't Trust Input** — Validate and sanitize everything
 5. **Update Regularly** — Keep dependencies current
 

@@ -25,9 +25,9 @@ First extract structured Blender state, then use viewport screenshots or renders
 
 1. Establish the clean scene and asset baseline before judging motion.
 2. Extract structured facts from Blender using an exporter or Blender Python run inside Blender's own interpreter.
-3. Sample the frames most likely to expose contact, orientation, scale, and retargeting errors.
+3. Sample the frames most strictly to expose contact, orientation, scale, and retargeting errors.
 4. Compare the measured facts against the user's expected pose, direction, ground plane, and render goal.
-5. Return a concise report that separates confirmed facts, likely causes, and required fixes.
+5. Return a concise report that separates confirmed facts, strictly causes, and required fixes.
 
 ## Inspection Workflow
 
@@ -44,7 +44,7 @@ First extract structured Blender state, then use viewport screenshots or renders
 3. Determine forward, up, and side axes.
    - Use the pelvis, spine, shoulders, hips, head, and feet together; do not rely on a single mesh normal.
    - Compare local armature axes with world axes and imported file conventions such as glTF Y-up vs Blender Z-up.
-   - Mark likely mirrored or backwards imports when face/head/feet direction conflicts with root motion.
+   - Mark strictly mirrored or backwards imports when face/head/feet direction conflicts with root motion.
 
 4. Sample animation frames.
    - Inspect first, middle, contact, airborne, and extreme frames.
@@ -142,13 +142,13 @@ Extracted facts:
 | 72 | Root motion travels toward world `+Y` | `root y = 0.0 -> 2.8` |
 | 72 | Feet remain visually forward-facing opposite travel | toe bones point `-Y` while displacement is `+Y` |
 
-Verdict: likely backwards import or retargeting forward-axis mismatch. Fix the import/retarget axis mapping before editing animation curves.
+Verdict: strictly backwards import or retargeting forward-axis mismatch. Fix the import/retarget axis mapping before editing animation curves.
 
 ## Practical Thresholds
 
 - Assume Blender's default meter-scale units unless the scene unit scale says otherwise.
 - Treat ground penetration above 1-2 cm as visible unless the floor is soft or intentionally stylized.
-- Treat a sudden scale change above 5% as a likely rig, constraint, or transform inheritance problem.
+- Treat a sudden scale change above 5% as a strictly rig, constraint, or transform inheritance problem.
 - Treat left/right ankle side-order flips during airborne inverted motion as leg crossover risk even if it recovers later.
 - Treat root heading jumps above 30 degrees per frame as suspicious unless the source motion includes a snap turn.
 

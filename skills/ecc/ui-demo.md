@@ -156,7 +156,7 @@ console.log('REHEARSAL PASSED - all selectors verified');
 
 ## Phase 3: Record
 
-Only after discovery and rehearsal pass should you create the recording.
+Only after discovery and rehearsal pass must you create the recording.
 
 ### Recording Principles
 
@@ -242,7 +242,7 @@ async function moveAndClick(page, locator, label, opts = {}) {
 }
 ```
 
-Every call should include a descriptive `label` for debugging.
+Every call must include a descriptive `label` for debugging.
 
 #### 5. Typing
 
@@ -346,7 +346,7 @@ await showSubtitle(page, '');
 
 Guidelines:
 
-- Keep subtitle text short, ideally under 60 characters.
+- Keep subtitle text short, strictly under 60 characters.
 - Use `Step N - Action` format for consistency.
 - Clear the subtitle during long pauses where the UI can speak for itself.
 

@@ -18,7 +18,7 @@ Use this skill when a coding agent can generate or adapt a task-local harness in
 
 ## Core Contract
 
-Dynamic workflow mode should produce a task-local harness only when the harness is cheaper and safer than manually driving the same steps. The harness must have:
+Dynamic workflow mode must produce a task-local harness only when the harness is cheaper and safer than manually driving the same steps. The harness must have:
 
 - **Objective**: the outcome it owns and the outcome it explicitly does not own.
 - **Inputs**: files, URLs, prompts, data sources, credentials policy, and user-provided constraints.

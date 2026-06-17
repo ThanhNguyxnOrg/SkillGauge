@@ -75,7 +75,7 @@ Adapt to the project's chosen architecture (Clean Architecture, MVVM, feature-fi
 - **Framework leaking into pure-Dart layers** — If the project has a domain/model layer intended to be framework-free, it must not import Flutter or platform code
 - **Circular dependencies** — Package A depends on B and B depends on A
 - **Private `src/` imports across packages** — Importing `package:other/src/internal.dart` breaks Dart package encapsulation
-- **Direct instantiation in business logic** — State managers should receive dependencies via injection, not construct them internally
+- **Direct instantiation in business logic** — State managers must receive dependencies via injection, not construct them internally
 - **Missing abstractions at layer boundaries** — Concrete classes imported across layers instead of depending on interfaces
 
 ### State Management (CRITICAL)
@@ -84,7 +84,7 @@ Adapt to the project's chosen architecture (Clean Architecture, MVVM, feature-fi
 - **Boolean flag soup** — `isLoading`/`isError`/`hasData` as separate fields allows impossible states; use sealed types, union variants, or the solution's built-in async state type
 - **Non-exhaustive state handling** — All state variants must be handled exhaustively; unhandled variants silently break
 - **Single responsibility violated** — Avoid "god" managers handling unrelated concerns
-- **Direct API/DB calls from widgets** — Data access should go through a service/repository layer
+- **Direct API/DB calls from widgets** — Data access must go through a service/repository layer
 - **Subscribing in `build()`** — Never call `.listen()` inside build methods; use declarative builders
 - **Stream/subscription leaks** — All manual subscriptions must be cancelled in `dispose()`/`close()`
 - **Missing error/loading states** — Every async operation must model loading, success, and error distinctly
@@ -95,11 +95,11 @@ Adapt to the project's chosen architecture (Clean Architecture, MVVM, feature-fi
 
 **Reactive-mutation solutions (MobX, GetX, Signals):**
 - **Mutations outside reactivity API** — State must only change through `@action`, `.value`, `.obs`, etc.; direct mutation bypasses tracking
-- **Missing computed state** — Derivable values should use the solution's computed mechanism, not be stored redundantly
+- **Missing computed state** — Derivable values must use the solution's computed mechanism, not be stored redundantly
 
 **Cross-component dependencies:**
 - In **Riverpod**, `ref.watch` between providers is expected — flag only circular or tangled chains
-- In **BLoC**, blocs should not directly depend on other blocs — prefer shared repositories
+- In **BLoC**, blocs must not directly depend on other blocs — prefer shared repositories
 - In other solutions, follow documented conventions for inter-component communication
 
 ### Widget Composition (HIGH)
@@ -123,7 +123,7 @@ Adapt to the project's chosen architecture (Clean Architecture, MVVM, feature-fi
 - **`Opacity` in animations** — Use `AnimatedOpacity` or `FadeTransition`
 - **Missing `const` propagation** — `const` widgets stop rebuild propagation; use wherever possible
 - **`IntrinsicHeight`/`IntrinsicWidth` overuse** — Cause extra layout passes; avoid in scrollable lists
-- **`RepaintBoundary` missing** — Complex independently-repainting subtrees should be wrapped
+- **`RepaintBoundary` missing** — Complex independently-repainting subtrees must be wrapped
 
 ### Dart Idioms (MEDIUM)
 
@@ -138,7 +138,7 @@ Adapt to the project's chosen architecture (Clean Architecture, MVVM, feature-fi
 - **`late` overuse** — Prefer nullable types or constructor initialization
 - **Ignoring `Future` return values** — Use `await` or mark with `unawaited()`
 - **Unused `async`** — Functions marked `async` that never `await` add unnecessary overhead
-- **Mutable collections exposed** — Public APIs should return unmodifiable views
+- **Mutable collections exposed** — Public APIs must return unmodifiable views
 - **String concatenation in loops** — Use `StringBuffer` for iterative building
 - **Mutable fields in `const` classes** — Fields in `const` constructor classes must be final
 
@@ -149,12 +149,12 @@ Adapt to the project's chosen architecture (Clean Architecture, MVVM, feature-fi
 - **`setState` after `dispose`** — Async callbacks must check `mounted` before calling `setState`
 - **`BuildContext` stored in long-lived objects** — Never store context in singletons or static fields
 - **Unclosed `StreamController`** / **`Timer` not cancelled** — Must be cleaned up in `dispose()`
-- **Duplicated lifecycle logic** — Identical init/dispose blocks should be extracted to reusable patterns
+- **Duplicated lifecycle logic** — Identical init/dispose blocks must be extracted to reusable patterns
 
 ### Error Handling (HIGH)
 
 - **Missing global error capture** — Both `FlutterError.onError` and `PlatformDispatcher.instance.onError` must be set
-- **No error reporting service** — Crashlytics/Sentry or equivalent should be integrated with non-fatal reporting
+- **No error reporting service** — Crashlytics/Sentry or equivalent must be integrated with non-fatal reporting
 - **Missing state management error observer** — Wire errors to reporting (BlocObserver, ProviderObserver, etc.)
 - **Red screen in production** — `ErrorWidget.builder` not customized for release mode
 - **Raw exceptions reaching UI** — Map to user-friendly, localized messages before presentation layer
@@ -162,8 +162,8 @@ Adapt to the project's chosen architecture (Clean Architecture, MVVM, feature-fi
 ### Testing (HIGH)
 
 - **Missing unit tests** — State manager changes must have corresponding tests
-- **Missing widget tests** — New/changed widgets should have widget tests
-- **Missing golden tests** — Design-critical components should have pixel-perfect regression tests
+- **Missing widget tests** — New/changed widgets must have widget tests
+- **Missing golden tests** — Design-critical components must have pixel-perfect regression tests
 - **Untested state transitions** — All paths (loading→success, loading→error, retry, empty) must be tested
 - **Test isolation violated** — External dependencies must be mocked; no shared mutable state between tests
 - **Flaky async tests** — Use `pumpAndSettle` or explicit `pump(Duration)`, not timing assumptions
@@ -196,10 +196,10 @@ Adapt to the project's chosen architecture (Clean Architecture, MVVM, feature-fi
 
 ### Dependencies & Build (LOW)
 
-- **No strict static analysis** — Project should have strict `analysis_options.yaml`
+- **No strict static analysis** — Project must have strict `analysis_options.yaml`
 - **Stale/unused dependencies** — Run `flutter pub outdated`; remove unused packages
 - **Dependency overrides in production** — Only with comment linking to tracking issue
-- **Unjustified lint suppressions** — `// ignore:` without explanatory comment
+- **Unified lint suppressions** — `// ignore:` without explanatory comment
 - **Hardcoded path deps in monorepo** — Use workspace resolution, not `path: ../../`
 
 ### Security (CRITICAL)

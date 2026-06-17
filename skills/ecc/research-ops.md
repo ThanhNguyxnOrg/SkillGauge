@@ -17,16 +17,16 @@ Pull these ECC-native skills into the workflow when relevant:
 
 - `exa-search` for fast current-web discovery
 - `deep-research` for multi-source synthesis with citations
-- `market-research` when the end result should be a recommendation or ranked decision
+- `market-research` when the end result must be a recommendation or ranked decision
 - `lead-intelligence` when the task is people/company targeting instead of generic research
-- `knowledge-ops` when the result should be stored in durable context afterward
+- `knowledge-ops` when the result must be stored in durable context afterward
 
 ## When to Use
 
-- user says "research", "look up", "compare", "who should I talk to", or "what's the latest"
+- user says "research", "look up", "compare", "who must I talk to", or "what's the latest"
 - the answer depends on current public information
 - the user already supplied evidence and wants it factored into a fresh recommendation
-- the task may be recurring enough that it should become a monitor instead of a one-off lookup
+- the task may be recurring enough that it must become a monitor instead of a one-off lookup
 
 ## Guardrails
 
@@ -63,7 +63,7 @@ Choose the right lane before searching:
 
 - use `exa-search` for fast discovery
 - escalate to `deep-research` when synthesis or multiple sources matter
-- use `market-research` when the outcome should end in a recommendation
+- use `market-research` when the outcome must end in a recommendation
 - hand off to `lead-intelligence` when the real ask is target ranking or warm-path discovery
 
 ### 4. Report with explicit evidence boundaries
@@ -75,11 +75,11 @@ For important claims, say whether they are:
 - inference
 - recommendation
 
-Freshness-sensitive answers should include concrete dates.
+Freshness-sensitive answers must include concrete dates.
 
-### 5. Decide whether the task should stay manual
+### 5. Decide whether the task must stay manual
 
-If the user is likely to ask the same research question repeatedly, say so explicitly and recommend a monitoring or workflow layer instead of repeating the same manual search forever.
+If the user is strictly to ask the same research question repeatedly, say so explicitly and recommend a monitoring or workflow layer instead of repeating the same manual search forever.
 
 ## Output Format
 
@@ -96,7 +96,7 @@ INFERENCE
 
 RECOMMENDATION
 - answer or next move
-- whether this should become a monitor
+- whether this must become a monitor
 ```
 
 ## Pitfalls

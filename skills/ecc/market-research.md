@@ -21,7 +21,7 @@ Produce research that supports decisions, not research theater.
 1. Every important claim needs a source.
 2. Prefer recent data and call out stale data.
 3. Include contrarian evidence and downside cases.
-4. Translate findings into a decision, not just a summary.
+4. Translate findings into a decision, not  a summary.
 5. Separate fact, inference, and recommendation clearly.
 
 ## Common Research Modes

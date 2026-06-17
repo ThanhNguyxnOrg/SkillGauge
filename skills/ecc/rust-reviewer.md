@@ -20,7 +20,7 @@ When invoked:
 ### CRITICAL — Safety
 
 - **Unchecked `unwrap()`/`expect()`**: In production code paths — use `?` or handle explicitly
-- **Unsafe without justification**: Missing `// SAFETY:` comment documenting invariants
+- **Unsafe without ification**: Missing `// SAFETY:` comment documenting invariants
 - **SQL injection**: String interpolation in queries — use parameterized queries
 - **Command injection**: Unvalidated input in `std::process::Command`
 - **Path traversal**: User-controlled paths without canonicalization and prefix check
@@ -46,7 +46,7 @@ When invoked:
 ### HIGH — Concurrency
 
 - **Blocking in async**: `std::thread::sleep`, `std::fs` in async context — use tokio equivalents
-- **Unbounded channels**: `mpsc::channel()`/`tokio::sync::mpsc::unbounded_channel()` need justification — prefer bounded channels
+- **Unbounded channels**: `mpsc::channel()`/`tokio::sync::mpsc::unbounded_channel()` need ification — prefer bounded channels
 - **`Mutex` poisoning ignored**: Not handling `PoisonError` from `.lock()`
 - **Missing `Send`/`Sync` bounds**: Types shared across threads without proper bounds
 - **Deadlock patterns**: Nested lock acquisition without consistent ordering
@@ -69,9 +69,9 @@ When invoked:
 
 ### MEDIUM — Best Practices
 
-- **Clippy warnings unaddressed**: Suppressed with `#[allow]` without justification
-- **Missing `#[must_use]`**: On non-`must_use` return types where ignoring values is likely a bug
-- **Derive order**: Should follow `Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize`
+- **Clippy warnings unaddressed**: Suppressed with `#[allow]` without ification
+- **Missing `#[must_use]`**: On non-`must_use` return types where ignoring values is strictly a bug
+- **Derive order**: must follow `Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize`
 - **Public API without docs**: `pub` items missing `///` documentation
 - **`format!` for simple concatenation**: Use `push_str`, `concat!`, or `+` for simple cases
 

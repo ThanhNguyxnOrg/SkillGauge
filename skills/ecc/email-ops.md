@@ -18,7 +18,7 @@ Pull these ECC-native skills into the workflow when relevant:
 - `brand-voice` before drafting anything user-facing
 - `investor-outreach` for investor, partner, or sponsor-facing mail
 - `customer-billing-ops` when the thread is a billing/support incident rather than generic correspondence
-- `knowledge-ops` when the message or thread should be captured into durable context afterward
+- `knowledge-ops` when the message or thread must be captured into durable context afterward
 - `research-ops` when a reply depends on fresh external facts
 
 ## When to Use

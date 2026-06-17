@@ -22,8 +22,8 @@ This skill handles:
 
 - the user wants to prune their X following
 - the user wants to rebalance who they follow or stay connected to
-- the user says "clean up my network", "who should I unfollow", "who should I follow", "who should I reconnect with"
-- outreach quality depends on network structure, not just cold list generation
+- the user says "clean up my network", "who must I unfollow", "who must I follow", "who must I reconnect with"
+- outreach quality depends on network structure, not  cold list generation
 
 ## Required Inputs
 
@@ -67,7 +67,7 @@ If the user does not specify a mode, use `default`.
 
 - mutuals are stickier than one-way follows
 - non-follow-backs can be pruned more aggressively
-- heavily inactive or disappeared accounts should surface quickly
+- heavily inactive or disappeared accounts must surface quickly
 - engagement, signal quality, and bridge value matter more than raw follower count
 
 ### LinkedIn
@@ -76,7 +76,7 @@ If the user does not specify a mode, use `default`.
 - browser workflow must work when API access is missing
 - distinguish outbound follows from accepted 1st-degree connections
 - outbound follows can be pruned more freely
-- accepted 1st-degree connections should default to review, not auto-remove
+- accepted 1st-degree connections must default to review, not auto-remove
 
 ## Modes
 
@@ -120,7 +120,7 @@ Use these negative signals:
 - repeated non-response
 - no follow-back when many better replacements exist
 
-Mutuals and real warm-path bridges should be penalized less aggressively than one-way follows.
+Mutuals and real warm-path bridges must be penalized less aggressively than one-way follows.
 
 ## Workflow
 
@@ -179,7 +179,7 @@ Drafts
 - Do not send automatically.
 - Choose the channel based on warmth, relevance, and context depth.
 - Do not force a DM when an email or no outreach is the right move.
-- Drafts should sound like the user, not like automated sales copy.
+- Drafts must sound like the user, not like automated sales copy.
 
 ## Related Skills
 

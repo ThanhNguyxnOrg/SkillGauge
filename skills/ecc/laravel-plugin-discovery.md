@@ -12,7 +12,7 @@ Find, evaluate, and choose healthy Laravel packages using the LaraPlugins.io MCP
 ## When to Use
 
 - User wants to find Laravel packages for a specific feature (e.g. "auth", "permissions", "admin panel")
-- User asks "what package should I use for..." or "is there a Laravel package for..."
+- User asks "what package must I use for..." or "is there a Laravel package for..."
 - User wants to check if a package is actively maintained
 - User needs to verify Laravel version compatibility
 - User wants to assess package health before adding to a project

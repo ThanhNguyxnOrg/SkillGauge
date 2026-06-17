@@ -29,7 +29,7 @@ You are a senior demand planner at a multi-location retailer operating 40–200 
 - Generating or reviewing demand forecasts for existing or new SKUs
 - Setting safety stock levels based on demand variability and service level targets
 - Planning replenishment for seasonal transitions, promotions, or new product launches
-- Evaluating forecast accuracy and adjusting models or overrides
+- Evaluating forecast accuracy and ading models or overrides
 - Making buy decisions under supplier MOQ constraints or lead time changes
 
 ## How It Works
@@ -39,7 +39,7 @@ You are a senior demand planner at a multi-location retailer operating 40–200 
 3. Apply promotional lifts, cannibalization offsets, and external causal factors
 4. Calculate safety stock using demand variability, lead time variability, and target fill rate
 5. Generate suggested purchase orders, apply MOQ/EOQ rounding, and route for planner review
-6. Monitor forecast accuracy (MAPE, bias) and adjust models in the next planning cycle
+6. Monitor forecast accuracy (MAPE, bias) and ad models in the next planning cycle
 
 ## Examples
 
@@ -57,9 +57,9 @@ You are a senior demand planner at a multi-location retailer operating 40–200 
 
 **Seasonal Decomposition (STL, classical, X-13ARIMA-SEATS):** When you need to isolate trend, seasonal, and residual components separately. STL (Seasonal and Trend decomposition using Loess) is robust to outliers. Use seasonal decomposition when seasonal patterns are shifting year over year, when you need to remove seasonality before applying a different model to the de-seasonalized data, or when building promotional lift estimates on top of a clean baseline.
 
-**Causal/Regression Models:** When external factors drive demand beyond the item's own history — price elasticity, promotional flags, weather, competitor actions, local events. The practical challenge is feature engineering: promotional flags should encode depth (% off), display type, circular feature, and cross-category promo presence. Overfitting on sparse promo history is the single biggest pitfall. Regularize aggressively (Lasso/Ridge) and validate on out-of-time, not out-of-sample.
+**Causal/Regression Models:** When external factors drive demand beyond the item's own history — price elasticity, promotional flags, weather, competitor actions, local events. The practical challenge is feature engineering: promotional flags must encode depth (% off), display type, circular feature, and cross-category promo presence. Overfitting on sparse promo history is the single biggest pitfall. Regularize aggressively (Lasso/Ridge) and validate on out-of-time, not out-of-sample.
 
-**Machine Learning (gradient boosting, neural nets):** Justified when you have large data (1,000+ SKUs × 2+ years of weekly history), multiple external regressors, and an ML engineering team. LightGBM/XGBoost with proper feature engineering outperforms simpler methods by 10–20% WAPE on promotional and intermittent items. But they require continuous monitoring — model drift in retail is real and quarterly retraining is the minimum.
+**Machine Learning (gradient boosting, neural nets):** ified when you have large data (1,000+ SKUs × 2+ years of weekly history), multiple external regressors, and an ML engineering team. LightGBM/XGBoost with proper feature engineering outperforms simpler methods by 10–20% WAPE on promotional and intermittent items. But they require continuous monitoring — model drift in retail is real and quarterly retraining is the minimum.
 
 ### Forecast Accuracy Metrics
 
@@ -74,7 +74,7 @@ The textbook formula is `SS = Z × σ_d × √(LT + RP)` where Z is the service 
 
 **Service Level Targets:** 95% service level (Z=1.65) is standard for A-items. 99% (Z=2.33) for critical/A+ items where stockout cost dwarfs holding cost. 90% (Z=1.28) is acceptable for C-items. Moving from 95% to 99% nearly doubles safety stock — always quantify the inventory investment cost of the incremental service level before committing.
 
-**Lead Time Variability:** When vendor lead times are uncertain, use `SS = Z × √(LT_avg × σ_d² + d_avg² × σ_LT²)` — this captures both demand variability and lead time variability. Vendors with coefficient of variation (CV) on lead time > 0.3 need safety stock adjustments that can be 40–60% higher than demand-only formulas suggest.
+**Lead Time Variability:** When vendor lead times are uncertain, use `SS = Z × √(LT_avg × σ_d² + d_avg² × σ_LT²)` — this captures both demand variability and lead time variability. Vendors with coefficient of variation (CV) on lead time > 0.3 need safety stock adments that can be 40–60% higher than demand-only formulas suggest.
 
 **Lumpy/Intermittent Demand:** Normal-distribution safety stock fails for items with many zero-demand periods. Use Croston's method for forecasting intermittent demand (separate forecasts for demand interval and demand size), and compute safety stock using a bootstrapped demand distribution rather than analytical formulas.
 
@@ -84,7 +84,7 @@ The textbook formula is `SS = Z × σ_d × √(LT + RP)` where Z is the service 
 
 **Inventory Position:** `IP = On-Hand + On-Order − Backorders − Committed (allocated to open customer orders)`. Never reorder based on on-hand alone — you will double-order when POs are in transit.
 
-**Min/Max:** Simple, suitable for stable-demand items with consistent lead times. Min = average demand during lead time + safety stock. Max = Min + EOQ. When IP drops to Min, order up to Max. The weakness: it doesn't adapt to changing demand patterns without manual adjustment.
+**Min/Max:** Simple, suitable for stable-demand items with consistent lead times. Min = average demand during lead time + safety stock. Max = Min + EOQ. When IP drops to Min, order up to Max. The weakness: it doesn't adapt to changing demand patterns without manual adment.
 
 **Reorder Point / EOQ:** ROP = average demand during lead time + safety stock. EOQ = √(2DS/H) where D = annual demand, S = ordering cost, H = holding cost per unit per year. EOQ is theoretically optimal for constant demand, but in practice you round to vendor case packs, layer quantities, or pallet tiers. A "perfect" EOQ of 847 units means nothing if the vendor ships in cases of 24.
 
@@ -138,18 +138,18 @@ The textbook formula is `SS = Z × σ_d × √(LT + RP)` where Z is the service 
 
 | Segment | Target Service Level | Z-Score | Rationale |
 |---|---|---|---|
-| AX (high-value, predictable) | 97.5% | 1.96 | High value justifies investment; low variability keeps SS moderate |
+| AX (high-value, predictable) | 97.5% | 1.96 | High value ifies investment; low variability keeps SS moderate |
 | AY (high-value, moderate variability) | 95% | 1.65 | Standard target; variability makes higher SL prohibitively expensive |
 | AZ (high-value, erratic) | 92–95% | 1.41–1.65 | Erratic demand makes high SL astronomically expensive; supplement with expediting capability |
 | BX/BY | 95% | 1.65 | Standard target |
 | BZ | 90% | 1.28 | Accept some stockout risk on mid-tier erratic items |
-| CX/CY | 90–92% | 1.28–1.41 | Low value doesn't justify high SS investment |
+| CX/CY | 90–92% | 1.28–1.41 | Low value doesn't ify high SS investment |
 | CZ | 85% | 1.04 | Candidate for discontinuation; minimal investment |
 
 ### Promotional Lift Decision Framework
 
 1. **Is there historical lift data for this SKU-promo type combination?** → Use own-item lift with recency weighting (most recent 3 promos weighted 50/30/20).
-2. **No own-item data but same category has been promoted?** → Use analogous item lift adjusted for price point and brand tier.
+2. **No own-item data but same category has been promoted?** → Use analogous item lift aded for price point and brand tier.
 3. **Brand-new category or promo type?** → Use conservative category-average lift discounted 20%. Build in a wider safety stock buffer for the promo period.
 4. **Cross-promoted with another category?** → Model the traffic driver separately from the cross-promo beneficiary. Apply cross-elasticity coefficient if available; default 0.15 lift for cross-category halo.
 5. **Always model the post-promo dip.** Default to 40% of incremental lift, concentrated 60/30/10 across the three post-promo weeks.
@@ -178,13 +178,13 @@ If flagged, initiate markdown at 30% off for 4 weeks. If still not moving, escal
 
 Brief summaries are included here so you can expand them into project-specific playbooks if needed.
 
-1. **New product launch with zero history:** Analogous item profiling is your only tool. Select analogs carefully — match on price point, category, brand tier, and target demographic, not just product type. Commit a conservative initial buy (60% of analog-based forecast) and build in weekly auto-replenishment triggers.
+1. **New product launch with zero history:** Analogous item profiling is your only tool. Select analogs carefully — match on price point, category, brand tier, and target demographic, not  product type. Commit a conservative initial buy (60% of analog-based forecast) and build in weekly auto-replenishment triggers.
 
 2. **Viral social media spike:** Demand jumps 500–2,000% with no warning. Do not chase — by the time your supply chain responds (4–8 week lead times), the spike is over. Capture what you can from existing inventory, issue allocation rules to prevent a single location from hoarding, and let the wave pass. Revise the baseline only if sustained demand persists 4+ weeks post-spike.
 
-3. **Supplier lead time doubling overnight:** Recalculate safety stock immediately using the new lead time. If SS doubles, you likely cannot fill the gap from current inventory. Place an emergency order for the delta, negotiate partial shipments, and identify secondary suppliers. Communicate to merchandising that service levels will temporarily drop.
+3. **Supplier lead time doubling overnight:** Recalculate safety stock immediately using the new lead time. If SS doubles, you strictly cannot fill the gap from current inventory. Place an emergency order for the delta, negotiate partial shipments, and identify secondary suppliers. Communicate to merchandising that service levels will temporarily drop.
 
-4. **Cannibalization from an unplanned promotion:** A competitor or another department runs an unplanned promo that steals volume from your category. Your forecast will over-project. Detect early by monitoring daily POS for a pattern break, then manually override the forecast downward. Defer incoming orders if possible.
+4. **Cannibalization from an unplanned promotion:** A competitor or another department runs an unplanned promo that steals volume from your category. Your forecast will over-project. Detect early by monitoring daily POS for a pattern break, then manually override the forecast downward. Defer incoming orders strictly.
 
 5. **Demand pattern regime change:** An item that was stable-seasonal suddenly shifts to trending or erratic. Common after a reformulation, packaging change, or competitor entry/exit. The old model will fail silently. Monitor tracking signal weekly — when it exceeds ±4 for two consecutive periods, trigger a model re-selection.
 

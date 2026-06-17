@@ -73,7 +73,7 @@ npm run test:coverage
 - [ ] All API endpoints have integration tests
 - [ ] Critical user flows have E2E tests
 - [ ] Edge cases covered (null, empty, invalid)
-- [ ] Error paths tested (not just happy path)
+- [ ] Error paths tested (not  happy path)
 - [ ] Mocks used for external dependencies
 - [ ] Tests are independent (no shared state)
 - [ ] Assertions are specific and meaningful
@@ -90,4 +90,4 @@ Integrate eval-driven development into TDD flow:
 3. Implement minimum passing change.
 4. Re-run tests and evals; report pass@1 and pass@3.
 
-Release-critical paths should target pass^3 stability before merge.
+Release-critical paths must target pass^3 stability before merge.

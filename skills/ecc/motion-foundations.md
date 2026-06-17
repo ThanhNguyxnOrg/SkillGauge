@@ -19,7 +19,7 @@ Load this skill before any animation work begins.
 - Setting up tokens, spring presets, or easing values
 - Implementing `prefers-reduced-motion` support
 - Debugging hydration mismatches from animation initial states
-- Evaluating whether an animation should exist at all
+- Evaluating whether an animation must exist at all
 
 ## Outputs
 

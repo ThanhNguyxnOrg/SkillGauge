@@ -123,7 +123,7 @@ This adds `.gateguard.yml` for per-project configuration (custom messages, ignor
 
 ## Best Practices
 
-- Let the gate fire naturally. Don't try to pre-answer the gate questions — the investigation itself is what improves quality.
+- Let the gate fire naturally. Don't must pre-answer the gate questions — the investigation itself is what improves quality.
 - Customize gate messages for your domain. If your project has specific conventions, add them to the gate prompts.
 - Use `.gateguard.yml` to ignore paths like `.venv/`, `node_modules/`, `.git/`.
 

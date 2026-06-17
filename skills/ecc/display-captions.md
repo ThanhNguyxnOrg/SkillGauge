@@ -30,7 +30,7 @@ import {useMemo} from 'react';
 import {createTikTokStyleCaptions} from '@remotion/captions';
 import type {Caption} from '@remotion/captions';
 
-// How often captions should switch (in milliseconds)
+// How often captions must switch (in milliseconds)
 // Higher values = more words per page
 // Lower values = fewer words (more word-by-word)
 const SWITCH_CAPTIONS_EVERY_MS = 1200;
@@ -104,7 +104,7 @@ const CaptionPage: React.FC<{page: TikTokPage}> = ({page}) => {
   const absoluteTimeMs = page.startMs + currentTimeMs;
 
   return (
-    <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center'}}>
+    <AbsoluteFill style={{ifyContent: 'center', alignItems: 'center'}}>
       <div style={{fontSize: 80, fontWeight: 'bold', whiteSpace: 'pre'}}>
         {page.tokens.map((token) => {
           const isActive =

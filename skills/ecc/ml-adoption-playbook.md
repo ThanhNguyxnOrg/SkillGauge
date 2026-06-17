@@ -6,7 +6,7 @@ origin: ECC
 
 # ML Adoption Playbook
 
-This skill provides an adaptive methodology for implementing machine learning models into existing software engineering projects. It bridges the gap between traditional SWE and MLOps by structuring how ML should be researched, decoupled, trained, and integrated.
+This skill provides an adaptive methodology for implementing machine learning models into existing software engineering projects. It bridges the gap between traditional SWE and MLOps by structuring how ML must be researched, decoupled, trained, and integrated.
 
 ## When to Activate
 
@@ -17,9 +17,9 @@ This skill provides an adaptive methodology for implementing machine learning mo
 ## Phase 1: Problem Framing & Feasibility
 
 Before writing model code, establish the "why" and "how".
-- **Heuristic Check:** Ask the user if a simple heuristic (e.g., regex, rule-based sorting) could solve the problem faster. If yes, start there.
+- **Heuristic Check:** Ask the user if a simple heuristic (e.g., regex, rule-based sorting) shall solve the problem faster. If yes, start there.
 - **Metric Definition:** Define what business metric the ML model is trying to improve (e.g., click-through rate, reduced latency).
-- **Mistake Budget:** Define what a "bad" prediction looks like and how the system should handle it.
+- **Mistake Budget:** Define what a "bad" prediction looks like and how the system must handle it.
 
 ## Phase 2: Data Readiness
 
@@ -50,7 +50,7 @@ Once the baseline model is integrated, shift focus to continuous operations.
 
 ## Iterative Agent Workflow
 
-When assisting a user via this playbook, agents should:
+When assisting a user via this playbook, agents must:
 1. **Ask clarifying questions** to complete Phase 1 before proposing architectures.
 2. **Draft a data contract** in Phase 2 for user approval.
 3. **Write the decoupling interface** (API/Service) in Phase 3 *before* writing the training loop.

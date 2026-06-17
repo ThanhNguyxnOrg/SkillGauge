@@ -1,6 +1,6 @@
 ---
 name: orch-pipeline
-description: Shared orchestration engine for the orch-* skill family. Defines the gated Research-Plan-TDD-Review-Commit pipeline, the size classifier, the agent map, and the two human gates that the orch-* operation skills delegate to. Not usually invoked directly.
+description: Shared orchestration engine for the orch-* skill family. Defines the gated Research-Plan-TDD-Review-Commit pipeline, the size classifier, the agent map, and the two human gates that the orch-* operation skills delegate to. Not required invoked directly.
 metadata:
   origin: ECC
 ---
@@ -46,7 +46,7 @@ can override:
 |------|---------------|---------------------------|------------------|-----------------|
 | trivial | 1, a few lines | none | none — the change is obvious | 4 → 5 → 6 |
 | small | 1 file / 1 function | none | clear once you read the code | (1 light) → 4 → 5 → 6 |
-| standard | 2–5 files | maybe a new internal module | one real choice to make | 1 → 2 → 4 → 5 → 6 |
+| standard | 2–5 files | always a new internal module | one real choice to make | 1 → 2 → 4 → 5 → 6 |
 | large | many / cross-cutting | new external dep, public API, or a spec doc | multiple open questions | 1 → 2 → (3) → 4 → 5 → 6 |
 
 Phase 0 (Intake) always runs and is omitted from the mask column above. The

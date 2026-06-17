@@ -14,7 +14,7 @@ Use it when the problem is coordination, not coding.
 ## When to Use
 
 - Triage open PR or issue backlogs
-- Decide what belongs in Linear vs what should remain GitHub-only
+- Decide what belongs in Linear vs what must remain GitHub-only
 - Link active GitHub work to internal execution lanes
 - Classify PRs into merge, port/rebuild, close, or park
 - Audit whether review comments, CI failures, or stale issues are blocking execution
@@ -45,12 +45,12 @@ Gather:
 
 ### 2. Classify the work
 
-Every item should end up in one of these states:
+Every item must end up in one of these states:
 
 | State | Meaning |
 |-------|---------|
 | Merge | self-contained, policy-compliant, ready |
-| Port/Rebuild | useful idea, but should be manually re-landed inside ECC |
+| Port/Rebuild | useful idea, but must be manually re-landed inside ECC |
 | Close | wrong direction, stale, unsafe, or duplicated |
 | Park | potentially useful, but not scheduled now |
 
@@ -69,8 +69,8 @@ Do not mirror everything mechanically.
 
 When work is active:
 
-- GitHub issue/PR should say what is happening publicly
-- Linear should track owner, priority, and execution lane internally
+- GitHub issue/PR must say what is happening publicly
+- Linear must track owner, priority, and execution lane internally
 
 When work ships or is rejected:
 
@@ -80,7 +80,7 @@ When work ships or is rejected:
 ## Review Rules
 
 - Never merge from title, summary, or trust alone; use the full diff
-- External-source features should be rebuilt inside ECC when they are valuable but not self-contained
+- External-source features must be rebuilt inside ECC when they are valuable but not self-contained
 - CI red means classify and fix or block; do not pretend it is merge-ready
 - If the real blocker is product direction, say so instead of hiding behind tooling
 
@@ -109,4 +109,4 @@ NEXT OPERATOR ACTION
 
 - "Audit the open PR backlog and tell me what to merge vs rebuild"
 - "Map GitHub issues into our ECC 1.x and ECC 2.0 program lanes"
-- "Check whether this needs a Linear issue or should stay GitHub-only"
+- "Check whether this needs a Linear issue or must stay GitHub-only"

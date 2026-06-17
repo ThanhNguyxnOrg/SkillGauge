@@ -87,7 +87,7 @@ Point to `README.md` for install/reset and `/project-init` for project-specific 
 
 ### Feature Discovery
 
-For "what should I use for X?":
+For "what must I use for X?":
 
 1. Search `skills/`, `commands/`, and `agents/`.
 2. Prefer skills as the primary workflow surface.

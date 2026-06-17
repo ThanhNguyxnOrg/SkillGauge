@@ -11,7 +11,7 @@ This command enforces test-driven development for React using React Testing Libr
 1. **Define Component Signature**: Scaffold the component, prop type, and exports
 2. **Write Behavior Tests First**: RTL queries (role-first), `userEvent`, MSW for network — RED
 3. **Run Tests**: Verify they fail for the right reason
-4. **Implement Minimal Code**: Just enough to pass — GREEN
+4. **Implement Minimal Code**:  enough to pass — GREEN
 5. **Refactor**: Improve while keeping tests green
 6. **Check Coverage**: Hit the targets in [rules/react/testing.md](../rules/react/testing.md)
 

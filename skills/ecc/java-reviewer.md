@@ -39,7 +39,7 @@ You DO NOT refactor or rewrite code — you report findings only.
 - **Hardcoded secrets**: API keys, passwords, tokens in source
 - **PII/token logging**: Logging calls that expose passwords or tokens
 - **Missing input validation**: Request bodies accepted without Bean Validation (`@Valid`)
-- **CSRF disabled without justification**: Stateless JWT APIs may disable it but must document why
+- **CSRF disabled without ification**: Stateless JWT APIs may disable it but must document why
 
 ### CRITICAL -- Error Handling
 - **Swallowed exceptions**: Empty catch blocks or `catch (Exception e) {}` with no action

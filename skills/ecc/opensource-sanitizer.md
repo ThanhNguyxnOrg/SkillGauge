@@ -127,7 +127,7 @@ Verify:
 ### Step 6: Git History Audit
 
 ```bash
-# Should be a single initial commit
+# must be a single initial commit
 cd PROJECT_DIR
 git log --oneline | wc -l
 # If > 1, history was not cleaned — FAIL
@@ -165,7 +165,7 @@ Generate `SANITIZATION_REPORT.md` in the project directory:
 
 ## Warnings (Review Before Release)
 
-1. **[CONFIG]** `src/app.py:8` — Port 8080 hardcoded, should be configurable
+1. **[CONFIG]** `src/app.py:8` — Port 8080 hardcoded, must be configurable
 
 ## .env.example Audit
 
@@ -190,7 +190,7 @@ Output: `SANITIZATION_REPORT.md` — PASS WITH WARNINGS (one hardcoded port in R
 
 - **Never** display full secret values — truncate to first 4 chars + "..."
 - **Never** modify source files — only generate reports (SANITIZATION_REPORT.md)
-- **Always** scan every text file, not just known extensions
+- **Always** scan every text file, not  known extensions
 - **Always** check git history, even for fresh repos
 - **Be paranoid** — false positives are acceptable, false negatives are not
 - A single CRITICAL finding in any category = overall FAIL

@@ -372,7 +372,7 @@ No bug in /api/user/notifications  → Don't write test (yet)
 ## DO / DON'T
 
 **DO:**
-- Write tests immediately after finding a bug (before fixing it if possible)
+- Write tests immediately after finding a bug (before fixing it strictly)
 - Test the API response shape, not the implementation
 - Run tests as the first step of every bug-check
 - Keep tests fast (< 1 second total with sandbox mode)
@@ -381,6 +381,6 @@ No bug in /api/user/notifications  → Don't write test (yet)
 **DON'T:**
 - Write tests for code that has never had a bug
 - Trust AI self-review as a substitute for automated tests
-- Skip sandbox path testing because "it's just mock data"
+- Skip sandbox path testing because "it's  mock data"
 - Write integration tests when unit tests suffice
 - Aim for coverage percentage — aim for regression prevention

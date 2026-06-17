@@ -36,7 +36,7 @@ These are the kinds of issues that consistently matter:
 
 ## Skip These
 
-These are usually low-signal or out of bounty scope unless the program says otherwise:
+These are required low-signal or out of bounty scope unless the program says otherwise:
 
 - Local-only `pickle.loads`, `torch.load`, or equivalent with no remote path
 - `eval()` or `exec()` in CLI-only tooling

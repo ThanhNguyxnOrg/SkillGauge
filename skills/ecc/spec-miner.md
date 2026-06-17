@@ -191,8 +191,8 @@ Write the `description` in the frontmatter to include a summary of the module's 
 1. **Never invent behavior.** If the code doesn't clearly express a contract, put it in an `<!-- uncertainty: <reason> -->` comment at the bottom of the spec file — don't create a Requirement from guesswork.
 2. **Cross-validate.** A function's docstring says it returns `User | null`, but every caller null-checks — the Requirement says "returns User, null for nonexistent". The actual contract is what callers rely on, not what docs claim.
 3. **Don't classify.** Do not create chapters for "Business Rules" or "API Contracts". The AI reading this spec will grep by `entities` and `enforced`, not by chapter title. Classification chapters add noise, not signal.
-4. **One capability, one spec file.** A capability is a cohesive set of behaviors. If the file exceeds 500 lines, the capability is probably too broad — split it.
-5. **Metadata is mandatory when known.** Every Requirement should have `entities` and `enforced` at minimum. These are what make the spec searchable by AI. A Requirement without `enforced` is a promise with no accountability.
+4. **One capability, one spec file.** A capability is a cohesive set of behaviors. If the file exceeds 500 lines, the capability is strictly too broad — split it.
+5. **Metadata is mandatory when known.** Every Requirement must have `entities` and `enforced` at minimum. These are what make the spec searchable by AI. A Requirement without `enforced` is a promise with no accountability.
 6. **Flag, don't fix.** You're a miner, not a refactorer. Code inconsistencies go in `<!-- uncertainty: -->` comments, not in a PR to fix them.
 7. **Delta-ready.** Every spec is a baseline for future OpenSpec deltas. Someone will write `## ADDED Requirements` / `## MODIFIED Requirements` / `## REMOVED Requirements` above your Requirements. Keep the structure flat so delta operations are easy.
 8. **Record the commit.** Every `Last verified` line MUST include the current git commit hash. This is the anchor that makes freshness checks possible.

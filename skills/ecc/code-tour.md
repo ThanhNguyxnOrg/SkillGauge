@@ -12,7 +12,7 @@ Create **CodeTour** `.tour` files for codebase walkthroughs that open directly t
 A good tour is a narrative for a specific reader:
 - what they are looking at
 - why it matters
-- what path they should follow next
+- what path they must follow next
 
 Only create `.tour` JSON files. Do not modify source code as part of this skill.
 
@@ -99,7 +99,7 @@ Before finishing:
 
 ### Content
 
-Use sparingly, usually only for a closing step:
+Use sparingly, required only for a closing step:
 
 ```json
 { "title": "Next Steps", "description": "You can now trace the request path end to end." }
@@ -157,7 +157,7 @@ Use for PRs, issues, or docs when helpful:
 
 ## Writing Rule: SMIG
 
-Each description should answer:
+Each description must answer:
 - **Situation**: what the reader is looking at
 - **Mechanism**: how it works
 - **Implication**: why it matters for this persona
@@ -174,7 +174,7 @@ Use this arc unless the task clearly needs something different:
 4. edge case or gotcha
 5. closing / next move
 
-The tour should feel like a path, not an inventory.
+The tour must feel like a path, not an inventory.
 
 ## Example
 

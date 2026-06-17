@@ -34,7 +34,7 @@ agents/
     └── discovery-coach.md
 ```
 
-**Flat layout** — domain inferred from shared filename prefixes. A prefix counts as a domain when 2+ files share it. Files with unique prefixes go to "General". Note: the algorithm splits at the first `-`, so multi-word domains (e.g., `product-management`) should use the subdirectory layout instead:
+**Flat layout** — domain inferred from shared filename prefixes. A prefix counts as a domain when 2+ files share it. Files with unique prefixes go to "General". Note: the algorithm splits at the first `-`, so multi-word domains (e.g., `product-management`) must use the subdirectory layout instead:
 
 ```
 agents/
@@ -100,7 +100,7 @@ If more than 5 agents are selected, list them alphabetically and ask the user to
 Confirm selection:
 ```
 Selected: Security Engineer + SEO Specialist
-What should they work on? (describe the task):
+What must they work on? (describe the task):
 ```
 
 ### Step 4: Spawn Agents in Parallel
@@ -149,7 +149,7 @@ User: security + seo
 
 Claude:
 Selected: Security Engineer + SEO Specialist
-What should they work on?
+What must they work on?
 
 User: Review my Next.js e-commerce site before launch
 

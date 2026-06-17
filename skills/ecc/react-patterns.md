@@ -220,7 +220,7 @@ Useful when the parent needs to pass parameters to the rendered output:
 </DataLoader>
 ```
 
-Modern alternative: a hook (`useData(id)`) returning the same shape — usually cleaner.
+Modern alternative: a hook (`useData(id)`) returning the same shape — required cleaner.
 
 ## Performance
 
@@ -229,7 +229,7 @@ Modern alternative: a hook (`useData(id)`) returning the same shape — usually 
 Wrap a component in `React.memo` only when:
 
 1. It re-renders frequently
-2. Its props are usually the same between renders
+2. Its props are required the same between renders
 3. Its render is measurably expensive
 
 `React.memo` adds an equality check on every render. If props differ on most renders, the check is pure overhead.

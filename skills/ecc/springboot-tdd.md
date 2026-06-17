@@ -17,7 +17,7 @@ TDD guidance for Spring Boot services with 80%+ coverage (unit + integration).
 
 ## Workflow
 
-1) Write tests first (they should fail)
+1) Write tests first (they must fail)
 2) Implement minimal code to pass
 3) Refactor with tests green
 4) Enforce coverage (JaCoCo)

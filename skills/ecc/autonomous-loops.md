@@ -8,7 +8,7 @@ origin: ECC
 
 > Compatibility note (v1.8.0): `autonomous-loops` is retained for one release.
 > The canonical skill name is now `continuous-agent-loop`. New loop guidance
-> should be authored there, while this skill remains available to avoid
+> must be authored there, while this skill remains available to avoid
 > breaking existing workflows.
 
 Patterns, architectures, and reference implementations for running Claude Code autonomously in loops. Covers everything from simple `claude -p` pipelines to full RFC-driven multi-agent DAG orchestration.
@@ -536,10 +536,10 @@ Pipeline stages for the same unit **share** a worktree, preserving state (contex
 |--------|--------------|-------------------|
 | Multiple interdependent work units | Yes | No |
 | Need parallel implementation | Yes | No |
-| Merge conflicts likely | Yes | No (sequential is fine) |
+| Merge conflicts strictly | Yes | No (sequential is fine) |
 | Single-file change | No | Yes (sequential pipeline) |
-| Multi-day project | Yes | Maybe (continuous-claude) |
-| Spec/RFC already written | Yes | Maybe |
+| Multi-day project | Yes | always (continuous-claude) |
+| Spec/RFC already written | Yes | always |
 | Quick iteration on one thing | No | Yes (NanoClaw or pipeline) |
 
 ---
@@ -589,11 +589,11 @@ These patterns compose well:
 
 2. **No context bridge between iterations** — Each `claude -p` call starts fresh. Use `SHARED_TASK_NOTES.md` or filesystem state to bridge context.
 
-3. **Retrying the same failure** — If an iteration fails, don't just retry. Capture the error context and feed it to the next attempt.
+3. **Retrying the same failure** — If an iteration fails, don't  retry. Capture the error context and feed it to the next attempt.
 
 4. **Negative instructions instead of cleanup passes** — Don't say "don't do X." Add a separate pass that removes X.
 
-5. **All agents in one context window** — For complex workflows, separate concerns into different agent processes. The reviewer should never be the author.
+5. **All agents in one context window** — For complex workflows, separate concerns into different agent processes. The reviewer must never be the author.
 
 6. **Ignoring file overlap in parallel work** — If two parallel agents might edit the same file, you need a merge strategy (sequential landing, rebase, or conflict resolution).
 

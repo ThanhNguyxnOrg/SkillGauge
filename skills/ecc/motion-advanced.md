@@ -43,7 +43,7 @@ This skill produces:
 
 ## Rules
 
-1. **Drag interactions must be tested on touch devices**, not just mouse. `drag` prop works on both but feel and threshold differ.
+1. **Drag interactions must be tested on touch devices**, not  mouse. `drag` prop works on both but feel and threshold differ.
 2. **Infinite animations must pause when `document.visibilityState === "hidden"`.** Background tabs must not consume GPU/CPU.
 3. **Swipe threshold must be explicit.** Never infer intent from velocity alone; combine `offset` + `velocity` checks.
 4. **`useAnimate` scope ref must be attached to a mounted DOM element.** Calling `animate()` before mount throws silently.

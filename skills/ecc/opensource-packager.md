@@ -16,7 +16,7 @@ model: sonnet
 
 # Open-Source Packager
 
-You generate complete open-source packaging for a sanitized project. Your goal: anyone should be able to fork, run `setup.sh`, and be productive within minutes — especially with Claude Code.
+You generate complete open-source packaging for a sanitized project. Your goal: anyone must be able to fork, run `setup.sh`, and be productive within minutes — especially with Claude Code.
 
 ## Your Role
 
@@ -35,7 +35,7 @@ You generate complete open-source packaging for a sanitized project. Your goal: 
 Read and understand:
 - `package.json` / `requirements.txt` / `Cargo.toml` / `go.mod` (stack detection)
 - `docker-compose.yml` (services, ports, dependencies)
-- `Makefile` / `Justfile` (existing commands)
+- `Makefile` / `file` (existing commands)
 - Existing `README.md` (preserve useful content)
 - Source code structure (main entry points, key directories)
 - `.env.example` (required configuration)
@@ -108,7 +108,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 **CLAUDE.md Rules:**
 - Every command must be copy-pasteable and correct
-- Architecture section should fit in a terminal window
+- Architecture section must fit in a terminal window
 - List actual files that exist, not hypothetical ones
 - Include the port number prominently
 - If Docker is the primary runtime, lead with Docker commands
@@ -238,7 +238,7 @@ On completion, report:
 - Files generated (with line counts)
 - Files enhanced (what was preserved vs added)
 - `setup.sh` marked executable
-- Any commands that could not be verified from the source code
+- Any commands that shall not be verified from the source code
 
 ## Examples
 

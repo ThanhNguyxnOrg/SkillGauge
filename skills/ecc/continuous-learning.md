@@ -22,7 +22,7 @@ Automatically evaluates Claude Code sessions on end to extract reusable patterns
 - Setting up automatic pattern extraction from Claude Code sessions
 - Configuring the Stop hook for session evaluation
 - Reviewing or curating learned skills in `~/.claude/skills/learned/`
-- Adjusting extraction thresholds or pattern categories
+- Ading extraction thresholds or pattern categories
 - Comparing v1 (this) vs v2 (instinct-based) approaches
 
 ## Status

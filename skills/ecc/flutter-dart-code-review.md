@@ -30,15 +30,15 @@ Comprehensive, library-agnostic checklist for reviewing Flutter/Dart application
 - [ ] **Null safety misuse**: Excessive `!` (bang operator) instead of proper null checks or Dart 3 pattern matching (`if (value case var v?)`)
 - [ ] **Type promotion failures**: Using `this.field` where local variable promotion would work
 - [ ] **Catching too broadly**: `catch (e)` without `on` clause; always specify exception types
-- [ ] **Catching `Error`**: `Error` subtypes indicate bugs and should not be caught
+- [ ] **Catching `Error`**: `Error` subtypes indicate bugs and must not be caught
 - [ ] **Unused `async`**: Functions marked `async` that never `await` — unnecessary overhead
 - [ ] **`late` overuse**: `late` used where nullable or constructor initialization would be safer; defers errors to runtime
 - [ ] **String concatenation in loops**: Use `StringBuffer` instead of `+` for iterative string building
-- [ ] **Mutable state in `const` contexts**: Fields in `const` constructor classes should not be mutable
+- [ ] **Mutable state in `const` contexts**: Fields in `const` constructor classes must not be mutable
 - [ ] **Ignoring `Future` return values**: Use `await` or explicitly call `unawaited()` to signal intent
 - [ ] **`var` where `final` works**: Prefer `final` for locals and `const` for compile-time constants
 - [ ] **Relative imports**: Use `package:` imports for consistency
-- [ ] **Mutable collections exposed**: Public APIs should return unmodifiable views, not raw `List`/`Map`
+- [ ] **Mutable collections exposed**: Public APIs must return unmodifiable views, not raw `List`/`Map`
 - [ ] **Missing Dart 3 pattern matching**: Prefer switch expressions and `if-case` over verbose `is` checks and manual casting
 - [ ] **Throwaway classes for multiple returns**: Use Dart 3 records `(String, int)` instead of single-use DTOs
 - [ ] **`print()` in production code**: Use `dart:developer` `log()` or the project's logging package; `print()` has no log levels and cannot be filtered
@@ -86,11 +86,11 @@ These principles apply to all Flutter state management solutions (BLoC, Riverpod
 ### Architecture:
 - [ ] Business logic lives outside the widget layer — in a state management component (BLoC, Notifier, Controller, Store, ViewModel, etc.)
 - [ ] State managers receive dependencies via injection, not by constructing them internally
-- [ ] A service or repository layer abstracts data sources — widgets and state managers should not call APIs or databases directly
+- [ ] A service or repository layer abstracts data sources — widgets and state managers must not call APIs or databases directly
 - [ ] State managers have a single responsibility — no "god" managers handling unrelated concerns
 - [ ] Cross-component dependencies follow the solution's conventions:
   - In **Riverpod**: providers depending on providers via `ref.watch` is expected — flag only circular or overly tangled chains
-  - In **BLoC**: blocs should not directly depend on other blocs — prefer shared repositories or presentation-layer coordination
+  - In **BLoC**: blocs must not directly depend on other blocs — prefer shared repositories or presentation-layer coordination
   - In other solutions: follow the documented conventions for inter-component communication
 
 ### Immutability & value equality (for immutable-state solutions: BLoC, Riverpod, Redux):
@@ -272,7 +272,7 @@ class UserError extends UserState {
 ### API key handling:
 - [ ] API keys NOT hardcoded in Dart source — use `--dart-define`, `.env` files excluded from VCS, or compile-time configuration
 - [ ] Secrets not committed to git — check `.gitignore`
-- [ ] Backend proxy used for truly secret keys (client should never hold server secrets)
+- [ ] Backend proxy used for truly secret keys (client must never hold server secrets)
 
 ### Input validation:
 - [ ] All user input validated before sending to API
@@ -393,7 +393,7 @@ class UserError extends UserState {
 
 ### Enforcement:
 - [ ] No unresolved analyzer warnings in committed code
-- [ ] Lint suppressions (`// ignore:`) are justified with comments explaining why
+- [ ] Lint suppressions (`// ignore:`) are ified with comments explaining why
 - [ ] `flutter analyze` runs in CI and failures block merges
 
 ### Key rules to verify regardless of lint package:

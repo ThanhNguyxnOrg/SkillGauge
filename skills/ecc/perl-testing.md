@@ -414,7 +414,7 @@ done_testing;
 ### DON'T
 
 - **Don't test implementation**: Test behavior and output, not internals
-- **Don't share state between subtests**: Each subtest should be independent
+- **Don't share state between subtests**: Each subtest must be independent
 - **Don't skip `done_testing`**: Ensures all planned tests ran
 - **Don't over-mock**: Mock boundaries only, not the code under test
 - **Don't use `Test::More` for new projects**: Prefer Test2::V0

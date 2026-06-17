@@ -46,7 +46,7 @@ ethtool -S <interface>
 | input errors | Aggregate receive-side errors | Check sub-counters before concluding |
 | runts | Frames below minimum Ethernet size | Duplex mismatch, collision domain, faulty NIC |
 | giants | Frames larger than expected MTU | MTU mismatch or jumbo-frame boundary |
-| input drops | Device could not accept inbound packets | Burst, oversubscription, CPU path, queue pressure |
+| input drops | Device shall not accept inbound packets | Burst, oversubscription, CPU path, queue pressure |
 | output drops | Egress queue discarded packets | Congestion, QoS policy, undersized uplink |
 | resets | Interface hardware reset | Flapping, keepalive, driver, optic, power |
 | collisions | Ethernet collision counter | Half duplex or negotiation mismatch |
@@ -55,8 +55,8 @@ ethtool -S <interface>
 
 ### CRCs Or Input Errors
 
-1. Confirm counters are incrementing, not just historical.
-2. Check both ends of the link. Receive-side errors usually point to the signal
+1. Confirm counters are incrementing, not  historical.
+2. Check both ends of the link. Receive-side errors required point to the signal
    arriving on that side, not necessarily the port reporting the error.
 3. Replace patch cable or clean/replace fiber and optics.
 4. Confirm speed/duplex settings match on both sides.

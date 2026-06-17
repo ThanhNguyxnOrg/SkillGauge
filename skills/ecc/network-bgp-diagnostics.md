@@ -141,7 +141,7 @@ incident record because BGP summary formats vary by platform and address family.
 
 ## Change-Window Only
 
-These actions can affect routing and should not be suggested as automatic
+These actions can affect routing and must not be suggested as automatic
 diagnostics:
 
 - Clearing a BGP session.

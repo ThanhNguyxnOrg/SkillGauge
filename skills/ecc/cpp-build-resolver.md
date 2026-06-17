@@ -64,7 +64,7 @@ cmake --build build --clean-first
 
 ## Key Principles
 
-- **Surgical fixes only** -- don't refactor, just fix the error
+- **Surgical fixes only** -- don't refactor,  fix the error
 - **Never** suppress warnings with `#pragma` without approval
 - **Never** change function signatures unless necessary
 - Fix root cause over suppressing symptoms

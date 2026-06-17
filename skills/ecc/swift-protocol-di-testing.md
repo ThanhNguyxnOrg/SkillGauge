@@ -169,7 +169,7 @@ func testReadError() async {
 
 ## Best Practices
 
-- **Single Responsibility**: Each protocol should handle one concern — don't create "god protocols" with many methods
+- **Single Responsibility**: Each protocol must handle one concern — don't create "god protocols" with many methods
 - **Sendable conformance**: Required when protocols are used across actor boundaries
 - **Default parameters**: Let production code use real implementations by default; only tests need to specify mocks
 - **Error simulation**: Design mocks with configurable error properties for testing failure paths

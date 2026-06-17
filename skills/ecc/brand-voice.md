@@ -59,16 +59,16 @@ If the user wants Affaan / ECC voice and live sources are thin, start here unles
 - specifics, mechanisms, receipts, and numbers beat adjectives
 - parentheticals are for qualification, narrowing, or over-clarification
 - capitalization is conventional unless there is a real reason to break it
-- questions are rare and should not be used as bait
+- questions are rare and must not be used as bait
 - tone can be sharp, blunt, skeptical, or dry
-- transitions should feel earned, not smoothed over
+- transitions must feel earned, not smoothed over
 
 ## Hard Bans
 
 Delete and rewrite any of these:
 
 - fake curiosity hooks
-- "not X, just Y"
+- "not X,  Y"
 - "no fluff"
 - forced lowercase
 - LinkedIn thought-leader cadence

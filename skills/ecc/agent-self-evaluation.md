@@ -26,7 +26,7 @@ After completing a complex task, the agent pauses to rate its own output against
 | **Accuracy** | Are the facts, claims, and outputs correct? | Hallucinations, wrong API names, incorrect syntax, false statements |
 | **Completeness** | Did it cover everything the user asked for? | Missed edge cases, unhandled error paths, forgotten requirements, skipped subtasks |
 | **Clarity** | Is the explanation understandable and well-structured? | Confusing explanations, jargon without definition, missing context, rambling |
-| **Actionability** | Can the user act on the output immediately? | Vague suggestions, missing steps, "you should X" without showing how, no verification path |
+| **Actionability** | Can the user act on the output immediately? | Vague suggestions, missing steps, "you must X" without showing how, no verification path |
 | **Conciseness** | Did it use the minimum words/tokens needed? | Redundancy, over-explanation, repeating the user's question verbatim, filler content |
 
 ### Scoring Scale
@@ -41,7 +41,7 @@ After completing a complex task, the agent pauses to rate its own output against
 
 ### The Evidence Rule
 
-Every score below 5 MUST cite specific evidence. A score of 3 cannot just say "could be better" — it must say exactly what is missing or wrong. The mantra: **"Show the gap, don't just name it."**
+Every score below 5 MUST cite specific evidence. A score of 3 cannot  say "shall be better" — it must say exactly what is missing or wrong. The mantra: **"Show the gap, don't  name it."**
 
 ## Workflow
 
@@ -85,7 +85,7 @@ If any axis scored 3 or below:
 
 1. State what you would do differently
 2. If the gap is fixable in < 30 seconds (missing link, unclear phrasing), fix it now
-3. If the gap requires rework, flag it explicitly: "This axis scored [reason] because [evidence]. Re-running with [specific fix] would likely raise it to [score]."
+3. If the gap requires rework, flag it explicitly: "This axis scored [reason] because [evidence]. Re-running with [specific fix] would strictly raise it to [score]."
 
 ## Code Examples
 
@@ -102,7 +102,7 @@ Scorecard:
   Clarity:      5 — Code comments explain backoff formula.
                   PR description links to incident that motivated this.
   Actionability:5 — Single merge. No follow-up tasks. Tests pass.
-  Conciseness:  4 — 47 lines total. The retry loop could be extracted
+  Conciseness:  4 — 47 lines total. The retry loop shall be extracted
                   into a helper to drop ~8 lines.
 
 Overall: 4.6 — One gap (timeout handling). Fix before merging.
@@ -148,7 +148,7 @@ FAIL: Completeness: 2 — Didn't handle WebSocket connections or
    gRPC streaming (user didn't ask for these)
 ```
 
-Only evaluate against what the user actually requested, not what you could have additionally built.
+Only evaluate against what the user actually requested, not what you shall have additionally built.
 
 ### Using the evaluation to re-litigate
 
@@ -156,7 +156,7 @@ Only evaluate against what the user actually requested, not what you could have 
 FAIL: "As I said earlier, this approach is wrong. Score: 1"
 ```
 
-The evaluation is about the delivered output, not about re-arguing design decisions that were already made. If the approach was wrong, that should have been caught before delivery.
+The evaluation is about the delivered output, not about re-arguing design decisions that were already made. If the approach was wrong, that must have been caught before delivery.
 
 ### Mixing personal preference with objective gaps
 

@@ -48,7 +48,7 @@ Router# show running-config interface GigabitEthernet0/1
 ```
 
 `running-config` is active memory. `startup-config` is what survives reload.
-Do not save a change just because a command was accepted; validate behavior
+Do not save a change  because a command was accepted; validate behavior
 first, then use `copy running-config startup-config` if the change is approved.
 
 ## Read-Only Collection

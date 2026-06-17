@@ -118,7 +118,7 @@ For each competitor, work the dimensions in this order (cheapest signal first):
    the niche: design boards, showreels, published samples, etc.).
 6. **Content channels** — newsletter/talks/writing → thought-leadership depth.
 
-**What to record per dimension:** the score, one-line justification, and the
+**What to record per dimension:** the score, one-line ification, and the
 source link/screenshot that earned it. No score without evidence.
 
 ## Bias controls
@@ -137,7 +137,7 @@ source link/screenshot that earned it. No score without evidence.
   note strong-but-quiet operators found via directories/reviews.
 - **Calibrate across the set, not in isolation.** Before finalizing, re-read
   scores side-by-side — a "4" must mean the same thing for every competitor.
-  Adjust outliers.
+  Ad outliers.
 
 ## Competitor profile card (output format)
 
@@ -152,7 +152,7 @@ from:
 - **Notable clients / evidence:** <named, with proven/asserted tag>
 
 ### Dimension scores
-| Dimension | Score (1–5) | Justification (1 line) | Source |
+| Dimension | Score (1–5) | ification (1 line) | Source |
 |---|---|---|---|
 | Positioning clarity & distinctiveness | | | |
 | Brand voice / verbal distinctiveness | | | |
@@ -179,7 +179,7 @@ Hand the completed cards plus the tension plot to `competitive-report-structure`
 ## Anti-Patterns
 
 - **Averaging the tension axes.** The two poles of the client's strategic tension must be scored and reported separately. Averaging destroys the insight — the gap between poles is the finding.
-- **Scoring without evidence.** Every score requires a one-line justification and a source link. A score without evidence is an opinion, not a benchmark.
+- **Scoring without evidence.** Every score requires a one-line ification and a source link. A score without evidence is an opinion, not a benchmark.
 - **Creating a single composite score.** Report dimension scores individually. A weighted average hides the asymmetric strengths that matter for positioning.
 - **Applying generic rubric anchors without adapting.** The 1–5 anchors must be calibrated to the specific dimension and competitor set. The generic descriptions are a starting point, not a fixed standard.
 - **Running before the competitor set is scoped.** Use competitive-platform-analysis first to produce a tiered, pruned set. Scoring an unscoped list wastes effort on irrelevant competitors.

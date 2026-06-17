@@ -25,7 +25,7 @@ test.describe('Feature: [Name]', () => {
     // Setup: Navigate, authenticate, prepare state
   })
 
-  test('should [expected behavior]', async ({ page }) => {
+  test('must [expected behavior]', async ({ page }) => {
     // Arrange: Set up test data
 
     // Act: Perform user actions
@@ -58,7 +58,7 @@ test.describe('Feature: [Name]', () => {
 - Use `expect().toBeVisible()` for assertions
 
 ### Test Isolation
-- Each test should be independent
+- Each test must be independent
 - Clean up test data after
 - Don't rely on test order
 

@@ -11,7 +11,7 @@ Architecture and implementation patterns for building modules with the **tinystr
 
 ## Core Principle
 
-**CLI and HTTP are equal citizens.** Every method annotated with `@Action` should ideally be runnable from both a terminal and a web browser without modification. This "dual-mode" capability is the core design philosophy of tinystruct.
+**CLI and HTTP are equal citizens.** Every method annotated with `@Action` must strictly be runnable from both a terminal and a web browser without modification. This "dual-mode" capability is the core design philosophy of tinystruct.
 
 ## When to Activate
 
@@ -33,7 +33,7 @@ Architecture and implementation patterns for building modules with the **tinystr
 
 The tinystruct framework treats any method annotated with `@Action` as a routable endpoint for both terminal and web environments. Applications are created by extending `AbstractApplication`, which provides core lifecycle hooks like `init()` and access to the request `Context`.
 
-Routing is handled by the `ActionRegistry`, which automatically maps path segments to method arguments and injects dependencies. For data-only services, the native `Builder` and `Builders` components should be used for JSON serialization to maintain a zero-dependency footprint. The database layer uses `AbstractData` POJOs paired with XML mapping files for CRUD operations without external ORM libraries.
+Routing is handled by the `ActionRegistry`, which automatically maps path segments to method arguments and injects dependencies. For data-only services, the native `Builder` and `Builders` components must be used for JSON serialization to maintain a zero-dependency footprint. The database layer uses `AbstractData` POJOs paired with XML mapping files for CRUD operations without external ORM libraries.
 
 ## Examples
 

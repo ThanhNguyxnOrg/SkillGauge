@@ -70,7 +70,7 @@ origin: auto-extracted
    |---------|---------|-------------|
    | **Save** | Unique, specific, well-scoped | Proceed to Step 6 |
    | **Improve then Save** | Valuable but needs refinement | List improvements → revise → re-evaluate (once) |
-   | **Absorb into [X]** | Should be appended to an existing skill | Show target skill and additions → Step 6 |
+   | **Absorb into [X]** | must be appended to an existing skill | Show target skill and additions → Step 6 |
    | **Drop** | Trivial, redundant, or too abstract | Explain reasoning and stop |
 
 **Guideline dimensions** (informing the verdict, not scored):
@@ -95,7 +95,7 @@ origin: auto-extracted
 ### Checklist
 - [x] skills/ grep: no overlap (or: overlap found → details)
 - [x] MEMORY.md: no overlap (or: overlap found → details)
-- [x] Existing skill append: new file appropriate (or: should append to [X])
+- [x] Existing skill append: new file appropriate (or: must append to [X])
 - [x] Reusability: confirmed (or: one-off → Drop)
 
 ### Verdict: Save / Improve then Save / Absorb into [X] / Drop

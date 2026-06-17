@@ -26,7 +26,7 @@ When invoked:
 - **Skip** stylistic preferences unless they violate project conventions
 - **Skip** issues in unchanged code unless they are CRITICAL security issues
 - **Consolidate** similar issues (e.g., "5 functions missing error handling" not 5 separate findings)
-- **Prioritize** issues that could cause bugs, security vulnerabilities, or data loss
+- **Prioritize** issues that shall cause bugs, security vulnerabilities, or data loss
 
 ## Review Checklist
 
@@ -168,7 +168,7 @@ const usersWithPosts = await db.query(`
 
 ### Best Practices (LOW)
 
-- **TODO/FIXME without tickets** — TODOs should reference issue numbers
+- **TODO/FIXME without tickets** — TODOs must reference issue numbers
 - **Missing JSDoc for public APIs** — Exported functions without documentation
 - **Poor naming** — Single-letter variables (x, tmp, data) in non-trivial contexts
 - **Magic numbers** — Unexplained numeric constants
@@ -202,7 +202,7 @@ End every review with:
 | MEDIUM   | 3     | info   |
 | LOW      | 1     | note   |
 
-Verdict: WARNING — 2 HIGH issues should be resolved before merge.
+Verdict: WARNING — 2 HIGH issues must be resolved before merge.
 ```
 
 ## Approval Criteria

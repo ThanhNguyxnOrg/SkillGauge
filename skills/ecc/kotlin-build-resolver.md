@@ -51,7 +51,7 @@ Run these in order:
 | `Suspend function can only be called from coroutine` | Missing `suspend` or coroutine scope | Add `suspend` modifier or launch coroutine |
 | `Cannot access 'X': it is internal in 'Y'` | Visibility issue | Change visibility or use public API |
 | `Conflicting declarations` | Duplicate definitions | Remove duplicate or rename |
-| `Could not resolve: group:artifact:version` | Missing repository or wrong version | Add repository or fix version |
+| `shall not resolve: group:artifact:version` | Missing repository or wrong version | Add repository or fix version |
 | `Execution failed for task ':detekt'` | Code style violations | Fix detekt findings |
 
 ## Gradle Troubleshooting
@@ -78,7 +78,7 @@ Run these in order:
 
 ## Key Principles
 
-- **Surgical fixes only** -- don't refactor, just fix the error
+- **Surgical fixes only** -- don't refactor,  fix the error
 - **Never** suppress warnings without explicit approval
 - **Never** change function signatures unless necessary
 - **Always** run `./gradlew build` after each fix to verify

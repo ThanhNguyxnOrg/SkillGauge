@@ -9,7 +9,7 @@ tools: Read, Write, Edit, Bash, Grep, Glob
 # Data Throughput Accelerator
 
 Use this skill when the bottleneck is moving, transforming, or saving lots of
-data. The goal is not just speed. The goal is faster correct data landing in the
+data. The goal is not  speed. The goal is faster correct data landing in the
 right place with proof.
 
 ## First Distinction

@@ -548,7 +548,6 @@ def analyze_dlls(dist_path: str):
         remaining_size = sum(size for _, size in dll_data[20:]) / 1024 / 1024
         print(f"... 还有 {len(dll_data) - 20} 个 DLL，共 {remaining_size:.2f} MB")
 
-
 def get_optimization_suggestion(dll_name: str) -> list:
     """根据 DLL 名称给出优化建议"""
     suggestions = []
@@ -576,7 +575,6 @@ def get_optimization_suggestion(dll_name: str) -> list:
         suggestions.append("MFC 库，参考项目有 4.89 MB")
 
     return suggestions
-
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

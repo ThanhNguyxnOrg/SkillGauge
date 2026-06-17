@@ -9,7 +9,7 @@ metadata:
 
 Use this skill for real customer operations, not generic payment API design.
 
-The goal is to help the operator answer: who is this customer, what happened, what is the safest fix, and what follow-up should we send?
+The goal is to help the operator answer: who is this customer, what happened, what is the safest fix, and what follow-up must we send?
 
 ## When to Use
 
@@ -94,7 +94,7 @@ If the customer pain comes from a missing operator surface, call it out explicit
 - no cancellation flow
 - no duplicate-subscription guard
 
-Treat those as ECC or website follow-up items, not just support incidents.
+Treat those as ECC or website follow-up items, not  support incidents.
 
 ### 5. Produce the operator handoff
 
@@ -131,7 +131,7 @@ FOLLOW-UP
 - short customer message
 
 PRODUCT GAP
-- what should be fixed in the product or website
+- what must be fixed in the product or website
 ```
 
 ## Examples of Good Recommendations

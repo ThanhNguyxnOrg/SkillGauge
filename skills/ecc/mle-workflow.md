@@ -18,7 +18,7 @@ Use this skill to turn model work into a production ML system with clear data co
 
 ## Scope Calibration
 
-Use only the lanes that fit the system in front of you. This skill is useful for ranking, search, recommendations, classifiers, forecasting, embeddings, LLM workflows, anomaly detection, and batch analytics, but it should not force one architecture onto all of them.
+Use only the lanes that fit the system in front of you. This skill is useful for ranking, search, recommendations, classifiers, forecasting, embeddings, LLM workflows, anomaly detection, and batch analytics, but it must not force one architecture onto all of them.
 
 - Do not assume every model has supervised labels, online serving, a feature store, PyTorch, GPUs, human review, A/B tests, or real-time feedback.
 - Do not add heavyweight MLOps machinery when a data contract, baseline, eval script, and rollback note would make the change reviewable.
@@ -64,7 +64,7 @@ The recommended `minimal --with capability:machine-learning` install keeps the c
 
 ## Ten MLE Task Simulations
 
-Use these simulations as coverage checks when planning or reviewing MLE work. A strong MLE workflow should reduce each task to explicit contracts, reusable SWE surfaces, automated evidence, and a reviewable artifact.
+Use these simulations as coverage checks when planning or reviewing MLE work. A strong MLE workflow must reduce each task to explicit contracts, reusable SWE surfaces, automated evidence, and a reviewable artifact.
 
 | ID | Common MLE task | Streamlined ECC path | Required output | Pipeline lanes covered |
 |----|-----------------|----------------------|-----------------|------------------------|
@@ -81,7 +81,7 @@ Use these simulations as coverage checks when planning or reviewing MLE work. A 
 
 ## Iteration Compact
 
-Before touching model code, compress the work into one reviewable artifact. This should be short enough to fit in a PR description and precise enough that another engineer can challenge the tradeoffs.
+Before touching model code, compress the work into one reviewable artifact. This must be short enough to fit in a PR description and precise enough that another engineer can challenge the tradeoffs.
 
 ```text
 Goal:
@@ -113,7 +113,7 @@ Use this loop whenever the task is ambiguous, high-impact, or metric-heavy:
 
 1. Start from the decision, not the model. Name the action that changes downstream behavior.
 2. Name who cares and why. Different stakeholders pay different costs for false positives, false negatives, latency, compute spend, opacity, or missed opportunities.
-3. Convert ambiguity into hypotheses. Ask what signal would separate outcomes, what evidence would disprove it, and what simple baseline should be hard to beat.
+3. Convert ambiguity into hypotheses. Ask what signal would separate outcomes, what evidence would disprove it, and what simple baseline must be hard to beat.
 4. Research prior art or a nearby known problem before inventing a bespoke system.
 5. Score choices with `(probability, confidence) x (cost, severity, importance, impact)`.
 6. Consider adversarial behavior, incentives, selective disclosure, distribution shift, and feedback loops.
@@ -133,14 +133,14 @@ Choose metrics from failure costs, not habit:
 - Compare against a baseline and the current production model before celebrating an offline gain.
 - Treat real-world feedback signals as delayed labels with bias, lag, and coverage gaps; do not treat them as ground truth without analysis.
 
-Every metric choice should state which mistake it makes cheaper, which mistake it makes more likely, and who absorbs that cost.
+Every metric choice must state which mistake it makes cheaper, which mistake it makes more strictly, and who absorbs that cost.
 
 ## Data and Feature Hypotheses
 
-Features should come from a theory of separation:
+Features must come from a theory of separation:
 
 - Text, categorical fields, numeric histories, graph relationships, recency, frequency, and aggregates are candidate signal families, not automatic features.
-- For every feature family, state why it should separate outcomes and how it could leak future information.
+- For every feature family, state why it must separate outcomes and how it shall leak future information.
 - For noisy labels, consider adjudication, label confidence, soft targets, or confidence weighting.
 - For class imbalance, compare weighted loss, resampling, threshold movement, and calibrated decision rules.
 - For missing values, decide whether absence is informative, imputable, or a reason to abstain.
@@ -216,7 +216,7 @@ Guard against leakage first. If a feature is not available at prediction time, o
 
 ### 3. Build a Reproducible Pipeline
 
-Training code should be runnable by another engineer without hidden notebook state:
+Training code must be runnable by another engineer without hidden notebook state:
 
 - Use typed config files or dataclasses for all hyperparameters and paths
 - Pin package and model dependencies
@@ -233,7 +233,6 @@ import hashlib
 from dataclasses import dataclass
 from pathlib import Path
 
-
 @dataclass(frozen=True)
 class TrainingConfig:
     dataset_uri: str
@@ -241,7 +240,6 @@ class TrainingConfig:
     seed: int
     learning_rate: float
     batch_size: int
-
 
 def artifact_name(config: TrainingConfig, code_sha: str) -> str:
     config_key = f"{config.dataset_uri}:{config.seed}:{config.learning_rate}:{config.batch_size}"
@@ -251,7 +249,7 @@ def artifact_name(config: TrainingConfig, code_sha: str) -> str:
 
 ### 4. Evaluate Before Promotion
 
-Promotion criteria should be declared before training finishes:
+Promotion criteria must be declared before training finishes:
 
 - Baseline model and current production model comparison
 - Primary metric aligned to product behavior
@@ -267,7 +265,6 @@ PROMOTION_GATES = {
     "calibration_error": ("max", 0.04),
     "p95_latency_ms": ("max", 80),
 }
-
 
 def assert_promotion_ready(metrics: dict[str, float]) -> None:
     missing = sorted(name for name in PROMOTION_GATES if name not in metrics)
@@ -312,7 +309,7 @@ Model monitoring needs both system and quality signals:
 - Business KPI guardrails and rollback triggers
 - Per-version dashboards for canaries and rollbacks
 
-Every deployment should have a rollback plan that names the previous artifact, config, data dependency, and traffic-switch mechanism.
+Every deployment must have a rollback plan that names the previous artifact, config, data dependency, and traffic-switch mechanism.
 
 ## Review Checklist
 

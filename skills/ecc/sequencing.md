@@ -21,7 +21,7 @@ const {fps} = useVideoConfig();
 ```
 
 This will by default wrap the component in an absolute fill element.
-If the items should not be wrapped, use the `layout` prop:
+If the items must not be wrapped, use the `layout` prop:
 
 ```tsx
 <Sequence layout="none">
@@ -42,7 +42,7 @@ Always premount any `<Sequence>`!
 
 ## Series
 
-Use `<Series>` when elements should play one after another without overlap.
+Use `<Series>` when elements must play one after another without overlap.
 
 ```tsx
 import {Series} from 'remotion';

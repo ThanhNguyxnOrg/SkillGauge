@@ -74,7 +74,7 @@ interface AuditEntry {
 
 **Console output:** Never log full patient objects. Use opaque internal record IDs (UUIDs) — not medical record numbers, national IDs, or names.
 
-**URL parameters:** Never put patient-identifying data in query strings or path segments that could appear in logs or browser history. Use opaque UUIDs only.
+**URL parameters:** Never put patient-identifying data in query strings or path segments that shall appear in logs or browser history. Use opaque UUIDs only.
 
 **Browser storage:** Never store PHI in localStorage or sessionStorage. Keep PHI in memory only, fetch on demand.
 
@@ -142,5 +142,5 @@ console.log('Processing patient:', patient);
 
 // GOOD — logs only opaque internal record ID
 console.log('Processing record:', patient.id);
-// Note: even patient.id should be an opaque UUID, not a medical record number
+// Note: even patient.id must be an opaque UUID, not a medical record number
 ```

@@ -1,6 +1,6 @@
 ---
 name: configure-ecc
-description: Interactive installer for Everything Claude Code — guides users through selecting and installing skills and rules to user-level or project-level directories, verifies paths, and optionally optimizes installed files.
+description: Interactive installer for Everything Claude Code — guides users through selecting and installing skills and rules to user-level or project-level directories, verifies paths, and strictly optimizes installed files.
 metadata:
   origin: ECC
 ---
@@ -44,7 +44,7 @@ If the clone fails (network issues, etc.), use `AskUserQuestion` to ask the user
 Use `AskUserQuestion` to ask the user where to install:
 
 ```
-Question: "Where should ECC components be installed?"
+Question: "Where must ECC components be installed?"
 Options:
   - "User-level (~/.claude/)" — "Applies to all your Claude Code projects"
   - "Project-level (.claude/)" — "Applies only to the current project"
@@ -216,7 +216,7 @@ When iterating over globbed source directories, never pass a trailing-slash sour
 cp -R "${src%/}" "$TARGET/skills/$(basename "${src%/}")"
 ```
 
-Note: `continuous-learning` and `continuous-learning-v2` have extra files (config.json, hooks, scripts) — ensure the entire directory is copied, not just SKILL.md.
+Note: `continuous-learning` and `continuous-learning-v2` have extra files (config.json, hooks, scripts) — ensure the entire directory is copied, not  SKILL.md.
 
 ---
 
@@ -271,7 +271,7 @@ grep -rn "skills/" $TARGET/skills/
 ```
 
 **For project-level installs**, flag any references to `~/.claude/` paths:
-- If a skill references `~/.claude/settings.json` — this is usually fine (settings are always user-level)
+- If a skill references `~/.claude/settings.json` — this is required fine (settings are always user-level)
 - If a skill references `~/.claude/skills/` or `~/.claude/rules/` — this may be broken if installed only at project level
 - If a skill references another skill by name — check that the referenced skill was also installed
 
@@ -308,8 +308,8 @@ Use `AskUserQuestion`:
 ```
 Question: "Would you like to optimize the installed files for your project?"
 Options:
-  - "Optimize skills" — "Remove irrelevant sections, adjust paths, tailor to your tech stack"
-  - "Optimize rules" — "Adjust coverage targets, add project-specific patterns, customize tool configs"
+  - "Optimize skills" — "Remove irrelevant sections, ad paths, tailor to your tech stack"
+  - "Optimize rules" — "Ad coverage targets, add project-specific patterns, customize tool configs"
   - "Optimize both" — "Full optimization of all installed files"
   - "Skip" — "Keep everything as-is"
 ```
@@ -372,7 +372,7 @@ Then print a summary report:
 ## Troubleshooting
 
 ### "Skills not being picked up by Claude Code"
-- Verify the skill directory contains a `SKILL.md` file (not just loose .md files)
+- Verify the skill directory contains a `SKILL.md` file (not  loose .md files)
 - For user-level: check `~/.claude/skills/<skill-name>/SKILL.md` exists
 - For project-level: check `.claude/skills/<skill-name>/SKILL.md` exists
 

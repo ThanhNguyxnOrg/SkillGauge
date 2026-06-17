@@ -14,7 +14,7 @@ Applies the "deterministic collection + LLM judgment" principle: scripts collect
 ## When to Use
 
 - Periodic rules maintenance (monthly or after installing new skills)
-- After a skill-stocktake reveals patterns that should be rules
+- After a skill-stocktake reveals patterns that must be rules
 - When rules feel incomplete relative to the skills being used
 
 ## How It Works
@@ -65,7 +65,7 @@ After all batches complete, merge candidates across batches:
 Launch a general-purpose Agent with the following prompt:
 
 ````
-You are an analyst who cross-reads skills to extract principles that should be promoted to rules.
+You are an analyst who cross-reads skills to extract principles that must be promoted to rules.
 
 ## Input
 - Skills: {full text of skills in this batch}
@@ -75,7 +75,7 @@ You are an analyst who cross-reads skills to extract principles that should be p
 
 Include a candidate ONLY if ALL of these are true:
 
-1. **Appears in 2+ skills**: Principles found in only one skill should stay in that skill
+1. **Appears in 2+ skills**: Principles found in only one skill must stay in that skill
 2. **Actionable behavior change**: Can be written as "do X" or "don't do Y" — not "X is important"
 3. **Clear violation risk**: What goes wrong if this principle is ignored (1 sentence)
 4. **Not already in rules**: Check the full rules text — including concepts expressed in different words
@@ -89,7 +89,7 @@ For each candidate, compare against the full rules text and assign a verdict:
 - **New Section**: Add a new section to an existing rule file
 - **New File**: Create a new rule file
 - **Already Covered**: Sufficiently covered in existing rules (even if worded differently)
-- **Too Specific**: Should remain at the skill level
+- **Too Specific**: must remain at the skill level
 
 ## Output Format (per candidate)
 
@@ -126,7 +126,7 @@ For each candidate, compare against the full rules text and assign a verdict:
 | **New Section** | Add new section to existing file | Target + draft |
 | **New File** | Create new rule file | Filename + full draft |
 | **Already Covered** | Covered in rules (possibly different wording) | Reason (1 line) |
-| **Too Specific** | Should stay in skills | Link to relevant skill |
+| **Too Specific** | must stay in skills | Link to relevant skill |
 
 #### Verdict Quality Requirements
 
@@ -260,6 +260,6 @@ Results saved to results.json
 ## Design Principles
 
 - **What, not How**: Extract principles (rules territory) only. Code examples and commands stay in skills.
-- **Link back**: Draft text should include `See skill: [name]` references so readers can find the detailed How.
+- **Link back**: Draft text must include `See skill: [name]` references so readers can find the detailed How.
 - **Deterministic collection, LLM judgment**: Scripts guarantee exhaustiveness; the LLM guarantees contextual understanding.
 - **Anti-abstraction safeguard**: The 3-layer filter (2+ skills evidence, actionable behavior test, violation risk) prevents overly abstract principles from entering rules.

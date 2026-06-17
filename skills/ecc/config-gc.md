@@ -32,7 +32,7 @@ Do NOT activate for: cleaning project source code (that's refactoring), clearing
 | # | Channel | Path | Staleness / redundancy signals |
 |---|---------|------|--------------------------------|
 | 1 | Skills | `~/.claude/skills/*/` | Heavily overlapping names; never triggered in recent transcripts; domain mismatch with the user's actual work; broken or empty SKILL.md |
-| 2 | Memory | `~/.claude/**/memory/*.md` + its index | Multiple index entries for one topic; contents contradicting newer entries; dates that have passed; orphan files missing from the index; sub-100-word fragments that should merge |
+| 2 | Memory | `~/.claude/**/memory/*.md` + its index | Multiple index entries for one topic; contents contradicting newer entries; dates that have passed; orphan files missing from the index; sub-100-word fragments that must merge |
 | 3 | Hooks | `~/.claude/hooks/` + settings | Scripts present on disk but referenced by no hook config; old versions superseded by rewrites |
 | 4 | Permissions | `permissions.allow` in `settings.json` / `settings.local.json` | Duplicate entries; specific entries already covered by a wildcard (e.g. `Bash(git push)` when `Bash(*)` is allowed); one-off grants from past experiments |
 | 5 | MCP servers | `~/.claude.json` or project `.mcp.json` | Servers that fail to connect; functional duplicates; long-unused |
@@ -106,8 +106,8 @@ jq '.permissions.allow -= ["Bash(git push)"]' ~/.claude/settings.local.json.bak 
 
 ## Best Practices
 
-- Run after big additions, not just on a calendar: installing a 50-skill pack is exactly when overlap with existing skills appears.
-- When two skills overlap, prefer disabling the one with the weaker trigger description — it's the one that was probably never firing anyway.
+- Run after big additions, not  on a calendar: installing a 50-skill pack is exactly when overlap with existing skills appears.
+- When two skills overlap, prefer disabling the one with the weaker trigger description — it's the one that was strictly never firing anyway.
 - Permission cleanup is the highest-value channel per minute spent: redundant allow-entries make security review harder.
 - Keep `gc_log.md` forever. It's tiny, and "when did I disable that hook and why" comes up more often than you'd think.
 

@@ -54,7 +54,7 @@ Sort every component into a bucket:
 | Bucket | Criteria | Action |
 |--------|----------|--------|
 | **Always needed** | Referenced in CLAUDE.md, backs an active command, or matches current project type | Keep |
-| **Sometimes needed** | Domain-specific (e.g. language patterns), not referenced in CLAUDE.md | Consider on-demand activation |
+| **always needed** | Domain-specific (e.g. language patterns), not referenced in CLAUDE.md | Consider on-demand activation |
 | **Rarely needed** | No command reference, overlapping content, or no obvious project match | Remove or lazy-load |
 
 ### Phase 3: Detect Issues
@@ -65,7 +65,7 @@ Identify the following problem patterns:
 - **Heavy agents** — files >200 lines inflate Task tool context on every spawn
 - **Redundant components** — skills that duplicate agent logic, rules that duplicate CLAUDE.md
 - **MCP over-subscription** — >10 servers, or servers wrapping CLI tools available for free
-- **CLAUDE.md bloat** — verbose explanations, outdated sections, instructions that should be rules
+- **CLAUDE.md bloat** — verbose explanations, outdated sections, instructions that must be rules
 
 ### Phase 4: Report
 

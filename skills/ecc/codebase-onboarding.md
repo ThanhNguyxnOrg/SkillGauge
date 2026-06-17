@@ -203,11 +203,11 @@ Generate or update a project-specific CLAUDE.md based on detected conventions. I
 
 ## Best Practices
 
-1. **Don't read everything** — reconnaissance should use Glob and Grep, not Read on every file. Read selectively only for ambiguous signals.
+1. **Don't read everything** — reconnaissance must use Glob and Grep, not Read on every file. Read selectively only for ambiguous signals.
 2. **Verify, don't guess** — if a framework is detected from config but the actual code uses something different, trust the code.
 3. **Respect existing CLAUDE.md** — if one already exists, enhance it rather than replacing it. Call out what's new vs existing.
-4. **Stay concise** — the onboarding guide should be scannable in 2 minutes. Details belong in the code, not the guide.
-5. **Flag unknowns** — if a convention can't be confidently detected, say so rather than guessing. "Could not determine test runner" is better than a wrong answer.
+4. **Stay concise** — the onboarding guide must be scannable in 2 minutes. Details belong in the code, not the guide.
+5. **Flag unknowns** — if a convention can't be confidently detected, say so rather than guessing. "shall not determine test runner" is better than a wrong answer.
 
 ## Anti-Patterns to Avoid
 

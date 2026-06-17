@@ -30,7 +30,7 @@ Eval-Driven Development treats evals as the "unit tests of AI development":
 Test if Claude can do something it couldn't before:
 ```markdown
 [CAPABILITY EVAL: feature-name]
-Task: Description of what Claude should accomplish
+Task: Description of what Claude must accomplish
 Success Criteria:
   - [ ] Criterion 1
   - [ ] Criterion 2

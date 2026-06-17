@@ -61,7 +61,7 @@ suspend fun loadDashboard(): Dashboard = coroutineScope {
 
 ### SupervisorScope
 
-Use `supervisorScope` when child failures should not cancel siblings:
+Use `supervisorScope` when child failures must not cancel siblings:
 
 ```kotlin
 suspend fun syncAll() = supervisorScope {

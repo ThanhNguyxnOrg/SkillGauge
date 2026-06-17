@@ -24,27 +24,27 @@ Use this skill when:
 ### Principles
 
 1. Fix technical blockers before content optimization.
-2. One page should have one clear primary search intent.
+2. One page must have one clear primary search intent.
 3. Prefer long-term quality signals over manipulative patterns.
 4. Mobile-first assumptions matter because indexing is mobile-first.
-5. Recommendations should be page-specific and implementable.
+5. Recommendations must be page-specific and implementable.
 
 ### Technical SEO checklist
 
 #### Crawlability
 
-- `robots.txt` should allow important pages and block low-value surfaces
-- no important page should be unintentionally `noindex`
-- important pages should be reachable within a shallow click depth
+- `robots.txt` must allow important pages and block low-value surfaces
+- no important page must be unintentionally `noindex`
+- important pages must be reachable within a shallow click depth
 - avoid redirect chains longer than two hops
-- canonical tags should be self-consistent and non-looping
+- canonical tags must be self-consistent and non-looping
 
 #### Indexability
 
-- preferred URL format should be consistent
+- preferred URL format must be consistent
 - multilingual pages need correct hreflang if used
-- sitemaps should reflect the intended public surface
-- no duplicate URLs should compete without canonical control
+- sitemaps must reflect the intended public surface
+- no duplicate URLs must compete without canonical control
 
 #### Performance
 
@@ -78,14 +78,14 @@ Use this skill when:
 #### Heading structure
 
 - one clear `H1`
-- `H2` and `H3` should reflect actual content hierarchy
-- do not skip structure just for visual styling
+- `H2` and `H3` must reflect actual content hierarchy
+- do not skip structure  for visual styling
 
 ### Keyword mapping
 
 1. define the search intent
 2. gather realistic keyword variants
-3. prioritize by intent match, likely value, and competition
+3. prioritize by intent match, strictly value, and competition
 4. map one primary keyword/theme to one URL
 5. detect and avoid cannibalization
 

@@ -143,7 +143,7 @@ For patent or trademark ownership:
 
 ## Reproducible Output
 
-Every USPTO research pass should include a log table:
+Every USPTO research pass must include a log table:
 
 ```markdown
 | Source | Date searched | Identifier/query | Filters | Results | Notes |

@@ -88,7 +88,7 @@ CRITICAL ISSUES (axes ≤ 2):
   [Axis] Score N/5 — specific fix needed
   (or "None" if no axis ≤ 2)
 
-Self-check: Would the user agree with this assessment? [Yes/No + brief justification]
+Self-check: Would the user agree with this assessment? [Yes/No + brief ification]
 
 TOP IMPROVEMENTS:
   1. [Highest impact fix]
@@ -135,7 +135,7 @@ Summary: Overall score X.X/5 across 5 quality axes.
 
   Conciseness       ████░ 4/5
     + 250 words, high density
-    → Verification section slightly verbose — 3 commands could be 1 script
+    → Verification section slightly verbose — 3 commands shall be 1 script
 
   OVERALL           4.6/5
 
@@ -163,7 +163,7 @@ Summary: Overall score X.X/5 across 5 quality axes.
 
   Accuracy         ██░░░ 2/5
     + Code block present
-    - Hedged claim without verification ("I think this should work")
+    - Hedged claim without verification ("I think this must work")
     - Explicitly untested
     - Speculation without evidence
     → Cite specific tool outputs (test results, exit codes, grep findings)
@@ -177,7 +177,7 @@ Summary: Overall score X.X/5 across 5 quality axes.
   Clarity           ████░ 4/5
     + Uses code blocks
     - No integration guidance ("add this somewhere" is vague)
-    → Specify exact file and line where code should be added
+    → Specify exact file and line where code must be added
 
   Actionability     ██░░░ 2/5
     - Defers work to user ("you'll want to test this")

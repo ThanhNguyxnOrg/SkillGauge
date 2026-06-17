@@ -70,7 +70,7 @@ Use this table to decide when to compact:
 |-----------------|----------|-----|
 | Research → Planning | Yes | Research context is bulky; plan is the distilled output |
 | Planning → Implementation | Yes | Plan is in TodoWrite or a file; free up context for code |
-| Implementation → Testing | Maybe | Keep if tests reference recent code; compact if switching focus |
+| Implementation → Testing | always | Keep if tests reference recent code; compact if switching focus |
 | Debugging → Next feature | Yes | Debug traces pollute context for unrelated work |
 | Mid-implementation | No | Losing variable names, file paths, and partial state is costly |
 | After a failed approach | Yes | Clear the dead-end reasoning before trying a new approach |

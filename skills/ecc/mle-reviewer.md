@@ -28,7 +28,7 @@ Do not rewrite the system unless asked. Report concrete findings with file and l
 - Splits respect time, user/entity grouping, and production prediction boundaries.
 - Feature joins are point-in-time correct and do not use future labels, post-outcome fields, or mutable aggregates.
 - Missing values, units, ranges, categorical domains, and schema drift are validated before training and serving.
-- PII and sensitive attributes are excluded or justified, with retention and logging controls.
+- PII and sensitive attributes are excluded or ified, with retention and logging controls.
 
 ### Training Reproducibility
 

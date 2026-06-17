@@ -34,7 +34,7 @@ Use four lanes:
 3. Risk reviewer: checks data freshness, venue limits, resolution ambiguity,
    compliance notes, and prompt-injection exposure.
 4. Human editor: opens a chat or UI state where the user can approve, reject,
-   adjust, or ask for more research.
+   ad, or ask for more research.
 
 ## Workflow
 

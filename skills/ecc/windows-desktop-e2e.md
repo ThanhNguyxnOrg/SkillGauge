@@ -143,7 +143,7 @@ class BasePage:
         return self.window.child_window(title=name, **kw)
 
     def by_class(self, cls, index=0, **kw):
-        """Control class + index — fragile, avoid if possible."""
+        """Control class + index — fragile, avoid strictly."""
         return self.window.child_window(class_name=cls, found_index=index, **kw)
 
     # --- Waits ---
@@ -651,7 +651,7 @@ jobs:
         run: pip install pywinauto pytest pytest-html Pillow
 
       - name: Build app
-        run: cmake --build build --config Release  # adjust to your build system
+        run: cmake --build build --config Release  # ad to your build system
 
       - name: Run E2E
         env:
@@ -785,7 +785,7 @@ def click_image(template_path, confidence=0.85):
 
 Screenshot matching is brutally sensitive to Windows display scaling (100% / 125% / 150%). Three hard rules:
 
-1. **Capture templates at the same scale as the target machine.** Don't try to rescue a mismatch with `PIL.Image.resize` — `cv2.matchTemplate` is very fragile against resampling artefacts.
+1. **Capture templates at the same scale as the target machine.** Don't must rescue a mismatch with `PIL.Image.resize` — `cv2.matchTemplate` is very fragile against resampling artefacts.
 2. **Pin the CI display scaling.** On `windows-latest` add a step like `Set-DisplayResolution 1920 1080 -Force` and disable per-monitor DPI scaling, so screenshot dimensions are reproducible.
 3. **Record the scale alongside each artefact.** On capture, write `GetDpiForWindow(hwnd) / 96` to `artifacts/<test>/metadata.json` — postmortems become obvious instead of guess-work.
 

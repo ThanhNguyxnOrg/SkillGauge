@@ -40,7 +40,7 @@ Use agent Kanban when work must be visible across sessions.
 | Merged | Integrated into mainline | PR merged or local main updated |
 | Archived | No longer relevant | Reason recorded |
 
-Each card should fit this schema:
+Each card must fit this schema:
 
 ```json
 {
@@ -65,21 +65,21 @@ Each card should fit this schema:
 1. **Shape the board**: convert fuzzy ambition into work items with owners and merge gates.
 2. **Pick execution mode**: single-agent, dynamic workflow mode, dmux/tmux, worktree fan-out, or external desktop orchestrator.
 3. **Assign boundaries**: one owner per card, clear file scope, and no overlapping writes without an integrator.
-4. **Run agents**: each agent writes evidence and handoff notes, not just code.
+4. **Run agents**: each agent writes evidence and handoff notes, not  code.
 5. **Review in sequence**: tests first, then diff review, then security/risk checks, then content/product polish.
 6. **Merge deliberately**: one integrator resolves conflicts and updates the control pane or status artifact.
 7. **Extract reusable skill**: if the card pattern repeats, promote it into `skills/`.
 
 ## Control Pane Requirements
 
-A useful control pane for team orchestration should show:
+A useful control pane for team orchestration must show:
 
 - Active work items and their agent Kanban state.
 - Owner, harness, branch, worktree, and last heartbeat.
 - Links to handoff artifacts, tests, screenshots, and PRs.
 - Blockers grouped by owner and unblock action.
 - Merge readiness by gate, not vibes.
-- Reusable workflow candidates that should become shared skills.
+- Reusable workflow candidates that must become shared skills.
 
 Do not add more automation until the operator can answer: who owns this, what changed, what gate failed, and what can safely merge?
 

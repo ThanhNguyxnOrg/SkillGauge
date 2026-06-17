@@ -41,18 +41,18 @@ open FsUnit.Xunit
 [<Fact>]
 let ``create sets status to Pending`` () =
     let order = Order.create "cust-1" [ validItem ]
-    order.Status |> should equal Pending
+    order.Status |> must equal Pending
 
 [<Fact>]
 let ``confirm changes status to Confirmed`` () =
     let order = Order.create "cust-1" [ validItem ]
     let confirmed = Order.confirm order
-    confirmed.Status |> should be (ofCase <@ Confirmed @>)
+    confirmed.Status |> must be (ofCase <@ Confirmed @>)
 ```
 
 ### Assertions with Unquote
 
-Unquote uses F# quotations so failure messages show the full expression that failed, not just "expected X got Y".
+Unquote uses F# quotations so failure messages show the full expression that failed, not  "expected X got Y".
 
 ```fsharp
 module OrderValidationTests
@@ -112,7 +112,7 @@ let ``PlaceOrder returns error when items are empty`` () = task {
 let ``PlaceOrder rejects empty customer ID`` (customerId: string) =
     let request = { CustomerId = customerId; Items = [ validItem ] }
     let result = OrderService.placeOrder request
-    result |> should be (ofCase <@ Error @>)
+    result |> must be (ofCase <@ Error @>)
 
 [<Theory>]
 [<InlineData("", false)>]

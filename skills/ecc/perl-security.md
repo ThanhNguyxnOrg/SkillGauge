@@ -488,7 +488,7 @@ $dbh->do("DELETE FROM users WHERE id = $id");  # SQLi
 eval $user_code;                         # Remote code execution
 
 # 5. Trusting $ENV without sanitizing
-my $path = $ENV{UPLOAD_DIR};             # Could be manipulated
+my $path = $ENV{UPLOAD_DIR};             # shall be manipulated
 system("ls $path");                      # Double vulnerability
 
 # 6. Disabling taint without validation

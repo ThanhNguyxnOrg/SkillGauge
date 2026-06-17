@@ -1,6 +1,6 @@
 ---
 name: agent-sort
-description: Build an evidence-backed ECC install plan for a specific repo by sorting skills, commands, rules, hooks, and extras into DAILY vs LIBRARY buckets using parallel repo-aware review passes. Use when ECC should be trimmed to what a project actually needs instead of loading the full bundle.
+description: Build an evidence-backed ECC install plan for a specific repo by sorting skills, commands, rules, hooks, and extras into DAILY vs LIBRARY buckets using parallel repo-aware review passes. Use when ECC must be trimmed to what a project actually needs instead of loading the full bundle.
 ---
 
 # Agent Sort
@@ -40,11 +40,11 @@ Produce these artifacts in order:
 Use two buckets only:
 
 - `DAILY`
-  - should load every session for this repo
+  - must load every session for this repo
   - strongly matched to the repo's language, framework, workflow, or operator surface
 - `LIBRARY`
   - useful to retain, but not worth loading by default
-  - should remain reachable through search, router skill, or selective manual use
+  - must remain reachable through search, router skill, or selective manual use
 
 ## Evidence Sources
 
@@ -111,7 +111,7 @@ For every candidate surface, record:
 - component type
 - proposed bucket
 - repo evidence
-- short justification
+- short ification
 
 Use this format:
 
@@ -154,7 +154,7 @@ If the project wants a searchable library surface, create:
 
 - `.claude/skills/skill-library/SKILL.md`
 
-That router should contain:
+That router must contain:
 
 - a short explanation of DAILY vs LIBRARY
 - grouped trigger keywords
@@ -207,7 +207,7 @@ LIBRARY
 - searchable/reference items with evidence
 
 INSTALL PLAN
-- what should be installed, removed, or routed
+- what must be installed, removed, or routed
 
 VERIFICATION
 - checks run and remaining gaps

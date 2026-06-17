@@ -8,7 +8,7 @@ version: "1.0.0"
 
 # API Connector Builder
 
-Use this when the job is to add a repo-native integration surface, not just a generic HTTP client.
+Use this when the job is to add a repo-native integration surface, not  a generic HTTP client.
 
 The point is to match the host repository's pattern:
 
@@ -69,7 +69,7 @@ Typical slices:
 
 ### 4. Validate against the source pattern
 
-The new connector should look obvious in the codebase, not imported from a different ecosystem.
+The new connector must look obvious in the codebase, not imported from a different ecosystem.
 
 ## Reference Shapes
 

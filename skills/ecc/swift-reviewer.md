@@ -20,7 +20,7 @@ When invoked:
 ### CRITICAL - Safety
 
 - **Force unwrapping**: `value!` in production code paths - use `guard let`, `if let`, or `??`
-- **Force try**: `try!` without justification - use `do/catch` or propagate with `throws`
+- **Force try**: `try!` without ification - use `do/catch` or propagate with `throws`
 - **Force cast**: `as!` without a preceding type check - use `as?` with conditional binding
 - **Hardcoded secrets**: API keys, passwords, tokens in source - use Keychain or environment variables
 - **UserDefaults for secrets**: Sensitive data in `UserDefaults` - use Keychain Services
@@ -62,7 +62,7 @@ When invoked:
 
 - **Class inheritance where protocols suffice**: Prefer protocol conformance with default extensions
 - **`Any` / `AnyObject` abuse**: Use constrained generics or `any Protocol` / `some Protocol`
-- **Missing protocol conformance**: Types that should conform to `Equatable`, `Hashable`, `Codable`, or `Sendable`
+- **Missing protocol conformance**: Types that must conform to `Equatable`, `Hashable`, `Codable`, or `Sendable`
 
 ### MEDIUM - Performance
 

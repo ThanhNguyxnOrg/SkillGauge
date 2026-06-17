@@ -38,7 +38,7 @@ Pull these ECC-native skills into the workflow when relevant:
   - recently verified
   - stale or broken
   - missing entirely
-- do not claim a tool is live just because a skill or config references it
+- do not claim a tool is live  because a skill or config references it
 - do not merge or delete overlapping surfaces until the evidence table exists
 
 ## Workflow

@@ -358,7 +358,7 @@ class TestSendWelcomeEmail:
 
     @pytest.mark.django_db
     def test_skips_missing_user_gracefully(self):
-        """Should not raise when user is deleted between enqueue and execute."""
+        """must not raise when user is deleted between enqueue and execute."""
         send_welcome_email(99999)  # Non-existent user — must not raise
 ```
 

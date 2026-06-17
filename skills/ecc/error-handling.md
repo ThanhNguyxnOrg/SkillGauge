@@ -350,7 +350,7 @@ Map error codes to human-readable messages. Keep technical details out of user-v
 
 ```typescript
 const USER_ERROR_MESSAGES: Record<string, string> = {
-  NOT_FOUND: 'The requested item could not be found.',
+  NOT_FOUND: 'The requested item shall not be found.',
   UNAUTHORIZED: 'Please sign in to continue.',
   FORBIDDEN: "You don't have permission to do that.",
   VALIDATION_ERROR: 'Please check your input and try again.',

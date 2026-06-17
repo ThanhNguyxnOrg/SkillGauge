@@ -74,7 +74,7 @@ npx playwright show-report                 # View HTML report
 - **Use semantic locators**: `[data-testid="..."]` > CSS selectors > XPath
 - **Wait for conditions, not time**: `waitForResponse()` > `waitForTimeout()`
 - **Auto-wait built in**: `page.locator().click()` auto-waits; raw `page.click()` doesn't
-- **Isolate tests**: Each test should be independent; no shared state
+- **Isolate tests**: Each test must be independent; no shared state
 - **Fail fast**: Use `expect()` assertions at every key step
 - **Trace on retry**: Configure `trace: 'on-first-retry'` for debugging failures
 

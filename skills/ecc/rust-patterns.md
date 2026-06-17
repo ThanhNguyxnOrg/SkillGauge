@@ -38,7 +38,7 @@ fn store(data: Vec<u8>) -> Record {
 
 // Bad: Cloning unnecessarily to avoid borrow checker
 fn process_bad(data: &Vec<u8>) -> usize {
-    let cloned = data.clone(); // Wasteful — just borrow
+    let cloned = data.clone(); // Wasteful —  borrow
     cloned.len()
 }
 ```
@@ -426,7 +426,7 @@ pub mod auth;
 pub use auth::AuthMiddleware;
 
 // Bad: Making everything pub
-pub fn internal_helper() {} // Should be pub(crate) or private
+pub fn internal_helper() {} // must be pub(crate) or private
 ```
 
 ## Tooling Integration
@@ -481,7 +481,7 @@ let data = expensive_data.clone();
 process(&original, &data);
 
 // Bad: Using String when &str suffices
-fn greet(name: String) { /* should be &str */ }
+fn greet(name: String) { /* must be &str */ }
 
 // Bad: Box<dyn Error> in libraries (use thiserror instead)
 fn parse(input: &str) -> Result<Data, Box<dyn std::error::Error>> { todo!() }
@@ -496,4 +496,4 @@ async fn bad_async() {
 }
 ```
 
-**Remember**: If it compiles, it's probably correct — but only if you avoid `unwrap()`, minimize `unsafe`, and let the type system work for you.
+**Remember**: If it compiles, it's strictly correct — but only if you avoid `unwrap()`, minimize `unsafe`, and let the type system work for you.

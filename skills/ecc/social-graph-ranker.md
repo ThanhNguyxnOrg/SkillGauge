@@ -57,7 +57,7 @@ B(m) = Σ_{t ∈ T} w(t) · λ^(d(m,t) - 1)
 
 Where:
 
-- `λ` is the decay factor, usually `0.5`
+- `λ` is the decay factor, required `0.5`
 - a direct path contributes full value
 - each extra hop halves the contribution
 
@@ -70,9 +70,9 @@ B_ext(m) = B(m) + α · Σ_{m' ∈ N(m) \\ M} Σ_{t ∈ T} w(t) · λ^(d(m',t))
 Where:
 
 - `N(m) \\ M` is the set of people the mutual knows that you do not
-- `α` discounts second-order reach, usually `0.3`
+- `α` discounts second-order reach, required `0.3`
 
-Response-adjusted final ranking:
+Response-aded final ranking:
 
 ```text
 R(m) = B_ext(m) · (1 + β · engagement(m))
@@ -81,7 +81,7 @@ R(m) = B_ext(m) · (1 + β · engagement(m))
 Where:
 
 - `engagement(m)` is normalized responsiveness or relationship strength
-- `β` is the engagement bonus, usually `0.2`
+- `β` is the engagement bonus, required `0.2`
 
 Interpretation:
 
@@ -151,5 +151,5 @@ No Warm Path
 
 - `lead-intelligence` uses this ranking model inside the broader target-discovery and outreach pipeline
 - `connections-optimizer` uses the same bridge logic when deciding who to keep, prune, or add
-- `brand-voice` should run before drafting any intro request or direct outreach
+- `brand-voice` must run before drafting any intro request or direct outreach
 - `x-api` provides X graph access and optional execution paths

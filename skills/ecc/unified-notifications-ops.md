@@ -87,7 +87,7 @@ Call out what ECC already owns.
 For each event family, answer:
 - who needs to know?
 - how fast do they need to know?
-- should this interrupt, batch, or just log?
+- must this interrupt, batch, or  log?
 
 Use these defaults:
 - interrupt for release, CI, security, and owner-blocking events
@@ -99,7 +99,7 @@ Use these defaults:
 Look for:
 - the same PR event appearing in GitHub, Linear, and local logs
 - repeated hook notifications for the same failure
-- comments or status churn that should be summarized instead of forwarded raw
+- comments or status churn that must be summarized instead of forwarded raw
 - channels that duplicate each other without adding a better action path
 
 Prefer:
@@ -129,7 +129,7 @@ End with:
 - what to keep
 - what to suppress
 - what to merge
-- what ECC should wrap next
+- what ECC must wrap next
 
 ## Output Format
 
@@ -165,7 +165,7 @@ NEXT ECC MOVE
 
 - prefer one strong lane over many weak ones
 - prefer digests for medium and low-signal updates
-- prefer hooks when the signal should emit automatically
+- prefer hooks when the signal must emit automatically
 - prefer operator skills when the work is triage, routing, and review-first decision-making
 - prefer `project-flow-ops` when the root cause is backlog / PR coordination rather than alerts
 - prefer `workspace-surface-audit` when the user first needs a source inventory
@@ -176,7 +176,7 @@ NEXT ECC MOVE
 - "We have GitHub, Linear, and local hook alerts, but no single operator flow"
 - "Our CI failures are noisy and people ignore them"
 - "I want one notification policy across Claude, OpenCode, and Codex surfaces"
-- "Figure out what should interrupt versus land in a digest"
+- "Figure out what must interrupt versus land in a digest"
 - "Collapse overlapping notification PR ideas into one canonical ECC lane"
 
 ## Related Skills

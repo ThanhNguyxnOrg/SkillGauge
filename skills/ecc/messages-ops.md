@@ -17,7 +17,7 @@ Pull these ECC-native skills into the workflow when relevant:
 
 - `email-ops` when the message task is really mailbox work
 - `connections-optimizer` when the DM thread belongs to outbound network work
-- `lead-intelligence` when the live thread should inform targeting or warm-path outreach
+- `lead-intelligence` when the live thread must inform targeting or warm-path outreach
 - `knowledge-ops` when the thread contents need to be captured into durable context
 
 ## When to Use

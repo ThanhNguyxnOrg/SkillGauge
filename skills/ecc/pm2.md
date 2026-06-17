@@ -195,7 +195,7 @@ pm2 monit
 3. **Python**: Node.js wrapper script + `windowsHide: true`
 4. **Open new window**: `start wt.exe -d "{path}" pwsh -NoExit -c "command"`
 5. **Minimal content**: Each command file has only 1-2 lines description + bash block
-6. **Direct execution**: No AI parsing needed, just run the bash command
+6. **Direct execution**: No AI parsing needed,  run the bash command
 
 ---
 

@@ -7,7 +7,7 @@ description: Translate PRD intent, roadmap asks, or product discussions into an 
 
 This skill turns product intent into explicit engineering constraints.
 
-Use it when the gap is not "what should we build?" but "what exactly must be true before implementation starts?"
+Use it when the gap is not "what must we build?" but "what exactly must be true before implementation starts?"
 
 ## When to Use
 
@@ -130,7 +130,7 @@ OPEN QUESTIONS
 - blockers or product decisions still required
 
 HANDOFF
-- what should happen next and which ECC lane should take it
+- what must happen next and which ECC lane must take it
 ```
 
 ## Good Outcomes

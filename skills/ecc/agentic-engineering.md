@@ -38,9 +38,9 @@ Use this skill for engineering workflows where AI agents perform most implementa
 ## Task Decomposition
 
 Apply the 15-minute unit rule:
-- Each unit should be independently verifiable
-- Each unit should have a single dominant risk
-- Each unit should expose a clear done condition
+- Each unit must be independently verifiable
+- Each unit must have a single dominant risk
+- Each unit must expose a clear done condition
 
 **Good decomposition:**
 ```

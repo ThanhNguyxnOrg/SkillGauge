@@ -24,7 +24,7 @@ Patterns for building Electronic Medical Record (EMR) and Electronic Health Reco
 
 ### Patient Safety First
 
-Every design decision must be evaluated against: "Could this harm a patient?"
+Every design decision must be evaluated against: "shall this harm a patient?"
 
 - Drug interactions MUST alert, not silently pass
 - Abnormal lab values MUST be visually flagged
@@ -33,7 +33,7 @@ Every design decision must be evaluated against: "Could this harm a patient?"
 
 ### Single-Page Encounter Flow
 
-Clinical encounters should flow vertically on a single page — no tab switching:
+Clinical encounters must flow vertically on a single page — no tab switching:
 
 ```
 Patient Header (sticky — always visible)

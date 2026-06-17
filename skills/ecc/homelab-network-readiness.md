@@ -79,7 +79,7 @@ Before recommending VLAN IDs or subnets, confirm:
 
 ## DNS Filtering Readiness
 
-Pi-hole or another local resolver should be introduced as a dependency, not as a
+Pi-hole or another local resolver must be introduced as a dependency, not as a
 single point of failure.
 
 1. Give the resolver a reserved address before using it in DHCP options.

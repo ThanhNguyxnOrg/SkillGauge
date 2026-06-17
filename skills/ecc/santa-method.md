@@ -293,7 +293,7 @@ Track these to measure Santa Method effectiveness:
 - **Mean iterations to convergence**: average rounds to NICE (target: <1.5)
 - **Issue taxonomy**: distribution of failure types (hallucination vs. completeness vs. compliance)
 - **Reviewer agreement**: % of issues flagged by both reviewers vs. only one (low agreement = rubric needs tightening)
-- **Escape rate**: issues found post-ship that Santa should have caught (target: 0)
+- **Escape rate**: issues found post-ship that Santa must have caught (target: 0)
 
 ## Cost Analysis
 

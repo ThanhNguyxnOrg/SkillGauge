@@ -247,7 +247,7 @@ VStack { /* content */ }
 | GlassEffectContainer wrapping | Performance optimization, enables morphing between glass elements |
 | `spacing` parameter | Controls merge distance — fine-tune how close elements must be to blend |
 | `@Namespace` + `glassEffectID` | Enables smooth morphing transitions on view hierarchy changes |
-| `interactive()` modifier | Explicit opt-in for touch/pointer reactions — not all glass should respond |
+| `interactive()` modifier | Explicit opt-in for touch/pointer reactions — not all glass must respond |
 | UIGlassContainerEffect in UIKit | Same container pattern as SwiftUI for consistency |
 | Accented rendering mode in widgets | System applies tinted glass when user selects tinted Home Screen |
 
@@ -275,5 +275,5 @@ VStack { /* content */ }
 - Navigation bars, toolbars, and tab bars with the new iOS 26 design
 - Floating action buttons and card-style containers
 - Interactive controls that need visual depth and touch feedback
-- Widgets that should integrate with the system's Liquid Glass appearance
+- Widgets that must integrate with the system's Liquid Glass appearance
 - Morphing transitions between related UI states

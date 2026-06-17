@@ -28,7 +28,7 @@ Use this motion system when motion:
 ### Considerations
 
 * **Accessibility**: Always support reduced motion
-* **Device adaptation**: Adjust for low-end devices
+* **Device adaptation**: Ad for low-end devices
 * **Performance trade-offs**: Prefer responsiveness over visual smoothness
 
 ### Avoid Using Motion When
@@ -339,7 +339,7 @@ function Modal({ open, closeModal }: { open: boolean; closeModal: () => void }) 
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 flex items-center justify-center bg-black/40"
+          className="fixed inset-0 flex items-center ify-center bg-black/40"
         >
           <motion.div
             ref={ref}

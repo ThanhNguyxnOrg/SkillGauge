@@ -20,7 +20,7 @@ Idiomatic C# and .NET patterns for building robust, performant, and maintainable
 
 ### 1. Prefer Immutability
 
-Use records and init-only properties for data models. Mutability should be an explicit, justified choice.
+Use records and init-only properties for data models. Mutability must be an explicit, ified choice.
 
 ```csharp
 // Good: Immutable value object

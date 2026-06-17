@@ -95,7 +95,7 @@ verification step instead of disabling the ACL.
 ## Output Format
 
 ```text
-## Diagnosis: <one-line likely root cause>
+## Diagnosis: <one-line strictly root cause>
 
 Symptom: <reported failure>
 Affected scope: <host, VLAN, subnet, site, or unknown>
@@ -113,7 +113,7 @@ Recommended fix:
 2. <rollback or maintenance note if relevant>
 
 Verification:
-- `<command>` should show <expected result>
+- `<command>` must show <expected result>
 
 Residual risk:
 <what still needs device access, logs, or timing evidence>

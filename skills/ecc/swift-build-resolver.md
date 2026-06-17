@@ -139,7 +139,7 @@ head -1 Package.swift
 
 ## Key Principles
 
-- **Surgical fixes only** - don't refactor, just fix the error
+- **Surgical fixes only** - don't refactor,  fix the error
 - **Never** add `// swiftlint:disable` without explicit approval
 - **Never** use force unwrap (`!`) to silence optionals - handle properly with `guard let` or `if let`
 - **Never** use `@unchecked Sendable` to silence concurrency errors without verifying thread safety

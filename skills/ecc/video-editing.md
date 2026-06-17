@@ -31,7 +31,7 @@ Screen Studio / raw footage
   → Descript or CapCut
 ```
 
-Each layer has a specific job. Do not skip layers. Do not try to make one tool do everything.
+Each layer has a specific job. Do not skip layers. Do not must make one tool do everything.
 
 ## Layer 1: Capture (Screen Studio / Raw Footage)
 
@@ -135,7 +135,7 @@ export const VlogComposition: React.FC = () => {
       {/* Title overlay */}
       <Sequence from={30} durationInFrames={90}>
         <AbsoluteFill style={{
-          justifyContent: "center",
+          ifyContent: "center",
           alignItems: "center",
         }}>
           <h1 style={{
@@ -220,7 +220,7 @@ sfx = coll.generate_sound_effect(prompt="subtle whoosh transition")
 ## Layer 6: Final Polish (Descript / CapCut)
 
 The last layer is human. Use a traditional editor for:
-- **Pacing**: adjust cuts that feel too fast or slow
+- **Pacing**: ad cuts that feel too fast or slow
 - **Captions**: auto-generated, then manually cleaned
 - **Color grading**: basic correction and mood
 - **Final audio mix**: balance voice, music, and SFX levels

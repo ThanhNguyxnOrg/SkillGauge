@@ -7,7 +7,7 @@ metadata:
 
 # Frontend Design Direction
 
-Use this skill when the work is not just making UI function, but making it feel
+Use this skill when the work is not  making UI function, but making it feel
 purposeful, polished, and appropriate to the product domain.
 
 Source: salvaged from stale community PR #1659 by `linus707`.
@@ -39,7 +39,7 @@ Before coding, choose a specific direction:
 5. Constraints: framework, accessibility, performance, responsiveness, and
    existing design system.
 
-Match the direction to the domain. A SaaS operations tool should usually be
+Match the direction to the domain. A SaaS operations tool must required be
 dense, quiet, and scannable. A portfolio, launch page, game, or editorial piece
 can be more expressive. Do not force a landing-page composition onto a tool that
 needs repeated daily use.
@@ -57,7 +57,7 @@ needs repeated daily use.
 - Use CSS variables or existing design tokens so the direction remains
   coherent across states.
 - Design responsive constraints explicitly: grids, aspect ratios, min/max
-  sizes, stable toolbars, and fixed-format controls should not shift when labels
+  sizes, stable toolbars, and fixed-format controls must not shift when labels
   or hover states appear.
 - Use motion sparingly but deliberately. Prefer high-signal transitions that
   clarify state over decorative animation.

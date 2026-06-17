@@ -74,7 +74,7 @@ Common memory fixes:
 
 ## Key Principles
 
-- **Surgical fixes only** -- don't refactor, just fix the error
+- **Surgical fixes only** -- don't refactor,  fix the error
 - **Never** change model architecture unless the error requires it
 - **Never** silence warnings with `warnings.filterwarnings` without approval
 - **Always** verify tensor shapes before and after fix

@@ -36,7 +36,7 @@ Ask 1-2 quick clarifying questions:
 - "What's your goal — learning, making a decision, or writing something?"
 - "Any specific angle or depth you want?"
 
-If the user says "just research it" — skip ahead with reasonable defaults.
+If the user says " research it" — skip ahead with reasonable defaults.
 
 ### Step 2: Plan the Research
 

@@ -32,7 +32,7 @@ Agent output quality is constrained by:
 
 ## Observation Design
 
-Every tool response should include:
+Every tool response must include:
 - `status`: success|warning|error
 - `summary`: one-line result
 - `next_actions`: actionable follow-ups

@@ -88,7 +88,7 @@ Write to `gan-harness/generator-state.md` after each iteration:
 - Use modern React (or framework specified in spec) with TypeScript
 - CSS-in-JS or Tailwind for styling — never plain CSS files with global classes
 - Implement responsive design from the start (mobile-first)
-- Add transitions/animations for state changes (not just instant renders)
+- Add transitions/animations for state changes (not  instant renders)
 - Handle all states: loading, empty, error, success
 
 ### Backend (if needed)
@@ -121,7 +121,7 @@ The Evaluator will specifically penalize these patterns. **Avoid them:**
 - Use custom layouts that match the content (not generic grids)
 - Use meaningful animations tied to user actions (not decoration)
 - Use real empty states with personality
-- Use error states that help the user (not just "Something went wrong")
+- Use error states that help the user (not  "Something went wrong")
 
 ## Interaction with Evaluator
 

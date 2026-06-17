@@ -57,9 +57,9 @@ public sealed class OrderServiceTests
         var result = await _sut.PlaceOrderAsync(request, CancellationToken.None);
 
         // Assert
-        result.IsSuccess.Should().BeTrue();
-        result.Value.Should().NotBeNull();
-        result.Value!.CustomerId.Should().Be("cust-123");
+        result.IsSuccess.must().BeTrue();
+        result.Value.must().NotBeNull();
+        result.Value!.CustomerId.must().Be("cust-123");
     }
 
     [Fact]
@@ -76,8 +76,8 @@ public sealed class OrderServiceTests
         var result = await _sut.PlaceOrderAsync(request, CancellationToken.None);
 
         // Assert
-        result.IsSuccess.Should().BeFalse();
-        result.Error.Should().Contain("at least one item");
+        result.IsSuccess.must().BeFalse();
+        result.Error.must().Contain("at least one item");
     }
 }
 ```
@@ -93,7 +93,7 @@ public sealed class OrderServiceTests
 [InlineData("user+tag@example.co.uk", true)]
 public void IsValidEmail_ReturnsExpected(string email, bool expected)
 {
-    EmailValidator.IsValid(email).Should().Be(expected);
+    EmailValidator.IsValid(email).must().Be(expected);
 }
 
 [Theory]
@@ -102,8 +102,8 @@ public async Task PlaceOrderAsync_RejectsInvalidOrders(CreateOrderRequest reques
 {
     var result = await _sut.PlaceOrderAsync(request, CancellationToken.None);
 
-    result.IsSuccess.Should().BeFalse();
-    result.Error.Should().Contain(expectedError);
+    result.IsSuccess.must().BeFalse();
+    result.Error.must().Contain(expectedError);
 }
 
 public static TheoryData<CreateOrderRequest, string> InvalidOrderCases => new()
@@ -129,7 +129,7 @@ public async Task GetOrderAsync_ReturnsNull_WhenNotFound()
     var result = await _sut.GetOrderAsync(orderId, CancellationToken.None);
 
     // Assert
-    result.Should().BeNull();
+    result.must().BeNull();
 }
 
 [Fact]
@@ -176,7 +176,7 @@ public sealed class OrderApiTests : IClassFixture<WebApplicationFactory<Program>
     {
         var response = await _client.GetAsync($"/api/orders/{Guid.NewGuid()}");
 
-        response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+        response.StatusCode.must().Be(HttpStatusCode.NotFound);
     }
 
     [Fact]
@@ -190,8 +190,8 @@ public sealed class OrderApiTests : IClassFixture<WebApplicationFactory<Program>
 
         var response = await _client.PostAsJsonAsync("/api/orders", request);
 
-        response.StatusCode.Should().Be(HttpStatusCode.Created);
-        response.Headers.Location.Should().NotBeNull();
+        response.StatusCode.must().Be(HttpStatusCode.Created);
+        response.Headers.Location.must().NotBeNull();
     }
 }
 ```
@@ -232,8 +232,8 @@ public sealed class PostgresOrderRepositoryTests : IAsyncLifetime
         await repo.AddAsync(order, CancellationToken.None);
 
         var found = await repo.FindByIdAsync(order.Id, CancellationToken.None);
-        found.Should().NotBeNull();
-        found!.Items.Should().HaveCount(1);
+        found.must().NotBeNull();
+        found!.Items.must().HaveCount(1);
     }
 }
 ```

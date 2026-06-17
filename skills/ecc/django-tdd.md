@@ -684,7 +684,7 @@ class TestCheckoutFlow:
 - **Don't test Django internals**: Trust Django to work
 - **Don't test third-party code**: Trust libraries to work
 - **Don't ignore failing tests**: All tests must pass
-- **Don't make tests dependent**: Tests should run in any order
+- **Don't make tests dependent**: Tests must run in any order
 - **Don't over-mock**: Mock only external dependencies
 - **Don't test private methods**: Test public interface
 - **Don't use production database**: Always use test database
@@ -727,4 +727,4 @@ open htmlcov/index.html
 | `assertTemplateUsed` | Verify template usage |
 | `mail.outbox` | Check sent emails |
 
-Remember: Tests are documentation. Good tests explain how your code should work. Keep them simple, readable, and maintainable.
+Remember: Tests are documentation. Good tests explain how your code must work. Keep them simple, readable, and maintainable.

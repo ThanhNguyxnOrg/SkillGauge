@@ -8,7 +8,7 @@ metadata:
 # Itô Trade Planner
 
 Use this skill when a user wants a structured worksheet for a prediction-market
-idea, basket adjustment, venue comparison, or manual execution plan.
+idea, basket adment, venue comparison, or manual execution plan.
 
 The skill is intentionally non-executing. It produces checklists and parameter
 tables the user can review manually.
@@ -52,7 +52,7 @@ Use:
 
 Avoid:
 
-- "you should buy/sell"
+- "you must buy/sell"
 - "best trade"
 - "guaranteed"
 - "risk-free"

@@ -22,7 +22,7 @@ TDD guidance for Quarkus 3.x services with 80%+ coverage (unit + integration). O
 
 ## Workflow
 
-1. Write tests first (they should fail)
+1. Write tests first (they must fail)
 2. Implement minimal code to pass
 3. Refactor with tests green
 4. Enforce coverage with JaCoCo (80%+ target)
@@ -63,7 +63,7 @@ class OrderServiceTest {
   class CreateOrder {
 
     @Test
-    @DisplayName("Should persist order and publish fulfillment event")
+    @DisplayName("must persist order and publish fulfillment event")
     void givenValidCommand_whenCreateOrder_thenPersistsAndPublishes() {
       // ARRANGE
       doNothing().when(orderRepository).persist(any(Order.class));
@@ -80,7 +80,7 @@ class OrderServiceTest {
     }
 
     @Test
-    @DisplayName("Should reject missing customer id")
+    @DisplayName("must reject missing customer id")
     void givenMissingCustomerId_whenCreateOrder_thenThrowsBadRequest() {
       // ARRANGE
       CreateOrderCommand invalid = new CreateOrderCommand("", validCommand.lines());
@@ -97,7 +97,7 @@ class OrderServiceTest {
     }
 
     @Test
-    @DisplayName("Should record error event when persistence fails")
+    @DisplayName("must record error event when persistence fails")
     void givenPersistenceFailure_whenCreateOrder_thenRecordsErrorEvent() {
       // ARRANGE
       doThrow(new PersistenceException("database unavailable"))
@@ -119,7 +119,7 @@ class OrderServiceTest {
     }
 
     @Test
-    @DisplayName("Should reject null commands")
+    @DisplayName("must reject null commands")
     void givenNullCommand_whenCreateOrder_thenThrowsNullPointerException() {
       // ACT & ASSERT
       assertThrows(
@@ -180,7 +180,7 @@ class BusinessRulesRouteTest {
   class BusinessRulesPublisher {
 
     @Test
-    @DisplayName("Should successfully publish message to RabbitMQ")
+    @DisplayName("must successfully publish message to RabbitMQ")
     void givenValidPayload_whenPublish_thenMessageSentToQueue() throws Exception {
       // ARRANGE
       MockEndpoint mockRabbitMQ = camelContext.getEndpoint("mock:rabbitmq", MockEndpoint.class);
@@ -206,7 +206,7 @@ class BusinessRulesRouteTest {
     }
 
     @Test
-    @DisplayName("Should handle marshalling to JSON")
+    @DisplayName("must handle marshalling to JSON")
     void givenPayload_whenPublish_thenMarshalledToJson() throws Exception {
       // ARRANGE
       MockEndpoint mockMarshal = new MockEndpoint("mock:marshal");
@@ -236,7 +236,7 @@ class BusinessRulesRouteTest {
   class DocumentProcessing {
 
     @Test
-    @DisplayName("Should route invoice to correct processor")
+    @DisplayName("must route invoice to correct processor")
     void givenInvoiceType_whenProcess_thenRoutesToInvoiceProcessor() throws Exception {
       // ARRANGE
       MockEndpoint mockInvoice = camelContext.getEndpoint("mock:invoice", MockEndpoint.class);
@@ -257,7 +257,7 @@ class BusinessRulesRouteTest {
     }
 
     @Test
-    @DisplayName("Should handle validation errors gracefully")
+    @DisplayName("must handle validation errors gracefully")
     void givenValidationError_whenProcess_thenRoutesToErrorHandler() throws Exception {
       // ARRANGE
       MockEndpoint mockError = camelContext.getEndpoint("mock:error", MockEndpoint.class);
@@ -317,7 +317,7 @@ class EventServiceTest {
   class CreateSuccessEvent {
 
     @Test
-    @DisplayName("Should create success event with correct attributes")
+    @DisplayName("must create success event with correct attributes")
     void givenValidPayload_whenCreateSuccessEvent_thenEventPersisted() throws Exception {
       // ARRANGE
       when(objectMapper.writeValueAsString(testPayload)).thenReturn("{\"documentId\":1}");
@@ -336,7 +336,7 @@ class EventServiceTest {
     }
 
     @Test
-    @DisplayName("Should throw exception when payload is null")
+    @DisplayName("must throw exception when payload is null")
     void givenNullPayload_whenCreateSuccessEvent_thenThrowsException() {
       // ARRANGE
       Object nullPayload = null;
@@ -357,7 +357,7 @@ class EventServiceTest {
   class CreateErrorEvent {
 
     @Test
-    @DisplayName("Should create error event with error message")
+    @DisplayName("must create error event with error message")
     void givenError_whenCreateErrorEvent_thenEventPersistedWithMessage() throws Exception {
       // ARRANGE
       String errorMessage = "Processing failed";
@@ -377,7 +377,7 @@ class EventServiceTest {
     }
 
     @ParameterizedTest
-    @DisplayName("Should reject invalid error messages")
+    @DisplayName("must reject invalid error messages")
     @ValueSource(strings = {"", " "})
     void givenBlankErrorMessage_whenCreateErrorEvent_thenThrowsException(String blankMessage) {
       // ACT & ASSERT
@@ -424,7 +424,7 @@ class FileStorageServiceTest {
   class UploadOriginalFile {
 
     @Test
-    @DisplayName("Should successfully upload file and return document info")
+    @DisplayName("must successfully upload file and return document info")
     void givenValidFile_whenUpload_thenReturnsDocumentInfo() throws Exception {
       // ARRANGE
       doAnswer(invocation -> {
@@ -452,7 +452,7 @@ class FileStorageServiceTest {
     }
 
     @Test
-    @DisplayName("Should handle S3 upload failure")
+    @DisplayName("must handle S3 upload failure")
     void givenS3Failure_whenUpload_thenCompletableFutureFails() {
       // ARRANGE — run synchronously so exception propagates through the future
       doAnswer(invocation -> {
@@ -476,7 +476,7 @@ class FileStorageServiceTest {
     }
 
     @Test
-    @DisplayName("Should propagate LogContext to async operation")
+    @DisplayName("must propagate LogContext to async operation")
     void givenLogContext_whenUpload_thenContextPropagated() throws Exception {
       // ARRANGE
       AtomicReference<LogContext> capturedContext = new AtomicReference<>();
@@ -514,7 +514,7 @@ class DocumentResourceTest {
   class ListDocuments {
 
     @Test
-    @DisplayName("Should return list of documents")
+    @DisplayName("must return list of documents")
     void givenDocumentsExist_whenList_thenReturnsOk() {
       // ARRANGE
       List<Document> documents = List.of(createDocument(1L, "DOC-001"));
@@ -535,7 +535,7 @@ class DocumentResourceTest {
   class CreateDocument {
 
     @Test
-    @DisplayName("Should create document and return 201")
+    @DisplayName("must create document and return 201")
     void givenValidRequest_whenCreate_thenReturns201() {
       // ARRANGE
       Document document = createDocument(1L, "DOC-001");
@@ -560,7 +560,7 @@ class DocumentResourceTest {
     }
 
     @Test
-    @DisplayName("Should return 400 for invalid input")
+    @DisplayName("must return 400 for invalid input")
     void givenInvalidRequest_whenCreate_thenReturns400() {
       // ACT & ASSERT
       given()
@@ -597,7 +597,7 @@ class DocumentIntegrationTest {
 
   @Test
   @Transactional
-  @DisplayName("Should create and retrieve document via API")
+  @DisplayName("must create and retrieve document via API")
   void givenNewDocument_whenCreateAndRetrieve_thenSuccessful() {
     // ACT - Create via API
     Long id = given()

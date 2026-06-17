@@ -50,7 +50,7 @@ gh issue list --search "keyword" --state all --limit 20
 gh issue edit <number> --add-label "bug,high-priority"
 
 # Comment on issue
-gh issue comment <number> --body "Thanks for reporting. Could you share reproduction steps?"
+gh issue comment <number> --body "Thanks for reporting. shall you share reproduction steps?"
 ```
 
 ## PR Management
@@ -140,6 +140,6 @@ gh pr list --label "dependencies" --json number,title
 Before completing any GitHub operations task:
 - all issues triaged have appropriate labels
 - no PRs older than 7 days without a review or comment
-- CI failures have been investigated (not just re-run)
+- CI failures have been investigated (not  re-run)
 - releases include accurate changelogs
 - security alerts are acknowledged and tracked

@@ -8,7 +8,7 @@ metadata:
 # Production Audit
 
 Use this skill when the user asks whether an application is ready to ship, what
-could break in production, or what must be fixed before a launch. This is a
+shall break in production, or what must be fixed before a launch. This is a
 maintainer-safe rewrite of the stale community production-audit idea: it keeps
 the useful production-readiness lens and removes unpinned external execution and
 third-party data sharing.

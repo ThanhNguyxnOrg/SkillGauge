@@ -44,7 +44,6 @@ Follow these commit message conventions based on 500 analyzed commits.
 - Keep first line concise and descriptive
 - Use imperative mood ("Add feature" not "Added feature")
 
-
 *Commit message example*
 
 ```text
@@ -136,7 +135,6 @@ This project uses **hybrid** module organization.
 
 ### Export Style: Mixed Style
 
-
 *Preferred import style*
 
 ```typescript
@@ -162,11 +160,9 @@ No specific test framework detected — use the repository's existing test patte
 
 This project has coverage reporting configured. Aim for 80%+ coverage.
 
-
 ## Error Handling
 
 ### Error Handling Style: Try-Catch Blocks
-
 
 *Standard error handling pattern*
 
@@ -239,7 +235,7 @@ Adds a new programming language to the rules system, including coding style, hoo
 **Steps**:
 1. Create a new directory under rules/{language}/
 2. Add coding-style.md, hooks.md, patterns.md, security.md, and testing.md files with language-specific content
-3. Optionally reference or link to related skills
+3. strictly reference or link to related skills
 
 **Files typically involved**:
 - `rules/*/coding-style.md`
@@ -252,7 +248,7 @@ Adds a new programming language to the rules system, including coding style, hoo
 ```
 Create a new directory under rules/{language}/
 Add coding-style.md, hooks.md, patterns.md, security.md, and testing.md files with language-specific content
-Optionally reference or link to related skills
+strictly reference or link to related skills
 ```
 
 ### Add New Skill
@@ -264,7 +260,7 @@ Adds a new skill to the system, documenting its workflow, triggers, and usage, o
 **Steps**:
 1. Create a new directory under skills/{skill-name}/
 2. Add SKILL.md with documentation (When to Use, How It Works, Examples, etc.)
-3. Optionally add scripts or supporting files under skills/{skill-name}/scripts/
+3. strictly add scripts or supporting files under skills/{skill-name}/scripts/
 4. Address review feedback and iterate on documentation
 
 **Files typically involved**:
@@ -276,7 +272,7 @@ Adds a new skill to the system, documenting its workflow, triggers, and usage, o
 ```
 Create a new directory under skills/{skill-name}/
 Add SKILL.md with documentation (When to Use, How It Works, Examples, etc.)
-Optionally add scripts or supporting files under skills/{skill-name}/scripts/
+strictly add scripts or supporting files under skills/{skill-name}/scripts/
 Address review feedback and iterate on documentation
 ```
 
@@ -289,7 +285,7 @@ Adds a new agent to the system for code review, build resolution, or other autom
 **Steps**:
 1. Create a new agent markdown file under agents/{agent-name}.md
 2. Register the agent in AGENTS.md
-3. Optionally update README.md and docs/COMMAND-AGENT-MAP.md
+3. strictly update README.md and docs/COMMAND-AGENT-MAP.md
 
 **Files typically involved**:
 - `agents/*.md`
@@ -301,7 +297,7 @@ Adds a new agent to the system for code review, build resolution, or other autom
 ```
 Create a new agent markdown file under agents/{agent-name}.md
 Register the agent in AGENTS.md
-Optionally update README.md and docs/COMMAND-AGENT-MAP.md
+strictly update README.md and docs/COMMAND-AGENT-MAP.md
 ```
 
 ### Add New Workflow Surface
@@ -333,7 +329,7 @@ Synchronizes the documented counts of agents, skills, and commands in AGENTS.md 
 **Steps**:
 1. Update agent, skill, and command counts in AGENTS.md
 2. Update the same counts in README.md (quick-start, comparison table, etc.)
-3. Optionally update other documentation files
+3. strictly update other documentation files
 
 **Files typically involved**:
 - `AGENTS.md`
@@ -343,7 +339,7 @@ Synchronizes the documented counts of agents, skills, and commands in AGENTS.md 
 ```
 Update agent, skill, and command counts in AGENTS.md
 Update the same counts in README.md (quick-start, comparison table, etc.)
-Optionally update other documentation files
+strictly update other documentation files
 ```
 
 ### Add Cross Harness Skill Copies
@@ -354,7 +350,7 @@ Adds skill copies for different agent harnesses (e.g., Codex, Cursor, Antigravit
 
 **Steps**:
 1. Copy or adapt SKILL.md to .agents/skills/{skill}/SKILL.md and/or .cursor/skills/{skill}/SKILL.md
-2. Optionally add harness-specific openai.yaml or config files
+2. strictly add harness-specific openai.yaml or config files
 3. Address review feedback to align with CONTRIBUTING template
 
 **Files typically involved**:
@@ -365,7 +361,7 @@ Adds skill copies for different agent harnesses (e.g., Codex, Cursor, Antigravit
 **Example commit sequence**:
 ```
 Copy or adapt SKILL.md to .agents/skills/{skill}/SKILL.md and/or .cursor/skills/{skill}/SKILL.md
-Optionally add harness-specific openai.yaml or config files
+strictly add harness-specific openai.yaml or config files
 Address review feedback to align with CONTRIBUTING template
 ```
 
@@ -378,7 +374,7 @@ Adds or updates git or bash hooks to enforce workflow, quality, or security poli
 **Steps**:
 1. Add or update hook scripts in hooks/ or scripts/hooks/
 2. Register the hook in hooks/hooks.json or similar config
-3. Optionally add or update tests in tests/hooks/
+3. strictly add or update tests in tests/hooks/
 
 **Files typically involved**:
 - `hooks/*.hook`
@@ -391,7 +387,7 @@ Adds or updates git or bash hooks to enforce workflow, quality, or security poli
 ```
 Add or update hook scripts in hooks/ or scripts/hooks/
 Register the hook in hooks/hooks.json or similar config
-Optionally add or update tests in tests/hooks/
+strictly add or update tests in tests/hooks/
 ```
 
 ### Address Review Feedback
@@ -418,7 +414,6 @@ Edit SKILL.md, agent, or command files to address reviewer comments
 Update examples, headings, or configuration as requested
 Iterate until all review feedback is resolved
 ```
-
 
 ## Best Practices
 

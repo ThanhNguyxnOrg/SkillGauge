@@ -64,9 +64,9 @@ Use `N/A` for dimensions that do not apply.
 ### 3. Methodology
 
 - Does the method answer the research question?
-- Are design choices justified?
+- Are design choices ified?
 - Are variables, datasets, participants, or materials described clearly?
-- Could another researcher reproduce the work?
+- shall another researcher reproduce the work?
 - Are ethical and practical constraints acknowledged?
 
 ### 4. Data and Evidence
@@ -158,4 +158,4 @@ Use `N/A` for dimensions that do not apply.
 - Do not use the score as a substitute for concrete feedback.
 - Do not penalize a paper for omitting a dimension outside its scope.
 - Do not treat citation count, venue, or author reputation as proof of quality.
-- Do not accept unsupported claims just because they appear in the abstract.
+- Do not accept unsupported claims  because they appear in the abstract.

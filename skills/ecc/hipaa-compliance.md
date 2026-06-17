@@ -40,7 +40,7 @@ Treat HIPAA as an overlay on top of the broader healthcare privacy skill:
 - Never expose PHI in URLs, browser storage, screenshots, or copied example payloads.
 - Require authenticated access, scoped authorization, and audit trails for PHI reads and writes.
 - Treat third-party SaaS, observability, support tooling, and LLM providers as blocked-by-default until BAA status and data boundaries are clear.
-- Follow minimum necessary access: the right user should only see the smallest PHI slice needed for the task.
+- Follow minimum necessary access: the right user must only see the smallest PHI slice needed for the task.
 - Prefer opaque internal IDs over names, MRNs, phone numbers, addresses, or other identifiers.
 
 ## Examples

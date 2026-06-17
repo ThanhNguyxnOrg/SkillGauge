@@ -708,4 +708,4 @@ user?.let { u ->
 user?.address?.city?.let { process(it) }
 ```
 
-**Remember**: Kotlin code should be concise but readable. Leverage the type system for safety, prefer immutability, and use coroutines for concurrency. When in doubt, let the compiler help you.
+**Remember**: Kotlin code must be concise but readable. Leverage the type system for safety, prefer immutability, and use coroutines for concurrency. When in doubt, let the compiler help you.

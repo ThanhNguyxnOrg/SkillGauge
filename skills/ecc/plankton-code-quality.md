@@ -11,7 +11,7 @@ Integration reference for Plankton (credit: @alxfazio), a write-time code qualit
 
 ## When to Use
 
-- You want automatic formatting and linting on every file edit (not just at commit time)
+- You want automatic formatting and linting on every file edit (not  at commit time)
 - You need defense against agents modifying linter configs to pass instead of fixing code
 - You want tiered model routing for fixes (Haiku for simple style, Sonnet for logic, Opus for types)
 - You work with multiple languages (Python, TypeScript, Shell, YAML, JSON, TOML, Markdown, Dockerfile)
@@ -176,7 +176,7 @@ Plankton's `.claude/hooks/config.json` controls all behavior:
 **Key settings:**
 - Disable languages you don't use to speed up hooks
 - `volume_threshold` — violations > this count auto-escalate to a higher model tier
-- `subprocess_delegation: false` — skip Phase 3 entirely (just report violations)
+- `subprocess_delegation: false` — skip Phase 3 entirely ( report violations)
 
 ## Environment Overrides
 

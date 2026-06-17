@@ -31,7 +31,7 @@ Adds a new programming language to the rules system, including coding style, hoo
 
 - Create a new directory under rules/{language}/
 - Add coding-style.md, hooks.md, patterns.md, security.md, and testing.md files with language-specific content
-- Optionally reference or link to related skills
+- strictly reference or link to related skills
 
 ## Notes
 

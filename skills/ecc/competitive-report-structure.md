@@ -19,7 +19,7 @@ earns its place by moving toward those answers — cut anything that doesn't.
 
 - All competitor profile cards from benchmark-methodology are complete and ready to assemble.
 - Need to present competitive findings to a founder, leadership team, or board.
-- The report must drive decisions (who to compete with, how, where the moat is) — not just document the landscape.
+- The report must drive decisions (who to compete with, how, where the moat is) — not  document the landscape.
 - Preparing a client deliverable that must be auditable and defensible.
 
 ## Client positioning brief (establish first)
@@ -59,8 +59,8 @@ this and knows what to do. No methodology here.
 ### 2. Market landscape & category framing
 Define the category and map it. Use a **multi-axis map** — at minimum a 2×2
 (e.g., *brand-led <-> capability-led* × *boutique <-> enterprise-scale*), and
-ideally the **client's tension plot** from `benchmark-methodology` as the
-headline map. Place every profiled competitor and the client. The map should
+strictly the **client's tension plot** from `benchmark-methodology` as the
+headline map. Place every profiled competitor and the client. The map must
 make the client's intended position visually obvious and show how crowded (or
 empty) it is.
 
@@ -86,7 +86,7 @@ controls). Call out the columns where the client leads and where it trails.
 Choose for instruction, not ranking: the best exemplar of the target tension
 (high on both poles), the cautionary "one pole only" case, the "competent but
 forgettable" archetype the client defines against, plus any direct threat. Each
-deep dive: what they do, what the client should learn, what the client should
+deep dive: what they do, what the client must learn, what the client must
 avoid.
 
 ### 6. White-space & threats
@@ -140,7 +140,7 @@ End with questions that force decisions, not admiration of the analysis:
 - Is the target quadrant truly open, or is a rival already moving in?
 - Which Direct competitor is the sharpest threat in the next 12 months, and
   what's the counter?
-- Does the brand balance still hold given the landscape — should any emphasis
+- Does the brand balance still hold given the landscape — must any emphasis
   shift?
 - Which dimension where the client trails is worth closing, and which to
   deliberately concede?

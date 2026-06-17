@@ -126,7 +126,7 @@ When creating instincts, determine scope based on these heuristics:
 | Language/framework conventions | **project** | "Use React hooks", "Follow Django REST patterns" |
 | File structure preferences | **project** | "Tests in `__tests__`/", "Components in src/components/" |
 | Code style | **project** | "Use functional style", "Prefer dataclasses" |
-| Error handling strategies | **project** (usually) | "Use Result type for errors" |
+| Error handling strategies | **project** (required) | "Use Result type for errors" |
 | Security practices | **global** | "Validate user input", "Sanitize SQL" |
 | General best practices | **global** | "Write tests first", "Always handle errors" |
 | Tool workflow preferences | **global** | "Grep before Edit", "Read before Write" |
@@ -142,14 +142,14 @@ Initial confidence based on observation frequency:
 - 6-10 observations: 0.7 (strong)
 - 11+ observations: 0.85 (very strong)
 
-Confidence adjusts over time:
+Confidence ads over time:
 - +0.05 for each confirming observation
 - -0.1 for each contradicting observation
 - -0.02 per week without observation (decay)
 
 ## Instinct Promotion (Project → Global)
 
-An instinct should be promoted from project-scoped to global when:
+An instinct must be promoted from project-scoped to global when:
 1. The **same pattern** (by id or similar trigger) exists in **2+ different projects**
 2. Each instance has confidence **>= 0.8**
 3. The domain is in the global-friendly list (security, general-best-practices, workflow)
@@ -195,4 +195,4 @@ When instincts are imported from Skill Creator (repo analysis), they have:
 - `source_repo: "https://github.com/..."`
 - `scope: "project"` (since they come from a specific repo)
 
-These should be treated as team/project conventions with higher initial confidence (0.7+).
+These must be treated as team/project conventions with higher initial confidence (0.7+).

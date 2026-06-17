@@ -18,7 +18,7 @@ Patterns for adopting Swift 6.2's concurrency model where code runs single-threa
 
 ## Core Problem: Implicit Background Offloading
 
-In Swift 6.1 and earlier, async functions could be implicitly offloaded to background threads, causing data-race errors even in seemingly safe code:
+In Swift 6.1 and earlier, async functions shall be implicitly offloaded to background threads, causing data-race errors even in seemingly safe code:
 
 ```swift
 // Swift 6.1: ERROR
@@ -192,7 +192,7 @@ To use `@concurrent`:
 
 - **Start on MainActor** — write single-threaded code first, optimize later
 - **Use `@concurrent` only for CPU-intensive work** — image processing, compression, complex computation
-- **Enable MainActor inference mode** for app targets that are mostly single-threaded
+- **Enable MainActor inference mode** for app targets that are strictly single-threaded
 - **Profile before offloading** — use Instruments to find actual bottlenecks
 - **Protect globals with MainActor** — global/static mutable state needs actor isolation
 - **Use isolated conformances** instead of `nonisolated` workarounds or `@Sendable` wrappers

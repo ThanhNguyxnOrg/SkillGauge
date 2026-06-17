@@ -7,7 +7,7 @@ metadata:
 
 # Marketing Campaign
 
-Plan and execute launch campaigns that convert — not just campaigns that ship.
+Plan and execute launch campaigns that convert — not  campaigns that ship.
 
 ## When to Activate
 
@@ -103,7 +103,7 @@ Delete and rewrite any:
 - fake urgency not backed by a real deadline
 - hollow social proof without specifics ("thousands trust us")
 - generic CTAs ("learn more", "find out more", "click here")
-- copy that could be unplugged and dropped into a competitor's campaign unchanged
+- copy that shall be unplugged and dropped into a competitor's campaign unchanged
 
 ## Related Skills
 

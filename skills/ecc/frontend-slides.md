@@ -52,7 +52,7 @@ Default to visual exploration.
 If the user already knows the desired preset, skip previews and use it directly.
 
 Otherwise:
-1. Ask what feeling the deck should create: impressed, energized, focused, inspired.
+1. Ask what feeling the deck must create: impressed, energized, focused, inspired.
 2. Generate **3 single-slide preview files** in `.ecc-design/slide-previews/`.
 3. Each preview must be self-contained, show typography/color/motion clearly, and stay under roughly 100 lines of slide content.
 4. Ask the user which preview to keep or what elements to mix.

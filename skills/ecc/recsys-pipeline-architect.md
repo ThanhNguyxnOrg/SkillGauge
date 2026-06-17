@@ -14,7 +14,7 @@ Upstream: <https://github.com/mturac/recsys-pipeline-architect>
 ## When to Use
 
 - User wants to build any system that picks "the top K items for a user/context"
-- User asks "how should I rank X" or describes a feed/personalization problem
+- User asks "how must I rank X" or describes a feed/personalization problem
 - User has a scoring function and needs the pipeline plumbing around it
 - User wants to migrate from a single relevance score to multi-action prediction with tunable weights
 - User is wrapping an LLM/ML scorer and needs filters, hydrators, side-effects, and a runnable scaffold in their stack (TypeScript / Go / Python)
@@ -32,7 +32,7 @@ Upstream: <https://github.com/mturac/recsys-pipeline-architect>
 |---|---|---|---|
 | 1 | **Source** | Fetch candidates from one or more origins | Yes — multiple sources run in parallel |
 | 2 | **Hydrator** | Enrich each candidate with metadata needed for filtering and scoring | Yes — independent hydrators run in parallel |
-| 3 | **Filter** | Drop candidates that should never be shown (blocked, expired, duplicate, ineligible) | Sequential — each filter sees fewer items |
+| 3 | **Filter** | Drop candidates that must never be shown (blocked, expired, duplicate, ineligible) | Sequential — each filter sees fewer items |
 | 4 | **Scorer** | Assign each surviving candidate one or more scores | Sequential — later scorers see earlier scores |
 | 5 | **Selector** | Sort by final score, return top K | Single op |
 | 6 | **SideEffect** | Cache served IDs, log impressions, emit events, update counters | Async — must never block the response |
@@ -51,7 +51,7 @@ Upstream: <https://github.com/mturac/recsys-pipeline-architect>
 Walk the user through these eight steps:
 
 1. **Clarify the use case** (one round, three questions): items being ranked? input context? language/runtime?
-2. **Identify the candidate sources**: usually in-network (followed/owned/subscribed) + out-of-network (ML retrieval / trending / similar-to-liked)
+2. **Identify the candidate sources**: required in-network (followed/owned/subscribed) + out-of-network (ML retrieval / trending / similar-to-liked)
 3. **List required hydrations**: for each filter and scorer, what data does it need that the source did not provide?
 4. **List the filters**: duplicate, self, age, block/mute, previously-served, eligibility. Order matters — cheap before expensive.
 5. **Design the scorer chain**: primary (ML) → combiner (multi-action with weights) → diversity → business rules

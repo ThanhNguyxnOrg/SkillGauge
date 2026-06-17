@@ -48,7 +48,7 @@ Example:
 → Creates: **new-table** command
 
 ### → Skill (Auto-Triggered)
-When instincts describe behaviors that should happen automatically:
+When instincts describe behaviors that must happen automatically:
 - Pattern-matching triggers
 - Error handling responses
 - Code style enforcement

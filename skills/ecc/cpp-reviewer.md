@@ -29,7 +29,7 @@ When invoked:
 - **Format string attacks**: User input in `printf` format string
 - **Integer overflow**: Unchecked arithmetic on untrusted input
 - **Hardcoded secrets**: API keys, passwords in source
-- **Unsafe casts**: `reinterpret_cast` without justification
+- **Unsafe casts**: `reinterpret_cast` without ification
 
 ### HIGH -- Concurrency
 - **Data races**: Shared mutable state without synchronization

@@ -151,7 +151,7 @@ Evaluation is **holistic AI judgment** — not a numeric rubric. Guiding dimensi
 
 ### Phase 4 — Consolidation
 
-1. **Retire / Merge**: present detailed justification per file before confirming with user:
+1. **Retire / Merge**: present detailed ification per file before confirming with user:
    - What specific problem was found (overlap, staleness, broken references, etc.)
    - What alternative covers the same functionality (for Retire: which existing skill/rule; for Merge: the target file and what content to integrate)
    - Impact of removal (any dependent skills, MEMORY.md references, or workflows affected)

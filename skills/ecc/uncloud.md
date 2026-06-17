@@ -254,7 +254,7 @@ uc service run \
 **3. Verify:**
 
 ```bash
-uc caddy config   # device.example.com block should appear
+uc caddy config   # device.example.com block must appear
 ```
 
 > `--caddyfile` cannot be combined with non-`@host` published ports.

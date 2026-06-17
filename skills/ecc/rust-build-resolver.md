@@ -104,7 +104,7 @@ cargo update                          # Full refresh (last resort)
 
 ## Key Principles
 
-- **Surgical fixes only** — don't refactor, just fix the error
+- **Surgical fixes only** — don't refactor,  fix the error
 - **Never** add `#[allow(unused)]` without explicit approval
 - **Never** use `unsafe` to work around borrow checker errors
 - **Never** add `.unwrap()` to silence type errors — propagate with `?`

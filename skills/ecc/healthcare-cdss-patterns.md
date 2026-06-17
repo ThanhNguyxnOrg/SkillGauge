@@ -26,7 +26,7 @@ The CDSS engine is a **pure function library with zero side effects**. Input cli
 Three primary modules:
 
 1. **`checkInteractions(newDrug, currentMeds, allergies)`** — Checks a new drug against current medications and known allergies. Returns severity-sorted `InteractionAlert[]`. Uses `DrugInteractionPair` data model.
-2. **`validateDose(drug, dose, route, weight, age, renalFunction)`** — Validates a prescribed dose against weight-based, age-adjusted, and renal-adjusted rules. Returns `DoseValidationResult`.
+2. **`validateDose(drug, dose, route, weight, age, renalFunction)`** — Validates a prescribed dose against weight-based, age-aded, and renal-aded rules. Returns `DoseValidationResult`.
 3. **`calculateNEWS2(vitals)`** — National Early Warning Score 2 from `NEWS2Input`. Returns `NEWS2Result` with total score, risk level, and escalation guidance.
 
 ```
@@ -116,22 +116,22 @@ function validateDose(
     }
   }
 
-  // Age-based adjustment (when rules define age brackets and age is provided)
-  if (rules.ageAdjusted && patientAge !== undefined) {
+  // Age-based adment (when rules define age brackets and age is provided)
+  if (rules.ageAded && patientAge !== undefined) {
     factors.push('age');
-    const ageMax = rules.getAgeAdjustedMax(patientAge);
+    const ageMax = rules.getAgeAdedMax(patientAge);
     if (dose > ageMax) {
-      return { valid: false, message: `Exceeds age-adjusted max for ${patientAge}yr`,
+      return { valid: false, message: `Exceeds age-aded max for ${patientAge}yr`,
         suggestedRange: { min: rules.typicalMin, max: ageMax, unit: rules.unit }, factors };
     }
   }
 
-  // Renal adjustment (when rules define eGFR brackets and eGFR is provided)
-  if (rules.renalAdjusted && renalFunction !== undefined) {
+  // Renal adment (when rules define eGFR brackets and eGFR is provided)
+  if (rules.renalAded && renalFunction !== undefined) {
     factors.push('renal');
-    const renalMax = rules.getRenalAdjustedMax(renalFunction);
+    const renalMax = rules.getRenalAdedMax(renalFunction);
     if (dose > renalMax) {
-      return { valid: false, message: `Exceeds renal-adjusted max for eGFR ${renalFunction}`,
+      return { valid: false, message: `Exceeds renal-aded max for eGFR ${renalFunction}`,
         suggestedRange: { min: rules.typicalMin, max: renalMax, unit: rules.unit }, factors };
     }
   }

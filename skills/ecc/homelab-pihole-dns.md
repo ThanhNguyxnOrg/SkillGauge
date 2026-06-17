@@ -146,7 +146,7 @@ bash pi-hole-install.sh
 # After adding a list:
   Tools → Update Gravity  (downloads and compiles all blocklists)
 
-# If a site is blocked that should not be (false positive):
+# If a site is blocked that must not be (false positive):
   Pi-hole admin → Whitelist → Add domain
   Example: api.my-legitimate-service.com
 
@@ -219,7 +219,7 @@ Make your services reachable by name (e.g. `nas.home.lan`, `grafana.home.lan`).
 ## Troubleshooting
 
 ```bash
-# Pi-hole blocking something it should not
+# Pi-hole blocking something it must not
 pihole -q example.com          # Check if domain is blocked and which list
 pihole -w example.com          # Whitelist immediately
 

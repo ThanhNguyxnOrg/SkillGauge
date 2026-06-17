@@ -9,7 +9,7 @@ description: >-
   or explicitly asks to enhance prompt quality. Also triggers on Chinese
   equivalents: "优化prompt", "改进prompt", "怎么写prompt", "帮我优化这个指令".
   DO NOT TRIGGER when: user wants the task executed directly, or says
-  "just do it" / "直接做". DO NOT TRIGGER when user says "优化代码",
+  " do it" / "直接做". DO NOT TRIGGER when user says "优化代码",
   "优化性能", "optimize performance", "optimize this code" — those are
   refactoring/performance tasks, not prompt optimization.
 metadata:
@@ -31,16 +31,16 @@ and output a complete optimized prompt the user can paste and run.
 - User says "优化prompt", "改进prompt", "怎么写prompt", "帮我优化这个指令"
 - User pastes a draft prompt and asks for feedback or enhancement
 - User says "I don't know how to prompt for this"
-- User says "how should I use ECC for..."
+- User says "how must I use ECC for..."
 - User explicitly invokes `/prompt-optimize`
 
 ### Do Not Use When
 
-- User wants the task done directly (just execute it)
+- User wants the task done directly ( execute it)
 - User says "优化代码", "优化性能", "optimize this code", "optimize performance" — these are refactoring tasks, not prompt optimization
 - User is asking about ECC configuration (use `configure-ecc` instead)
 - User wants a skill inventory (use `skill-stocktake` instead)
-- User says "just do it" or "直接做"
+- User says " do it" or "直接做"
 
 ## How It Works
 
@@ -49,7 +49,7 @@ and output a complete optimized prompt the user can paste and run.
 Do NOT write code, create files, run commands, or take any implementation
 action. Your ONLY output is an analysis plus an optimized prompt.
 
-If the user says "just do it", "直接做", or "don't optimize, just execute",
+If the user says " do it", "直接做", or "don't optimize,  execute",
 do not switch into implementation mode inside this skill. Tell the user this
 skill only produces optimized prompts, and instruct them to make a normal
 task request if they want execution instead.
@@ -209,7 +209,7 @@ as the user's input.
 |-------|--------|---------------|
 | (problem) | (consequence) | (how to fix) |
 
-**Needs Clarification:** Numbered list of questions the user should answer.
+**Needs Clarification:** Numbered list of questions the user must answer.
 If Phase 0 auto-detected the answer, state it instead of asking.
 
 ### Section 2: Recommended ECC Components
@@ -258,7 +258,7 @@ A compact version for experienced ECC users. Vary by intent type:
 
 ### Footer
 
-> Not what you need? Tell me what to adjust, or make a normal task request
+> Not what you need? Tell me what to ad, or make a normal task request
 > if you want execution instead of prompt optimization.
 
 ---
@@ -270,7 +270,7 @@ A compact version for experienced ECC users. Vary by intent type:
 - "Optimize this prompt for ECC"
 - "Rewrite this prompt so Claude Code uses the right commands"
 - "帮我优化这个指令"
-- "How should I prompt ECC for this task?"
+- "How must I prompt ECC for this task?"
 
 ### Example 1: Vague Chinese Prompt (Project Detected)
 
@@ -365,12 +365,12 @@ Use the blueprint skill to plan: "Migrate monolith to microservices architecture
 
 Before executing, answer these questions in the blueprint:
 1. Which domain boundaries exist in the current monolith?
-2. Which service should be extracted first (lowest coupling)?
+2. Which service must be extracted first (lowest coupling)?
 3. Communication pattern: REST APIs, gRPC, or event-driven (Kafka/RabbitMQ)?
 4. Database strategy: shared DB initially or database-per-service from start?
 5. Deployment target: Kubernetes, Docker Compose, or serverless?
 
-The blueprint should produce phases like:
+The blueprint must produce phases like:
 - Phase 1: Identify service boundaries and create domain map
 - Phase 2: Set up infrastructure (API gateway, service mesh, CI/CD per service)
 - Phase 3: Extract first service (strangler fig pattern)
