@@ -245,33 +245,38 @@ export function auditSkill(content: string): AuditReport {
   }
 
   // Generate brief feedback on the lowest-scoring dimensions (threshold: 70% of max weight)
-  const explanationParts: string[] = [];
-  if (dimensions.dimA < 10.5) explanationParts.push('Needs improvements in instruction quality/clarity (A).');
-  if (dimensions.dimB < 10.5) explanationParts.push('High token footprint or poor context management (B).');
-  if (dimensions.dimC < 7.5) explanationParts.push('Critical safety or injection protection guardrails missing (C).');
-  if (dimensions.dimD < 10.5) explanationParts.push('Lacks parameter schema descriptions or tool definitions (D).');
-  if (dimensions.dimE < 9.0) explanationParts.push('Poor fallback plan or crash recovery guards (E).');
-  if (dimensions.dimF < 10.5) explanationParts.push('Low operational economy or excessive verbosity (F).');
-  if (dimensions.dimG < 10.5) explanationParts.push('Issues in syntax, structure, or metadata integrity (G).');
-  if (dimensions.dimH < 10.5) explanationParts.push('Needs better Human-in-the-Loop constraints (H).');
-  if (dimensions.dimI < 10.5) explanationParts.push('Weak API/endpoint integration structure (I).');
-  if (dimensions.dimJ < 10.5) explanationParts.push('Poor JSON formatting or conformity rules (J).');
-  if (dimensions.dimK < 10.5) explanationParts.push('Lacks proper Knowledge Retrieval or RAG grounding (K).');
-  if (dimensions.dimL < 10.5) explanationParts.push('Unstructured logic or reasoning flows (L).');
-  if (dimensions.dimM < 10.5) explanationParts.push('Insufficient Multi-Agent coordination rules (M).');
-  if (dimensions.dimN < 10.5) explanationParts.push('Needs better seed or non-deterministic parameters (N).');
-  if (dimensions.dimO < 10.5) explanationParts.push('Poor obfuscation or secrets shielding (O).');
-  if (dimensions.dimP < 10.5) explanationParts.push('Inadequate privacy/compliance shielding (P).');
-  if (dimensions.dimQ < 10.5) explanationParts.push('Inefficient query optimization or caching constraints (Q).');
-  if (dimensions.dimR < 10.5) explanationParts.push('Weak operational resilience or retry strategies (R).');
-  if (dimensions.dimS < 10.5) explanationParts.push('Insecure or unstructured system command usage (S).');
-  if (dimensions.dimT < 10.5) explanationParts.push('Lacks temporal ordering or sequencing instructions (T).');
-  if (dimensions.dimU < 10.5) explanationParts.push('Poor user persona or tone alignment guidelines (U).');
-  if (dimensions.dimV < 10.5) explanationParts.push('Vocabulary rules or linguistic restrictions not clear (V).');
-  if (dimensions.dimW < 10.5) explanationParts.push('Needs better workflow state checkpointing/progress logging (W).');
-  if (dimensions.dimX < 10.5) explanationParts.push('Invalid XML formatting or tag validation constraints (X).');
-  if (dimensions.dimY < 10.5) explanationParts.push('Lacks year/time synchronization guidelines (Y).');
-  if (dimensions.dimZ < 10.5) explanationParts.push('Weak zero-shot or few-shot demonstration structures (Z).');
+  const failedDims: string[] = [];
+  if (dimensions.dimA < 10.5) failedDims.push('A');
+  if (dimensions.dimB < 10.5) failedDims.push('B');
+  if (dimensions.dimC < 7.5) failedDims.push('C');
+  if (dimensions.dimD < 10.5) failedDims.push('D');
+  if (dimensions.dimE < 9.0) failedDims.push('E');
+  if (dimensions.dimF < 10.5) failedDims.push('F');
+  if (dimensions.dimG < 10.5) failedDims.push('G');
+  if (dimensions.dimH < 10.5) failedDims.push('H');
+  if (dimensions.dimI < 10.5) failedDims.push('I');
+  if (dimensions.dimJ < 10.5) failedDims.push('J');
+  if (dimensions.dimK < 10.5) failedDims.push('K');
+  if (dimensions.dimL < 10.5) failedDims.push('L');
+  if (dimensions.dimM < 10.5) failedDims.push('M');
+  if (dimensions.dimN < 10.5) failedDims.push('N');
+  if (dimensions.dimO < 10.5) failedDims.push('O');
+  if (dimensions.dimP < 10.5) failedDims.push('P');
+  if (dimensions.dimQ < 10.5) failedDims.push('Q');
+  if (dimensions.dimR < 10.5) failedDims.push('R');
+  if (dimensions.dimS < 10.5) failedDims.push('S');
+  if (dimensions.dimT < 10.5) failedDims.push('T');
+  if (dimensions.dimU < 10.5) failedDims.push('U');
+  if (dimensions.dimV < 10.5) failedDims.push('V');
+  if (dimensions.dimW < 10.5) failedDims.push('W');
+  if (dimensions.dimX < 10.5) failedDims.push('X');
+  if (dimensions.dimY < 10.5) failedDims.push('Y');
+  if (dimensions.dimZ < 10.5) failedDims.push('Z');
+
+  let explanation = 'Passes quality specifications.';
+  if (failedDims.length > 0) {
+    explanation = `Needs improvements in: ${failedDims.join(', ')}.`;
+  }
 
   return {
     name: parsed.metadata?.name ? String(parsed.metadata.name) : undefined,
@@ -279,7 +284,7 @@ export function auditSkill(content: string): AuditReport {
     tier,
     dimensions,
     scores,
-    explanation: explanationParts.join(' ') || 'Passes quality specifications.'
+    explanation
   };
 }
 

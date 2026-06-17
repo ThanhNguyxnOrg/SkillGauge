@@ -52,7 +52,19 @@ function findMarkdownFiles(dir) {
   for (const file of files) {
     const fullPath = path.join(dir, file);
     if (file.endsWith('.md') && fs.statSync(fullPath).isFile()) {
-      results.push(file.replace(/\\/g, '/'));
+      const normalizedPath = file.replace(/\\/g, '/');
+      if (
+        normalizedPath.includes('node_modules/') ||
+        normalizedPath.includes('.git/') ||
+        normalizedPath.includes('.github/') ||
+        normalizedPath.startsWith('docs/') ||
+        normalizedPath.includes('/docs/') ||
+        normalizedPath.includes('tests/') ||
+        normalizedPath.includes('temp/')
+      ) {
+        continue;
+      }
+      results.push(normalizedPath);
     }
   }
   return results;
