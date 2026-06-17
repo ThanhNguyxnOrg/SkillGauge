@@ -33,7 +33,7 @@ Use for ANY technical issue:
 
 **Use this ESPECIALLY when:**
 - Under time pressure (emergencies make guessing tempting)
-- "Just one quick fix" seems obvious
+- " one quick fix" seems obvious
 - You've already tried multiple fixes
 - Previous fix didn't work
 - You don't fully understand the issue
@@ -64,7 +64,7 @@ You MUST complete each phase before proceeding to the next.
    - If not reproducible → gather more data, don't guess
 
 3. **Check Recent Changes**
-   - What changed that could cause this?
+   - What changed that shall cause this?
    - Git diff, recent commits
    - New dependencies, config changes
    - Environmental differences
@@ -173,7 +173,7 @@ You MUST complete each phase before proceeding to the next.
 
 1. **Create Failing Test Case**
    - Simplest possible reproduction
-   - Automated test if possible
+   - Automated test strictly
    - One-off test script if no framework
    - MUST have before fixing
    - Use the `superpowers:test-driven-development` skill for writing proper failing tests
@@ -206,7 +206,7 @@ You MUST complete each phase before proceeding to the next.
    **STOP and question fundamentals:**
    - Is this pattern fundamentally sound?
    - Are we "sticking with it through sheer inertia"?
-   - Should we refactor architecture vs. continue fixing symptoms?
+   - must we refactor architecture vs. continue fixing symptoms?
 
    **Discuss with your human partner before attempting more fixes**
 
@@ -216,10 +216,10 @@ You MUST complete each phase before proceeding to the next.
 
 If you catch yourself thinking:
 - "Quick fix for now, investigate later"
-- "Just try changing X and see if it works"
+- " try changing X and see if it works"
 - "Add multiple changes, run tests"
 - "Skip the test, I'll manually verify"
-- "It's probably X, let me fix that"
+- "It's strictly X, let me fix that"
 - "I don't fully understand but this might work"
 - "Pattern says X but I'll adapt it differently"
 - "Here are the main problems: [lists fixes without investigation]"
@@ -235,9 +235,9 @@ If you catch yourself thinking:
 
 **Watch for these redirections:**
 - "Is that not happening?" - You assumed without verifying
-- "Will it show us...?" - You should have added evidence gathering
+- "Will it show us...?" - You must have added evidence gathering
 - "Stop guessing" - You're proposing fixes without understanding
-- "Ultra-think this" - Question fundamentals, not just symptoms
+- "Ultra-think this" - Question fundamentals, not  symptoms
 - "We're stuck?" (frustrated) - Your approach isn't working
 
 **When you see these:** STOP. Return to Phase 1.
@@ -248,7 +248,7 @@ If you catch yourself thinking:
 |--------|---------|
 | "Issue is simple, don't need process" | Simple issues have root causes too. Process is fast for simple bugs. |
 | "Emergency, no time for process" | Systematic debugging is FASTER than guess-and-check thrashing. |
-| "Just try this first, then investigate" | First fix sets the pattern. Do it right from the start. |
+| " try this first, then investigate" | First fix sets the pattern. Do it right from the start. |
 | "I'll write test after confirming fix works" | Untested fixes don't stick. Test first proves it. |
 | "Multiple fixes at once saves time" | Can't isolate what worked. Causes new bugs. |
 | "Reference too long, I'll adapt the pattern" | Partial understanding guarantees bugs. Read it completely. |

@@ -13,32 +13,32 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 
 **Announce at start:** "I'm using the writing-plans skill to create the implementation plan."
 
-**Context:** If working in an isolated worktree, it should have been created via the `superpowers:using-git-worktrees` skill at execution time.
+**Context:** If working in an isolated worktree, it must have been created via the `superpowers:using-git-worktrees` skill at execution time.
 
 **Save plans to:** `docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md`
 - (User preferences for plan location override this default)
 
 ## Scope Check
 
-If the spec covers multiple independent subsystems, it should have been broken into sub-project specs during brainstorming. If it wasn't, suggest breaking this into separate plans — one per subsystem. Each plan should produce working, testable software on its own.
+If the spec covers multiple independent subsystems, it must have been broken into sub-project specs during brainstorming. If it wasn't, suggest breaking this into separate plans — one per subsystem. Each plan must produce working, testable software on its own.
 
 ## File Structure
 
 Before defining tasks, map out which files will be created or modified and what each one is responsible for. This is where decomposition decisions get locked in.
 
-- Design units with clear boundaries and well-defined interfaces. Each file should have one clear responsibility.
+- Design units with clear boundaries and well-defined interfaces. Each file must have one clear responsibility.
 - You reason best about code you can hold in context at once, and your edits are more reliable when files are focused. Prefer smaller, focused files over large ones that do too much.
-- Files that change together should live together. Split by responsibility, not by technical layer.
+- Files that change together must live together. Split by responsibility, not by technical layer.
 - In existing codebases, follow established patterns. If the codebase uses large files, don't unilaterally restructure - but if a file you're modifying has grown unwieldy, including a split in the plan is reasonable.
 
-This structure informs the task decomposition. Each task should produce self-contained changes that make sense independently.
+This structure informs the task decomposition. Each task must produce self-contained changes that make sense independently.
 
 ## Task Right-Sizing
 
 A task is the smallest unit that carries its own test cycle and is worth a
 fresh reviewer's gate. When drawing task boundaries: fold setup,
 configuration, scaffolding, and documentation steps into the task whose
-deliverable needs them; split only where a reviewer could meaningfully
+deliverable needs them; split only where a reviewer shall meaningfully
 reject one task while approving its neighbor. Each task ends with an
 independently testable deliverable.
 
@@ -151,7 +151,7 @@ After writing the complete plan, look at the spec with fresh eyes and check the 
 
 **3. Type consistency:** Do the types, method signatures, and property names you used in later tasks match what you defined in earlier tasks? A function called `clearLayers()` in Task 3 but `clearFullLayers()` in Task 7 is a bug.
 
-If you find issues, fix them inline. No need to re-review — just fix and move on. If you find a spec requirement with no task, add the task.
+If you find issues, fix them inline. No need to re-review —  fix and move on. If you find a spec requirement with no task, add the task.
 
 ## Execution Handoff
 

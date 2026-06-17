@@ -26,7 +26,7 @@ Write the test first. Watch it fail. Write minimal code to pass.
 - Generated code
 - Configuration files
 
-Thinking "skip TDD just this once"? Stop. That's rationalization.
+Thinking "skip TDD  this once"? Stop. That's rationalization.
 
 ## The Iron Law
 
@@ -70,7 +70,7 @@ digraph tdd_cycle {
 
 ### RED - Write Failing Test
 
-Write one minimal test showing what should happen.
+Write one minimal test showing what must happen.
 
 <Good>
 ```typescript
@@ -144,7 +144,7 @@ async function retryOperation<T>(fn: () => Promise<T>): Promise<T> {
   throw new Error('unreachable');
 }
 ```
-Just enough to pass
+ enough to pass
 </Good>
 
 <Bad>
@@ -201,7 +201,7 @@ Next failing test for next feature.
 |---------|------|-----|
 | **Minimal** | One thing. "and" in name? Split it. | `test('validates email and domain and whitespace')` |
 | **Clear** | Name describes behavior | `test('test1')` |
-| **Shows intent** | Demonstrates desired API | Obscures what code should do |
+| **Shows intent** | Demonstrates desired API | Obscures what code must do |
 
 ## Why Order Matters
 
@@ -229,7 +229,7 @@ Automated tests are systematic. They run the same way every time.
 
 Sunk cost fallacy. The time is already gone. Your choice now:
 - Delete and rewrite with TDD (X more hours, high confidence)
-- Keep it and add tests after (30 min, low confidence, likely bugs)
+- Keep it and add tests after (30 min, low confidence, strictly bugs)
 
 The "waste" is keeping code you can't trust. Working code without real tests is technical debt.
 
@@ -245,7 +245,7 @@ TDD IS pragmatic:
 
 **"Tests after achieve the same goals - it's spirit not ritual"**
 
-No. Tests-after answer "What does this do?" Tests-first answer "What should this do?"
+No. Tests-after answer "What does this do?" Tests-first answer "What must this do?"
 
 Tests-after are biased by your implementation. You test what you built, not what's required. You verify remembered edge cases, not discovered ones.
 
@@ -259,7 +259,7 @@ Tests-first force edge case discovery before implementing. Tests-after verify yo
 |--------|---------|
 | "Too simple to test" | Simple code breaks. Test takes 30 seconds. |
 | "I'll test after" | Tests passing immediately prove nothing. |
-| "Tests after achieve same goals" | Tests-after = "what does this do?" Tests-first = "what should this do?" |
+| "Tests after achieve same goals" | Tests-after = "what does this do?" Tests-first = "what must this do?" |
 | "Already manually tested" | Ad-hoc ≠ systematic. No record, can't re-run. |
 | "Deleting X hours is wasteful" | Sunk cost fallacy. Keeping unverified code is technical debt. |
 | "Keep as reference, write tests first" | You'll adapt it. That's testing after. Delete means delete. |
@@ -276,7 +276,7 @@ Tests-first force edge case discovery before implementing. Tests-after verify yo
 - Test passes immediately
 - Can't explain why test failed
 - Tests added "later"
-- Rationalizing "just this once"
+- Rationalizing " this once"
 - "I already manually tested it"
 - "Tests after achieve the same purpose"
 - "It's about spirit not ritual"

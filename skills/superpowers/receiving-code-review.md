@@ -35,7 +35,7 @@ WHEN receiving code review feedback:
 - Restate the technical requirement
 - Ask clarifying questions
 - Push back with technical reasoning if wrong
-- Just start working (actions > words)
+-  start working (actions > words)
 
 ## Handling Unclear Feedback
 
@@ -77,7 +77,7 @@ IF suggestion seems wrong:
   Push back with technical reasoning
 
 IF can't easily verify:
-  Say so: "I can't verify this without [X]. Should I [investigate/ask/proceed]?"
+  Say so: "I can't verify this without [X]. must I [investigate/ask/proceed]?"
 
 IF conflicts with your human partner's prior decisions:
   Stop and discuss with your human partner first
@@ -134,7 +134,7 @@ When feedback IS correct:
 ```
 ✅ "Fixed. [Brief description of what changed]"
 ✅ "Good catch - [specific issue]. Fixed in [location]."
-✅ [Just fix it and show in the code]
+✅ [ fix it and show in the code]
 
 ❌ "You're absolutely right!"
 ❌ "Great point!"
@@ -143,7 +143,7 @@ When feedback IS correct:
 ❌ ANY gratitude expression
 ```
 
-**Why no thanks:** Actions speak. Just fix it. The code itself shows you heard the feedback.
+**Why no thanks:** Actions speak.  fix it. The code itself shows you heard the feedback.
 
 **If you catch yourself about to write "Thanks":** DELETE IT. State the fix instead.
 
@@ -165,7 +165,7 @@ State the correction factually and move on.
 
 | Mistake | Fix |
 |---------|-----|
-| Performative agreement | State requirement or just act |
+| Performative agreement | State requirement or  act |
 | Blind implementation | Verify against codebase first |
 | Batch without testing | One at a time, test each |
 | Assuming reviewer is right | Check if breaks things |

@@ -190,6 +190,15 @@
       "submittedAt": "2026-06-17T04:40:40.097Z"
     },
     {
+      "name": "writing-skills",
+      "repository": "SkillGauge",
+      "hash": "0702a04ac82e92fe41de410de6a03837ffe48639cdb37fff01a056241973f7b7",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 35.02799201607235,
+      "submittedAt": "2026-06-17T04:44:04.432Z"
+    },
+    {
       "name": "e2e-testing",
       "repository": "SkillGauge",
       "hash": "87180adbb8529d4a3727d2477c522217c8deed4a472015287e89ecdfb3f01238",
@@ -476,6 +485,15 @@
       "tier": "Tier 3",
       "overallScore": 33.94563150677462,
       "submittedAt": "2026-06-17T04:40:42.533Z"
+    },
+    {
+      "name": "subagent-driven-development",
+      "repository": "SkillGauge",
+      "hash": "4f4ec122cebe44a43079a0258ebc9b612a4e7ec5be08f2b607c8fc44227dee01",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.93989946832564,
+      "submittedAt": "2026-06-17T04:44:04.840Z"
     },
     {
       "name": "kotlin-coroutines-flows",
@@ -1099,6 +1117,15 @@
       "submittedAt": "2026-06-17T04:40:45.061Z"
     },
     {
+      "name": "writing-plans",
+      "repository": "SkillGauge",
+      "hash": "4adddc9888ca706d9d02e1053216febea1d55bb1f6f28533d0488d0c0ca28e87",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.137657767163766,
+      "submittedAt": "2026-06-17T04:44:04.479Z"
+    },
+    {
       "name": "blender-motion-state-inspection",
       "repository": "SkillGauge",
       "hash": "f8facfeab39d2057082c4d2564338dfdb643d5bc9792c2c441a4e4884400bc7a",
@@ -1378,6 +1405,15 @@
       "submittedAt": "2026-06-17T04:40:46.787Z"
     },
     {
+      "name": "systematic-debugging",
+      "repository": "SkillGauge",
+      "hash": "7581051be11dfdda90aef531e1b671c8dc3eacc3c2023ae3bfa43e85c538efe2",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.265331452276612,
+      "submittedAt": "2026-06-17T04:44:04.720Z"
+    },
+    {
       "name": "react-reviewer",
       "repository": "SkillGauge",
       "hash": "8d44edfe5ccc5e5b264f9b348c948ffb8731dcae7dbbcba85a60029a599d2b62",
@@ -1612,6 +1648,15 @@
       "submittedAt": "2026-06-17T04:40:53.129Z"
     },
     {
+      "name": "verification-before-completion",
+      "repository": "SkillGauge",
+      "hash": "d0959f4f77561a842c29a68d9e08b806c893b342ad784452310ab831f65b90a5",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.91125449489518,
+      "submittedAt": "2026-06-17T04:44:04.506Z"
+    },
+    {
       "name": "team-agent-orchestration",
       "repository": "SkillGauge",
       "hash": "f0274a9bb1e82962eca880a6f25885e07839869e8e98c6f8d0d69cfe785590be",
@@ -1774,6 +1819,15 @@
       "submittedAt": "2026-06-17T04:40:51.764Z"
     },
     {
+      "name": "using-git-worktrees",
+      "repository": "SkillGauge",
+      "hash": "f3653769da7ca6c02b911c20d9b39c34f7073ae941097b2c9e571e73c771fe95",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.639375434180096,
+      "submittedAt": "2026-06-17T04:44:04.600Z"
+    },
+    {
       "name": "automation-audit-ops",
       "repository": "SkillGauge",
       "hash": "a970b010736ca6531339d7454a7aae4ef6426cfdad05df1dae64ae707c9e7e47",
@@ -1844,6 +1898,15 @@
       "tier": "Tier 3",
       "overallScore": 30.518339620810426,
       "submittedAt": "2026-06-17T04:40:45.608Z"
+    },
+    {
+      "name": "dispatching-parallel-agents",
+      "repository": "SkillGauge",
+      "hash": "1c7c9e63596a4a11e2d765433241f8ac9aa71c2a8ee7a359f0f762915e56237b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.511878269415003,
+      "submittedAt": "2026-06-17T04:44:04.988Z"
     },
     {
       "name": "connections-optimizer",
@@ -1934,6 +1997,15 @@
       "tier": "Tier 3",
       "overallScore": 30.417437700409643,
       "submittedAt": "2026-06-17T04:40:49.070Z"
+    },
+    {
+      "name": "receiving-code-review",
+      "repository": "SkillGauge",
+      "hash": "13ef1c66e369ca08581e8538aed0b527f42de2a958ed56f31a6f9e703b959a59",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.366745658175148,
+      "submittedAt": "2026-06-17T04:44:04.893Z"
     },
     {
       "name": "go-build-resolver",
@@ -2069,6 +2141,15 @@
       "tier": "Tier 3",
       "overallScore": 30.118234342485962,
       "submittedAt": "2026-06-17T04:40:49.995Z"
+    },
+    {
+      "name": "using-superpowers",
+      "repository": "SkillGauge",
+      "hash": "bfeb54b13236aeb91fab675faad243b6192e559b8868235b5c3c180da61833f0",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.101403410692164,
+      "submittedAt": "2026-06-17T04:44:04.554Z"
     },
     {
       "name": "instinct-status",
@@ -2269,6 +2350,15 @@
       "submittedAt": "2026-06-17T04:40:49.494Z"
     },
     {
+      "name": "test-driven-development",
+      "repository": "SkillGauge",
+      "hash": "1e0d4ca19dfde98d0d8579dce471a47142f5e48b7114dd0674c7d25446235c0b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.775351633065643,
+      "submittedAt": "2026-06-17T04:44:04.661Z"
+    },
+    {
       "name": "laravel-verification",
       "repository": "SkillGauge",
       "hash": "5284825f0f7c1985b0736462f24492bbc19af478985140e2be1046dc8336ea8e",
@@ -2438,6 +2528,15 @@
       "tier": "Tier 3",
       "overallScore": 29.601326815167557,
       "submittedAt": "2026-06-17T04:40:41.217Z"
+    },
+    {
+      "name": "finishing-a-development-branch",
+      "repository": "SkillGauge",
+      "hash": "565e160341b34ab008068bee82cdc006708c56473b3d1eaa7c5862d4256c8bfd",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.587912543494603,
+      "submittedAt": "2026-06-17T04:44:04.932Z"
     },
     {
       "name": "swift-actor-persistence",
@@ -2735,6 +2834,15 @@
       "tier": "Tier 3",
       "overallScore": 29.091698162587686,
       "submittedAt": "2026-06-17T04:40:42.061Z"
+    },
+    {
+      "name": "brainstorming",
+      "repository": "SkillGauge",
+      "hash": "b195b1c2243798a212187744b387f221f41b94f3ee58bbf543e510c725712ad8",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.04786306164327,
+      "submittedAt": "2026-06-17T04:44:05.044Z"
     },
     {
       "name": "swiftui-patterns",
@@ -3061,6 +3169,15 @@
       "submittedAt": "2026-06-17T04:40:39.834Z"
     },
     {
+      "name": "requesting-code-review",
+      "repository": "SkillGauge",
+      "hash": "d0cfa6042f19d324eaadd90920fbb4e1d0780e796a923a0906dc47dba394cae7",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.37793385173919,
+      "submittedAt": "2026-06-17T04:44:04.857Z"
+    },
+    {
       "name": "ralphinho-rfc-pipeline",
       "repository": "SkillGauge",
       "hash": "141467ad0227b0e4239a01c5cac065fcb2cbdc4abf1e4495ea0ee140adcca8b7",
@@ -3176,6 +3293,15 @@
       "tier": "Tier 3",
       "overallScore": 28.22734760355821,
       "submittedAt": "2026-06-17T04:40:50.767Z"
+    },
+    {
+      "name": "executing-plans",
+      "repository": "SkillGauge",
+      "hash": "7ee858a9d279242bff8a608604a40b347625958165d1234566fb1544c6c711ca",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.225950012462448,
+      "submittedAt": "2026-06-17T04:44:04.952Z"
     },
     {
       "name": "competitive-platform-analysis",

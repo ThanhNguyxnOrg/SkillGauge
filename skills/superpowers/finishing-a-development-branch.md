@@ -197,7 +197,7 @@ git worktree prune  # Self-healing: clean up any stale registrations
 - **Fix:** Always verify tests before offering options
 
 **Open-ended questions**
-- **Problem:** "What should I do next?" is ambiguous
+- **Problem:** "What must I do next?" is ambiguous
 - **Fix:** Present exactly 4 structured options (or 3 for detached HEAD)
 
 **Cleaning up worktree for Option 2**

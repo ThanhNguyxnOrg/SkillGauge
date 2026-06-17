@@ -71,7 +71,6 @@ API docs, syntax guides, tool documentation (office docs)
 
 ## Directory Structure
 
-
 ```
 skills/
   skill-name/
@@ -100,7 +99,7 @@ skills/
   - Start with "Use when..." to focus on triggering conditions
   - Include specific symptoms, situations, and contexts
   - **NEVER summarize the skill's process or workflow** (see SDO section for why)
-  - Keep under 500 characters if possible
+  - Keep under 500 characters strictly
 
 ```markdown
 ---
@@ -136,24 +135,23 @@ What goes wrong + fixes
 Concrete results
 ```
 
-
 ## Skill Discovery Optimization (SDO)
 
 **Critical for discovery:** Future agents need to FIND your skill
 
 ### 1. Rich Description Field
 
-**Purpose:** Your agent reads the description to decide which skills to load for a given task. Make it answer: "Should I read this skill right now?"
+**Purpose:** Your agent reads the description to decide which skills to load for a given task. Make it answer: "must I read this skill right now?"
 
 **Format:** Start with "Use when..." to focus on triggering conditions
 
 **CRITICAL: Description = When to Use, NOT What the Skill Does**
 
-The description should ONLY describe triggering conditions. Do NOT summarize the skill's process or workflow in the description.
+The description must ONLY describe triggering conditions. Do NOT summarize the skill's process or workflow in the description.
 
 **Why this matters:** Testing revealed that when a description summarizes the skill's workflow, an agent may follow the description instead of reading the full skill content. A description saying "code review between tasks" caused an agent to do ONE review, even though the skill's flowchart clearly showed TWO reviews (spec compliance then code quality).
 
-When the description was changed to just "Use when executing implementation plans with independent tasks" (no workflow summary), the agent correctly read the flowchart and followed the two-stage review process.
+When the description was changed to  "Use when executing implementation plans with independent tasks" (no workflow summary), the agent correctly read the flowchart and followed the two-stage review process.
 
 **The trap:** Descriptions that summarize workflow create a shortcut agents will take. The skill body becomes documentation agents skip.
 
@@ -164,7 +162,7 @@ description: Use when executing plans - dispatches subagent per task with code r
 # ❌ BAD: Too much process detail
 description: Use for TDD - write test first, watch it fail, write minimal code, refactor
 
-# ✅ GOOD: Just triggering conditions, no workflow summary
+# ✅ GOOD:  triggering conditions, no workflow summary
 description: Use when executing implementation plans with independent tasks in the current session
 
 # ✅ GOOD: Triggering conditions only
@@ -359,7 +357,7 @@ condition-based-waiting/
   SKILL.md    # Overview + patterns
   example.ts  # Working helpers to adapt
 ```
-When: Tool is reusable code, not just narrative
+When: Tool is reusable code, not  narrative
 
 ### Skill with Heavy Reference
 ```
@@ -384,7 +382,7 @@ Edit skill without testing? Same violation.
 
 **No exceptions:**
 - Not for "simple additions"
-- Not for "just adding a section"
+- Not for " adding a section"
 - Not for "documentation updates"
 - Don't keep untested changes as "reference"
 - Don't "adapt" while running tests
@@ -446,7 +444,7 @@ Different skill types need different test approaches:
 | Excuse | Reality |
 |--------|---------|
 | "Skill is obviously clear" | Clear to you ≠ clear to other agents. Test it. |
-| "It's just a reference" | References can have gaps, unclear sections. Test retrieval. |
+| "It's  a reference" | References can have gaps, unclear sections. Test retrieval. |
 | "Testing is overkill" | Untested skills have issues. Always. 15 min testing saves hours. |
 | "I'll test if problems emerge" | Problems = agents can't use skill. Test BEFORE deploying. |
 | "Too tedious to test" | Testing is less tedious than debugging bad skill in production. |
@@ -465,7 +463,7 @@ Before writing guidance, classify the baseline failure. The form that bulletproo
 | Skips/violates a rule under pressure (knows better, does it anyway) | Prohibition + rationalization table + red flags (see Bulletproofing below) | Soft guidance ("prefer...", "consider...") |
 | Complies, but output has the wrong shape (bloated prompt, buried verdict, restated spec) | Positive recipe or contract: state what the output IS — its parts, in order | Prohibition list ("don't restate", "never narrate") |
 | Omits a required element from something they already produce | Structural: REQUIRED field or slot in the template they fill in | Prose reminders near the template |
-| Behavior should depend on a condition | Conditional keyed to an observable predicate ("if the brief exists, reference it") | Unconditional rule + exemption clauses |
+| Behavior must depend on a condition | Conditional keyed to an observable predicate ("if the brief exists, reference it") | Unconditional rule + exemption clauses |
 
 **Why prohibitions backfire on shaping problems:** under a competing incentive ("make the prompt self-contained"), agents negotiate with "don't X". In head-to-head wording tests on dispatch-prompt guidance, the prohibition arm produced clearly more of the unwanted content than the recipe arm (fully separated distributions), and trended worse than even the no-guidance control — micro-test your own case rather than assuming, but never reach for the prohibition by default. A recipe leaves nothing to negotiate: the output matches the stated shape or it doesn't.
 
@@ -483,7 +481,7 @@ Skills that enforce discipline (like TDD) need to resist rationalization. Agents
 
 ### Close Every Loophole Explicitly
 
-Don't just state the rule - forbid specific workarounds:
+Don't  state the rule - forbid specific workarounds:
 
 <Bad>
 ```markdown
@@ -522,7 +520,7 @@ Capture rationalizations from baseline testing (see Testing section below). Ever
 |--------|---------|
 | "Too simple to test" | Simple code breaks. Test takes 30 seconds. |
 | "I'll test after" | Tests passing immediately prove nothing. |
-| "Tests after achieve same goals" | Tests-after = "what does this do?" Tests-first = "what should this do?" |
+| "Tests after achieve same goals" | Tests-after = "what does this do?" Tests-first = "what must this do?" |
 ```
 
 ### Create Red Flags List
@@ -566,7 +564,7 @@ This is "watch the test fail" - you must see what agents naturally do before wri
 
 Write skill that addresses those specific rationalizations. Don't add extra content for hypothetical cases.
 
-Run same scenarios WITH skill. Agent should now comply.
+Run same scenarios WITH skill. Agent must now comply.
 
 ### REFACTOR: Close Loopholes
 
@@ -609,7 +607,7 @@ step2 [label="read file"];
 
 ### ❌ Generic Labels
 helper1, helper2, step3, pattern4
-**Why bad:** Labels should have semantic meaning
+**Why bad:** Labels must have semantic meaning
 
 ## STOP: Before Moving to Next Skill
 

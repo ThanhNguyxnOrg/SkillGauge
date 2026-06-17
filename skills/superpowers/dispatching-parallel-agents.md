@@ -7,7 +7,7 @@ description: Use when facing 2+ independent tasks that can be worked on without 
 
 ## Overview
 
-You delegate tasks to specialized agents with isolated context. By precisely crafting their instructions and context, you ensure they stay focused and succeed at their task. They should never inherit your session's context or history — you construct exactly what they need. This also preserves your own context for coordination work.
+You delegate tasks to specialized agents with isolated context. By precisely crafting their instructions and context, you ensure they stay focused and succeed at their task. They must never inherit your session's context or history — you construct exactly what they need. This also preserves your own context for coordination work.
 
 When you have multiple unrelated failures (different test files, different subsystems, different bugs), investigating them sequentially wastes time. Each investigation is independent and can happen in parallel.
 
@@ -89,14 +89,14 @@ When agents return:
 Good agent prompts are:
 1. **Focused** - One clear problem domain
 2. **Self-contained** - All context needed to understand the problem
-3. **Specific about output** - What should the agent return?
+3. **Specific about output** - What must the agent return?
 
 ```markdown
 Fix the 3 failing tests in src/agents/agent-tool-abort.test.ts:
 
-1. "should abort tool with partial output capture" - expects 'interrupted at' in message
-2. "should handle mixed completed and aborted tools" - fast tool aborted instead of completed
-3. "should properly track pendingToolCount" - expects 3 results but gets 0
+1. "must abort tool with partial output capture" - expects 'interrupted at' in message
+2. "must handle mixed completed and aborted tools" - fast tool aborted instead of completed
+3. "must properly track pendingToolCount" - expects 3 results but gets 0
 
 These are timing/race condition issues. Your task:
 
@@ -105,9 +105,9 @@ These are timing/race condition issues. Your task:
 3. Fix by:
    - Replacing arbitrary timeouts with event-based waiting
    - Fixing bugs in abort implementation if found
-   - Adjusting test expectations if testing changed behavior
+   - Ading test expectations if testing changed behavior
 
-Do NOT just increase timeouts - find the real issue.
+Do NOT  increase timeouts - find the real issue.
 
 Return: Summary of what you found and what you fixed.
 ```

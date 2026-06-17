@@ -1,3 +1,3577 @@
 {
-  "skills": []
+  "skills": [
+    {
+      "name": "laravel-security",
+      "repository": "SkillGauge",
+      "hash": "8bb3ee64fc54b79ebe7e954b630f81272cc06f12e06a2fd1b51adc928d19a621",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 38.205997154631085,
+      "submittedAt": "2026-06-17T04:40:46.147Z"
+    },
+    {
+      "name": "data-scraper-agent",
+      "repository": "SkillGauge",
+      "hash": "ffefca3711d3bc53be615bcde20a84afe23492d89c963a838e0d3235ca0d1488",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 37.92436151908351,
+      "submittedAt": "2026-06-17T04:40:51.111Z"
+    },
+    {
+      "name": "react-performance",
+      "repository": "SkillGauge",
+      "hash": "a7c5fd0b6b98bd6d7918f5defb6041ed89bba1d850805e3d77eb23fa914a6031",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 37.71064021420859,
+      "submittedAt": "2026-06-17T04:40:42.450Z"
+    },
+    {
+      "name": "windows-desktop-e2e",
+      "repository": "SkillGauge",
+      "hash": "f331e75b8113fec06155434123e55e1e057c16574c9ea01540c4bc4cc3c74451",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 36.97304545980561,
+      "submittedAt": "2026-06-17T04:40:39.332Z"
+    },
+    {
+      "name": "vue-reviewer",
+      "repository": "SkillGauge",
+      "hash": "04bc6a617977b9cc92eb6ad6064e71693329b1568d4052ebc1d09fdfc167bcd7",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 36.92025158176438,
+      "submittedAt": "2026-06-17T04:40:39.439Z"
+    },
+    {
+      "name": "autonomous-loops",
+      "repository": "SkillGauge",
+      "hash": "63bf1aec2b21ab43c958fb287ad5cd9d8e8783285a43bcc554ac9f79add27949",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 36.367931264725804,
+      "submittedAt": "2026-06-17T04:40:53.444Z"
+    },
+    {
+      "name": "redis-patterns",
+      "repository": "SkillGauge",
+      "hash": "5a332b7b86f169cad7c631f534e4b695a026bfa9194ac94c3c87e6a442034d9f",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 36.23874090264484,
+      "submittedAt": "2026-06-17T04:40:42.124Z"
+    },
+    {
+      "name": "deployment-patterns",
+      "repository": "SkillGauge",
+      "hash": "b10882ec8c1b75ab7a8a7fd18b468a2cdc823cd2db99a859c2e6567cdd253a7f",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 36.12511035981854,
+      "submittedAt": "2026-06-17T04:40:50.839Z"
+    },
+    {
+      "name": "kotlin-patterns",
+      "repository": "SkillGauge",
+      "hash": "87d2b9a40f2b22888a10bdf4bb75f662da653b4ab7f485c338d6e1276d957481",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 36.12412292049576,
+      "submittedAt": "2026-06-17T04:40:46.598Z"
+    },
+    {
+      "name": "security-review",
+      "repository": "SkillGauge",
+      "hash": "07100dbc642c1cbcc19d44fe3e138adfdf639eadbd9afcf6766cb0229c6c9182",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 36.08105230771667,
+      "submittedAt": "2026-06-17T04:40:41.394Z"
+    },
+    {
+      "name": "perl-testing",
+      "repository": "SkillGauge",
+      "hash": "7daf9642553577a492c6c8e10fa6f0111313a59c4831f937ac3a2c4cb596c33b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 35.77685886492363,
+      "submittedAt": "2026-06-17T04:40:44.085Z"
+    },
+    {
+      "name": "coding-standards",
+      "repository": "SkillGauge",
+      "hash": "f6eaa88894cff482f79e87e7ba1ee56ac271fbbda3e0143291389223f14e949e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 35.763089562929814,
+      "submittedAt": "2026-06-17T04:40:52.388Z"
+    },
+    {
+      "name": "react-testing",
+      "repository": "SkillGauge",
+      "hash": "4b4770734b85c116e2d74e91d44f9276495ed737ebc997166e5bc8eb9f243061",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 35.750362264296605,
+      "submittedAt": "2026-06-17T04:40:42.251Z"
+    },
+    {
+      "name": "carrier-relationship-management",
+      "repository": "SkillGauge",
+      "hash": "4753724caad53ea04ea3d5693891a09e9c439a6bc460e34faa3c33bc4e73c875",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 35.58064424689358,
+      "submittedAt": "2026-06-17T04:40:52.946Z"
+    },
+    {
+      "name": "code-reviewer",
+      "repository": "SkillGauge",
+      "hash": "b05f96707e28b69e6a7f41c8ff6065cc85dcb188bb28b954746ce537df26ef97",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 35.429711165308895,
+      "submittedAt": "2026-06-17T04:40:52.579Z"
+    },
+    {
+      "name": "kotlin-ktor-patterns",
+      "repository": "SkillGauge",
+      "hash": "41d73a10dbcc7d061ced62565c1356e5bbc36acac9c27c2a69c3a9cd64f66db9",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 35.421785428771216,
+      "submittedAt": "2026-06-17T04:40:46.684Z"
+    },
+    {
+      "name": "dart-flutter-patterns",
+      "repository": "SkillGauge",
+      "hash": "6e6b550e58494fbbea82f74e34de5f6cd8154417e822e9b6ed907a2bd63a95d7",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 35.323543717693276,
+      "submittedAt": "2026-06-17T04:40:51.207Z"
+    },
+    {
+      "name": "flutter-reviewer",
+      "repository": "SkillGauge",
+      "hash": "f24d5cb67f995293c87228d3fb0d9f377af6901ad54314035d2993b61364db23",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 35.27131168555045,
+      "submittedAt": "2026-06-17T04:40:49.151Z"
+    },
+    {
+      "name": "ui-demo",
+      "repository": "SkillGauge",
+      "hash": "316c52af8a975713a5be185ace9dfe48603e7a81eebfaebec10c94cca7971a04",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 35.23942279876546,
+      "submittedAt": "2026-06-17T04:40:40.055Z"
+    },
+    {
+      "name": "laravel-tdd",
+      "repository": "SkillGauge",
+      "hash": "dc0b778e27294518a8b0b965b7611ac6c954c8480c414a7e45ab34a8b4384186",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 35.149465510392815,
+      "submittedAt": "2026-06-17T04:40:46.007Z"
+    },
+    {
+      "name": "typescript-reviewer",
+      "repository": "SkillGauge",
+      "hash": "26c5528b8f1b92847f6944aeb4aa64553e7df0ce0a84daebff6e60ff39f4f833",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 35.03182868925432,
+      "submittedAt": "2026-06-17T04:40:40.097Z"
+    },
+    {
+      "name": "e2e-testing",
+      "repository": "SkillGauge",
+      "hash": "87180adbb8529d4a3727d2477c522217c8deed4a472015287e89ecdfb3f01238",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 35.002730175529265,
+      "submittedAt": "2026-06-17T04:40:50.074Z"
+    },
+    {
+      "name": "fastapi-patterns",
+      "repository": "SkillGauge",
+      "hash": "eea52e07da41ed45871df24350759fc184e9ba46f758d3cb6ffa6b14aadaff8b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.97942526468113,
+      "submittedAt": "2026-06-17T04:40:49.434Z"
+    },
+    {
+      "name": "kubernetes-patterns",
+      "repository": "SkillGauge",
+      "hash": "7a88fadcbe39586204456e8d9ce20df2b7f50f9eb0dff3c4d42d1ceb8b54c862",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.81509804323464,
+      "submittedAt": "2026-06-17T04:40:46.336Z"
+    },
+    {
+      "name": "tdd-workflow",
+      "repository": "SkillGauge",
+      "hash": "89c6beff2513e20b8b9ce2a8e9d45eff552d190e178669b34291331b157d7ca2",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.80203649292859,
+      "submittedAt": "2026-06-17T04:40:40.389Z"
+    },
+    {
+      "name": "error-handling",
+      "repository": "SkillGauge",
+      "hash": "8878736bbdca6b50e7a8c76754c3e38f009749ce8a868dddced20a2e10230e38",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.77905488635578,
+      "submittedAt": "2026-06-17T04:40:49.765Z"
+    },
+    {
+      "name": "backend-patterns",
+      "repository": "SkillGauge",
+      "hash": "73179e211a50b015f22436ebb19bee802c22ee1be8808ece1a4654c7d185d530",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.77488790263995,
+      "submittedAt": "2026-06-17T04:40:53.313Z"
+    },
+    {
+      "name": "netmiko-ssh-automation",
+      "repository": "SkillGauge",
+      "hash": "40b52c49df5ea84b001ba231ca3f9951111d983e02c647a05cd79671a4973926",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.77435968900134,
+      "submittedAt": "2026-06-17T04:40:44.874Z"
+    },
+    {
+      "name": "tinystruct-patterns",
+      "repository": "SkillGauge",
+      "hash": "659716732e8797f4e50bfbae11acd905a91e435c0c16d3c839740593f5623da2",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.77053647165691,
+      "submittedAt": "2026-06-17T04:40:40.230Z"
+    },
+    {
+      "name": "csharp-reviewer",
+      "repository": "SkillGauge",
+      "hash": "a4ff216b8b38cd698fc0d28d408ad827d5cbb75d384d71f4156551c2c09d6911",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.683389004884525,
+      "submittedAt": "2026-06-17T04:40:51.493Z"
+    },
+    {
+      "name": "kotlin-testing",
+      "repository": "SkillGauge",
+      "hash": "5554772f7ae1c11d6748d46d3934c3edfb2b707fd4cb9c85514c56191e2ea64b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.672461199851575,
+      "submittedAt": "2026-06-17T04:40:46.437Z"
+    },
+    {
+      "name": "rust-testing",
+      "repository": "SkillGauge",
+      "hash": "a78c0231c24747c83d1c52427b1b75b4444103a3d78690ec744a1786293dd52a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.617736618167896,
+      "submittedAt": "2026-06-17T04:40:41.614Z"
+    },
+    {
+      "name": "quarkus-security",
+      "repository": "SkillGauge",
+      "hash": "aa4068fcc97f4a95a40f933ee0196f5017b458b2d0e3459a47bef633d403f53e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.612170961079094,
+      "submittedAt": "2026-06-17T04:40:42.809Z"
+    },
+    {
+      "name": "production-audit",
+      "repository": "SkillGauge",
+      "hash": "b7502921591c312a3fb6e7cd37953cf8ab618fb7467f1d5e91335edd874f974b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.58249989735875,
+      "submittedAt": "2026-06-17T04:40:43.603Z"
+    },
+    {
+      "name": "rust-patterns",
+      "repository": "SkillGauge",
+      "hash": "3b506f843b026aead0e9dec5e4594f46cff263ea88d35f289ba0444528fe6a19",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.582214091728204,
+      "submittedAt": "2026-06-17T04:40:41.750Z"
+    },
+    {
+      "name": "quarkus-patterns",
+      "repository": "SkillGauge",
+      "hash": "6236b3ef286ebf0e8a71041619819f945bbb49d0cacdd0557b47b282dbed5748",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.53694700001977,
+      "submittedAt": "2026-06-17T04:40:42.905Z"
+    },
+    {
+      "name": "customs-trade-compliance",
+      "repository": "SkillGauge",
+      "hash": "0285c196f754c6f45e92f29c66ad73e0ca153652e134f7d8254772071bd42e37",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.49498936530131,
+      "submittedAt": "2026-06-17T04:40:51.403Z"
+    },
+    {
+      "name": "agent-architecture-audit",
+      "repository": "SkillGauge",
+      "hash": "735afda8032a7bcc16c0869af809fa80082d322dc3b0d97e13799064631c4746",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.43790232113364,
+      "submittedAt": "2026-06-17T04:40:54.264Z"
+    },
+    {
+      "name": "santa-method",
+      "repository": "SkillGauge",
+      "hash": "e0d979fde88b2555a1bbf1a9134bb2fbdce5aebd9d9179d4fdf9fc00764c4221",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.39696591561485,
+      "submittedAt": "2026-06-17T04:40:41.538Z"
+    },
+    {
+      "name": "cost-aware-llm-pipeline",
+      "repository": "SkillGauge",
+      "hash": "f1adb2e083278e78828a0ed13b4efdc5f198e610257e8960d14b5fdde2ad32d3",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.393663518531056,
+      "submittedAt": "2026-06-17T04:40:51.792Z"
+    },
+    {
+      "name": "flutter-dart-code-review",
+      "repository": "SkillGauge",
+      "hash": "397ec47968cc0f75824c2ef5d635e03f685ad74f6f78ae53a74a978de209cae1",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.33563900450742,
+      "submittedAt": "2026-06-17T04:40:49.277Z"
+    },
+    {
+      "name": "django-patterns",
+      "repository": "SkillGauge",
+      "hash": "89c7583eea5ccfe19fd981c4190556e48858ba5e0c7ddce212df623e5c5e1b01",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.28952248367688,
+      "submittedAt": "2026-06-17T04:40:50.637Z"
+    },
+    {
+      "name": "ai-regression-testing",
+      "repository": "SkillGauge",
+      "hash": "7b2984fce11c383fab8934bed58b278de212bad950fdf4c24ed92480613741cb",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.16411333623786,
+      "submittedAt": "2026-06-17T04:40:53.883Z"
+    },
+    {
+      "name": "uspto-database",
+      "repository": "SkillGauge",
+      "hash": "4e203e828938434fd04492b7801f4840788fd4cd721b4f856e7ed42aa8ca9ade",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.15838261335934,
+      "submittedAt": "2026-06-17T04:40:39.868Z"
+    },
+    {
+      "name": "quality-nonconformance",
+      "repository": "SkillGauge",
+      "hash": "91c2361c84a349dffbf19f7eb394f8f41becfe00abc7621cb785205751a8f82a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.11216238110935,
+      "submittedAt": "2026-06-17T04:40:43.063Z"
+    },
+    {
+      "name": "x-api",
+      "repository": "SkillGauge",
+      "hash": "8a68bb34c64cf43b6937e7e56973b7b7225b1a0d868ddd03276db2fad6c0c32d",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.08931168295894,
+      "submittedAt": "2026-06-17T04:40:39.080Z"
+    },
+    {
+      "name": "git-workflow",
+      "repository": "SkillGauge",
+      "hash": "8d7b02db356b3048b39cfffaeaca445349c0c95842ced44c4668cc19134649da",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.07387525532057,
+      "submittedAt": "2026-06-17T04:40:48.339Z"
+    },
+    {
+      "name": "django-security",
+      "repository": "SkillGauge",
+      "hash": "bb27a93cfbb28f489ad591c35b7c86adc48633e7e88a21aeb98aff226e305044",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 34.055854033024545,
+      "submittedAt": "2026-06-17T04:40:50.514Z"
+    },
+    {
+      "name": "springboot-security",
+      "repository": "SkillGauge",
+      "hash": "a429d5fdfac2ed1d49309f8789dff5e732999b134765f7fe308bad039d8b34da",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.991554794417,
+      "submittedAt": "2026-06-17T04:40:40.811Z"
+    },
+    {
+      "name": "quarkus-tdd",
+      "repository": "SkillGauge",
+      "hash": "c14f85679e4183850627466fbba05ff9f60ce89e225a8d6e79c7160defad07a9",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.98174181105229,
+      "submittedAt": "2026-06-17T04:40:42.751Z"
+    },
+    {
+      "name": "nestjs-patterns",
+      "repository": "SkillGauge",
+      "hash": "be257f480d76d9d44e5b0a7026abec3851481525eeb2e28815e54abe32dd3d3d",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.97623152138733,
+      "submittedAt": "2026-06-17T04:40:44.907Z"
+    },
+    {
+      "name": "cpp-testing",
+      "repository": "SkillGauge",
+      "hash": "03f84a380efee1ad1224c0b1c0a5bbc0bb6c9b8ced84d66c2c05b9d1c930fc5c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.95584343141348,
+      "submittedAt": "2026-06-17T04:40:51.557Z"
+    },
+    {
+      "name": "react-patterns",
+      "repository": "SkillGauge",
+      "hash": "b1afffcc302aced660dbec23a9be48eb4c48c93263218ed2ec3ad6c49ceb7ff5",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.94563150677462,
+      "submittedAt": "2026-06-17T04:40:42.533Z"
+    },
+    {
+      "name": "kotlin-coroutines-flows",
+      "repository": "SkillGauge",
+      "hash": "181137102b3dbd05aa90381625876626c15f713e00505fcc2d9475a94e78c46d",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.817835220120074,
+      "submittedAt": "2026-06-17T04:40:46.824Z"
+    },
+    {
+      "name": "mle-workflow",
+      "repository": "SkillGauge",
+      "hash": "cccb224889836ad58d4057d356d3fec9bb854a36b0677a8097fd5f087bc7dfb7",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.79813688635456,
+      "submittedAt": "2026-06-17T04:40:45.392Z"
+    },
+    {
+      "name": "django-build-resolver",
+      "repository": "SkillGauge",
+      "hash": "43dc4cd3df1b9fee1d77ccba25a46822fab2be7941243b653507481176784255",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.78745580519889,
+      "submittedAt": "2026-06-17T04:40:50.750Z"
+    },
+    {
+      "name": "spec-miner",
+      "repository": "SkillGauge",
+      "hash": "2dc0975445ffcf169c16c5fd09bdb296b44ad2c1d0cabb63e7a61c7afd98b6f2",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.74068336709863,
+      "submittedAt": "2026-06-17T04:40:40.945Z"
+    },
+    {
+      "name": "perl-security",
+      "repository": "SkillGauge",
+      "hash": "150ff513dfaa98a73bb491ad4e0e41d71fb69733c193e2c004ba317bfdbc44f3",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.71763119313343,
+      "submittedAt": "2026-06-17T04:40:44.162Z"
+    },
+    {
+      "name": "architect",
+      "repository": "SkillGauge",
+      "hash": "4148b37841beb188934cc17cc0f8d49eb4dc69b0d572289dcf37aedb8a903e67",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.70638064954715,
+      "submittedAt": "2026-06-17T04:40:53.628Z"
+    },
+    {
+      "name": "prompt-optimizer",
+      "repository": "SkillGauge",
+      "hash": "9d2b1bf7114d88e412e0f53b91bf1f578603fc82d1db1341f46338fa93130adc",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.650416108772106,
+      "submittedAt": "2026-06-17T04:40:43.388Z"
+    },
+    {
+      "name": "fastapi-reviewer",
+      "repository": "SkillGauge",
+      "hash": "316c4187220337dec826e44ec113f7446c5ae91b72a6a59999f79851a86fb545",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.64065544970316,
+      "submittedAt": "2026-06-17T04:40:49.394Z"
+    },
+    {
+      "name": "vue-patterns",
+      "repository": "SkillGauge",
+      "hash": "cc6311067a8fb621450a0f2de39fe0f011a247955c2e3d479bd0d729003904c3",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.6267751651751,
+      "submittedAt": "2026-06-17T04:40:39.540Z"
+    },
+    {
+      "name": "django-celery",
+      "repository": "SkillGauge",
+      "hash": "f6b16028d640d010214ed869b614fe0f61d58fa85329e3d881a40522d5fd6cdd",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.61478017137004,
+      "submittedAt": "2026-06-17T04:40:50.700Z"
+    },
+    {
+      "name": "healthcare-phi-compliance",
+      "repository": "SkillGauge",
+      "hash": "01ac31c09ac09c6e5862ff820d759e66657983d8927b08e33186a4c99bb0ee55",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.526169829088495,
+      "submittedAt": "2026-06-17T04:40:47.939Z"
+    },
+    {
+      "name": "agent-payment-x402",
+      "repository": "SkillGauge",
+      "hash": "4728debb97373fe74ef2e6ce0322b0905bfbeeb0266338822a493248102451a1",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.471598316756044,
+      "submittedAt": "2026-06-17T04:40:54.105Z"
+    },
+    {
+      "name": "inventory-demand-planning",
+      "repository": "SkillGauge",
+      "hash": "5b83f427e07826c63ff8ea3d5bcda1a8b536df6ce53924f94736f15b6dc3a27c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.45271169850893,
+      "submittedAt": "2026-06-17T04:40:47.327Z"
+    },
+    {
+      "name": "frontend-patterns",
+      "repository": "SkillGauge",
+      "hash": "91e65792af524952625d9aca31967982d4d8e00e6493018eca7d1a7d35dd30e5",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.451973288198296,
+      "submittedAt": "2026-06-17T04:40:48.903Z"
+    },
+    {
+      "name": "plan-orchestrate",
+      "repository": "SkillGauge",
+      "hash": "30244b999b4993c45597a7fc2d82a740492efd173e0f7abb15d72b2691ac1c6e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.40037811388416,
+      "submittedAt": "2026-06-17T04:40:43.990Z"
+    },
+    {
+      "name": "api-design",
+      "repository": "SkillGauge",
+      "hash": "dff8d3c9d4116f60f39a14a4b13dc7e9514e4ac0784d45f7e5d634ab8a973a9f",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.37178433989841,
+      "submittedAt": "2026-06-17T04:40:53.699Z"
+    },
+    {
+      "name": "opensource-sanitizer",
+      "repository": "SkillGauge",
+      "hash": "f385a0261e57c53a9b4d8ce0dc040e9f0a8ea6773896ca4cea4659bf6fb84a9d",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.35976293603739,
+      "submittedAt": "2026-06-17T04:40:44.415Z"
+    },
+    {
+      "name": "lead-intelligence",
+      "repository": "SkillGauge",
+      "hash": "8454e7562ec273b22d759af239db62617d69351b8d60e6ec36e408eb13a34484",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.32839511445265,
+      "submittedAt": "2026-06-17T04:40:45.890Z"
+    },
+    {
+      "name": "agent-evaluator",
+      "repository": "SkillGauge",
+      "hash": "21456b7d097f8c07218637e16127a8f4100b9ae7e40864b490986e6175ca254f",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.26895675263002,
+      "submittedAt": "2026-06-17T04:40:54.187Z"
+    },
+    {
+      "name": "django-verification",
+      "repository": "SkillGauge",
+      "hash": "a9291507748fd4b4fb8b6bb486f7e08da51d40a07ca1a4f763bbdbbbcc27de11",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.26121306410171,
+      "submittedAt": "2026-06-17T04:40:50.352Z"
+    },
+    {
+      "name": "prisma-patterns",
+      "repository": "SkillGauge",
+      "hash": "c7f651d4c182b254c2efe00e8680a21728aaa96f02a240ca2e0fd4e51078b302",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.237440831471716,
+      "submittedAt": "2026-06-17T04:40:43.719Z"
+    },
+    {
+      "name": "swift-build-resolver",
+      "repository": "SkillGauge",
+      "hash": "51fc8d6ded0ade53e28b55db2d485218354f5af9b6c75679df316181f897fd4d",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.22783679989329,
+      "submittedAt": "2026-06-17T04:40:40.672Z"
+    },
+    {
+      "name": "gan-generator",
+      "repository": "SkillGauge",
+      "hash": "6a5d011b9de3e4da637f89845509a0d2aabc3dcee7d295c5017265a45096f7b4",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.22644237313844,
+      "submittedAt": "2026-06-17T04:40:48.698Z"
+    },
+    {
+      "name": "production-scheduling",
+      "repository": "SkillGauge",
+      "hash": "fa0c99a2ccf1176530090ee60e541c95b3e9ad607272c03704525c8e163caf3c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.21703426299807,
+      "submittedAt": "2026-06-17T04:40:43.565Z"
+    },
+    {
+      "name": "springboot-verification",
+      "repository": "SkillGauge",
+      "hash": "94783f8b62cddac1d212eb468f6d1c5f0f01ab6a6e8a35ec1fe7c77d606f7ef4",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.18766161849727,
+      "submittedAt": "2026-06-17T04:40:40.754Z"
+    },
+    {
+      "name": "logistics-exception-management",
+      "repository": "SkillGauge",
+      "hash": "8e2d5d1ad2eb9fb19ba35677c54ab924ed6c6e913b7dc75d14ac6e1a4713b34d",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.18486463712867,
+      "submittedAt": "2026-06-17T04:40:45.712Z"
+    },
+    {
+      "name": "cpp-coding-standards",
+      "repository": "SkillGauge",
+      "hash": "752169f463ff914e81438bd46a3739c6c9e651b5ef65a0ba17d48653bbdca5d2",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.18417428197948,
+      "submittedAt": "2026-06-17T04:40:51.691Z"
+    },
+    {
+      "name": "django-tdd",
+      "repository": "SkillGauge",
+      "hash": "d700ea18053bc13bebaf916bf2a1da017c0b5093b6d053a6a388d4b87fae2c9d",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.17129514561764,
+      "submittedAt": "2026-06-17T04:40:50.436Z"
+    },
+    {
+      "name": "dart-build-resolver",
+      "repository": "SkillGauge",
+      "hash": "e830c1cc6b9e98f1150cb743f87b622d67b4f0807d8fe8c3ff144528de0300fc",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.125900731988814,
+      "submittedAt": "2026-06-17T04:40:51.249Z"
+    },
+    {
+      "name": "vite-patterns",
+      "repository": "SkillGauge",
+      "hash": "4ab4cf60caa0d306a9078f1ef81ffb477c628542833429a8fbc1a816121e1359",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.03760904086057,
+      "submittedAt": "2026-06-17T04:40:39.643Z"
+    },
+    {
+      "name": "harmonyos-app-resolver",
+      "repository": "SkillGauge",
+      "hash": "8c0e29ef7a819221c63182dfd749d2dad66d0d713a79fdea94fde20ddb4472db",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 33.00420484765581,
+      "submittedAt": "2026-06-17T04:40:48.111Z"
+    },
+    {
+      "name": "mysql-patterns",
+      "repository": "SkillGauge",
+      "hash": "912c387ad3aa161529a609511e767668dd853fdd414934e5bba8786ee59d0ff2",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.99116807335367,
+      "submittedAt": "2026-06-17T04:40:44.971Z"
+    },
+    {
+      "name": "php-reviewer",
+      "repository": "SkillGauge",
+      "hash": "3aa3b6fc779a6c03b0d4781974c735b7f40e5ad4002aba120b211158c9bb0030",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.987284283095775,
+      "submittedAt": "2026-06-17T04:40:44.021Z"
+    },
+    {
+      "name": "clickhouse-io",
+      "repository": "SkillGauge",
+      "hash": "e22b688e8e795638e5979b84b18d8bca2e8181c4b564000e9cf53c55feae6c0a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.93317624692896,
+      "submittedAt": "2026-06-17T04:40:52.652Z"
+    },
+    {
+      "name": "security-reviewer",
+      "repository": "SkillGauge",
+      "hash": "5f9984f722c13bca1e705dfd02a402cad2f9492ba3a2e5d54127e3833dbd499b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.88126283256088,
+      "submittedAt": "2026-06-17T04:40:41.327Z"
+    },
+    {
+      "name": "agentic-os",
+      "repository": "SkillGauge",
+      "hash": "a95a0921ee2197fae679bab17e0930d7fe9a61754eb954441a8ac28c74c96c10",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.876866954131884,
+      "submittedAt": "2026-06-17T04:40:53.958Z"
+    },
+    {
+      "name": "react-test",
+      "repository": "SkillGauge",
+      "hash": "2b899efa1e436c492a4d70234eb1de2b3fb14d758cbda71a76d42c1c35b6842e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.81983497845835,
+      "submittedAt": "2026-06-17T04:40:42.288Z"
+    },
+    {
+      "name": "codebase-onboarding",
+      "repository": "SkillGauge",
+      "hash": "4a040fb85b4602f209e94bf4808b3adc91dce823aec6f7e44ef281688a384c04",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.785664041307,
+      "submittedAt": "2026-06-17T04:40:52.482Z"
+    },
+    {
+      "name": "pytorch-patterns",
+      "repository": "SkillGauge",
+      "hash": "89600a93418aca0b18107ab2a7e6e3fb0fc615997303bcc8d5a8a3be84c34e64",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.782920217316786,
+      "submittedAt": "2026-06-17T04:40:43.122Z"
+    },
+    {
+      "name": "e2e-runner",
+      "repository": "SkillGauge",
+      "hash": "9c7b205e063df2c84fb1579bcb2a38a7462e074712aa6991013e85ba3060c7fe",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.77533652886985,
+      "submittedAt": "2026-06-17T04:40:50.095Z"
+    },
+    {
+      "name": "intent-driven-development",
+      "repository": "SkillGauge",
+      "hash": "55874fb7073c408a04571727bc9a98a5ad93b32280b95980f87cb739bfe4336e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.75037525282477,
+      "submittedAt": "2026-06-17T04:40:47.419Z"
+    },
+    {
+      "name": "e2e",
+      "repository": "SkillGauge",
+      "hash": "0119651f0f827648db95ef4c0240af882f4aedafa3a5b89dc678a8857535da96",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.73943084665819,
+      "submittedAt": "2026-06-17T04:40:50.034Z"
+    },
+    {
+      "name": "continuous-learning-v2",
+      "repository": "SkillGauge",
+      "hash": "8b0c402794c240d2f2a5809c1326341ee453bf1f7d01b5ed6057a875b77c9166",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.69970811404832,
+      "submittedAt": "2026-06-17T04:40:51.900Z"
+    },
+    {
+      "name": "returns-reverse-logistics",
+      "repository": "SkillGauge",
+      "hash": "c498c09c822b5aee4f98f028876b4d9e45754cb79d042021be59dc4f3d761e65",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.65139791088408,
+      "submittedAt": "2026-06-17T04:40:41.963Z"
+    },
+    {
+      "name": "dynamic-workflow-mode",
+      "repository": "SkillGauge",
+      "hash": "a763d8b4cc15e0b91a370d18f087a95750eac900b59b39b4858ae97551670f10",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.63666522185902,
+      "submittedAt": "2026-06-17T04:40:50.122Z"
+    },
+    {
+      "name": "mle-reviewer",
+      "repository": "SkillGauge",
+      "hash": "894359128ba975b8f1a6a90ec3f5b9a476e16c54f3f2e63940eb82825ca75972",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.615695700596135,
+      "submittedAt": "2026-06-17T04:40:45.418Z"
+    },
+    {
+      "name": "opensource-packager",
+      "repository": "SkillGauge",
+      "hash": "0d3050f6289e09916344c8cf2b6a71b6de5a5044cedc05be154ad2b28e4f2cac",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.61115592177337,
+      "submittedAt": "2026-06-17T04:40:44.496Z"
+    },
+    {
+      "name": "perl-patterns",
+      "repository": "SkillGauge",
+      "hash": "67162e7c8e3c0b5e75cab2df1fc09d5084b757b0873fedd3b05ddcd804921355",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.60616789580288,
+      "submittedAt": "2026-06-17T04:40:44.230Z"
+    },
+    {
+      "name": "opensource-forker",
+      "repository": "SkillGauge",
+      "hash": "a3b1b4c3504ee71abdc0b266ab39ea36e80d4ab9c4c09e5186faab6381b3c184",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.58154316509297,
+      "submittedAt": "2026-06-17T04:40:44.536Z"
+    },
+    {
+      "name": "homelab-architect",
+      "repository": "SkillGauge",
+      "hash": "c4b307d8096abde58e579b7c75dd5754bbb1b784c3585934e0e2e1a6371a996a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.562543995901756,
+      "submittedAt": "2026-06-17T04:40:47.802Z"
+    },
+    {
+      "name": "java-coding-standards",
+      "repository": "SkillGauge",
+      "hash": "1639340f76ad33810f8d7f52500b4819e554fd8d2328b54dd6fb391fc25c756c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.559930148757324,
+      "submittedAt": "2026-06-17T04:40:47.039Z"
+    },
+    {
+      "name": "gan-evaluator",
+      "repository": "SkillGauge",
+      "hash": "6be2ec3a66fbfec84a9a719b4475c6012e9287eaae257cb1f58b3196ecfb3ee5",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.543085193592674,
+      "submittedAt": "2026-06-17T04:40:48.742Z"
+    },
+    {
+      "name": "jira-integration",
+      "repository": "SkillGauge",
+      "hash": "405b70172a31d2b297ec540f14aba801c096a6e629c3c2000a5c2e51dd02b878",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.53636200794853,
+      "submittedAt": "2026-06-17T04:40:46.951Z"
+    },
+    {
+      "name": "iterative-retrieval",
+      "repository": "SkillGauge",
+      "hash": "a4654ff19dd917dafdc8c0859d19e453f854a9b11e34577af4b2419b3ce30c76",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.5359041524311,
+      "submittedAt": "2026-06-17T04:40:47.140Z"
+    },
+    {
+      "name": "hexagonal-architecture",
+      "repository": "SkillGauge",
+      "hash": "8dafbca4828f05c06b0ad64d8a1d7bf12a479023cc95d7c3f747e75d56f0b706",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.5164001568617,
+      "submittedAt": "2026-06-17T04:40:47.872Z"
+    },
+    {
+      "name": "healthcare-reviewer",
+      "repository": "SkillGauge",
+      "hash": "cd2b22f5e9cd4a0b8c25de98b9c88ec41018fe4fdde1be3de418c787bfc360ac",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.487041703683786,
+      "submittedAt": "2026-06-17T04:40:47.910Z"
+    },
+    {
+      "name": "team-builder",
+      "repository": "SkillGauge",
+      "hash": "d9b28d25553218a54268ff67e1c4b623571c2a0c2baed6c4541cdf9e6e6bc477",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.46614867766275,
+      "submittedAt": "2026-06-17T04:40:40.312Z"
+    },
+    {
+      "name": "java-reviewer",
+      "repository": "SkillGauge",
+      "hash": "68bbf94a190ec0f7081072fd3b74d72679ce3b671cb45daff5f1e4b31361dd25",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.4617615800716,
+      "submittedAt": "2026-06-17T04:40:46.980Z"
+    },
+    {
+      "name": "laravel-patterns",
+      "repository": "SkillGauge",
+      "hash": "04020d14bb9124e2e708541fe732da2a91daea38d30d320d3a6315ffb1c39369",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.42233218523567,
+      "submittedAt": "2026-06-17T04:40:46.232Z"
+    },
+    {
+      "name": "silent-failure-hunter",
+      "repository": "SkillGauge",
+      "hash": "97607791d5bc947d322a730909c65b8458f903cb11a592959d203778acb8a068",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.42192527963712,
+      "submittedAt": "2026-06-17T04:40:41.129Z"
+    },
+    {
+      "name": "network-config-reviewer",
+      "repository": "SkillGauge",
+      "hash": "4ff392b5a46197171a996d6dfefb31a84ae551eb0fad6ac3942e5918880e722a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.3932025201605,
+      "submittedAt": "2026-06-17T04:40:44.798Z"
+    },
+    {
+      "name": "network-troubleshooter",
+      "repository": "SkillGauge",
+      "hash": "d996f7b122e8dea3386532f02e2541492562ce93fe599e576ffed1416645e2b5",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.33673294784256,
+      "submittedAt": "2026-06-17T04:40:44.716Z"
+    },
+    {
+      "name": "foundation-models-on-device",
+      "repository": "SkillGauge",
+      "hash": "48eaef40e69af3f79842f9f5132337be155cee828303a7810c4c5a1ef737c517",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.28200109359049,
+      "submittedAt": "2026-06-17T04:40:49.032Z"
+    },
+    {
+      "name": "knowledge-ops",
+      "repository": "SkillGauge",
+      "hash": "7031cff892af98f09a41c9072c050032e9f24479c6aee99be3be045b50fc2866",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.20912759996188,
+      "submittedAt": "2026-06-17T04:40:46.875Z"
+    },
+    {
+      "name": "python-testing",
+      "repository": "SkillGauge",
+      "hash": "11cd159a8e370a83d4021cc2a345ed6759a0938319c1532714dfd66e6cbcd4f3",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.20259372535714,
+      "submittedAt": "2026-06-17T04:40:43.198Z"
+    },
+    {
+      "name": "eval-harness",
+      "repository": "SkillGauge",
+      "hash": "deea121d125fcfd4daa46ffc32ada0cae418dd2eee0ffbb831ad16be51661e85",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.20164481432178,
+      "submittedAt": "2026-06-17T04:40:49.708Z"
+    },
+    {
+      "name": "latency-critical-systems",
+      "repository": "SkillGauge",
+      "hash": "3e0914fd56aea555b99aaf97304c9cbd2758f59fa4f2593125c8d059a930aa20",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.18958124819578,
+      "submittedAt": "2026-06-17T04:40:45.902Z"
+    },
+    {
+      "name": "springboot-patterns",
+      "repository": "SkillGauge",
+      "hash": "265dce9f61ad84193345e979ed916e54f547cf826c9ec0432b2559fe635a1a69",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.1783254580032,
+      "submittedAt": "2026-06-17T04:40:40.860Z"
+    },
+    {
+      "name": "motion-ui",
+      "repository": "SkillGauge",
+      "hash": "ad016d8535903b1da5c06e5db5cea3737f48849f585e5823af65b86cbbd680d2",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.15148017807081,
+      "submittedAt": "2026-06-17T04:40:45.061Z"
+    },
+    {
+      "name": "blender-motion-state-inspection",
+      "repository": "SkillGauge",
+      "hash": "f8facfeab39d2057082c4d2564338dfdb643d5bc9792c2c441a4e4884400bc7a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.09090945635561,
+      "submittedAt": "2026-06-17T04:40:53.169Z"
+    },
+    {
+      "name": "django-reviewer",
+      "repository": "SkillGauge",
+      "hash": "2c93ea052b8c7dcae1dfe9d82d4990640ef1d70b99cab7b3b2228301f8d1dabe",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.08002484443072,
+      "submittedAt": "2026-06-17T04:40:50.541Z"
+    },
+    {
+      "name": "network-architect",
+      "repository": "SkillGauge",
+      "hash": "ad5b3484944b95d5d9fd6c3910dd5ffcac2047b8c1270dba7c3423c3a83f4b59",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.079535437831794,
+      "submittedAt": "2026-06-17T04:40:44.848Z"
+    },
+    {
+      "name": "a11y-architect",
+      "repository": "SkillGauge",
+      "hash": "e1ec30de569483d0d1651795bcaca0428cc538606e6eeca799d8ffc8fcf63ce0",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.03894452057738,
+      "submittedAt": "2026-06-17T04:40:54.336Z"
+    },
+    {
+      "name": "network-config-validation",
+      "repository": "SkillGauge",
+      "hash": "89c80f3e6cfcae2b35f3dbc4562adcac56e95655f1577a931248af57952aac7b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.03208828338238,
+      "submittedAt": "2026-06-17T04:40:44.777Z"
+    },
+    {
+      "name": "springboot-tdd",
+      "repository": "SkillGauge",
+      "hash": "c1c04936e6e1ebe6985020e6bc9c36ebbf26b337f8f536788b9528bf6b42662f",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.014747713469866,
+      "submittedAt": "2026-06-17T04:40:40.771Z"
+    },
+    {
+      "name": "react-build-resolver",
+      "repository": "SkillGauge",
+      "hash": "4effe7ab4494568709f902bd09a2118862dfc778dab24d5a9c0a22682a647796",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.010518126920765,
+      "submittedAt": "2026-06-17T04:40:42.562Z"
+    },
+    {
+      "name": "planner",
+      "repository": "SkillGauge",
+      "hash": "ed30865cd280305113448609dc0bbda1db4213600d40d78e09f2b15d84d572d2",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 32.002506698784686,
+      "submittedAt": "2026-06-17T04:40:43.843Z"
+    },
+    {
+      "name": "homelab-pihole-dns",
+      "repository": "SkillGauge",
+      "hash": "234a415fd6564c0752e1b81724663881d31724d9c7ce88f48918385d2ea180af",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.931973039633853,
+      "submittedAt": "2026-06-17T04:40:47.721Z"
+    },
+    {
+      "name": "videodb",
+      "repository": "SkillGauge",
+      "hash": "fb6c02b196de07bf88a458e921db8084baf662d80f4a4e58bd05ecac7bb2748e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.867775389694476,
+      "submittedAt": "2026-06-17T04:40:39.764Z"
+    },
+    {
+      "name": "dmux-workflows",
+      "repository": "SkillGauge",
+      "hash": "6b19d886335a44a90499c5974a70bf7d426f972dc39a8575afa5072496aef9df",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.86093393722858,
+      "submittedAt": "2026-06-17T04:40:50.290Z"
+    },
+    {
+      "name": "quarkus-verification",
+      "repository": "SkillGauge",
+      "hash": "8a9f986123b38e936007d042049cfd18477a7145ec3ed13099b7f197b416da6c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.769251889182954,
+      "submittedAt": "2026-06-17T04:40:42.637Z"
+    },
+    {
+      "name": "pubmed-database",
+      "repository": "SkillGauge",
+      "hash": "67f2396795e479cf163b8f00a7292b10b791139132b1d03e318f1f90200036d2",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.7296624887225,
+      "submittedAt": "2026-06-17T04:40:43.291Z"
+    },
+    {
+      "name": "rust-test",
+      "repository": "SkillGauge",
+      "hash": "bbea4b7b49d876ca76fb67b49de52c5fad301ca1a444efd8d95e7092cb51b9b4",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.70011765616539,
+      "submittedAt": "2026-06-17T04:40:41.648Z"
+    },
+    {
+      "name": "motion-foundations",
+      "repository": "SkillGauge",
+      "hash": "eba3955e574566a64316bc7d9fc285fafedc27bb5681a04d03408470ae99f6ac",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.644941610308553,
+      "submittedAt": "2026-06-17T04:40:45.185Z"
+    },
+    {
+      "name": "chief-of-staff",
+      "repository": "SkillGauge",
+      "hash": "b35fbe0ca2fd96e6c540a33473c8e878983482ea4f89c629c4ba240932fd07fa",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.608545264533518,
+      "submittedAt": "2026-06-17T04:40:52.810Z"
+    },
+    {
+      "name": "ml-adoption-playbook",
+      "repository": "SkillGauge",
+      "hash": "e6defd56948a1c8c58d3fe95dded5f0a4f51493e532846f3b20818028f5170c3",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.605763015248233,
+      "submittedAt": "2026-06-17T04:40:45.437Z"
+    },
+    {
+      "name": "docs-lookup",
+      "repository": "SkillGauge",
+      "hash": "b84722150b3d14f9ffdc5067a03c56f17a946ade441b34c369aedf22e8f75d7b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.600952937503884,
+      "submittedAt": "2026-06-17T04:40:50.208Z"
+    },
+    {
+      "name": "plankton-code-quality",
+      "repository": "SkillGauge",
+      "hash": "31fab7d7f33e15ea0c7806eba8464827350f44a787fd6eab58448aec84ef7b66",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.52234331801597,
+      "submittedAt": "2026-06-17T04:40:43.887Z"
+    },
+    {
+      "name": "observer",
+      "repository": "SkillGauge",
+      "hash": "e3ce90534b83d5a51f32ed5c38336bd3ff38c7b62d4777c56dac3f55e9058e31",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.515877639947337,
+      "submittedAt": "2026-06-17T04:40:44.616Z"
+    },
+    {
+      "name": "agent-introspection-debugging",
+      "repository": "SkillGauge",
+      "hash": "cb163ad8e9eaf8785294ce3df0879b3bbbdbe14473b5cde78b862525a236295a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.473826438417706,
+      "submittedAt": "2026-06-17T04:40:54.134Z"
+    },
+    {
+      "name": "unified-notifications-ops",
+      "repository": "SkillGauge",
+      "hash": "440a64e85268e5fb604e606d70da1982e9e1ef1902d87ce7c8e2b6853725af15",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.472353848596335,
+      "submittedAt": "2026-06-17T04:40:39.898Z"
+    },
+    {
+      "name": "configure-ecc",
+      "repository": "SkillGauge",
+      "hash": "ead08b413122574e98b71782ec957514d1d970b1545af38932a0082c316fced2",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.429386304048563,
+      "submittedAt": "2026-06-17T04:40:52.103Z"
+    },
+    {
+      "name": "claude-devfleet",
+      "repository": "SkillGauge",
+      "hash": "03034690ef1ad8984233e969ed503a805710a14e0618020a80b894f89194865a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.424022620282972,
+      "submittedAt": "2026-06-17T04:40:52.729Z"
+    },
+    {
+      "name": "healthcare-eval-harness",
+      "repository": "SkillGauge",
+      "hash": "78ba0cf655996f4e44aa5be5edaeebfaa2e5b5bd49e59989450dcc697d9aa2e4",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.411284782839928,
+      "submittedAt": "2026-06-17T04:40:47.980Z"
+    },
+    {
+      "name": "golang-testing",
+      "repository": "SkillGauge",
+      "hash": "c4a9068389218e11610c78ee2bef6c9fc59d004431cf36f1a3ae96a64fdf4d6f",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.407033721962986,
+      "submittedAt": "2026-06-17T04:40:48.160Z"
+    },
+    {
+      "name": "parallel-execution-optimizer",
+      "repository": "SkillGauge",
+      "hash": "eb21b081cb7e52a023bc829f7c283cf71c55e22c7d28a390179aa0a6d2b4dd70",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.40057635382615,
+      "submittedAt": "2026-06-17T04:40:44.269Z"
+    },
+    {
+      "name": "kotlin-reviewer",
+      "repository": "SkillGauge",
+      "hash": "e7d568655bae757c125f28a00737c2177274323c0357e2f9ce82f89527b3f6d3",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.380899071976664,
+      "submittedAt": "2026-06-17T04:40:46.508Z"
+    },
+    {
+      "name": "agent-self-evaluation",
+      "repository": "SkillGauge",
+      "hash": "cdb73ee82f22d96ef1577dd96a072805d3c221b9b92646ed96a264c17d09bfab",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.31029475032409,
+      "submittedAt": "2026-06-17T04:40:54.049Z"
+    },
+    {
+      "name": "android-clean-architecture",
+      "repository": "SkillGauge",
+      "hash": "207a4d30179437a612ca108332c9a2526ba4a412a865e64de737c06c584cf8ab",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.28616768105143,
+      "submittedAt": "2026-06-17T04:40:53.818Z"
+    },
+    {
+      "name": "kotlin-exposed-patterns",
+      "repository": "SkillGauge",
+      "hash": "45921f429cf3d0c84f96fa643fc3f321291acddc73b7cd02b72d093ef7de6c88",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.278770234945323,
+      "submittedAt": "2026-06-17T04:40:46.787Z"
+    },
+    {
+      "name": "react-reviewer",
+      "repository": "SkillGauge",
+      "hash": "8d44edfe5ccc5e5b264f9b348c948ffb8731dcae7dbbcba85a60029a599d2b62",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.259783054847208,
+      "submittedAt": "2026-06-17T04:40:42.316Z"
+    },
+    {
+      "name": "energy-procurement",
+      "repository": "SkillGauge",
+      "hash": "0f5c35db9f185baa58ff4f73936d2e3577e9deefff3e0374f11364a88c4ffc6e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.257829187904985,
+      "submittedAt": "2026-06-17T04:40:49.945Z"
+    },
+    {
+      "name": "data-throughput-accelerator",
+      "repository": "SkillGauge",
+      "hash": "8113ab478fb9bebb20bd27f6e0d9339386daf23e4deb9cab409622834cb5fec3",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.247135687990934,
+      "submittedAt": "2026-06-17T04:40:50.981Z"
+    },
+    {
+      "name": "config-gc",
+      "repository": "SkillGauge",
+      "hash": "7b7d7d602d596092d9a0360adb7ac81e7a17f66f6a4acf5f22fe20843deb0d9c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.243340951097252,
+      "submittedAt": "2026-06-17T04:40:52.148Z"
+    },
+    {
+      "name": "gan-style-harness",
+      "repository": "SkillGauge",
+      "hash": "bb262f1d63f0c4ca80a73c913da6c1c7828bab418fd91858343322ae0d9c473c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.241835960995125,
+      "submittedAt": "2026-06-17T04:40:48.642Z"
+    },
+    {
+      "name": "click-path-audit",
+      "repository": "SkillGauge",
+      "hash": "26c1213a4660176575ac5578b688721aca71b54fbf2c8e42582a93203ea6020b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.238703833562063,
+      "submittedAt": "2026-06-17T04:40:52.697Z"
+    },
+    {
+      "name": "learn-eval",
+      "repository": "SkillGauge",
+      "hash": "1eae90ce173e0634ff61529f9fd82c122ee0daeb43e227ee97938ad5d199f885",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.175394374160025,
+      "submittedAt": "2026-06-17T04:40:45.826Z"
+    },
+    {
+      "name": "python-patterns",
+      "repository": "SkillGauge",
+      "hash": "9cfe5241f7405ab22859096817ae6af683199616c21c1e38b153aae7e79d7e23",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.172458534016982,
+      "submittedAt": "2026-06-17T04:40:43.264Z"
+    },
+    {
+      "name": "strategic-compact",
+      "repository": "SkillGauge",
+      "hash": "b260c3983d1a30713f227b234929a016a8d46c6067278dbcd0157b0ea3091124",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.171167809786564,
+      "submittedAt": "2026-06-17T04:40:40.725Z"
+    },
+    {
+      "name": "network-interface-health",
+      "repository": "SkillGauge",
+      "hash": "1cf728d6736294882a0647110b53694b01ba1ec3b89c94c4a8440181d20c897e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.166753653803802,
+      "submittedAt": "2026-06-17T04:40:44.744Z"
+    },
+    {
+      "name": "motion-advanced",
+      "repository": "SkillGauge",
+      "hash": "9b827fe9985585291714209c610a7648f426d2e93a9ceb6c6c5a995ef151c1cd",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.166095674667556,
+      "submittedAt": "2026-06-17T04:40:45.283Z"
+    },
+    {
+      "name": "generating-python-installer",
+      "repository": "SkillGauge",
+      "hash": "bf1f36a9b91390eeaecd6cc6c77d837265780c1231e9f93e533790ef98bd32d7",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.158659420485694,
+      "submittedAt": "2026-06-17T04:40:48.552Z"
+    },
+    {
+      "name": "code-architect",
+      "repository": "SkillGauge",
+      "hash": "8ea6576d7b15c2def6f04abdbf4d7b4ce3aa19e2fc0113933525bc782c596413",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.132108498909634,
+      "submittedAt": "2026-06-17T04:40:52.605Z"
+    },
+    {
+      "name": "autonomous-agent-harness",
+      "repository": "SkillGauge",
+      "hash": "4b39b2c84906ecb6cc6f8e6995138daa9e9a894317237087af36a5c3bb052e50",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.124627432347275,
+      "submittedAt": "2026-06-17T04:40:53.496Z"
+    },
+    {
+      "name": "recsys-pipeline-architect",
+      "repository": "SkillGauge",
+      "hash": "c29f0a5a26d2e9621be745554b1877262ddb142627c415ba4589f0c5c8204d7a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.099875581042575,
+      "submittedAt": "2026-06-17T04:40:42.179Z"
+    },
+    {
+      "name": "agentic-engineering",
+      "repository": "SkillGauge",
+      "hash": "e46638a629b8f6f24e2dc7291dd35a37946e97a1b39e9e0b5472127356d8822f",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.095627919481018,
+      "submittedAt": "2026-06-17T04:40:53.978Z"
+    },
+    {
+      "name": "regex-vs-llm-structured-text",
+      "repository": "SkillGauge",
+      "hash": "6217424ea6da4c42cab128ab9cb4a6ce331eea66d3bdc9831b9c76f7946da829",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.0792591233147,
+      "submittedAt": "2026-06-17T04:40:42.048Z"
+    },
+    {
+      "name": "rust-build-resolver",
+      "repository": "SkillGauge",
+      "hash": "0a9f60ceffdb34cb6211a70da61e940de076a805b05ac193345a96c0288de3ea",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.076050128275455,
+      "submittedAt": "2026-06-17T04:40:41.779Z"
+    },
+    {
+      "name": "fsharp-reviewer",
+      "repository": "SkillGauge",
+      "hash": "9b3e50f6733baec5661a63ac9c9e64bf228ba754d68eff26db2e5ed447994140",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.07018930572601,
+      "submittedAt": "2026-06-17T04:40:48.800Z"
+    },
+    {
+      "name": "docker-patterns",
+      "repository": "SkillGauge",
+      "hash": "506b7ad2eebf26b9fc90e5e0ef3c7b9e77db142226af1ec9f182bcfbd01ce2ad",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.067094372078714,
+      "submittedAt": "2026-06-17T04:40:50.247Z"
+    },
+    {
+      "name": "fsharp-testing",
+      "repository": "SkillGauge",
+      "hash": "3b2b6f0c97be145279eb26d8ba36187419efc3880fb3bb0bf8815faecef523cc",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 31.003432339702847,
+      "submittedAt": "2026-06-17T04:40:48.779Z"
+    },
+    {
+      "name": "database-reviewer",
+      "repository": "SkillGauge",
+      "hash": "86fea10da6c3a6e65552a4bec2c48047f5daf0f58097a508f7846914928ceb9e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.995944649865713,
+      "submittedAt": "2026-06-17T04:40:50.912Z"
+    },
+    {
+      "name": "rules-distill",
+      "repository": "SkillGauge",
+      "hash": "e9f3ca6c03e6afd9696e7eb0dadcc4691d98089f446f16196ffc611058b30fff",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.969723554159795,
+      "submittedAt": "2026-06-17T04:40:41.830Z"
+    },
+    {
+      "name": "ecc-guide",
+      "repository": "SkillGauge",
+      "hash": "316df05884398324579a9bd281a9af2a824330b81de0661ac865c5acbc5009f8",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.961901738345205,
+      "submittedAt": "2026-06-17T04:40:50.022Z"
+    },
+    {
+      "name": "kotlin-build-resolver",
+      "repository": "SkillGauge",
+      "hash": "99f2090d110671179c355a91579661a4d3366769ef3632c193fd84fd427f3a28",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.95685157962024,
+      "submittedAt": "2026-06-17T04:40:46.843Z"
+    },
+    {
+      "name": "blueprint",
+      "repository": "SkillGauge",
+      "hash": "793775872a7025ab09fdf15c4319b7c4b9a7f736ab9e5aa0b1d6865152524654",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.92866576485504,
+      "submittedAt": "2026-06-17T04:40:53.129Z"
+    },
+    {
+      "name": "team-agent-orchestration",
+      "repository": "SkillGauge",
+      "hash": "f0274a9bb1e82962eca880a6f25885e07839869e8e98c6f8d0d69cfe785590be",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.88240781903887,
+      "submittedAt": "2026-06-17T04:40:40.336Z"
+    },
+    {
+      "name": "python-reviewer",
+      "repository": "SkillGauge",
+      "hash": "e50149870c73ebde8051d661422ed768bfc1eedbd5bd77d09680e1a5edfa5c3d",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.82632335787937,
+      "submittedAt": "2026-06-17T04:40:43.217Z"
+    },
+    {
+      "name": "nuxt4-patterns",
+      "repository": "SkillGauge",
+      "hash": "5e94bac106a97a08b626a57a9a4f57745a1b0039fb8cc9c25885d1a88894c8fa",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.80468384170893,
+      "submittedAt": "2026-06-17T04:40:44.639Z"
+    },
+    {
+      "name": "homelab-wireguard-vpn",
+      "repository": "SkillGauge",
+      "hash": "f3d917f43b30ceb32f10194cfab6caff1e312ffc262d9c422b91220dbb5fe0eb",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.804104049658932,
+      "submittedAt": "2026-06-17T04:40:47.617Z"
+    },
+    {
+      "name": "csharp-testing",
+      "repository": "SkillGauge",
+      "hash": "6fe05e70d02a325abbfc207a6382d986b62ea8f50ef48288bb08a9d274ae407c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.802950148863978,
+      "submittedAt": "2026-06-17T04:40:51.463Z"
+    },
+    {
+      "name": "evolve",
+      "repository": "SkillGauge",
+      "hash": "ed8265bd52b0d3e87150109bfbffb287a4e38daf5e33f6405a1ec70e1f4b6f3e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.78445707866341,
+      "submittedAt": "2026-06-17T04:40:49.542Z"
+    },
+    {
+      "name": "skill-create",
+      "repository": "SkillGauge",
+      "hash": "663338b63bc2b5250e85b0e92f4cbe7c832b735853d81927619e80653c9dbaf2",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.77980900550476,
+      "submittedAt": "2026-06-17T04:40:41.100Z"
+    },
+    {
+      "name": "architecture-decision-records",
+      "repository": "SkillGauge",
+      "hash": "fb35a0169191cb7c0b7275adb89e5754119d701bfbebab8da69d801f9634d76d",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.761179168313756,
+      "submittedAt": "2026-06-17T04:40:53.599Z"
+    },
+    {
+      "name": "swift-reviewer",
+      "repository": "SkillGauge",
+      "hash": "d5dd3bb003efe439d639e711fcd9ff20ee0ed7f0f285e31c19539f52fde96015",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.737555610506362,
+      "submittedAt": "2026-06-17T04:40:40.566Z"
+    },
+    {
+      "name": "database-migrations",
+      "repository": "SkillGauge",
+      "hash": "fc659b980da07c4c6709a25ca78e43ec287e35d8d378be96a8d37a536a098e24",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.728826810199294,
+      "submittedAt": "2026-06-17T04:40:50.963Z"
+    },
+    {
+      "name": "ck",
+      "repository": "SkillGauge",
+      "hash": "c32b2c396896a36a8e843f4255f8f2db8401c0cde268ca0f43f1ddf7222a3dcb",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.70844935329634,
+      "submittedAt": "2026-06-17T04:40:52.755Z"
+    },
+    {
+      "name": "gan-planner",
+      "repository": "SkillGauge",
+      "hash": "4fd9855df8f3fc95b6fac30c216cafa86281740ce771fc3b761729d0b888aad5",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.707106064130507,
+      "submittedAt": "2026-06-17T04:40:48.667Z"
+    },
+    {
+      "name": "cpp-build-resolver",
+      "repository": "SkillGauge",
+      "hash": "0510671bd82a285633dd6be36fb929ee2d56c60d1d084b68fa7c75a569e6c6a8",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.702080520192993,
+      "submittedAt": "2026-06-17T04:40:51.707Z"
+    },
+    {
+      "name": "cisco-ios-patterns",
+      "repository": "SkillGauge",
+      "hash": "d0276e42082f515b2c0979d344a0b1312ae2e14e5591f0210bec8815388b2634",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.701287742914975,
+      "submittedAt": "2026-06-17T04:40:52.780Z"
+    },
+    {
+      "name": "dotnet-patterns",
+      "repository": "SkillGauge",
+      "hash": "16cf855f4d5ef745a31a72f467c06510d4ecd79cae3b19f1fabeca0985b5eee7",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.68533561248921,
+      "submittedAt": "2026-06-17T04:40:50.159Z"
+    },
+    {
+      "name": "uncloud",
+      "repository": "SkillGauge",
+      "hash": "8db644433d7a2dd0430334e074e95a854a440eab44731fa6236b4639bd9c4ff6",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.662737222087582,
+      "submittedAt": "2026-06-17T04:40:39.950Z"
+    },
+    {
+      "name": "orch-pipeline",
+      "repository": "SkillGauge",
+      "hash": "7776d7ca3db3556dde0f947bb9490891fd28e6be572b6b73b61d55734ada7d12",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.659969150280002,
+      "submittedAt": "2026-06-17T04:40:44.331Z"
+    },
+    {
+      "name": "cost-tracking",
+      "repository": "SkillGauge",
+      "hash": "8e9bc35b1a95520358d2df0864eb998fa2cde50eff168188a364b8a5ca5c059b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.65086659327016,
+      "submittedAt": "2026-06-17T04:40:51.764Z"
+    },
+    {
+      "name": "automation-audit-ops",
+      "repository": "SkillGauge",
+      "hash": "a970b010736ca6531339d7454a7aae4ef6426cfdad05df1dae64ae707c9e7e47",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.634390251179134,
+      "submittedAt": "2026-06-17T04:40:53.517Z"
+    },
+    {
+      "name": "homelab-network-readiness",
+      "repository": "SkillGauge",
+      "hash": "c2df56a474d4de9c829b8e002f8d95717b457fb75e8dde32a34f8cb2c09f848c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.599939507281672,
+      "submittedAt": "2026-06-17T04:40:47.780Z"
+    },
+    {
+      "name": "tdd-guide",
+      "repository": "SkillGauge",
+      "hash": "8a4e6fa92a61b369aaadd2eb8e120ad1150f11309dff44fddf66493cc2d2dbcc",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.593683162050183,
+      "submittedAt": "2026-06-17T04:40:40.404Z"
+    },
+    {
+      "name": "comment-analyzer",
+      "repository": "SkillGauge",
+      "hash": "dd09a4f6f07dd9c06d9f3bd4e63b074c519ff7ee1197185b659505b48f860127",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.575600945687658,
+      "submittedAt": "2026-06-17T04:40:52.323Z"
+    },
+    {
+      "name": "marketing-agent",
+      "repository": "SkillGauge",
+      "hash": "bcb2c8f68445659905c4c621fd0219184592cfc2bb6e51dfec64cc3596728cfe",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.533848862142136,
+      "submittedAt": "2026-06-17T04:40:45.559Z"
+    },
+    {
+      "name": "seo-specialist",
+      "repository": "SkillGauge",
+      "hash": "48f168b00f7413aac7d506bf2d01f390a2ec90a7a16f7d66b436ca9b86572113",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.533171795239543,
+      "submittedAt": "2026-06-17T04:40:41.274Z"
+    },
+    {
+      "name": "conversation-analyzer",
+      "repository": "SkillGauge",
+      "hash": "ab7f08eaea98fe917cbd562a22c00b85a8003dc818044d683df38a9fda98f075",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.526194784169263,
+      "submittedAt": "2026-06-17T04:40:51.805Z"
+    },
+    {
+      "name": "make-interfaces-feel-better",
+      "repository": "SkillGauge",
+      "hash": "a3a1b2a4d9d0e87f5348b8024c66d286e9b5d5cf8ac06a8147aebdb9aa78fdc3",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.518339620810426,
+      "submittedAt": "2026-06-17T04:40:45.608Z"
+    },
+    {
+      "name": "connections-optimizer",
+      "repository": "SkillGauge",
+      "hash": "2c6e1c6a37c80ae4502d02c32b0f0bdca06d88bfc6fa33330a5d74c773c66b89",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.50622485716849,
+      "submittedAt": "2026-06-17T04:40:52.011Z"
+    },
+    {
+      "name": "security-bounty-hunter",
+      "repository": "SkillGauge",
+      "hash": "94388bb6fddfc6a0f0e10b817b198a91b9cab53f01891aa695e2a9f0843f8a6c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.500403586375878,
+      "submittedAt": "2026-06-17T04:40:41.412Z"
+    },
+    {
+      "name": "performance-optimizer",
+      "repository": "SkillGauge",
+      "hash": "5de31900c3aaf247fd58a1648fe3461a03ba428ae886411ef718ca489481f6e4",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.49712851773507,
+      "submittedAt": "2026-06-17T04:40:44.255Z"
+    },
+    {
+      "name": "opensource-pipeline",
+      "repository": "SkillGauge",
+      "hash": "b03f48efc81235acb94a806242b8f412ee75e341a7e239cbe77858e6eebc42bc",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.484688745077175,
+      "submittedAt": "2026-06-17T04:40:44.452Z"
+    },
+    {
+      "name": "terminal-ops",
+      "repository": "SkillGauge",
+      "hash": "68bbcb6b1a3c65d878b7ca5c74c9aed0af7aafffe2559ab35c203cf4e4339aa6",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.47714506637382,
+      "submittedAt": "2026-06-17T04:40:40.272Z"
+    },
+    {
+      "name": "content-hash-cache-pattern",
+      "repository": "SkillGauge",
+      "hash": "944b394047ba0e0b41f0f8f066200682dc58aa37bb089ca008c06703fc8246ff",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.475964889808115,
+      "submittedAt": "2026-06-17T04:40:51.970Z"
+    },
+    {
+      "name": "code-simplifier",
+      "repository": "SkillGauge",
+      "hash": "e70f5f1425ac62578c73eb08e097d2ac9edc8eb1c1acba78e6d8b005d0fa7a13",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.467838935280728,
+      "submittedAt": "2026-06-17T04:40:52.531Z"
+    },
+    {
+      "name": "token-budget-advisor",
+      "repository": "SkillGauge",
+      "hash": "63493bddc6085efd841947bad6470e6fe7003b8e80d3b6fa4e01eb825c0d50eb",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.434286118177468,
+      "submittedAt": "2026-06-17T04:40:40.168Z"
+    },
+    {
+      "name": "kotlin-test",
+      "repository": "SkillGauge",
+      "hash": "818d723535441df5d230a1691bc1a095ba028135bdfe44e9c1569b28db848a97",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.4328544345241,
+      "submittedAt": "2026-06-17T04:40:46.476Z"
+    },
+    {
+      "name": "flutter-test",
+      "repository": "SkillGauge",
+      "hash": "2d783dc6a46dc774c4c48b922af433b3796a058bfa69200a997b65a5b68e2839",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.417437700409643,
+      "submittedAt": "2026-06-17T04:40:49.070Z"
+    },
+    {
+      "name": "go-build-resolver",
+      "repository": "SkillGauge",
+      "hash": "39367b66849ff3b2c03f7bb8780b46658697f1ab30e2c17dc4f8d64a18f71610",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.352055133380656,
+      "submittedAt": "2026-06-17T04:40:48.228Z"
+    },
+    {
+      "name": "java-build-resolver",
+      "repository": "SkillGauge",
+      "hash": "7bf21d25cae4b3876d41409900a0a8272ce7e8dcc67fd2baa7844fccd139ecbc",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.351701232594852,
+      "submittedAt": "2026-06-17T04:40:47.064Z"
+    },
+    {
+      "name": "prediction-market-risk-review",
+      "repository": "SkillGauge",
+      "hash": "9a6ec50a71662383f23ab9a0a4ab835af692e3ed3c6c18f26fdab8c2c88a2335",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.343452097290385,
+      "submittedAt": "2026-06-17T04:40:43.729Z"
+    },
+    {
+      "name": "investor-materials",
+      "repository": "SkillGauge",
+      "hash": "8d37532474d1cff71abcc47e3c4967d9a942424d817fa473d4b8830493d17e16",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.337988756936866,
+      "submittedAt": "2026-06-17T04:40:47.192Z"
+    },
+    {
+      "name": "email-ops",
+      "repository": "SkillGauge",
+      "hash": "43c984cd50be59487c0827c0fab1c13f546c9e812a23ccf7d3b48efc3728d7b9",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.295493860279443,
+      "submittedAt": "2026-06-17T04:40:49.963Z"
+    },
+    {
+      "name": "agent-eval",
+      "repository": "SkillGauge",
+      "hash": "a41abc3033edbf3bd07bbdda616a1735a893aba57507e8cd026c6b1ad6095ea7",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.251307668355565,
+      "submittedAt": "2026-06-17T04:40:54.209Z"
+    },
+    {
+      "name": "messages-ops",
+      "repository": "SkillGauge",
+      "hash": "4c44ed930e2e670b0a534c489c4aa85a3764459dd635a9739fe1e6d553491e49",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.234172238314354,
+      "submittedAt": "2026-06-17T04:40:45.452Z"
+    },
+    {
+      "name": "accessibility",
+      "repository": "SkillGauge",
+      "hash": "60db11fa80bd0d4ddbac41fa0554b3d586ca94cc6d8b8336173866630c1c0366",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.230062404550583,
+      "submittedAt": "2026-06-17T04:40:54.301Z"
+    },
+    {
+      "name": "healthcare-cdss-patterns",
+      "repository": "SkillGauge",
+      "hash": "0a85c7f013ac334d6f0dc9faebe5610f1331877fbf42a336b43aa01e5069a923",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.22309736888284,
+      "submittedAt": "2026-06-17T04:40:48.060Z"
+    },
+    {
+      "name": "gget",
+      "repository": "SkillGauge",
+      "hash": "b3503aa58f737e72c7984993a1d154c473acb7e29a2d944d41f38a02e7b46d05",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.2150618380938,
+      "submittedAt": "2026-06-17T04:40:48.382Z"
+    },
+    {
+      "name": "import-srt-captions",
+      "repository": "SkillGauge",
+      "hash": "22423d7724443dc4bc3f2d6da2ea93033ce32b89c9fa8520b1874d0438f56699",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.19764301640085,
+      "submittedAt": "2026-06-17T04:40:47.512Z"
+    },
+    {
+      "name": "search-first",
+      "repository": "SkillGauge",
+      "hash": "0f5cee1285180dbcd7c7388aafdd8b78b92212742c4c1913f3bb7fe6317d9ef9",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.18691545276647,
+      "submittedAt": "2026-06-17T04:40:41.449Z"
+    },
+    {
+      "name": "network-bgp-diagnostics",
+      "repository": "SkillGauge",
+      "hash": "95d58cbbf8ea8487164703580bd312de46c07771f3ea353b214c0469ffa9c2a6",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.18278390203638,
+      "submittedAt": "2026-06-17T04:40:44.825Z"
+    },
+    {
+      "name": "compose-multiplatform-patterns",
+      "repository": "SkillGauge",
+      "hash": "0a94a090442e3d80b06372d41687897aa4fa3ab0962200b3d43c706cd0108911",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.164592361843212,
+      "submittedAt": "2026-06-17T04:40:52.203Z"
+    },
+    {
+      "name": "ecc-tools-cost-audit",
+      "repository": "SkillGauge",
+      "hash": "1e70ae9d692ed3d54ad4f9bb39fa2d10f6694e1e69cd0953f0165667841d077e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.118234342485962,
+      "submittedAt": "2026-06-17T04:40:49.995Z"
+    },
+    {
+      "name": "instinct-status",
+      "repository": "SkillGauge",
+      "hash": "10d6d400e5caf0e45a4c18b4a0de1e0f92a3e2dc09671f1b978bd93ffe0f35c2",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.10000885573818,
+      "submittedAt": "2026-06-17T04:40:47.432Z"
+    },
+    {
+      "name": "code-explorer",
+      "repository": "SkillGauge",
+      "hash": "9c77c2f832f6ec51e4eece6459ecb682f17248cb1b39ef506c9cb504ac80afc5",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.09582868443601,
+      "submittedAt": "2026-06-17T04:40:52.592Z"
+    },
+    {
+      "name": "flox-environments",
+      "repository": "SkillGauge",
+      "hash": "5475e90be4a2335df83ed4b74cc111c84e2c3e14f7a3fab7e7e9c1010173ef64",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.056354782609716,
+      "submittedAt": "2026-06-17T04:40:49.353Z"
+    },
+    {
+      "name": "continuous-learning",
+      "repository": "SkillGauge",
+      "hash": "903b780aa4f04117ca42201004c36b8763e1dffb6b82c686d1d804be4eca563b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.035888995118288,
+      "submittedAt": "2026-06-17T04:40:51.829Z"
+    },
+    {
+      "name": "ito-basket-compare",
+      "repository": "SkillGauge",
+      "hash": "b0351ff95750cd36ca2d454cc47c1894bc048048a65ef94b32c9e0ef626296fa",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 30.008773715450882,
+      "submittedAt": "2026-06-17T04:40:47.109Z"
+    },
+    {
+      "name": "repo-scan",
+      "repository": "SkillGauge",
+      "hash": "7fc2fb8616ecfd89c42ba8c1dda98154e21de21f625ffa0420d245a0963e90d2",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.99558306314885,
+      "submittedAt": "2026-06-17T04:40:42.000Z"
+    },
+    {
+      "name": "deep-research",
+      "repository": "SkillGauge",
+      "hash": "e9a17780ba687b3d0daf371fd1762a9dc6c9fc15699a7ea88a09d5b224d9a995",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.96555562334678,
+      "submittedAt": "2026-06-17T04:40:50.890Z"
+    },
+    {
+      "name": "codehealth-mcp",
+      "repository": "SkillGauge",
+      "hash": "ac4c73fe64a3f695a08e6accbd2b23debed6eec6eaa105015ddef81bcb35a9f3",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.95932571060932,
+      "submittedAt": "2026-06-17T04:40:52.436Z"
+    },
+    {
+      "name": "pm2",
+      "repository": "SkillGauge",
+      "hash": "2f01d24edf215c2624f8f87b7f489a9e581fe061575d29736aabcf69939a9242",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.905693636447374,
+      "submittedAt": "2026-06-17T04:40:43.807Z"
+    },
+    {
+      "name": "type-design-analyzer",
+      "repository": "SkillGauge",
+      "hash": "83e79a48ba1a957b3013d25f2911df2b380c8528f628529ad98882b997068028",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.90334774577882,
+      "submittedAt": "2026-06-17T04:40:40.107Z"
+    },
+    {
+      "name": "canary-watch",
+      "repository": "SkillGauge",
+      "hash": "e072d6ef12726e7d8c968f3e442a941e6231bc5c717287c4add2a0297d7a7d49",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.901124454174965,
+      "submittedAt": "2026-06-17T04:40:52.964Z"
+    },
+    {
+      "name": "github-ops",
+      "repository": "SkillGauge",
+      "hash": "ed899495c9cb1a53a58899c4377b2b25f9cd73be52ca9a5de8051a3a9efd6e7e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.890020383632336,
+      "submittedAt": "2026-06-17T04:40:48.253Z"
+    },
+    {
+      "name": "swift-concurrency-6-2",
+      "repository": "SkillGauge",
+      "hash": "cc9401f5f18920453163336b8c51c577d4d2daa01828ac58d49078294e3a4e65",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.862364836170435,
+      "submittedAt": "2026-06-17T04:40:40.636Z"
+    },
+    {
+      "name": "hipaa-compliance",
+      "repository": "SkillGauge",
+      "hash": "0586e1f60ebaa8f50fa97ecc4e074facac35a51145b051cc3efc277758b2fa94",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.85945860452299,
+      "submittedAt": "2026-06-17T04:40:47.819Z"
+    },
+    {
+      "name": "benchmark-methodology",
+      "repository": "SkillGauge",
+      "hash": "adeded10f1623210f6340119140442ae70ef9e0a93e8354d837f024ff596dd0f",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.85557135786595,
+      "submittedAt": "2026-06-17T04:40:53.248Z"
+    },
+    {
+      "name": "fal-ai-media",
+      "repository": "SkillGauge",
+      "hash": "03aa7645c50d6cdcf25047092ba3f0d62bc39922e0012f197985188dc998511d",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.84826874059177,
+      "submittedAt": "2026-06-17T04:40:49.470Z"
+    },
+    {
+      "name": "agent-harness-construction",
+      "repository": "SkillGauge",
+      "hash": "810a76a58037f6454c12708053695cba55549b59eed12ac7429b945bd5d57c25",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.83207541647988,
+      "submittedAt": "2026-06-17T04:40:54.144Z"
+    },
+    {
+      "name": "inherit-legacy-style",
+      "repository": "SkillGauge",
+      "hash": "00f563003eff376a3639b0aabb4236d0d3b12283109c7ee49d350ae79d74b0e9",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.82904393848108,
+      "submittedAt": "2026-06-17T04:40:47.502Z"
+    },
+    {
+      "name": "pytorch-build-resolver",
+      "repository": "SkillGauge",
+      "hash": "f53055dfec9132e9cb5ac2336816d5c07afb993d2e635356437db5bf2daf4271",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.822395658365014,
+      "submittedAt": "2026-06-17T04:40:43.145Z"
+    },
+    {
+      "name": "skill-stocktake",
+      "repository": "SkillGauge",
+      "hash": "881a62c7e9ba50327d0d38480ce9dd8315326c9a46e891415f89ed8b68a38435",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.79984443743944,
+      "submittedAt": "2026-06-17T04:40:41.033Z"
+    },
+    {
+      "name": "video-editing",
+      "repository": "SkillGauge",
+      "hash": "60b6d63916f5b027cae1cb04d61dbe20a3481c51019c69a32ca0c9bb3d924c5f",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.799133724083593,
+      "submittedAt": "2026-06-17T04:40:39.818Z"
+    },
+    {
+      "name": "extract-frames",
+      "repository": "SkillGauge",
+      "hash": "094d6fc6c0f7b5059991276216752e5db85b3ecd360ef6fe9b0068da30cfd981",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.780811833705513,
+      "submittedAt": "2026-06-17T04:40:49.494Z"
+    },
+    {
+      "name": "laravel-verification",
+      "repository": "SkillGauge",
+      "hash": "5284825f0f7c1985b0736462f24492bbc19af478985140e2be1046dc8336ea8e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.773388893169127,
+      "submittedAt": "2026-06-17T04:40:45.922Z"
+    },
+    {
+      "name": "pr-test-analyzer",
+      "repository": "SkillGauge",
+      "hash": "d271a7030fbe7d781d8ffc4496efcfcf72f1a19e0199ec84ef44d0e1eadafae1",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.750358355652068,
+      "submittedAt": "2026-06-17T04:40:43.750Z"
+    },
+    {
+      "name": "customer-billing-ops",
+      "repository": "SkillGauge",
+      "hash": "50098c5a8962595dab9e58de645d79db16f5a7449f1afd896e1fc151e622cc98",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.741148480761108,
+      "submittedAt": "2026-06-17T04:40:51.424Z"
+    },
+    {
+      "name": "mcp-server-patterns",
+      "repository": "SkillGauge",
+      "hash": "b10036c1cb0fce0f098b041da8421c4b491762a306a85ad0c7e84da29940c202",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.73764848848164,
+      "submittedAt": "2026-06-17T04:40:45.493Z"
+    },
+    {
+      "name": "evm-token-decimals",
+      "repository": "SkillGauge",
+      "hash": "eb9fcc72978def32475360e5933e9b77c845f7b5f0d58ef4073a18a3cb804f8a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.714472679421917,
+      "submittedAt": "2026-06-17T04:40:49.560Z"
+    },
+    {
+      "name": "context-budget",
+      "repository": "SkillGauge",
+      "hash": "1e16d58fdca9e2808264087301f277ba824d19a404fa546499834c7dcd9c1618",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.69021502955967,
+      "submittedAt": "2026-06-17T04:40:51.942Z"
+    },
+    {
+      "name": "gateguard",
+      "repository": "SkillGauge",
+      "hash": "a4a53a49c45051cc496808ff39e09468a97fc2f4d40d41d20643095ae282488c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.678158311044996,
+      "submittedAt": "2026-06-17T04:40:48.580Z"
+    },
+    {
+      "name": "rust-reviewer",
+      "repository": "SkillGauge",
+      "hash": "2cf608fddebe692d723254530f232731b813817d2c3ed10c503b8744dcced4b2",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.67042212982215,
+      "submittedAt": "2026-06-17T04:40:41.676Z"
+    },
+    {
+      "name": "postgres-patterns",
+      "repository": "SkillGauge",
+      "hash": "b6e8e59dba126471f399eb3e357a47cbde8f6f209327467d63320cd55410323a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.66937147795446,
+      "submittedAt": "2026-06-17T04:40:43.771Z"
+    },
+    {
+      "name": "healthcare-emr-patterns",
+      "repository": "SkillGauge",
+      "hash": "a7d75bf1d854a03d2898f5af214f246bd6dc1b18a5fe2c1eb207368a0043fb9f",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.66014701459271,
+      "submittedAt": "2026-06-17T04:40:48.012Z"
+    },
+    {
+      "name": "go-reviewer",
+      "repository": "SkillGauge",
+      "hash": "50f5c14549beaaaf4e789d15aeefe5c0be6909f6a9c18123d7283132fbe10764",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.659455799233157,
+      "submittedAt": "2026-06-17T04:40:48.212Z"
+    },
+    {
+      "name": "finance-billing-ops",
+      "repository": "SkillGauge",
+      "hash": "6f394d5fa8a5b7bdba9ca0e5e35257c8a268830bfb98350d6b5abc16ad2ef789",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.654355472489147,
+      "submittedAt": "2026-06-17T04:40:49.372Z"
+    },
+    {
+      "name": "motion-patterns",
+      "repository": "SkillGauge",
+      "hash": "3fd317e77a1c60658cba5b7395e0fc8e8a10d489c0c6d8bcf0cb1213a3fb5fb4",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.635731601202426,
+      "submittedAt": "2026-06-17T04:40:45.132Z"
+    },
+    {
+      "name": "gif",
+      "repository": "SkillGauge",
+      "hash": "8b67c97ad4e0f6cfe4e854fdcd032924b7211d51c7bca67ee73e19d9df1305bd",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.633695828057295,
+      "submittedAt": "2026-06-17T04:40:48.358Z"
+    },
+    {
+      "name": "ito-data-atlas-agent",
+      "repository": "SkillGauge",
+      "hash": "f8cf83c524e140e1de890c0ca876ca735da294655791b1116767e46b26ea9b9d",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.63135849713923,
+      "submittedAt": "2026-06-17T04:40:47.098Z"
+    },
+    {
+      "name": "article-writing",
+      "repository": "SkillGauge",
+      "hash": "088a8d84e8eea35e2cf374e1911d626bb13de93a6ee7b5b576a1512194b8a2bd",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.622305968014288,
+      "submittedAt": "2026-06-17T04:40:53.560Z"
+    },
+    {
+      "name": "swift-protocol-di-testing",
+      "repository": "SkillGauge",
+      "hash": "c1ac1a5658bc983663456cb5c83e89a6fd490e896ba4d6212e0ce1671e448125",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.62193442276074,
+      "submittedAt": "2026-06-17T04:40:40.596Z"
+    },
+    {
+      "name": "brand-discovery",
+      "repository": "SkillGauge",
+      "hash": "6b4ea3e622c9b1a3f5594f3ea6b26f6ee24de3630bb4d84e7f89d3170069a656",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.619587833022948,
+      "submittedAt": "2026-06-17T04:40:53.100Z"
+    },
+    {
+      "name": "sessions",
+      "repository": "SkillGauge",
+      "hash": "ed4d45b554524c9e7f5ea8940a8aa34317e322d6743bd0469d3eb79ca8e0e6d3",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.601326815167557,
+      "submittedAt": "2026-06-17T04:40:41.217Z"
+    },
+    {
+      "name": "swift-actor-persistence",
+      "repository": "SkillGauge",
+      "hash": "6644547c11ed4fe3778355215cb254c9b5625092e163dc9d61b06d6884da69dc",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.547879945740156,
+      "submittedAt": "2026-06-17T04:40:40.698Z"
+    },
+    {
+      "name": "skill-scout",
+      "repository": "SkillGauge",
+      "hash": "d391b2e9320c2c0dcfff88a918fc81a9187baf093eb9cfa3a5a7ed5dadad3025",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.53375464582153,
+      "submittedAt": "2026-06-17T04:40:41.057Z"
+    },
+    {
+      "name": "doc-updater",
+      "repository": "SkillGauge",
+      "hash": "f45e82b76d11db88e8c6a47eecb29ba60b59c1a199a5479759139aee69fd8d62",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.51266476690203,
+      "submittedAt": "2026-06-17T04:40:50.264Z"
+    },
+    {
+      "name": "council",
+      "repository": "SkillGauge",
+      "hash": "82b01f9a71861062b907c754794290b4d0e04c4cc3b01f67c88d4e8257715681",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.5123659667906,
+      "submittedAt": "2026-06-17T04:40:51.741Z"
+    },
+    {
+      "name": "homelab-network-setup",
+      "repository": "SkillGauge",
+      "hash": "0975c91a3b414ba0222b0d61a0027dd0f26fde7e718dc326c26461fe2d147da6",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.50362475858682,
+      "submittedAt": "2026-06-17T04:40:47.742Z"
+    },
+    {
+      "name": "crosspost",
+      "repository": "SkillGauge",
+      "hash": "04166bb4e39729304f148cd37ca5a5aa74889d5d4b38331867844d52917bf01b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.50174378166378,
+      "submittedAt": "2026-06-17T04:40:51.510Z"
+    },
+    {
+      "name": "ito-market-intelligence",
+      "repository": "SkillGauge",
+      "hash": "40dfb4622b75b254a489755cbc63dcd8d2a04b6bf6ea8c5a0deaa44c6faf4270",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.490912837195754,
+      "submittedAt": "2026-06-17T04:40:47.086Z"
+    },
+    {
+      "name": "llm-trading-agent-security",
+      "repository": "SkillGauge",
+      "hash": "3b7573e02c197696af7c961cca261c70c0d5aaa4fe5bc848b81fcf3c7b8f93cf",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.48604763160862,
+      "submittedAt": "2026-06-17T04:40:45.731Z"
+    },
+    {
+      "name": "browser-qa",
+      "repository": "SkillGauge",
+      "hash": "505bc85c7b2372f8a6a7c94316d1d9272a2169779321619a78052626ac4a8929",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.473799259160366,
+      "submittedAt": "2026-06-17T04:40:53.043Z"
+    },
+    {
+      "name": "research-ops",
+      "repository": "SkillGauge",
+      "hash": "8759cf8f3c1d99d48718e95b3f6459cde61d24b89b95d51a5ffbe3b097c5fb7f",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.435662394227435,
+      "submittedAt": "2026-06-17T04:40:41.980Z"
+    },
+    {
+      "name": "everything-claude-code",
+      "repository": "SkillGauge",
+      "hash": "2b25b27d25e65efb52bfa905cc157ca9f4b9ed902aee3a167c2108a5d238f1b3",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.43521827357893,
+      "submittedAt": "2026-06-17T04:40:49.621Z"
+    },
+    {
+      "name": "workspace-surface-audit",
+      "repository": "SkillGauge",
+      "hash": "1bf21258f8bd63428ed5c823ed1f62823656724bb23a449ffdc17d04747c8bbc",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.427684701193975,
+      "submittedAt": "2026-06-17T04:40:39.117Z"
+    },
+    {
+      "name": "benchmark-optimization-loop",
+      "repository": "SkillGauge",
+      "hash": "5302f360c2aa1b83611b4e6530b74d4a04500328aa35a764e5cf2fe873720c42",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.425536826248116,
+      "submittedAt": "2026-06-17T04:40:53.196Z"
+    },
+    {
+      "name": "skill-health",
+      "repository": "SkillGauge",
+      "hash": "e68c8a5e38efbd579ec689a8132bf7fb0b73ece1b5189a1945e67c96fa04b5b1",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.422959848463133,
+      "submittedAt": "2026-06-17T04:40:41.075Z"
+    },
+    {
+      "name": "prediction-market-oracle-research",
+      "repository": "SkillGauge",
+      "hash": "2fdc49ce960d03dcc439162fb6b10cf1c1db8f0e4de14077f0d65b16a138bd26",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.41190323442458,
+      "submittedAt": "2026-06-17T04:40:43.739Z"
+    },
+    {
+      "name": "google-workspace-ops",
+      "repository": "SkillGauge",
+      "hash": "879e528b1f789a2a1be69f703401f09c759ac1dc05259e6ab7b950fa9eb1ebac",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.4038238449735,
+      "submittedAt": "2026-06-17T04:40:48.126Z"
+    },
+    {
+      "name": "frontend-a11y",
+      "repository": "SkillGauge",
+      "hash": "c4d53c44d6bfb20027d280345cddb6d41264cb0587d8c49213da444ef011d070",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.384365910531447,
+      "submittedAt": "2026-06-17T04:40:48.990Z"
+    },
+    {
+      "name": "build-error-resolver",
+      "repository": "SkillGauge",
+      "hash": "752a1c9a49de0929ce2f0648af92916b27dc4a0ba665ffc48da1cf762b7445ad",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.374675457135325,
+      "submittedAt": "2026-06-17T04:40:53.022Z"
+    },
+    {
+      "name": "laravel-plugin-discovery",
+      "repository": "SkillGauge",
+      "hash": "b714c6839476d034f8f385452124a8c92f6535de58883b78ae53f89e42771b2c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.347808370822605,
+      "submittedAt": "2026-06-17T04:40:46.182Z"
+    },
+    {
+      "name": "frontend-slides",
+      "repository": "SkillGauge",
+      "hash": "5759ec91f3a56bbd7e1888797fbc476d8c40c11942326c7e54bd2ed0becaf5a6",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.34448973840152,
+      "submittedAt": "2026-06-17T04:40:48.833Z"
+    },
+    {
+      "name": "documentation-lookup",
+      "repository": "SkillGauge",
+      "hash": "186227e0afce379f5656cdef8cce279c17188236ba395130627392039e404d6a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.339848916618795,
+      "submittedAt": "2026-06-17T04:40:50.185Z"
+    },
+    {
+      "name": "ui-to-vue",
+      "repository": "SkillGauge",
+      "hash": "a76e31a51ac61b6a9614e4da0b6cca4e9cd7d7f849da7e69add6c2bc687e7428",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.286540095382417,
+      "submittedAt": "2026-06-17T04:40:39.975Z"
+    },
+    {
+      "name": "homelab-vlan-segmentation",
+      "repository": "SkillGauge",
+      "hash": "abc18dbf3855ac5bc5e758837df2b60449b95eb0116e891599350e374b6a2221",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.284828866333356,
+      "submittedAt": "2026-06-17T04:40:47.671Z"
+    },
+    {
+      "name": "get-video-duration",
+      "repository": "SkillGauge",
+      "hash": "ce707739905e6dd2a6c39cc30d9426968bad049d2f21e132c67a10b535f2ec27",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.23006899260801,
+      "submittedAt": "2026-06-17T04:40:48.389Z"
+    },
+    {
+      "name": "enterprise-agent-ops",
+      "repository": "SkillGauge",
+      "hash": "726289aa2d5ab0809c13dd093d0b53e3529bc321e30bd643b13b629bb5210215",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.228569111353497,
+      "submittedAt": "2026-06-17T04:40:49.771Z"
+    },
+    {
+      "name": "signal-scorer",
+      "repository": "SkillGauge",
+      "hash": "8f9e15d41cc456b6693d6297788ffe4e727966385b69967880d74d7e72223e26",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.227745201068057,
+      "submittedAt": "2026-06-17T04:40:41.140Z"
+    },
+    {
+      "name": "get-audio-duration",
+      "repository": "SkillGauge",
+      "hash": "618569c8530153c19824892e18dac11b324d153ac26ea6fdede77cd8f2d2ba3e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.224807971431993,
+      "submittedAt": "2026-06-17T04:40:48.404Z"
+    },
+    {
+      "name": "recursive-decision-ledger",
+      "repository": "SkillGauge",
+      "hash": "61753bc3ef609e7f9e043cae8574b6b93208c0e1d66b1e25b189d504b614ee19",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.190424993438963,
+      "submittedAt": "2026-06-17T04:40:42.137Z"
+    },
+    {
+      "name": "ito-trade-planner",
+      "repository": "SkillGauge",
+      "hash": "0be36ae6100f36e7f5dc30850d9583904739e7002c97acb894be266db8eb57ea",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.167788613741124,
+      "submittedAt": "2026-06-17T04:40:47.074Z"
+    },
+    {
+      "name": "brand-voice",
+      "repository": "SkillGauge",
+      "hash": "bd0239e7e00ded26dea7202617ed733dab8e3f82debcce5deda4c32d07281067",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.142253103456895,
+      "submittedAt": "2026-06-17T04:40:53.061Z"
+    },
+    {
+      "name": "lottie",
+      "repository": "SkillGauge",
+      "hash": "6c91326a6535288ae5bf7053ac386824c129865c477c83381f6b25c6348f882a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.129698365849826,
+      "submittedAt": "2026-06-17T04:40:45.616Z"
+    },
+    {
+      "name": "everything-claude-code-conventions",
+      "repository": "SkillGauge",
+      "hash": "76bc0d54f4edaf91a1aabaf7b33baaca88fe140c1fe8a19396db914cfd785405",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.12015276115612,
+      "submittedAt": "2026-06-17T04:40:49.680Z"
+    },
+    {
+      "name": "refactor-cleaner",
+      "repository": "SkillGauge",
+      "hash": "8c900535307137638e3f924b91171ed6eeef986531bde66a254aa7be62d73d2b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.091698162587686,
+      "submittedAt": "2026-06-17T04:40:42.061Z"
+    },
+    {
+      "name": "swiftui-patterns",
+      "repository": "SkillGauge",
+      "hash": "2ffd3b3b074f43c8aa762e9a113ef2c8a2ad65bd84eb0ab58966eba9c4abbec9",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.040486563604752,
+      "submittedAt": "2026-06-17T04:40:40.542Z"
+    },
+    {
+      "name": "nutrient-document-processing",
+      "repository": "SkillGauge",
+      "hash": "c27c4dadf34089f439f7faca25dac67010b934ea76d662a493e1bd2d7c89a6d7",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.039440913815078,
+      "submittedAt": "2026-06-17T04:40:44.665Z"
+    },
+    {
+      "name": "cpp-reviewer",
+      "repository": "SkillGauge",
+      "hash": "7c5c99a35c242be720f7d5883b8981449ab45c9a51fa07bcd0113f7644db82bd",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.034365213240232,
+      "submittedAt": "2026-06-17T04:40:51.572Z"
+    },
+    {
+      "name": "measuring-text",
+      "repository": "SkillGauge",
+      "hash": "e4071095fd2521f02bacbec31794aa29016fee2a5217ff4f8ec51d6b17888c1a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.02975810440363,
+      "submittedAt": "2026-06-17T04:40:45.467Z"
+    },
+    {
+      "name": "exa-search",
+      "repository": "SkillGauge",
+      "hash": "180e881474abdfa9a9837a56da24c30e1c33dad457604997dec8faabec7989d8",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.02675138338538,
+      "submittedAt": "2026-06-17T04:40:49.519Z"
+    },
+    {
+      "name": "can-decode",
+      "repository": "SkillGauge",
+      "hash": "c09e4ea5fb7515d7aa672d7026413e5060f7d77ae7388cd271455b1cfd8ba4b4",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.018528963241774,
+      "submittedAt": "2026-06-17T04:40:52.972Z"
+    },
+    {
+      "name": "content-engine",
+      "repository": "SkillGauge",
+      "hash": "a82a4c84ec455fabba2ad855c5979f9ff602f70162a75508b35f53c3bd3ee9f4",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.009420673147662,
+      "submittedAt": "2026-06-17T04:40:51.983Z"
+    },
+    {
+      "name": "get-video-dimensions",
+      "repository": "SkillGauge",
+      "hash": "818a82b809094e3035f3923a45afdee4f5cf79ebf34a109fb7a34b20c387a6e7",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.007079872379745,
+      "submittedAt": "2026-06-17T04:40:48.397Z"
+    },
+    {
+      "name": "manim-video",
+      "repository": "SkillGauge",
+      "hash": "ffceecacf1c16263cc238ad4ad4457e2afe16985212f05c8aeb94b9316d7ae55",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 29.00486341974564,
+      "submittedAt": "2026-06-17T04:40:45.584Z"
+    },
+    {
+      "name": "liquid-glass-design",
+      "repository": "SkillGauge",
+      "hash": "3bec73465a674a30729b3c418172df2aa4d7272f3df2fef81834ca0e464d8402",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.990143149748704,
+      "submittedAt": "2026-06-17T04:40:45.799Z"
+    },
+    {
+      "name": "literature-review",
+      "repository": "SkillGauge",
+      "hash": "facd39d0b3e245d3420903d2c896443b3a11890fef7e3d11041f3505bab2e99b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.984708087869095,
+      "submittedAt": "2026-06-17T04:40:45.757Z"
+    },
+    {
+      "name": "social-graph-ranker",
+      "repository": "SkillGauge",
+      "hash": "5848884a8b1005f87005d24eb8e610995179fd2a843e73a60965fbc0d5ca29c3",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.982011669415613,
+      "submittedAt": "2026-06-17T04:40:40.990Z"
+    },
+    {
+      "name": "taste",
+      "repository": "SkillGauge",
+      "hash": "bbd547a02b90d97aad2af388e311e184999baf31bbaea3a246cf9554ac6e8959",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.9308717496724,
+      "submittedAt": "2026-06-17T04:40:40.504Z"
+    },
+    {
+      "name": "defi-amm-security",
+      "repository": "SkillGauge",
+      "hash": "a18338a6c6178740c2d323b4cb3cbd8856f8d12c2a0121a2e00249657d600c36",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.925663286472492,
+      "submittedAt": "2026-06-17T04:40:50.863Z"
+    },
+    {
+      "name": "images",
+      "repository": "SkillGauge",
+      "hash": "4c04b17f09910feb4676120a2611b8829378190a7e101e87a3b6548a118617e4",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.904613425912558,
+      "submittedAt": "2026-06-17T04:40:47.527Z"
+    },
+    {
+      "name": "bun-runtime",
+      "repository": "SkillGauge",
+      "hash": "9ecf1f8e1593c3611620bc29220801e270d6730653a28e81e8131cb38f642ae7",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.90003799118367,
+      "submittedAt": "2026-06-17T04:40:52.999Z"
+    },
+    {
+      "name": "product-capability",
+      "repository": "SkillGauge",
+      "hash": "1b7460aea6f38b1b6b17a148c4f2504fbf36008aec3f6d183911769c9add9cd9",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.883281648759272,
+      "submittedAt": "2026-06-17T04:40:43.641Z"
+    },
+    {
+      "name": "jpa-patterns",
+      "repository": "SkillGauge",
+      "hash": "e12d2283ccda56f301e398ed505477f7b50dff5c8669756f22a480f232f24939",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.862208327835877,
+      "submittedAt": "2026-06-17T04:40:46.901Z"
+    },
+    {
+      "name": "dashboard-builder",
+      "repository": "SkillGauge",
+      "hash": "034912b4cf89423212626f58456a2ad96e54b79b35ec4c684d01dbf8586aa7af",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.837753494251423,
+      "submittedAt": "2026-06-17T04:40:51.124Z"
+    },
+    {
+      "name": "skill-comply",
+      "repository": "SkillGauge",
+      "hash": "aa4da201d251cb1f8f0a1c69aa6dc635dc22b0dd9cb94a848240f22730b47d63",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.802718959223945,
+      "submittedAt": "2026-06-17T04:40:41.113Z"
+    },
+    {
+      "name": "trimming",
+      "repository": "SkillGauge",
+      "hash": "c22d126acf0b9b0206dc7cfe4dac2b73a2982df77901627813b8c0eba30f8b57",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.760797320787606,
+      "submittedAt": "2026-06-17T04:40:40.114Z"
+    },
+    {
+      "name": "agent-sort",
+      "repository": "SkillGauge",
+      "hash": "c18029f541c4ddcf2a0f1750957d373dd28854dd891700ea88c87d4a52e0df40",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.748493209455265,
+      "submittedAt": "2026-06-17T04:40:54.008Z"
+    },
+    {
+      "name": "orch-refine-code",
+      "repository": "SkillGauge",
+      "hash": "2233174a7094b9eed843958725d2faeaf2ad3ff07878257a310c868b557a914a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.748096676044998,
+      "submittedAt": "2026-06-17T04:40:44.296Z"
+    },
+    {
+      "name": "golang-patterns",
+      "repository": "SkillGauge",
+      "hash": "35851eeebef55f46abbd5392ff3f863b2e94a9479ed89afdc252546bd2785f02",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.722980682293407,
+      "submittedAt": "2026-06-17T04:40:48.184Z"
+    },
+    {
+      "name": "code-tour",
+      "repository": "SkillGauge",
+      "hash": "0222ebfdfb5f683d88507207133cd0df2f6d205c22b7f49574db34cf48230810",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.70013112594795,
+      "submittedAt": "2026-06-17T04:40:52.520Z"
+    },
+    {
+      "name": "hermes-imports",
+      "repository": "SkillGauge",
+      "hash": "4bdd80dc3b7b34a1ce9e55ccac2e18f390feefb8820cdd7f510ab0cae35f5fe7",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.695934807427058,
+      "submittedAt": "2026-06-17T04:40:47.887Z"
+    },
+    {
+      "name": "instinct-import",
+      "repository": "SkillGauge",
+      "hash": "0b228130181000698797220638d6e5b2d1bdc11edb01e501d5b0fd14072b7ef1",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.65125023799286,
+      "submittedAt": "2026-06-17T04:40:47.446Z"
+    },
+    {
+      "name": "social-publisher",
+      "repository": "SkillGauge",
+      "hash": "7afc63b4c1f2a740ca2ce353a688a5456760da3172763a4dcb8123241b8ae2d0",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.642799944435072,
+      "submittedAt": "2026-06-17T04:40:40.967Z"
+    },
+    {
+      "name": "benchmark",
+      "repository": "SkillGauge",
+      "hash": "be0833cf0acea10b5b4888b48fc232fc9a184f0e706ffd4e78c41dd1f4ea4042",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.636225438053494,
+      "submittedAt": "2026-06-17T04:40:53.183Z"
+    },
+    {
+      "name": "competitive-report-structure",
+      "repository": "SkillGauge",
+      "hash": "eddb7e570ada0d78881757b5b61c132edfaa01f3699e5b51a6d09dc416e05989",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.58944384597844,
+      "submittedAt": "2026-06-17T04:40:52.248Z"
+    },
+    {
+      "name": "seo",
+      "repository": "SkillGauge",
+      "hash": "339def4fa21afeb3bcb7b1d07d382f14240f167b53b9a30826e147f0380752a9",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.587371655346338,
+      "submittedAt": "2026-06-17T04:40:41.258Z"
+    },
+    {
+      "name": "angular-developer",
+      "repository": "SkillGauge",
+      "hash": "c7c26a7a628bbf19541f0a704bb290de7c05c74c4a9e79274966b66139327165",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.58532397763234,
+      "submittedAt": "2026-06-17T04:40:53.774Z"
+    },
+    {
+      "name": "hookify-rules",
+      "repository": "SkillGauge",
+      "hash": "6a7230f405168cf6be99fe69cfc500735279771c5b8a5d36dbdb5aabe62d0b7c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.575652605767104,
+      "submittedAt": "2026-06-17T04:40:47.553Z"
+    },
+    {
+      "name": "frontend-design-direction",
+      "repository": "SkillGauge",
+      "hash": "8635f471d6e609736c128469288ce7ad6901a8c56bb38f69a5f28d03d221c569",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.54452803259993,
+      "submittedAt": "2026-06-17T04:40:48.925Z"
+    },
+    {
+      "name": "security-scan",
+      "repository": "SkillGauge",
+      "hash": "64b81de64118c7976c3fcfb1d43463537ce261870512c2d8ba45f2b906800355",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.5063983085391,
+      "submittedAt": "2026-06-17T04:40:41.299Z"
+    },
+    {
+      "name": "verification-loop",
+      "repository": "SkillGauge",
+      "hash": "c46abd1800ed5abee1282f3a49b4aba491e46e415d1ae68aba14b457002323f4",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.398617569682415,
+      "submittedAt": "2026-06-17T04:40:39.834Z"
+    },
+    {
+      "name": "ralphinho-rfc-pipeline",
+      "repository": "SkillGauge",
+      "hash": "141467ad0227b0e4239a01c5cac065fcb2cbdc4abf1e4495ea0ee140adcca8b7",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.350300557336777,
+      "submittedAt": "2026-06-17T04:40:42.570Z"
+    },
+    {
+      "name": "nanoclaw-repl",
+      "repository": "SkillGauge",
+      "hash": "f229e274a05724dfdcbaa6bae5793bdbdf93f6b6a4a7274cc60f840f9ec7b33a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.348005453331186,
+      "submittedAt": "2026-06-17T04:40:44.912Z"
+    },
+    {
+      "name": "transitions",
+      "repository": "SkillGauge",
+      "hash": "98d3d38c64e63aa8c2beb93d4523e8a7fa94fe9b1ad90429786e7227704f5662",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.342424816223343,
+      "submittedAt": "2026-06-17T04:40:40.130Z"
+    },
+    {
+      "name": "project-flow-ops",
+      "repository": "SkillGauge",
+      "hash": "0971ffe547163f747afa9df15b346cf80e0017d03efda1391d27ae42a0a04ba5",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.33213758889667,
+      "submittedAt": "2026-06-17T04:40:43.415Z"
+    },
+    {
+      "name": "openclaw-persona-forge",
+      "repository": "SkillGauge",
+      "hash": "7dd0b032b2041b822e35135d6c45b3d97e844ac755891cea89b39cfa022929e7",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.325442489532847,
+      "submittedAt": "2026-06-17T04:40:44.577Z"
+    },
+    {
+      "name": "go-test",
+      "repository": "SkillGauge",
+      "hash": "c0e56350235aeb7095604437566a3a7688e5b5015e0a860aa9d2072f97204db0",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.3248179307175,
+      "submittedAt": "2026-06-17T04:40:48.198Z"
+    },
+    {
+      "name": "audio",
+      "repository": "SkillGauge",
+      "hash": "1fb7fc29e4bf8e4d836728718d8ea4b9b68e0e8914fe2896426e874ed6edd4b3",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.3234529777242,
+      "submittedAt": "2026-06-17T04:40:53.536Z"
+    },
+    {
+      "name": "product-lens",
+      "repository": "SkillGauge",
+      "hash": "8bd79ad95c1c2229fa1eb23b1056039b4aaf927ccd4a2c3e52aa0c9008e50f9c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.3070584790195,
+      "submittedAt": "2026-06-17T04:40:43.620Z"
+    },
+    {
+      "name": "mutual-mapper",
+      "repository": "SkillGauge",
+      "hash": "345dc15397233b7a8d88221749d39f3e7b8049598a2a295fb957e04323e3075d",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.294010767505256,
+      "submittedAt": "2026-06-17T04:40:44.986Z"
+    },
+    {
+      "name": "orch-add-feature",
+      "repository": "SkillGauge",
+      "hash": "1f558853d52e0fc4c6acfbc044ef36786bbe15145a0ac3109ed9ceaefd43548e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.271851921445073,
+      "submittedAt": "2026-06-17T04:40:44.376Z"
+    },
+    {
+      "name": "safety-guard",
+      "repository": "SkillGauge",
+      "hash": "e1d821430134e25517bcd9c4155e2a79e5f2030485e5b4873e5630a32e3f306d",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.235342840462064,
+      "submittedAt": "2026-06-17T04:40:41.550Z"
+    },
+    {
+      "name": "orch-change-feature",
+      "repository": "SkillGauge",
+      "hash": "dc8d17abbc39a451b07841dd1720f1eb1883980dc7ae655a46ed466505f6019c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.2329130750325,
+      "submittedAt": "2026-06-17T04:40:44.352Z"
+    },
+    {
+      "name": "display-captions",
+      "repository": "SkillGauge",
+      "hash": "2531518cc816e5d769c086a1ac0b781bb6728254c69f685051971171eb3cae2f",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.22734760355821,
+      "submittedAt": "2026-06-17T04:40:50.767Z"
+    },
+    {
+      "name": "competitive-platform-analysis",
+      "repository": "SkillGauge",
+      "hash": "f7623c5da34f886f229917d1ab6803ef7781f2ec252b0ddad3ead1bfc6c48dad",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.21747839695647,
+      "submittedAt": "2026-06-17T04:40:52.313Z"
+    },
+    {
+      "name": "outreach-drafter",
+      "repository": "SkillGauge",
+      "hash": "4f193a5d6508ff123dcf4105f0b8729ce071efdb870969cb45ab1d45bfc81e79",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.193565166342154,
+      "submittedAt": "2026-06-17T04:40:44.286Z"
+    },
+    {
+      "name": "investor-outreach",
+      "repository": "SkillGauge",
+      "hash": "53f0bb9409260aff9a7eab3de15415ab7768dd77085b2c32afdd75dc7781c1b8",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.188834326424566,
+      "submittedAt": "2026-06-17T04:40:47.179Z"
+    },
+    {
+      "name": "scholar-evaluation",
+      "repository": "SkillGauge",
+      "hash": "0c1523ba88da89e63637d0bd24278cf21ffb9c872696a0c641d42f197c2a1bc6",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.187730090757874,
+      "submittedAt": "2026-06-17T04:40:41.473Z"
+    },
+    {
+      "name": "design-system",
+      "repository": "SkillGauge",
+      "hash": "81bced2b8054e38001c17b52e136a84cfefcf31fa2cb3cf4978467543656bb7c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.183424117266693,
+      "submittedAt": "2026-06-17T04:40:50.781Z"
+    },
+    {
+      "name": "loop-operator",
+      "repository": "SkillGauge",
+      "hash": "bf0cb698072433823fd2df690e2dca68b03ad27ccdf68adaabff21f5f14d318a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.167997987126732,
+      "submittedAt": "2026-06-17T04:40:45.621Z"
+    },
+    {
+      "name": "orch-fix-defect",
+      "repository": "SkillGauge",
+      "hash": "89fd018ebd43ac3730eef736ef5d762245ddafce7f37229dd0a2376555689ad4",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.13417282317231,
+      "submittedAt": "2026-06-17T04:40:44.342Z"
+    },
+    {
+      "name": "enrichment-agent",
+      "repository": "SkillGauge",
+      "hash": "cba5896baab23a65ef1fccddc6a70f68fe7320a667d988aa35633d473a637894",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.121481877335995,
+      "submittedAt": "2026-06-17T04:40:49.784Z"
+    },
+    {
+      "name": "nextjs-turbopack",
+      "repository": "SkillGauge",
+      "hash": "6f75445064be71c5accd70ad0336b0b5061f9cdb9eedabd73d93ddcbe0c415d4",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.06584855915217,
+      "submittedAt": "2026-06-17T04:40:44.695Z"
+    },
+    {
+      "name": "measuring-dom-nodes",
+      "repository": "SkillGauge",
+      "hash": "8474b2029168bf63393e7d154b51c34e8549dc2ac3ea21d1607d4a6e619299e9",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.060852232202283,
+      "submittedAt": "2026-06-17T04:40:45.472Z"
+    },
+    {
+      "name": "add-language-rules",
+      "repository": "SkillGauge",
+      "hash": "467de0d9a56619dfdc4f92459587c81b3f6cf1685b292d98ada11f2a8bc9e415",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 28.02385288021422,
+      "submittedAt": "2026-06-17T04:40:54.271Z"
+    },
+    {
+      "name": "visa-doc-translate",
+      "repository": "SkillGauge",
+      "hash": "ee74948c6d1ff378794b226397a05dfef930795985437db1b90e0722bc310ffe",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.96945165513841,
+      "submittedAt": "2026-06-17T04:40:39.663Z"
+    },
+    {
+      "name": "nodejs-keccak256",
+      "repository": "SkillGauge",
+      "hash": "b2007388c03fc163aee4afda6b45f0e6dd093b1a8dadb94d1409ace5294b2330",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.963116273678708,
+      "submittedAt": "2026-06-17T04:40:44.679Z"
+    },
+    {
+      "name": "fonts",
+      "repository": "SkillGauge",
+      "hash": "97be76d3ea700b60bfe98c3439eb3f9bd87b77b02b01c8f63098a7b57ee86499",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.94565084873798,
+      "submittedAt": "2026-06-17T04:40:49.048Z"
+    },
+    {
+      "name": "projects",
+      "repository": "SkillGauge",
+      "hash": "60a612f3aa78670be24cf30d1fa57d56a28474e0fd67ba6579153ee5cc035ead",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.881560551881932,
+      "submittedAt": "2026-06-17T04:40:43.399Z"
+    },
+    {
+      "name": "hookify",
+      "repository": "SkillGauge",
+      "hash": "8cddd35b533eef210efde40a59bf002c716db71a9b98ec70e633d25665181640",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.836495617312195,
+      "submittedAt": "2026-06-17T04:40:47.533Z"
+    },
+    {
+      "name": "3d",
+      "repository": "SkillGauge",
+      "hash": "f1b8de0c75f693cce163a38e298dc044cfec738ad975ee8b39a967115ad9ae7c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.826815985509718,
+      "submittedAt": "2026-06-17T04:40:54.348Z"
+    },
+    {
+      "name": "videos",
+      "repository": "SkillGauge",
+      "hash": "41021fd9414e8e3b9683eb9e56862dec630f6dcaf12ab8379dbc4d701501b183",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.808712830916747,
+      "submittedAt": "2026-06-17T04:40:39.682Z"
+    },
+    {
+      "name": "compositions",
+      "repository": "SkillGauge",
+      "hash": "e302004abd569da174bf22a80c6dccc266f6bf24c1e9fe236219d346ac5532d6",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.789929886661447,
+      "submittedAt": "2026-06-17T04:40:52.163Z"
+    },
+    {
+      "name": "harness-optimizer",
+      "repository": "SkillGauge",
+      "hash": "7615d2bdc4f58a0963c649f620265f059d6be87ba01966f61f99e2e179b6ab8f",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.75182899753934,
+      "submittedAt": "2026-06-17T04:40:48.065Z"
+    },
+    {
+      "name": "marketing-campaign",
+      "repository": "SkillGauge",
+      "hash": "61cc32ef770cfa32fffb9cbd2c4e43b0747de6ca6684691fa0684b0934a17098",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.748254513065547,
+      "submittedAt": "2026-06-17T04:40:45.520Z"
+    },
+    {
+      "name": "api-connector-builder",
+      "repository": "SkillGauge",
+      "hash": "2ad708e9a621ac74e26ca9a3e214d460712cb6ab43ebef860e9bf68e627ae8da",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.742028325335017,
+      "submittedAt": "2026-06-17T04:40:53.713Z"
+    },
+    {
+      "name": "calculate-metadata",
+      "repository": "SkillGauge",
+      "hash": "890cd2abbbc24b73a5b294b719ea444b6daec4cfdd44a342ae4331460083381b",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.687609831614342,
+      "submittedAt": "2026-06-17T04:40:52.985Z"
+    },
+    {
+      "name": "database-migration",
+      "repository": "SkillGauge",
+      "hash": "4aac501b66caea981691e69387e7199326c95e2169c2d7a18f9212aae4249ade",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.665719949285076,
+      "submittedAt": "2026-06-17T04:40:50.968Z"
+    },
+    {
+      "name": "timing",
+      "repository": "SkillGauge",
+      "hash": "bb389b4a1567fac0076d698f20108a36c79851f419097bc8641c7429a2ae27ce",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.642495824530055,
+      "submittedAt": "2026-06-17T04:40:40.253Z"
+    },
+    {
+      "name": "orch-build-mvp",
+      "repository": "SkillGauge",
+      "hash": "e838f4d2fcfddb43d22236baafae15286a787c444720e513b7bd0bd2c435fa59",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.622779758876636,
+      "submittedAt": "2026-06-17T04:40:44.365Z"
+    },
+    {
+      "name": "market-research",
+      "repository": "SkillGauge",
+      "hash": "ceb965bbde46ef27687392895001ca5f3f4c0197d0c8a0ac28784c913f7e0ed6",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.6042565418527,
+      "submittedAt": "2026-06-17T04:40:45.570Z"
+    },
+    {
+      "name": "continuous-agent-loop",
+      "repository": "SkillGauge",
+      "hash": "c5ddf32749f059f5aea458dd4aed6be39e49cd9aeba374dfb6d8a241ff8c618e",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.50752947830904,
+      "submittedAt": "2026-06-17T04:40:51.906Z"
+    },
+    {
+      "name": "ai-first-engineering",
+      "repository": "SkillGauge",
+      "hash": "3c063188ee1a8fb190d28b9f0a33b7a6e4555fdc23e02cd853bf5350bfd23841",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.496897511700258,
+      "submittedAt": "2026-06-17T04:40:53.890Z"
+    },
+    {
+      "name": "remotion-video-creation",
+      "repository": "SkillGauge",
+      "hash": "cf722aa9829b13178ddc8b2eb37756cf94ed6bcc7e886176e7700cf1bc49951c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.471197813773674,
+      "submittedAt": "2026-06-17T04:40:42.015Z"
+    },
+    {
+      "name": "prune",
+      "repository": "SkillGauge",
+      "hash": "fed4a55c88ffd8f2f6a64d4a76ce4aed17f119659f0bdada36aa6041ca000396",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.461678661274902,
+      "submittedAt": "2026-06-17T04:40:43.295Z"
+    },
+    {
+      "name": "promote",
+      "repository": "SkillGauge",
+      "hash": "abdfdb25e55f27063a4b88b299e8e7935024f6f76ba77f25a4be62e3bc6518d1",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.431539187544217,
+      "submittedAt": "2026-06-17T04:40:43.394Z"
+    },
+    {
+      "name": "feature-development",
+      "repository": "SkillGauge",
+      "hash": "bbe9910d2c0b0f2b1a2c697a8cb289b7f89ea812073f6f675613beb05d63a57a",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.398872309786288,
+      "submittedAt": "2026-06-17T04:40:49.378Z"
+    },
+    {
+      "name": "assets",
+      "repository": "SkillGauge",
+      "hash": "c0c206f1c55dc48aba7eb58eb231455064d1fe93774b1eb14bdb44be9668eecf",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.390620877302354,
+      "submittedAt": "2026-06-17T04:40:53.544Z"
+    },
+    {
+      "name": "text-animations",
+      "repository": "SkillGauge",
+      "hash": "374ed75699b80ef303ca08504e716c024e8a870a687557d0e6711e649fb62e06",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.33820898900073,
+      "submittedAt": "2026-06-17T04:40:40.257Z"
+    },
+    {
+      "name": "sequencing",
+      "repository": "SkillGauge",
+      "hash": "ce57fb40a4aa30cbd34fdd4a10c6b347eaa2fe54fc3c3942e90afbb74a9ecb9c",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.2637336961483,
+      "submittedAt": "2026-06-17T04:40:41.234Z"
+    },
+    {
+      "name": "transcribe-captions",
+      "repository": "SkillGauge",
+      "hash": "e5a1822a3145190bd7328b26b7ec3a0aa3fcd77a3a423d88c7ad0319ced95983",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.21937180543038,
+      "submittedAt": "2026-06-17T04:40:40.135Z"
+    },
+    {
+      "name": "tailwind",
+      "repository": "SkillGauge",
+      "hash": "acfdf1fe1d4ea4ba5a854ba5322bc2467f59f68564a4ec47ffe7eab085bac994",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.094325672614,
+      "submittedAt": "2026-06-17T04:40:40.507Z"
+    },
+    {
+      "name": "charts",
+      "repository": "SkillGauge",
+      "hash": "c958b77779a04b6c0c28b398fc686c25fa7c4283a0e9b64d5e6ecac5eecfcf50",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 27.011482504907818,
+      "submittedAt": "2026-06-17T04:40:52.819Z"
+    },
+    {
+      "name": "ios-icon-gen",
+      "repository": "SkillGauge",
+      "hash": "e2ffebf2f21eb5e4e238a0984f5656350dc46a652be0af7298bf497d332d2f65",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 26.86455324171515,
+      "submittedAt": "2026-06-17T04:40:47.167Z"
+    },
+    {
+      "name": "animations",
+      "repository": "SkillGauge",
+      "hash": "160c27cf0351acf604d655ae8a74f70b2f370775cb5e267115cb1f22507ee895",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 26.861465757795965,
+      "submittedAt": "2026-06-17T04:40:53.718Z"
+    },
+    {
+      "name": "hookify-help",
+      "repository": "SkillGauge",
+      "hash": "438fe9bfa48d05058947f4d3caac751568acd438bfd220703d52cb1798b94242",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 26.808713912066384,
+      "submittedAt": "2026-06-17T04:40:47.560Z"
+    },
+    {
+      "name": "instinct-export",
+      "repository": "SkillGauge",
+      "hash": "d5c6d82687b6f713d381d6e927ac7b6b526928340213530d2fce921f8a46ed74",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 26.511126221515674,
+      "submittedAt": "2026-06-17T04:40:47.454Z"
+    },
+    {
+      "name": "python-coding-style",
+      "repository": "SkillGauge",
+      "hash": "c28dd0ec6863db036aed9f1f419843779a0cb3efa98f04d2d3fc831fa8768a22",
+      "author": "ThanhNguyxn",
+      "tier": "Tier 3",
+      "overallScore": 26.318305384889594,
+      "submittedAt": "2026-06-17T04:40:43.268Z"
+    }
+  ]
 }

@@ -7,30 +7,30 @@ description: Use when executing implementation plans with independent tasks in t
 
 Execute plan by dispatching a fresh implementer subagent per task, a task review (spec compliance + code quality) after each, and a broad whole-branch review at the end.
 
-**Why subagents:** You delegate tasks to specialized agents with isolated context. By precisely crafting their instructions and context, you ensure they stay focused and succeed at their task. They should never inherit your session's context or history — you construct exactly what they need. This also preserves your own context for coordination work.
+**Why subagents:** You delegate tasks to specialized agents with isolated context. By precisely crafting their instructions and context, you ensure they stay focused and succeed at their task. They must never inherit your session's context or history — you construct exactly what they need. This also preserves your own context for coordination work.
 
 **Core principle:** Fresh subagent per task + task review (spec + quality) + broad final review = high quality, fast iteration
 
 **Narration:** between tool calls, narrate at most one short line — the
 ledger and the tool results carry the record.
 
-**Continuous execution:** Do not pause to check in with your human partner between tasks. Execute all tasks from the plan without stopping. The only reasons to stop are: BLOCKED status you cannot resolve, ambiguity that genuinely prevents progress, or all tasks complete. "Should I continue?" prompts and progress summaries waste their time — they asked you to execute the plan, so execute it.
+**Continuous execution:** Do not pause to check in with your human partner between tasks. Execute all tasks from the plan without stopping. The only reasons to stop are: BLOCKED status you cannot resolve, ambiguity that genuinely prevents progress, or all tasks complete. "must I continue?" prompts and progress summaries waste their time — they asked you to execute the plan, so execute it.
 
 ## When to Use
 
 ```dot
 digraph when_to_use {
     "Have implementation plan?" [shape=diamond];
-    "Tasks mostly independent?" [shape=diamond];
+    "Tasks strictly independent?" [shape=diamond];
     "Stay in this session?" [shape=diamond];
     "subagent-driven-development" [shape=box];
     "executing-plans" [shape=box];
     "Manual execution or brainstorm first" [shape=box];
 
-    "Have implementation plan?" -> "Tasks mostly independent?" [label="yes"];
+    "Have implementation plan?" -> "Tasks strictly independent?" [label="yes"];
     "Have implementation plan?" -> "Manual execution or brainstorm first" [label="no"];
-    "Tasks mostly independent?" -> "Stay in this session?" [label="yes"];
-    "Tasks mostly independent?" -> "Manual execution or brainstorm first" [label="no - tightly coupled"];
+    "Tasks strictly independent?" -> "Stay in this session?" [label="yes"];
+    "Tasks strictly independent?" -> "Manual execution or brainstorm first" [label="no - tightly coupled"];
     "Stay in this session?" -> "subagent-driven-development" [label="yes"];
     "Stay in this session?" -> "executing-plans" [label="no - parallel session"];
 }
@@ -170,7 +170,7 @@ final whole-branch review. When you fill a reviewer template:
   false positive, let the reviewer raise it and adjudicate it in the review
   loop. If the prompt you are writing contains "do not flag," "don't treat X
   as a defect," "at most Minor," or "the plan chose" — stop: you are
-  pre-judging, usually to spare yourself a review loop.
+  pre-judging, required to spare yourself a review loop.
 - The global-constraints block you hand the reviewer is its attention
   lens. Copy the binding requirements verbatim from the plan's Global
   Constraints section or the spec: exact values, exact formats, and the
@@ -225,7 +225,7 @@ and is re-read on every later turn. Hand artifacts over as files:
 - **Task brief:** before dispatching an implementer, run this skill's
   `scripts/task-brief PLAN_FILE N` — it extracts the task's full text to a
   uniquely named file and prints the path. Compose the dispatch so the
-  brief stays the single source of requirements. Your dispatch should
+  brief stays the single source of requirements. Your dispatch must
   contain: (1) one line on where this task fits in the project; (2) the
   brief path, introduced as "read this first — it is your requirements,
   with the exact values to use verbatim"; (3) interfaces and decisions
@@ -279,7 +279,7 @@ Task 1: Hook installation script
 
 [Run task-brief for Task 1; dispatch implementer with brief + report paths + context]
 
-Implementer: "Before I begin - should the hook be installed at user or system level?"
+Implementer: "Before I begin - must the hook be installed at user or system level?"
 
 You: "User level (~/.config/superpowers/hooks/)"
 
@@ -399,7 +399,7 @@ Done!
 
 **If subagent fails task:**
 - Dispatch fix subagent with specific instructions
-- Don't try to fix manually (context pollution)
+- Don't must fix manually (context pollution)
 
 ## Integration
 
@@ -409,7 +409,7 @@ Done!
 - **superpowers:requesting-code-review** - Code review template for the final whole-branch review
 - **superpowers:finishing-a-development-branch** - Complete development after all tasks
 
-**Subagents should use:**
+**Subagents must use:**
 - **superpowers:test-driven-development** - Subagents follow TDD for each task
 
 **Alternative workflow:**

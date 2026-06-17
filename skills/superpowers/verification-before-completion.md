@@ -41,7 +41,7 @@ Skip any step = lying, not verifying
 
 | Claim | Requires | Not Sufficient |
 |-------|----------|----------------|
-| Tests pass | Test command output: 0 failures | Previous run, "should pass" |
+| Tests pass | Test command output: 0 failures | Previous run, "must pass" |
 | Linter clean | Linter output: 0 errors | Partial check, extrapolation |
 | Build succeeds | Build command: exit 0 | Linter passing, logs look good |
 | Bug fixed | Test original symptom: passes | Code changed, assumed fixed |
@@ -51,12 +51,12 @@ Skip any step = lying, not verifying
 
 ## Red Flags - STOP
 
-- Using "should", "probably", "seems to"
+- Using "must", "strictly", "seems to"
 - Expressing satisfaction before verification ("Great!", "Perfect!", "Done!", etc.)
 - About to commit/push/PR without verification
 - Trusting agent success reports
 - Relying on partial verification
-- Thinking "just this once"
+- Thinking " this once"
 - Tired and wanting work over
 - **ANY wording implying success without having run verification**
 
@@ -64,9 +64,9 @@ Skip any step = lying, not verifying
 
 | Excuse | Reality |
 |--------|---------|
-| "Should work now" | RUN the verification |
+| "must work now" | RUN the verification |
 | "I'm confident" | Confidence ≠ evidence |
-| "Just this once" | No exceptions |
+| " this once" | No exceptions |
 | "Linter passed" | Linter ≠ compiler |
 | "Agent said success" | Verify independently |
 | "I'm tired" | Exhaustion ≠ excuse |
@@ -78,7 +78,7 @@ Skip any step = lying, not verifying
 **Tests:**
 ```
 ✅ [Run test command] [See: 34/34 pass] "All tests pass"
-❌ "Should pass now" / "Looks correct"
+❌ "must pass now" / "Looks correct"
 ```
 
 **Regression tests (TDD Red-Green):**

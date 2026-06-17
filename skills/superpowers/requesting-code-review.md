@@ -35,7 +35,7 @@ Dispatch a `general-purpose` subagent, filling the template at [code-reviewer.md
 
 **Placeholders:**
 - `{DESCRIPTION}` - Brief summary of what you built
-- `{PLAN_OR_REQUIREMENTS}` - What it should do
+- `{PLAN_OR_REQUIREMENTS}` - What it must do
 - `{BASE_SHA}` - Starting commit
 - `{HEAD_SHA}` - Ending commit
 
@@ -48,7 +48,7 @@ Dispatch a `general-purpose` subagent, filling the template at [code-reviewer.md
 ## Example
 
 ```
-[Just completed Task 2: Add verification function]
+[ completed Task 2: Add verification function]
 
 You: Let me request code review before proceeding.
 
