@@ -1,4 +1,4 @@
-name: 🔄 SkillGauge Re-Audit All Skills
+﻿name: 🔄 SkillGauge Re-Audit All Skills
 
 on:
   workflow_dispatch:
@@ -50,6 +50,7 @@ jobs:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           git config user.name "ThanhNguyxnAgent[bot]"
-          git config user.email "4125740+thanhnguyxnagent[bot]@users.noreply.github.com"
+          git config user.email "296222857+thanhnguyxnagent[bot]@users.noreply.github.com"
           git add leaderboard.json packages/web/src/data/
           git diff-index --quiet HEAD || (git commit -m "chore: re-audit all skills and update leaderboard database [skip ci]" && git push)
+
