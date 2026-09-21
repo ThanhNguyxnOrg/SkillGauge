@@ -40,10 +40,18 @@ jobs:
           node packages/cli/dist/index.js check-duplicate --target "skills/**/*.md" --db "leaderboard.json"
           echo "exit_code=$?" >> $GITHUB_ENV
 
+      - name: 🤖 Generate GitHub App Token
+        if: env.exit_code == '2'
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+
       - name: 🚨 Handle Duplicate PR
         if: env.exit_code == '2'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           gh pr comment ${{ github.event.pull_request.number }} --body "🚨 **SkillGauge Audit Warning:** This skill matches an existing entry on the leaderboard. To prevent spam and plagiarized content, duplicate submissions are automatically rejected."
           exit 1
