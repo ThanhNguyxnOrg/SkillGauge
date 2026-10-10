@@ -220,7 +220,10 @@ export function auditSkill(content: string): AuditReport {
   }
   const overallScore = (scoreSum / 390.0) * 100.0;
 
-  // Map old aliases for backward compatibility with 1.0 test suite (normalized to 0-1)
+  // Map raw signals under b*_raw names; old names kept as deprecated aliases for 1 release (web bundle reads them).
+  scores['b1_raw'] = scores['B1'];
+  scores['b4_raw'] = scores['B4'];
+  scores['b11_raw'] = scores['B11'];
   scores['efficacy'] = dimensions.dimA / 15.0;
   scores['friction'] = scores['B1'];
   scores['compactness'] = scores['B4'];
@@ -237,20 +240,24 @@ export function auditSkill(content: string): AuditReport {
   scores['variableSafety'] = scores['B10'];
   scores['exampleRatio'] = scores['B6'];
 
+  // Percentile tiers from 411-skill distribution on 2026-10-10 (min 26.3, P50 30.60, P90 34.39, max 38.21).
+  // Recompute via re-audit-all when the population changes; absolute 85/60 was unreachable (ceiling ~40).
+  const TIER_P90 = 34.39;
+  const TIER_P50 = 30.60;
   let tier: 'Tier 1' | 'Tier 2' | 'Tier 3' = 'Tier 3';
-  if (overallScore >= 85.0) {
+  if (overallScore >= TIER_P90) {
     tier = 'Tier 1';
-  } else if (overallScore >= 60.0) {
+  } else if (overallScore >= TIER_P50) {
     tier = 'Tier 2';
   }
 
-  // Generate brief feedback on the lowest-scoring dimensions (threshold: 70% of max weight)
+  // Single 70% bar for all dims (10.5/15); old C<7.5/E<9.0 bars were arbitrary.
   const failedDims: string[] = [];
   if (dimensions.dimA < 10.5) failedDims.push('A');
   if (dimensions.dimB < 10.5) failedDims.push('B');
-  if (dimensions.dimC < 7.5) failedDims.push('C');
+  if (dimensions.dimC < 10.5) failedDims.push('C');
   if (dimensions.dimD < 10.5) failedDims.push('D');
-  if (dimensions.dimE < 9.0) failedDims.push('E');
+  if (dimensions.dimE < 10.5) failedDims.push('E');
   if (dimensions.dimF < 10.5) failedDims.push('F');
   if (dimensions.dimG < 10.5) failedDims.push('G');
   if (dimensions.dimH < 10.5) failedDims.push('H');
@@ -346,10 +353,11 @@ ${content}
     const semanticMultiplier = coherence * depth * gamingScore;
     const newOverallScore = baseReport.overallScore * semanticMultiplier;
 
+    // Same percentile tiers as static path; multiplier disclosed in explanation below.
     let tier: 'Tier 1' | 'Tier 2' | 'Tier 3' = 'Tier 3';
-    if (newOverallScore >= 85.0) {
+    if (newOverallScore >= 34.39) {
       tier = 'Tier 1';
-    } else if (newOverallScore >= 60.0) {
+    } else if (newOverallScore >= 30.60) {
       tier = 'Tier 2';
     }
 
@@ -357,7 +365,7 @@ ${content}
       ...baseReport,
       overallScore: newOverallScore,
       tier,
-      explanation: `${baseReport.explanation ? baseReport.explanation + ' | ' : ''}LLM Quality: ${resultJson.explanation || 'Done'}`
+      explanation: `${baseReport.explanation ? baseReport.explanation + ' | ' : ''}LLM multiplier=${semanticMultiplier.toFixed(2)} Quality: ${resultJson.explanation || 'Done'}`
     };
   } catch (error: any) {
     return {
