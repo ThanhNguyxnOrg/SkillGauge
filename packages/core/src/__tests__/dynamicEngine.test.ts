@@ -74,5 +74,19 @@ This is mock skill content.
       { keyword: 'secret', passed: true },
       { keyword: 'password', passed: true }
     ]);
+    expect(report.skipped).toBe(false);
+  });
+
+  it('flags vacuous pass when a skill declares no scenarios', async () => {
+    const raw = `---
+name: bare-skill
+description: A skill with no dynamic scenarios
+---
+# Bare Skill
+Body.
+`;
+    const report = await runDynamicTests('bare.md', raw, 'MOCK_KEY');
+    expect(report.results).toHaveLength(0);
+    expect(report.skipped).toBe(true);
   });
 });

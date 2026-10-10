@@ -26,6 +26,13 @@ import * as dimX from './scorers/dimX.js';
 import * as dimY from './scorers/dimY.js';
 import * as dimZ from './scorers/dimZ.js';
 
+// Percentile tiers from 411-skill distribution on 2026-10-10 after density-neutral
+// (min 38.01, P50 41.55, P90 44.65, max 48.01). Single source of truth; packageEngine
+// imports these. Recompute via re-audit-all when the population changes.
+// shortcut: absolute 85/60 was unreachable (ceiling ~40 pre-dedup).
+export const TIER_P90 = 44.65;
+export const TIER_P50 = 41.55;
+
 export interface AuditReport {
   name?: string;
   overallScore: number;
@@ -240,10 +247,7 @@ export function auditSkill(content: string): AuditReport {
   scores['variableSafety'] = scores['B10'];
   scores['exampleRatio'] = scores['B6'];
 
-  // Percentile tiers from 411-skill distribution on 2026-10-10 after density-neutral (min 38.01, P50 41.55, P90 44.65, max 48.01).
-  // Recompute via re-audit-all when the population changes; absolute 85/60 was unreachable (ceiling ~40).
-  const TIER_P90 = 44.65;
-  const TIER_P50 = 41.55;
+  // Percentile tiers (TIER_P90/TIER_P50 module constants, single source of truth).
   let tier: 'Tier 1' | 'Tier 2' | 'Tier 3' = 'Tier 3';
   if (overallScore >= TIER_P90) {
     tier = 'Tier 1';
@@ -353,11 +357,11 @@ ${content}
     const semanticMultiplier = coherence * depth * gamingScore;
     const newOverallScore = baseReport.overallScore * semanticMultiplier;
 
-    // Same percentile tiers as static path; multiplier disclosed in explanation below.
+    // Same percentile tiers as static path (module constants); multiplier disclosed in explanation below.
     let tier: 'Tier 1' | 'Tier 2' | 'Tier 3' = 'Tier 3';
-    if (newOverallScore >= 44.65) {
+    if (newOverallScore >= TIER_P90) {
       tier = 'Tier 1';
-    } else if (newOverallScore >= 41.55) {
+    } else if (newOverallScore >= TIER_P50) {
       tier = 'Tier 2';
     }
 

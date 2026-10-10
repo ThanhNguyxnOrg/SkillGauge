@@ -1,4 +1,4 @@
-import { auditSkill, AuditReport } from './engine.js';
+import { auditSkill, AuditReport, TIER_P90, TIER_P50 } from './engine.js';
 
 export interface VirtualFile {
   path: string;
@@ -77,11 +77,11 @@ export function auditPackage(files: VirtualFile[]): PackageReport {
   const avgOverallScore = meanOverallScore;
   const packageAverage = avgOverallScore * integrityScore * redundancyPenalty;
 
-  // Same percentile tiers as single-skill scoring (population P90 44.65 / P50 41.55 on 2026-10-10).
+  // Same percentile tiers as single-skill scoring (TIER_P90/TIER_P50 from engine.js).
   let tier: 'Tier 1' | 'Tier 2' | 'Tier 3' = 'Tier 3';
-  if (packageAverage >= 44.65) {
+  if (packageAverage >= TIER_P90) {
     tier = 'Tier 1';
-  } else if (packageAverage >= 41.55) {
+  } else if (packageAverage >= TIER_P50) {
     tier = 'Tier 2';
   }
 

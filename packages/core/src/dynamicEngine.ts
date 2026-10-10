@@ -16,6 +16,8 @@ export interface SkillDynamicTestReport {
   skillName: string;
   filePath: string;
   passed: boolean;
+  /** True when the skill declares no scenarios: nothing ran, pass is vacuous. */
+  skipped: boolean;
   results: DynamicTestResult[];
 }
 
@@ -116,6 +118,7 @@ export async function runDynamicTests(
     skillName,
     filePath,
     passed: testScenarios.length > 0 ? allPassed : true,
+    skipped: testScenarios.length === 0,
     results
   };
 }
