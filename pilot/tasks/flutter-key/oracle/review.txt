@@ -1,0 +1,13 @@
+[HIGH] Index-based keys in reorderable list
+File: cart_page.dart:4
+Issue: ValueKey(e.key) uses the list index; reordering scrambles state. Use a stable item id.
+Fix: key: ValueKey(item.id).
+
+## Review Summary
+
+| Severity | Count | Status |
+|----------|-------|--------|
+| CRITICAL | 0     | pass   |
+| HIGH     | 1     | block  |
+
+Verdict: BLOCK — HIGH issues must be fixed before merge.

@@ -1,0 +1,1 @@
+Model a user with a name and an email address as an immutable value object in Python. Reply with code only.

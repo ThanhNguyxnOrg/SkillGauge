@@ -1,0 +1,13 @@
+[HIGH] Unused import and debug logging
+File: formatter.js:2
+Issue: parseDate is imported but never used; console.log debug statement left in.
+Fix: Remove the unused import and the console.log before merge.
+
+## Review Summary
+
+| Severity | Count | Status |
+|----------|-------|--------|
+| CRITICAL | 0     | pass   |
+| HIGH     | 1     | warn   |
+
+Verdict: WARNING — 1 HIGH issue should be resolved before merge.

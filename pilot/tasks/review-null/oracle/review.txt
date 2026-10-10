@@ -1,0 +1,13 @@
+[CRITICAL] Hardcoded API key in source
+File: user-service.js:2
+Issue: API key "sk-live-abc123" is hardcoded. Move it to an environment variable.
+Fix: const apiKey = process.env.API_KEY;
+
+## Review Summary
+
+| Severity | Count | Status |
+|----------|-------|--------|
+| CRITICAL | 1     | block  |
+| HIGH     | 0     | pass   |
+
+Verdict: BLOCK — 1 CRITICAL issue must be fixed before merge.
