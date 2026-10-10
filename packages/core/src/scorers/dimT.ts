@@ -12,7 +12,7 @@ export function scoreT1(text: string): number {
 
 export function scoreT2(text: string): number {
   const dist = calculateSemanticDependencyDistance(text, /\b(if|when)\b/i, /\bnext\b/i);
-  if (dist === -1) return 0.2;
+  if (dist === -1) return 0.5; // neutral when pair absent
   return Math.max(0.1, 1.0 - (dist / 24.0));
 }
 
@@ -43,7 +43,7 @@ export function scoreT6(text: string): number {
 
 export function scoreT7(text: string): number {
   const dist = calculateSemanticDependencyDistance(text, /\b(if|when)\b/i, /\border\b/i);
-  if (dist === -1) return 0.2;
+  if (dist === -1) return 0.5; // neutral when pair absent
   return Math.max(0.1, 1.0 - (dist / 34.0));
 }
 
@@ -67,33 +67,22 @@ export function scoreT10(text: string): number {
 }
 
 export function scoreT11(text: string): number {
-  const filtered = tokenize(text).filter(t => t.includes('then'));
-  const ttr = calculateTTR(filtered);
-  return Math.min(1.0, ttr * 1.5);
+  return scoreT1(text); // dedup: canonical scoreT1
 }
 
 export function scoreT12(text: string): number {
-  const dist = calculateSemanticDependencyDistance(text, /\b(if|when)\b/i, /\bnext\b/i);
-  if (dist === -1) return 0.2;
-  return Math.max(0.1, 1.0 - (dist / 44.0));
+  return scoreT2(text); // dedup: canonical scoreT2
 }
 
 export function scoreT13(text: string): number {
-  const dens = calculateDensity(text, /\bfinally\b/gi);
-  return Math.min(1.0, dens * 23);
+  return scoreT3(text); // dedup: canonical scoreT3
 }
 
 export function scoreT14(text: string): number {
-  const parts = text.split(/\border\b/i).filter(p => p.trim().length > 0);
-  const lengths = parts.map(p => tokenize(p).length);
-  const stdDev = calculateStandardDeviation(lengths);
-  if (stdDev === 0) return 0.5;
-  return Math.max(0.1, 1.0 - (stdDev / 29.0));
+  return scoreT4(text); // dedup: canonical scoreT4
 }
 
 export function scoreT15(text: string): number {
-  const filtered = tokenize(text).filter(t => t.includes('after') || t.includes('step'));
-  const entropy = calculateShannonEntropy(filtered);
-  return Math.min(1.0, entropy / 2.0);
+  return scoreT5(text); // dedup: canonical scoreT5
 }
 

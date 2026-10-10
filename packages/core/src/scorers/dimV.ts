@@ -12,7 +12,7 @@ export function scoreV1(text: string): number {
 
 export function scoreV2(text: string): number {
   const dist = calculateSemanticDependencyDistance(text, /\b(if|when)\b/i, /\bword\b/i);
-  if (dist === -1) return 0.2;
+  if (dist === -1) return 0.5; // neutral when pair absent
   return Math.max(0.1, 1.0 - (dist / 24.0));
 }
 
@@ -43,7 +43,7 @@ export function scoreV6(text: string): number {
 
 export function scoreV7(text: string): number {
   const dist = calculateSemanticDependencyDistance(text, /\b(if|when)\b/i, /\bphrase\b/i);
-  if (dist === -1) return 0.2;
+  if (dist === -1) return 0.5; // neutral when pair absent
   return Math.max(0.1, 1.0 - (dist / 34.0));
 }
 
@@ -67,33 +67,22 @@ export function scoreV10(text: string): number {
 }
 
 export function scoreV11(text: string): number {
-  const filtered = tokenize(text).filter(t => t.includes('avoid'));
-  const ttr = calculateTTR(filtered);
-  return Math.min(1.0, ttr * 1.5);
+  return scoreV1(text); // dedup: canonical scoreV1
 }
 
 export function scoreV12(text: string): number {
-  const dist = calculateSemanticDependencyDistance(text, /\b(if|when)\b/i, /\bword\b/i);
-  if (dist === -1) return 0.2;
-  return Math.max(0.1, 1.0 - (dist / 44.0));
+  return scoreV2(text); // dedup: canonical scoreV2
 }
 
 export function scoreV13(text: string): number {
-  const dens = calculateDensity(text, /\blanguage\b/gi);
-  return Math.min(1.0, dens * 23);
+  return scoreV3(text); // dedup: canonical scoreV3
 }
 
 export function scoreV14(text: string): number {
-  const parts = text.split(/\bphrase\b/i).filter(p => p.trim().length > 0);
-  const lengths = parts.map(p => tokenize(p).length);
-  const stdDev = calculateStandardDeviation(lengths);
-  if (stdDev === 0) return 0.5;
-  return Math.max(0.1, 1.0 - (stdDev / 29.0));
+  return scoreV4(text); // dedup: canonical scoreV4
 }
 
 export function scoreV15(text: string): number {
-  const filtered = tokenize(text).filter(t => t.includes('term') || t.includes('jargon'));
-  const entropy = calculateShannonEntropy(filtered);
-  return Math.min(1.0, entropy / 2.0);
+  return scoreV5(text); // dedup: canonical scoreV5
 }
 

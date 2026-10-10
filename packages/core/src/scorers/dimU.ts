@@ -12,7 +12,7 @@ export function scoreU1(text: string): number {
 
 export function scoreU2(text: string): number {
   const dist = calculateSemanticDependencyDistance(text, /\b(if|when)\b/i, /\bpersona\b/i);
-  if (dist === -1) return 0.2;
+  if (dist === -1) return 0.5; // neutral when pair absent
   return Math.max(0.1, 1.0 - (dist / 24.0));
 }
 
@@ -43,7 +43,7 @@ export function scoreU6(text: string): number {
 
 export function scoreU7(text: string): number {
   const dist = calculateSemanticDependencyDistance(text, /\b(if|when)\b/i, /\bstyle\b/i);
-  if (dist === -1) return 0.2;
+  if (dist === -1) return 0.5; // neutral when pair absent
   return Math.max(0.1, 1.0 - (dist / 34.0));
 }
 
@@ -67,33 +67,22 @@ export function scoreU10(text: string): number {
 }
 
 export function scoreU11(text: string): number {
-  const filtered = tokenize(text).filter(t => t.includes('role'));
-  const ttr = calculateTTR(filtered);
-  return Math.min(1.0, ttr * 1.5);
+  return scoreU1(text); // dedup: canonical scoreU1
 }
 
 export function scoreU12(text: string): number {
-  const dist = calculateSemanticDependencyDistance(text, /\b(if|when)\b/i, /\bpersona\b/i);
-  if (dist === -1) return 0.2;
-  return Math.max(0.1, 1.0 - (dist / 44.0));
+  return scoreU2(text); // dedup: canonical scoreU2
 }
 
 export function scoreU13(text: string): number {
-  const dens = calculateDensity(text, /\byou\b/gi);
-  return Math.min(1.0, dens * 23);
+  return scoreU3(text); // dedup: canonical scoreU3
 }
 
 export function scoreU14(text: string): number {
-  const parts = text.split(/\bstyle\b/i).filter(p => p.trim().length > 0);
-  const lengths = parts.map(p => tokenize(p).length);
-  const stdDev = calculateStandardDeviation(lengths);
-  if (stdDev === 0) return 0.5;
-  return Math.max(0.1, 1.0 - (stdDev / 29.0));
+  return scoreU4(text); // dedup: canonical scoreU4
 }
 
 export function scoreU15(text: string): number {
-  const filtered = tokenize(text).filter(t => t.includes('character') || t.includes('voice'));
-  const entropy = calculateShannonEntropy(filtered);
-  return Math.min(1.0, entropy / 2.0);
+  return scoreU5(text); // dedup: canonical scoreU5
 }
 

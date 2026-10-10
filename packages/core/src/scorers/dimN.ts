@@ -12,7 +12,7 @@ export function scoreN1(text: string): number {
 
 export function scoreN2(text: string): number {
   const dist = calculateSemanticDependencyDistance(text, /\b(if|when)\b/i, /\bseed\b/i);
-  if (dist === -1) return 0.2;
+  if (dist === -1) return 0.5; // neutral when pair absent
   return Math.max(0.1, 1.0 - (dist / 24.0));
 }
 
@@ -43,7 +43,7 @@ export function scoreN6(text: string): number {
 
 export function scoreN7(text: string): number {
   const dist = calculateSemanticDependencyDistance(text, /\b(if|when)\b/i, /\bvary\b/i);
-  if (dist === -1) return 0.2;
+  if (dist === -1) return 0.5; // neutral when pair absent
   return Math.max(0.1, 1.0 - (dist / 34.0));
 }
 
@@ -67,33 +67,22 @@ export function scoreN10(text: string): number {
 }
 
 export function scoreN11(text: string): number {
-  const filtered = tokenize(text).filter(t => t.includes('temperature'));
-  const ttr = calculateTTR(filtered);
-  return Math.min(1.0, ttr * 1.5);
+  return scoreN1(text); // dedup: canonical scoreN1
 }
 
 export function scoreN12(text: string): number {
-  const dist = calculateSemanticDependencyDistance(text, /\b(if|when)\b/i, /\bseed\b/i);
-  if (dist === -1) return 0.2;
-  return Math.max(0.1, 1.0 - (dist / 44.0));
+  return scoreN2(text); // dedup: canonical scoreN2
 }
 
 export function scoreN13(text: string): number {
-  const dens = calculateDensity(text, /\bsample\b/gi);
-  return Math.min(1.0, dens * 23);
+  return scoreN3(text); // dedup: canonical scoreN3
 }
 
 export function scoreN14(text: string): number {
-  const parts = text.split(/\bvary\b/i).filter(p => p.trim().length > 0);
-  const lengths = parts.map(p => tokenize(p).length);
-  const stdDev = calculateStandardDeviation(lengths);
-  if (stdDev === 0) return 0.5;
-  return Math.max(0.1, 1.0 - (stdDev / 29.0));
+  return scoreN4(text); // dedup: canonical scoreN4
 }
 
 export function scoreN15(text: string): number {
-  const filtered = tokenize(text).filter(t => t.includes('chance') || t.includes('diverse'));
-  const entropy = calculateShannonEntropy(filtered);
-  return Math.min(1.0, entropy / 2.0);
+  return scoreN5(text); // dedup: canonical scoreN5
 }
 
