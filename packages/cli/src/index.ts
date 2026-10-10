@@ -389,11 +389,16 @@ program
         const report = auditSkill(content);
         const parsedName = getIntelligentSkillName(file, report.name);
         const repoName = getRepositoryName(file);
-        void parsedName;
-        void repoName;
+        const displayName = parsedName;
 
-        // Same content hash blocks regardless of repository (re-submits included)
-        const isDuplicate = db.skills.some((s: any) => s.hash === hash);
+        // Same content hash blocks only when it appears under a different identity
+        // (clean name + repository). Unchanged files (same hash, name, repo) pass so
+        // PRs touching skills/** are not rejected for files that are already merged.
+        const isDuplicate = db.skills.some((s: any) => {
+          if (s.hash !== hash) return false;
+          const sCleanName = String(s.name).replace('🌟 ', '');
+          return !(sCleanName === displayName && s.repository === repoName);
+        });
 
         if (isDuplicate) {
           console.error(chalk.red(`🚨 Duplicate detected for file: ${file} (content hash matches existing entry)`));
