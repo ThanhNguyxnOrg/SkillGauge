@@ -94,7 +94,7 @@ genkit start --noui -- uv run src/main.py   # same, without the Dev UI (still a 
 
 **Non-interactive use (agents/CI):** add the global `--non-interactive` flag before `--` so the CLI uses defaults and never blocks on a prompt (e.g. the first-run analytics notice): `genkit start --non-interactive -- uv run src/main.py` (works with `flow:run` too).
 
-**Run a flow (`flow:run`):** invoke a specific flow by name from the CLI. Append your run command after `--` to spin up the runtime just for this run (the command runs as-is to register your flows):
+**Run a flow (`flow:run`):** invoke a specific flow by name from the CLI. Append your run command after `--` to spin up the runtime  for this run (the command runs as-is to register your flows):
 ```bash
 genkit flow:run myFlow '{"data": "input"}' -- uv run src/main.py
 ```
@@ -108,7 +108,6 @@ genkit trace:get <traceId> --format json # machine-readable JSON, safe to pipe i
 ```
 
 For machine-readable output, pass `--format json` to get clean JSON you can pipe into `jq` or other parsers. The **default** output is human-oriented (banner/log lines, possible truncation on large traces), so don't pipe that form directly; use `--format json`, grep, or the Dev UI trace viewer.
-
 
 See [Dev Workflow](references/dev-workflow.md) for the full checklist and Dev UI walkthrough.
 

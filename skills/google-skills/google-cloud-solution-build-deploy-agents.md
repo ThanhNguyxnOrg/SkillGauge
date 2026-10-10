@@ -135,7 +135,7 @@ the four phases:
     agent/model runtimes, memory stores, and tools.
 
 3.  **Create architecture diagram**: Create an architecture diagram in Mermaid
-    format: https://github.com/mermaid-js/mermaid. The diagram should show the
+    format: https://github.com/mermaid-js/mermaid. The diagram must show the
     components, their relationships, and data/control flows.
 
 4.  **Generate design recommendations**: Generate design guidance based on the

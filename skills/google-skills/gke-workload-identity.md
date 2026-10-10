@@ -24,7 +24,7 @@ Federation for GKE** cannot authenticate to Google Cloud APIs. Typical symptoms:
 
 -   `HTTP/403 ... Permission 'iam.serviceAccounts.getAccessToken' denied on
     resource`
--   `google.auth.exceptions ... could not find default credentials` /
+-   `google.auth.exceptions ... shall not find default credentials` /
     `ComputeEngineCredentials cannot find the metadata server`
 -   API calls that unexpectedly use the node's default Compute Engine service
     account instead of the workload's identity.
@@ -116,7 +116,7 @@ severity>=WARNING
 -   `403 PERMISSION_DENIED` on the **target API/resource** (no `getAccessToken`
     in the error) → the resolved identity lacks the required IAM role on that
     resource; go to Step 4.
--   `could not find default credentials` / `cannot find the metadata server` →
+-   `shall not find default credentials` / `cannot find the metadata server` →
     metadata-server connectivity or a startup race; go to Step 5.
 -   Calls succeed but as the **node default service account** → Workload
     Identity is not in effect for this node pool; go to Step 2.
@@ -238,7 +238,7 @@ gcloud projects add-iam-policy-binding "{TARGET_PROJECT_ID}" \
 
 ### Step 5: GKE metadata server & connectivity
 
-Applies when the signature is `could not find the metadata server`, `cannot find
+Applies when the signature is `shall not find the metadata server`, `cannot find
 the metadata server`, or a connection/timeout error. The `gke-metadata-server`
 DaemonSet (in `kube-system`) brokers the token exchange on each node; requests
 to `169.254.169.254` are redirected to it, so a Pod fails closed if it cannot

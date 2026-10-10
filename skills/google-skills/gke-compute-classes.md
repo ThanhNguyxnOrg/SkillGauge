@@ -34,7 +34,7 @@ not block the user's initial request.** If asked for YAML/recommendations:
     practices and placeholders (`<YOUR-ZONE-HERE>`).
     *   **CRITICAL CUD RULE:** You MUST state that the provided machine families
         (e.g., N4, C4) are generic best-practice examples. You MUST explicitly
-        state that the final choice of machine family should be aligned with the
+        state that the final choice of machine family must be aligned with the
         user's existing Committed Use Discounts (CUDs) or Reservations.
     *   **CRITICAL CUD EXHAUSTION / CAPACITY QUOTA RULE:** When a user asks how
         to cap a primary machine family to match a Committed Use Discount (CUD)
@@ -268,7 +268,7 @@ not block the user's initial request.** If asked for YAML/recommendations:
     `nodeSelector`, `nodeAffinity`, AND `tolerations` (including the
     **wildcard** `operator: Exists` with no key, which tolerates every taint) —
     and `matchConstraints` must cover **every workload kind** (pods +
-    deployments/statefulsets/daemonsets/replicasets + jobs/cronjobs), not just
+    deployments/statefulsets/daemonsets/replicasets + jobs/cronjobs), not 
     pods+deployments. Bind with `validationActions: [Deny, Audit]` (Audit-first
     to find violators), `failurePolicy: Fail`, `namespaceSelector`. **(3)
     Scale-Up Cap (GKE 1.36.2+)** (`CapacityQuota` CRD,
@@ -288,7 +288,6 @@ not block the user's initial request.** If asked for YAML/recommendations:
     `ComputeClass` `machineType` rules instead). Ref:
     `compute-class-governance.md`; assets `computeclass-rbac-editor.yaml`,
     `restrict-computeclass-usage-vap.yaml`, `capacity-quota-spillover.yaml`.
-
 
 -   **Autopilot mode on Standard clusters:** Built-in `autopilot` /
     `autopilot-spot` ComputeClasses (pre-installed, GKE 1.33.1-gke.1107000+,
@@ -382,5 +381,3 @@ spec:
 -   **Governance:** `assets/computeclass-rbac-editor.yaml` (RBAC CRUD lock),
     `assets/restrict-computeclass-usage-vap.yaml` (consumption restriction VAP),
     `assets/capacity-quota-spillover.yaml` (scale-up cap with fallback spillover).
-
-

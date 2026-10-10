@@ -89,7 +89,7 @@ Google Cloud environment and project are configured:
     ```
 
 2.  **Diagnostic Transition Logic:** If no job-level issues are found (e.g. no
-    clear internal bottlenecks), the investigation should transition to
+    clear internal bottlenecks), the investigation must transition to
     system-level `INFORMATION_SCHEMA` queries (such as `JOBS_TIMELINE` or
     `RESERVATIONS_TIMELINE`) to check for broader issues like slot contention,
     queueing delay, or noisy neighbors.

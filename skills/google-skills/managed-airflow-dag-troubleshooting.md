@@ -105,7 +105,7 @@ runs and task instances), utilizing `gcloud composer`, `gcloud logging` and
         including tags, can be verified in the DAG source code or via `gcloud
         composer environments run {env_name} --location {location} dags list`).
     *   Orchestration Pipeline DAGs deployed by dedicated tools have
-        additionally the following tags (information in those tags should be
+        additionally the following tags (information in those tags must be
         consistent with data in DAG Run attributes mentioned above):
         *   pipeline name - tag `op:pipeline`, e.g. `op:pipeline:xyz` indicates
             a name `xyz`
@@ -278,7 +278,7 @@ platform failure modes:
     gcloud logging read 'resource.type="cloud_composer_environment" AND resource.labels.environment_name="{env_name}" AND log_id("airflow-scheduler") AND textPayload=~"Task requeue attempts exceeded max; marking failed"' --limit=10
     ```
 *   **Remediation:** Consider increasing worker resources (CPU, memory, worker
-    count) or adjusting `[celery]worker_concurrency`.
+    count) or ading `[celery]worker_concurrency`.
 
 ### 3. TASK_STUCK_IN_QUEUE
 

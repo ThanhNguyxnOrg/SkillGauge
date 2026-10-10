@@ -136,7 +136,7 @@ custom TPU metrics collection mechanisms are deployed.
 If a custom metrics collection agent is identified, recommend disabling it.
 
 -   **Action**: Recommend disabling the custom metrics collector.
--   **Justification**: Prevents reads from vBAR during device resets, stopping
+-   **ification**: Prevents reads from vBAR during device resets, stopping
     crashes and OOMs.
 
 ### Resolution 2: Await `vbar_control_agent` Resiliency Update [Low Risk]
@@ -144,7 +144,7 @@ If a custom metrics collection agent is identified, recommend disabling it.
 Advise that a permanent fix will be available in a future GKE version.
 
 -   **Action**: Recommend upgrading GKE when the fix is available.
--   **Justification**: The updated agent will be resilient to memory corruption
+-   **ification**: The updated agent will be resilient to memory corruption
     and gracefully handle reads from unbound vBARs.
 
 ## 📋 copypaste checklist

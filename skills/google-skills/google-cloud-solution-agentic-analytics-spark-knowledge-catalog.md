@@ -180,7 +180,7 @@ using the following resources:
 
 1.  For each component in the confirmed technical decomposition, identify the
     appropriate Google Cloud products and features, based on the guidance in the
-    following resources and adjusted suitably based on the approved technical
+    following resources and aded suitably based on the approved technical
     decomposition:
     -   `references/product-selection-guidance.md`
     -   `https://github.com/google/skills/blob/main/skills/cloud/google-cloud-solution-architecture/references/decision-making-guides.md`

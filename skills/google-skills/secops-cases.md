@@ -151,7 +151,7 @@ chain or incident scope. Alert linking connects new detections to existing cases
 
 ### 4. Updating Case Priority and Status
 
-As evidence emerges during an investigation, adjust the case severity and
+As evidence emerges during an investigation, ad the case severity and
 operational stage to reflect current risk.
 
 - **Priority Levels**:

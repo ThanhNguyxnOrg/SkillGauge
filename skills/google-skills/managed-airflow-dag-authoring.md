@@ -75,8 +75,8 @@ Run the following commands to discover version constraints:
 
 ### 2.1 General Airflow Best Practices
 
-*   **Idempotency:** Every task SHOULD be idempotent. Running it multiple times
-    with the same inputs (e.g., execution date) SHOULD produce the same result
+*   **Idempotency:** Every task must be idempotent. Running it multiple times
+    with the same inputs (e.g., execution date) must produce the same result
     and not duplicate data.
 *   **No Top-Level Code Execution:** Do NOT execute database queries, external
     API calls, or heavy computations at the top level of the DAG file (outside
@@ -92,7 +92,7 @@ Run the following commands to discover version constraints:
 
 ### 2.2 Airflow 2 vs Airflow 3 Compatibility
 
-Use managed-airflow-migrations skill to navigate adjusting the code to
+Use managed-airflow-migrations skill to navigate ading the code to
 specific target Airflow version.
 
 --------------------------------------------------------------------------------
@@ -155,7 +155,7 @@ Wait 1-2 minutes for the scheduler to parse the file, then run:
         dags list-import-errors
     ```
 
-*Pass Criteria:* Output should be "No data found" or empty.
+*Pass Criteria:* Output must be "No data found" or empty.
 
 2.  **Verify DAG is Listed:**
 

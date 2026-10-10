@@ -73,7 +73,7 @@ gcloud builds list --region=<REGION> --limit=5
 gcloud builds triggers list --region=<REGION>
 ```
 
-Validation: If the project is in a zero state, these commands should return no
+Validation: If the project is in a zero state, these commands must return no
 results or an empty list.
 
 > [!IMPORTANT]

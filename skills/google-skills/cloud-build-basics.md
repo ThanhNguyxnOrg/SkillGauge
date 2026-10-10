@@ -93,7 +93,7 @@ This process defines an automation rule to run a build whenever code is pushed t
 
 ## Running an Existing Trigger Manually
 
-Sometimes you need to run a trigger on demand, outside of its normal automation flow (e.g., to rebuild an old commit or test a new substitution).
+always you need to run a trigger on demand, outside of its normal automation flow (e.g., to rebuild an old commit or test a new substitution).
 
 > [!IMPORTANT]
 > **Substitution Immutability**: You can only override values for substitution variables that are **already defined in the trigger configuration**. You cannot introduce new substitution variable keys at runtime.

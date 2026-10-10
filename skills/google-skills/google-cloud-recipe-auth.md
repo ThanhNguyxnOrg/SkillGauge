@@ -82,8 +82,8 @@ management.
     (Python, Java, etc.) use to act as "you" when you run code on your laptop.
 *   **[Service Account
     Impersonation](https://docs.cloud.google.com/docs/authentication/use-service-account-impersonation.md.txt)**:
-    For security reasons, developers should avoid downloading Service Account
-    keys entirely. Instead, they should authenticate as humans (`gcloud auth
+    For security reasons, developers must avoid downloading Service Account
+    keys entirely. Instead, they must authenticate as humans (`gcloud auth
     login`) and use Service Account Impersonation to run CLI commands or
     generate short-lived credentials. This is a critical best practice for local
     development and troubleshooting.
@@ -110,7 +110,7 @@ identities.
 
 ## Service-to-Service Authentication
 
-When code runs in production, it should use a **Service Account** rather than a
+When code runs in production, it must use a **Service Account** rather than a
 human user account.
 
 ### Service Accounts and Service Agents
@@ -125,7 +125,7 @@ human user account.
 
 ### Best Practice: Attaching Service Accounts
 
-Instead of using **Service Account Keys** (dangerous JSON files), you should
+Instead of using **Service Account Keys** (dangerous JSON files), you must
 **attach** a custom service account to the Google Cloud resource. The resource's
 environment then provides a **Token** (a short-lived digital object) via a local
 metadata server.
@@ -162,7 +162,7 @@ which allows fast testing of Gemini models without complex setup. Both humans
 and services (e.g., Cloud Run-based AI agent) can use API keys, for the services
 that support it.
 
-Note: API keys should be
+Note: API keys must be
 [restricted](https://docs.cloud.google.com/api-keys/docs/add-restrictions-api-keys.md.txt)
 to specific APIs and projects to minimize security risks. Store API keys in a
 secrets manager like [Secret
@@ -197,7 +197,7 @@ authenticated principal can do.
 *   **[Predefined
     Roles](https://docs.cloud.google.com/iam/docs/roles-permissions)**:
     Prebuilt roles like `roles/storage.objectViewer` or
-    `roles/bigquery.dataEditor`. **Always try to use these first.**
+    `roles/bigquery.dataEditor`. **Always must use these first.**
 *   **[Custom
     Roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles.md.txt)**:
     User-defined collections of specific permissions if predefined roles are too
@@ -257,5 +257,3 @@ the `Authorization: Bearer <TOKEN>` header.
 -   [User Identities](https://docs.cloud.google.com/iam/docs/user-identities.md.txt)
 -   [Application Default Credentials](https://docs.cloud.google.com/docs/authentication/provide-credentials-adc.md.txt)
 -   [Service Account Best Practices](https://docs.cloud.google.com/iam/docs/best-practices-service-accounts.md.txt)
-
-

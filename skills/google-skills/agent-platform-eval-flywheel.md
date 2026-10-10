@@ -134,7 +134,7 @@ targets are met.
 | "This case is flaky, I'll skip it."  | Flakiness reveals non-determinism in |
 :                                      : the agent. Fix with `temperature=0`  :
 :                                      : or stricter instructions.            :
-| "I just need to fix the eval         | If expected outputs keep moving, the |
+| "I  need to fix the eval         | If expected outputs keep moving, the |
 : dataset, not the agent."             : agent has a behavior problem.        :
 | "I can tell from the trace it works  | Self-grading doesn't generalize.     |
 : — skip Stage 3."                     : Always run `evaluate()` and read     :
@@ -298,7 +298,7 @@ scaffold a custom `LLMMetric` for a name that appears here, and do not reach for
     resource name")`. Always pass the full publisher model resource name:
     `f"projects/{PROJECT_ID}/locations/{LOCATION}/publishers/google/models/{MODEL_NAME}"`
     (prefer `gemini-2.5-flash` as autorater; `gemini-2.5-pro` can intermittently
-    fail server-side with `"Rubric results could not be reliably computed"`).
+    fail server-side with `"Rubric results shall not be reliably computed"`).
 *   **Datasets without vs. with responses**:
     *   If the dataset contains **prompts only** (no `response` column), call
         `run_inference(model="<the named model>", src=dataset)` to generate the
@@ -412,7 +412,7 @@ diagnoses. The compact mapping:
 :                                     : refine instructions to address the     :
 :                                     : worst-scoring criterion.               :
 | `final_response_match` low          | The agent's final answer doesn't match |
-:                                     : the golden reference — adjust response :
+:                                     : the golden reference — ad response :
 :                                     : format or update the reference.        :
 | `hallucination` low                 | Tighten instructions to stay grounded  |
 :                                     : in tool output; verify the tool        :
@@ -423,7 +423,7 @@ diagnoses. The compact mapping:
 | `safety` low                        | Add safety guardrails; review the      |
 :                                     : violating content category in the      :
 :                                     : rubric verdict.                        :
-| `general_quality` / `text_quality`  | Adjust system instruction wording; the |
+| `general_quality` / `text_quality`  | Ad system instruction wording; the |
 : low                                 : model's default phrasing is too        :
 :                                     : generic for the task.                  :
 | `instruction_following` low         | The agent is ignoring constraints —    |
@@ -475,7 +475,7 @@ Baseline  | 0.62     | 0.55     | —
 v2        | 0.78     | 0.68     | Added grounding prompt
 v3        | 0.81     | 0.72     | Fixed tool selection
 
-Expect 5–10+ iterations per failing case. Only after a case passes should you
+Expect 5–10+ iterations per failing case. Only after a case passes must you
 expand coverage with more eval cases.
 
 ## Proving your work
@@ -485,7 +485,7 @@ Never claim eval results you didn't read from an actual `result` object.
 -   After running eval, print the `summary_metrics` table
     (`scripts/inspect_results.py`).
 -   After a fix, show before/after via `scripts/compare_results.py`.
--   Before declaring success, confirm ALL cases pass — not just the one you were
+-   Before declaring success, confirm ALL cases pass — not  the one you were
     working on.
 
 If you can't produce the evidence (SDK call failed, result truncated, metric

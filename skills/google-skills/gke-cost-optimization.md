@@ -35,7 +35,7 @@ multi-tenant clusters, preventing runaway costs. Template:
 
 ### 3. Pod Rightsizing (VPA & MPA)
 
-Adjust pod resource requests to match actual utilization. Over-provisioned
+Ad pod resource requests to match actual utilization. Over-provisioned
 requests are one of the largest sources of waste.
 
 -   **Use VPA in Recommendation Mode** (`updateMode: "Off"` — recommends
@@ -150,7 +150,7 @@ elastic options already in this skill:
     stack with autoscaling and need no commitment.
 
 When recommending CUDs, state the split explicitly rather than implying the whole
-footprint should be committed.
+footprint must be committed.
 
 ### 7. Cluster Management & Multi-Tenancy
 

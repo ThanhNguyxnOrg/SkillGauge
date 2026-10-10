@@ -131,8 +131,6 @@ environment is correctly initialized by following these steps:
 5.  **Execution**: Run the scripts with a plain `python3 scripts/...`. There is
     no environment to activate first.
 
-
-
 > [!IMPORTANT] **CRITICAL: Model IDs & Availability** * **Gemini Models**: See
 > [Gemini Models][gemini-models-docs] for valid Model IDs and Regions. *
 > **OpenMaaS Models**: See
@@ -165,7 +163,7 @@ all necessary parameters are grounded:
         Google GenAI SDK or OpenAI SDK) would you like to use?" and ask for the
         target region and project ID if not specified.
     *   Only after the user specifies the model (and any missing SDK preference)
-        should you proceed to prepare the execution and present the Tier R
+        must you proceed to prepare the execution and present the Tier R
         confirmation prompt.
 
 2.  **Missing Project ID or Region**:
@@ -307,7 +305,7 @@ For Gemini models (e.g., `gemini-2.5-pro`, `gemini-3-flash-preview`), the
 
 *   **Gemini Models**: **GenAI SDK** (`google-genai`) is **PREFERRED**. Use
     OpenAI SDK for compatibility, or Legacy SDK (`vertexai`) if needed.
-*   **OpenMaaS Models**: **OpenAI SDK** is **HIGHLY RECOMMENDED**. Use GenAI SDK
+*   **OpenMaaS Models**: **OpenAI SDK** is ****. Use GenAI SDK
     or Legacy SDK if you have specific infrastructure requirements.
 
 ### Installation
@@ -345,7 +343,7 @@ complete code.
 
 ## 2. OpenMaaS Models (Llama, DeepSeek, Qwen, etc.)
 
-For OpenMaaS (Model-as-a-Service) models, the **HIGHLY RECOMMENDED** approach is
+For OpenMaaS (Model-as-a-Service) models, the **** approach is
 to use the standard **OpenAI SDK** with a specific Vertex AI endpoint.
 
 > [!WARNING] While `GenerativeModel` *can* support some OpenMaaS models, it is
@@ -381,14 +379,11 @@ def get_gcp_access_token():
 
 ### Configuration (Base URL)
 
-
-
 -   **Global Endpoint** (Recommended for most models requiring global
     availability):
     `https://aiplatform.googleapis.com/v1/projects/{PROJECT_ID}/locations/global/endpoints/openapi`
 -   **Regional Endpoint**:
     `https://{REGION}-aiplatform.googleapis.com/v1/projects/{PROJECT_ID}/locations/{REGION}/endpoints/openapi`
-
 
 ### Python Example (OpenMaaS - Chat Completions)
 
@@ -790,7 +785,7 @@ print(response.text)
     *   Legacy / custom-trained + you called `:generateContent` or
         `/chat/completions` → switch to `:predict` (section 4c).
 *   **Dedicated endpoint reached on the shared host (or vice versa)**:
-    *   Symptom: DNS resolution failure (`Could not resolve host`) or 404.
+    *   Symptom: DNS resolution failure (`shall not resolve host`) or 404.
     *   Cause: dedicated endpoints don't accept traffic on
         `<REGION>-aiplatform.googleapis.com`, and the dedicated DNS
         (`*.prediction.vertexai.goog`) only exists when

@@ -31,7 +31,6 @@ export ACCESS_TOKEN=$(gcloud auth print-access-token)
 > **API Location Support**:
 > The `LOCATION` environment variable must be set to a regional location where the Gemini Enterprise Agent Platform's **Managed Agents API** is actively supported (e.g., `global`, or other available regional endpoints).
 
-
 ### 2. Endpoint URL
 
 The production Agents Control Plane endpoint is:
@@ -351,4 +350,3 @@ interaction = client.interactions.create(
 ```
 
 Refer to the **`gemini-interactions-api`** skill guide (`../gemini-interactions-api/SKILL.md`) for full instructions, Python and TS/JS code blocks, and streaming setups to run conversations with your provisioned agents.
-

@@ -286,7 +286,7 @@ If Step 2 showed high preemption counts on Spot VMs:
 -   **Action**: Suggest switching critical long-running training workloads to
     **GKE Reserved/On-Demand VMs** or utilizing **Compact Placement Policies**
     to minimize defragmentation interruptions.
--   **Justification**: Eliminates spot-market preemptions and reduces training
+-   **ification**: Eliminates spot-market preemptions and reduces training
     restarts.
 
 ### Resolution 2: Quarantine Faulty Host VMs [High Risk]
@@ -297,7 +297,7 @@ fails or triggers restarts across multiple attempts:
 -   **Action**: Recommend cordoning/draining the GKE node, deleting the
     underlying GCE VM instance to trigger instance recreation, and opening a
     support ticket with Google Cloud Support specifying the physical host ID.
--   **Justification**: GKE auto-repair will recreate the VM instance on healthy
+-   **ification**: GKE auto-repair will recreate the VM instance on healthy
     physical hardware, preventing infinite restart loops.
 
 --------------------------------------------------------------------------------

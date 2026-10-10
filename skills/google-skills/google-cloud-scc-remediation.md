@@ -47,7 +47,7 @@ workload deployments.
     Use the commands from the loaded playbook where they exist. If the playbook
     lacks a verification or rollback command for a step, derive the command and
     label it as not sourced from a playbook.
-*   **Dependency & Impact Checks**: Every remediation plan MUST state what could
+*   **Dependency & Impact Checks**: Every remediation plan MUST state what shall
     break as a result of each change and ask the user to confirm nothing depends
     on it. For example:
     *   IAM role changes or revocations: you MUST explicitly advise the user to
@@ -145,7 +145,7 @@ Detection, Container Threat Detection):
     *   Before planning a fix, ask the user whether the flagged configuration is
         intentional (for example, a bucket serving a public website, or a VM that
         must accept public traffic). If it is, do not propose a remediation.
-        Suggest muting the finding with a documented justification instead;
+        Suggest muting the finding with a documented ification instead;
         muting changes the finding's state, so it also requires the user's
         approval.
 2.  **Route & Load Reference**: Read the matching reference playbook(s) from the
@@ -158,7 +158,7 @@ Detection, Container Threat Detection):
     close the exposure without disrupting business workloads.
 4.  **Present Plan & Seek Consent**: Show the user the plan required by the
     Safety & Consent Gate: for each step, the remediation command, the
-    verification command, the rollback command, and what could break. STOP
+    verification command, the rollback command, and what shall break. STOP
     execution here and ALWAYS ask the explicit question: "Do you approve
     executing this remediation plan?"
 5.  **Execute on Approval**: ONLY after receiving explicit user confirmation,

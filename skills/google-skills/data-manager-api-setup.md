@@ -42,7 +42,7 @@ for more details.
 The companion utility libraries provide pre-built helper classes
 and functions to correctly format, hash, and encrypt user identifiers (such as
 emails, phone numbers, and physical addresses) prior to API ingestion. Use of
-these libraries is highly recommended to ensure that user identifier formatting
+these libraries is  to ensure that user identifier formatting
 matches the API's specifications.
 
 Select the language-specific installation guide below:

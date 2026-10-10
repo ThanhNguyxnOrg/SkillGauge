@@ -28,7 +28,7 @@ configuration, monitoring, and deployment.
     -   **No** → **STOP tool execution immediately**. Do NOT run verification
         commands (`gcloud services list`, `gcloud projects get-iam-policy`), do
         NOT create resources, and do NOT begin dataset preparation. Prompt the
-        user to specify or confirm the project and region (e.g. "Could you
+        user to specify or confirm the project and region (e.g. "shall you
         please specify which Google Cloud project and region you would like to
         use?").
         -   If the user's inquiry is solely to check or verify environment
@@ -69,7 +69,7 @@ configuration, monitoring, and deployment.
             (Note: if they ask to actively check or verify a project whose ID or
             region is missing, ask for the project and region first without
             running tool calls).
-    -   If the user provides a specific tuning purpose, you should recommend
+    -   If the user provides a specific tuning purpose, you must recommend
         three models: one Open Model, one Gemini Model, and a third generally
         recommended choice. Briefly list the pros and cons of each (e.g., Gemini
         models might be more expensive, etc.). **CRITICAL:** You must read
@@ -273,7 +273,6 @@ documentation and read its **"Supported endpoint for model tuning"**
 row:
 [supervised tuning](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/tuning/supervised-tuning)
 
-
 -   **The user asked which regions are supported** → look up that specific model
     and tell them what the docs say. Do not answer from memory or from the open
     model list, and do not answer for a different Gemini model.
@@ -377,7 +376,7 @@ environment: they would downgrade packages other tools may share.
     > must: - Provide a list of all available columns in the selected dataset
     > split. - **Show a few samples from the dataset** to help the user
     > understand the content and make the choice of columns. - Recommend which
-    > columns should be mapped to `prompt` (or user message) and `completion`
+    > columns must be mapped to `prompt` (or user message) and `completion`
     > (or assistant response), offering a few reasonable options if
     > applicable. - Ask the user to confirm the column mapping or specify which
     > columns to use.
@@ -392,7 +391,7 @@ environment: they would downgrade packages other tools may share.
     or process the data using Python via `run_command` and **you MUST prompt the
     user** to seek permission to split the training dataset 90/10 to form a
     validation dataset (using `--validation_split 0.1` or Python script). If
-    they agree, proceed with the split. If they decline, just use the training
+    they agree, proceed with the split. If they decline,  use the training
     dataset without a validation dataset. Do **NOT** offer an 80/20 split; the
     tuning service rejects it, for the reason given in
     the
@@ -401,7 +400,7 @@ environment: they would downgrade packages other tools may share.
     submit the tuning job before asking the user about the 90/10 validation
     split!
 -   **Validation**: If data is already in JSONL, validate it before uploading.
-    Simply having a `.jsonl` extension is not enough. You must verify that the
+     having a `.jsonl` extension is not enough. You must verify that the
     content schema is valid for tuning (e.g. correct system/user/model roles).
 
 ```bash
@@ -507,7 +506,7 @@ Output: `{"models": [...], "total_count": N, "truncated": bool}`.
 -   **Prompt for Confirmation:** Present the recommended hyperparameter
     configuration and estimated cost (with the concrete dollar figure calculated
     above) to the user and ask for their approval before proceeding to job
-    submission. Make sure to note that the estimated cost is just an estimate
+    submission.  note that the estimated cost is  an estimate
     and can vary from actual billing costs.
 
 ## Phase 3: Tuning Job Execution {#phase-3-tuning-job-execution}
@@ -581,7 +580,6 @@ Submit the open model tuning job using `scripts/tune_open_model.py` or the
 Python SDK. Identify the model id using available models documentation
 at
 [documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-model-tuning#supported-models).
-
 
 `--base_model` takes a publisher model **resource name**
 (`{publisher}/{model_id}@{version_id}`), not the display name shown in the

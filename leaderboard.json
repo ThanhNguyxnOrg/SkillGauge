@@ -1,6 +1,24 @@
 {
   "skills": [
     {
+      "name": "agent-platform-eval-flywheel",
+      "repository": "google-skills",
+      "hash": "54ca688047c8fcca4423424e315c34df7326a0461c298a18b907c6b8f62d798d",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 48.81600382982006,
+      "submittedAt": "2026-10-10T06:45:14.050Z"
+    },
+    {
+      "name": "gke-workload-troubleshooting",
+      "repository": "google-skills",
+      "hash": "9a6fc7181667aa7fbb78a9b25b8fa20c8fb956ba5faa23b2bb86950453b4f528",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 48.38376670774736,
+      "submittedAt": "2026-10-10T06:45:09.517Z"
+    },
+    {
       "name": "laravel-security",
       "repository": "ecc",
       "hash": "8bb3ee64fc54b79ebe7e954b630f81272cc06f12e06a2fd1b51adc928d19a621",
@@ -28,6 +46,24 @@
       "submittedAt": "2026-06-17T04:40:51.111Z"
     },
     {
+      "name": "agents-sdk",
+      "repository": "cloudflare-skills",
+      "hash": "3c3a63c5b2c36a9af22fac10cf427c276b8d7a1cd0d90a6e35a91c5a68201117",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 47.707276016043544,
+      "submittedAt": "2026-10-10T06:45:28.506Z"
+    },
+    {
+      "name": "gke-workload-scaling-troubleshooting",
+      "repository": "google-skills",
+      "hash": "6b6db384f9a7dd331e3d8f910ce4ff76dcd7423827c4ce7dfec1d028b8a13507",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 47.10729536525988,
+      "submittedAt": "2026-10-10T06:45:09.653Z"
+    },
+    {
       "name": "windows-desktop-e2e",
       "repository": "ecc",
       "hash": "f331e75b8113fec06155434123e55e1e057c16574c9ea01540c4bc4cc3c74451",
@@ -53,6 +89,24 @@
       "tier": "Tier 1",
       "overallScore": 46.538426051789386,
       "submittedAt": "2026-06-17T04:40:42.124Z"
+    },
+    {
+      "name": "developing-genkit-go",
+      "repository": "google-skills",
+      "hash": "5651ca6bf80f2a1a2e941be40b2a53ea73be103871d4abe93fe6ffca010a8f26",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 46.517695523078764,
+      "submittedAt": "2026-10-10T06:45:11.757Z"
+    },
+    {
+      "name": "agent-platform-migrate-from-ai-studio",
+      "repository": "google-skills",
+      "hash": "51dfed302e428795303a19b9a8e47857748e7a30d41212bbc234bba46cc31de5",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 46.43958989672235,
+      "submittedAt": "2026-10-10T06:45:13.748Z"
     },
     {
       "name": "deployment-patterns",
@@ -118,6 +172,42 @@
       "submittedAt": "2026-06-17T04:40:52.946Z"
     },
     {
+      "name": "developing-genkit-js",
+      "repository": "google-skills",
+      "hash": "bf07a3c7bdf9cbf806ec8210c6402c6853e17620285ce3ccb21f330a655b76da",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 46.141194923404136,
+      "submittedAt": "2026-10-10T06:45:11.710Z"
+    },
+    {
+      "name": "sign-in-with-google-web",
+      "repository": "google-skills",
+      "hash": "d867b67f0c23c4aa4beb6bad37c55669379788939b469c10b41cdd166be13840",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 46.033448193039646,
+      "submittedAt": "2026-10-10T06:45:06.533Z"
+    },
+    {
+      "name": "dpop-adoption",
+      "repository": "google-skills",
+      "hash": "b46a4adec2158e0d8708a1f4532cb594faa75d96b5aa9afbe433dadeab178966",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.97742113856221,
+      "submittedAt": "2026-10-10T06:45:11.617Z"
+    },
+    {
+      "name": "developing-genkit-dart",
+      "repository": "google-skills",
+      "hash": "5f535cd5cf736873fad3eb85ce421d00b355754a8688fa127e85bb075f9d4652",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.84628749688544,
+      "submittedAt": "2026-10-10T06:45:11.812Z"
+    },
+    {
       "name": "react-testing",
       "repository": "ecc",
       "hash": "4b4770734b85c116e2d74e91d44f9276495ed737ebc997166e5bc8eb9f243061",
@@ -125,6 +215,24 @@
       "tier": "Tier 1",
       "overallScore": 45.82891881697926,
       "submittedAt": "2026-06-17T04:40:42.251Z"
+    },
+    {
+      "name": "gke-storage-troubleshooting",
+      "repository": "google-skills",
+      "hash": "e8805b4046a1b6f83be9273ed5ec623c07e3b49ea3220cb0be887db5e567297e",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.82805830058522,
+      "submittedAt": "2026-10-10T06:45:09.924Z"
+    },
+    {
+      "name": "gke-compute-classes",
+      "repository": "google-skills",
+      "hash": "fd74b9cd00895de3b43596f3059d46e0488c314424f072a788fe3bc1937dab91",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.81697671848503,
+      "submittedAt": "2026-10-10T06:45:10.589Z"
     },
     {
       "name": "kotlin-ktor-patterns",
@@ -152,6 +260,24 @@
       "tier": "Tier 1",
       "overallScore": 45.74040825515349,
       "submittedAt": "2026-06-17T04:40:49.434Z"
+    },
+    {
+      "name": "gke-workload-identity",
+      "repository": "google-skills",
+      "hash": "c6a4abe15d4a0119ce00826edbbcffac7d9f26ce8cc96ce024f00fac89efceed",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.681842236920964,
+      "submittedAt": "2026-10-10T06:45:09.737Z"
+    },
+    {
+      "name": "secops-cases",
+      "repository": "google-skills",
+      "hash": "7d5e811c6aa52bf6d11e6a71e72f82c451bafbd902660356a75dbd7d6dbbdb7f",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.680211666908974,
+      "submittedAt": "2026-10-10T06:45:06.855Z"
     },
     {
       "name": "laravel-tdd",
@@ -190,6 +316,15 @@
       "submittedAt": "2026-06-17T04:40:53.444Z"
     },
     {
+      "name": "google-cloud-filestore-nfs-browser",
+      "repository": "google-skills",
+      "hash": "00d6caf1510c15abd32d9715edd194462265585ad54e0e1fee231d3adaae2fe6",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.474538838808165,
+      "submittedAt": "2026-10-10T06:45:08.921Z"
+    },
+    {
       "name": "csharp-reviewer",
       "repository": "ecc",
       "hash": "a4ff216b8b38cd698fc0d28d408ad827d5cbb75d384d71f4156551c2c09d6911",
@@ -197,6 +332,15 @@
       "tier": "Tier 1",
       "overallScore": 45.4567768794397,
       "submittedAt": "2026-06-17T04:40:51.493Z"
+    },
+    {
+      "name": "gke-observability",
+      "repository": "google-skills",
+      "hash": "2af5509d02bc43da86ca61a97ed5be1f7b6950853a8a7974fae5c46826aebd0d",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.45488220409207,
+      "submittedAt": "2026-10-10T06:45:10.149Z"
     },
     {
       "name": "dart-flutter-patterns",
@@ -226,6 +370,15 @@
       "submittedAt": "2026-06-17T04:40:42.809Z"
     },
     {
+      "name": "gke-node-notready",
+      "repository": "google-skills",
+      "hash": "64e3991adab108d57aa0af3433aa8fca94783aa6322758447b1216614b990830",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.39034289187484,
+      "submittedAt": "2026-10-10T06:45:10.206Z"
+    },
+    {
       "name": "ui-demo",
       "repository": "ecc",
       "hash": "316c52af8a975713a5be185ace9dfe48603e7a81eebfaebec10c94cca7971a04",
@@ -244,6 +397,42 @@
       "submittedAt": "2026-06-17T04:40:44.874Z"
     },
     {
+      "name": "bigquery-observability",
+      "repository": "google-skills",
+      "hash": "64e07fa88ac3c5d7e5527993b6df08175530c930b9a717537a641ac8040095e6",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.3585208857668,
+      "submittedAt": "2026-10-10T06:45:13.033Z"
+    },
+    {
+      "name": "cloudflare",
+      "repository": "cloudflare-skills",
+      "hash": "a59a1a4a71e123490c67824594669eb834d125a854b3287e591e4a1c26503689",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.29157368352432,
+      "submittedAt": "2026-10-10T06:45:28.267Z"
+    },
+    {
+      "name": "google-ads-api-mcp-setup",
+      "repository": "google-skills",
+      "hash": "8387fb44cdcfaeb2afffa8f368c4f853c5b2d1073a1e489ac1a1e7d2a2dd1d7d",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.28872543878559,
+      "submittedAt": "2026-10-10T06:45:09.398Z"
+    },
+    {
+      "name": "developing-genkit-python",
+      "repository": "google-skills",
+      "hash": "c575231c6587e0fafdb2510e1150a58acf407dedf4199bb413bef7c703c1643b",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.2814812086681,
+      "submittedAt": "2026-10-10T06:45:11.650Z"
+    },
+    {
       "name": "production-audit",
       "repository": "ecc",
       "hash": "b7502921591c312a3fb6e7cd37953cf8ab618fb7467f1d5e91335edd874f974b",
@@ -251,6 +440,15 @@
       "tier": "Tier 1",
       "overallScore": 45.248400168052854,
       "submittedAt": "2026-06-17T04:40:43.603Z"
+    },
+    {
+      "name": "gke-cluster-autoscaler",
+      "repository": "google-skills",
+      "hash": "cba1dae39a626f96945a94def9abdfa56e86a58ffbe6780e882621864860cac7",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.22289658541443,
+      "submittedAt": "2026-10-10T06:45:10.697Z"
     },
     {
       "name": "tdd-workflow",
@@ -280,6 +478,24 @@
       "submittedAt": "2026-06-17T04:40:44.907Z"
     },
     {
+      "name": "agent-platform-inference",
+      "repository": "google-skills",
+      "hash": "a3985126645337c15299395ba1c8b04f03f728accca691daaab37f08f92ae048",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.152375067025304,
+      "submittedAt": "2026-10-10T06:45:13.925Z"
+    },
+    {
+      "name": "cloud-run-basics",
+      "repository": "google-skills",
+      "hash": "a1fc45f3eda884482840c2b8fb121bc1577faa1ec833c5f9ae1a9643facf7f50",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.111463081353314,
+      "submittedAt": "2026-10-10T06:45:12.298Z"
+    },
+    {
       "name": "rust-testing",
       "repository": "ecc",
       "hash": "a78c0231c24747c83d1c52427b1b75b4444103a3d78690ec744a1786293dd52a",
@@ -287,6 +503,15 @@
       "tier": "Tier 1",
       "overallScore": 45.09044484492928,
       "submittedAt": "2026-06-17T04:40:41.614Z"
+    },
+    {
+      "name": "gke-manifest-generation",
+      "repository": "google-skills",
+      "hash": "cfae4bfc838d38b340ab55d445c14761b1240c027f7338d3771d24b95f5800fa",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 45.068591024253095,
+      "submittedAt": "2026-10-10T06:45:10.305Z"
     },
     {
       "name": "cost-aware-llm-pipeline",
@@ -316,6 +541,33 @@
       "submittedAt": "2026-06-17T04:40:53.313Z"
     },
     {
+      "name": "cloud-build-basics",
+      "repository": "google-skills",
+      "hash": "77049f8176dd34e957029c50d0675941959d3017ea29d9500088cd25e0f1f273",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 44.928653818103456,
+      "submittedAt": "2026-10-10T06:45:12.734Z"
+    },
+    {
+      "name": "agent-platform-tuning",
+      "repository": "google-skills",
+      "hash": "d9ead55ab6bfd643af78e77dbd7d75fab6f784e3baf1ae417532d7153056f571",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 44.923461704393645,
+      "submittedAt": "2026-10-10T06:45:13.378Z"
+    },
+    {
+      "name": "cloud-monitoring-promql-query",
+      "repository": "google-skills",
+      "hash": "6829c4b41b8e615ee5575a20ad65fe23c86e60c10832d26f31b1d91095890566",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 44.92242222433404,
+      "submittedAt": "2026-10-10T06:45:12.370Z"
+    },
+    {
       "name": "agent-architecture-audit",
       "repository": "ecc",
       "hash": "735afda8032a7bcc16c0869af809fa80082d322dc3b0d97e13799064631c4746",
@@ -323,6 +575,15 @@
       "tier": "Tier 1",
       "overallScore": 44.87359469212814,
       "submittedAt": "2026-06-17T04:40:54.264Z"
+    },
+    {
+      "name": "google-cloud-recipe-onboarding",
+      "repository": "google-skills",
+      "hash": "4c035b3a81187f5b820c04e9a0d1276137d5c91c6c17c4d60f5fd2ffff306f58",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 44.87115664073869,
+      "submittedAt": "2026-10-10T06:45:08.652Z"
     },
     {
       "name": "rust-patterns",
@@ -343,6 +604,15 @@
       "submittedAt": "2026-06-17T04:40:39.868Z"
     },
     {
+      "name": "cb-run-trigger",
+      "repository": "google-skills",
+      "hash": "b94bed906b8a9aec3efec8e1b8a2e82245c7ef43dec10c581392f9e1ac351763",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 44.81260170181899,
+      "submittedAt": "2026-10-10T06:45:12.760Z"
+    },
+    {
       "name": "cpp-testing",
       "repository": "ecc",
       "hash": "03f84a380efee1ad1224c0b1c0a5bbc0bb6c9b8ced84d66c2c05b9d1c930fc5c",
@@ -350,6 +620,51 @@
       "tier": "Tier 1",
       "overallScore": 44.76616330830552,
       "submittedAt": "2026-06-17T04:40:51.557Z"
+    },
+    {
+      "name": "cloud-logging-configuration-basics",
+      "repository": "google-skills",
+      "hash": "29e53991dcd235cb86d5fa14b2d27968807ecd52f86cea9ec296d2e55c49bf19",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 44.753697369887924,
+      "submittedAt": "2026-10-10T06:45:12.667Z"
+    },
+    {
+      "name": "google-cloud-solution-n-tier-serverless-web-app",
+      "repository": "google-skills",
+      "hash": "f08c30fe316bd75390099c8d6d16b84669091263176744460de5a9da976d0baf",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 44.70585778156805,
+      "submittedAt": "2026-10-10T06:45:07.860Z"
+    },
+    {
+      "name": "agent-platform-alert-configuration",
+      "repository": "google-skills",
+      "hash": "4976df127b2aa0e02ffe4331cca4892498b24556b8a4eca7832d653afadb6c9d",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 44.70031655625464,
+      "submittedAt": "2026-10-10T06:45:14.242Z"
+    },
+    {
+      "name": "turnstile-spin",
+      "repository": "cloudflare-skills",
+      "hash": "304e37e6e133fe844461cff44ffac7ff02bb1eb954007a7aad9a1389598651f9",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 44.67492497659996,
+      "submittedAt": "2026-10-10T06:45:28.007Z"
+    },
+    {
+      "name": "gke-platform-security",
+      "repository": "google-skills",
+      "hash": "b6981bbdaca85f4da647ad8a450da2d81a694b46dd85b62f2dd6d43dafb3ab4e",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 44.67200349607753,
+      "submittedAt": "2026-10-10T06:45:10.073Z"
     },
     {
       "name": "quarkus-patterns",
@@ -368,6 +683,15 @@
       "tier": "Tier 2",
       "overallScore": 44.64726205138913,
       "submittedAt": "2026-06-17T04:40:50.637Z"
+    },
+    {
+      "name": "google-cloud-solution-multi-agent-security",
+      "repository": "google-skills",
+      "hash": "1b4cc3a8129b896669b0bfbc88b7bdbf76d70c1812f22ea7371877448b079b4a",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 44.646857864000985,
+      "submittedAt": "2026-10-10T06:45:07.919Z"
     },
     {
       "name": "kotlin-testing",
@@ -451,6 +775,15 @@
       "submittedAt": "2026-06-17T04:40:53.883Z"
     },
     {
+      "name": "gke-app-onboarding",
+      "repository": "google-skills",
+      "hash": "e45cbf1c9132d4a7044c146d248974b2fce8a99dbf3337168eb68dfe78445e5f",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 44.488956828494146,
+      "submittedAt": "2026-10-10T06:45:10.798Z"
+    },
+    {
       "name": "customs-trade-compliance",
       "repository": "ecc",
       "hash": "0285c196f754c6f45e92f29c66ad73e0ca153652e134f7d8254772071bd42e37",
@@ -467,6 +800,15 @@
       "tier": "Tier 2",
       "overallScore": 44.47885117954103,
       "submittedAt": "2026-06-17T04:40:49.277Z"
+    },
+    {
+      "name": "cloudflare-one",
+      "repository": "cloudflare-skills",
+      "hash": "33c6c7e757117a18ac2b537d7b776128e25a29505dac1634f949588df5affa99",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 44.40619697519948,
+      "submittedAt": "2026-10-10T06:45:28.359Z"
     },
     {
       "name": "django-security",
@@ -487,6 +829,15 @@
       "submittedAt": "2026-06-17T04:40:48.339Z"
     },
     {
+      "name": "gcloud",
+      "repository": "google-skills",
+      "hash": "50bc4bd219e44b6b81f9be763d46080c1e9a0ee41928879b32c5c903331208b6",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 44.363918367051156,
+      "submittedAt": "2026-10-10T06:45:11.505Z"
+    },
+    {
       "name": "kotlin-coroutines-flows",
       "repository": "ecc",
       "hash": "181137102b3dbd05aa90381625876626c15f713e00505fcc2d9475a94e78c46d",
@@ -505,6 +856,24 @@
       "submittedAt": "2026-06-17T04:40:47.939Z"
     },
     {
+      "name": "google-cloud-filestore-auditing",
+      "repository": "google-skills",
+      "hash": "8cb81e6daf2476f04beb09d7ad954c09e03e38ce6e0c717325d552f04de1588e",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 44.33674618174558,
+      "submittedAt": "2026-10-10T06:45:09.103Z"
+    },
+    {
+      "name": "cloud-trace-querying",
+      "repository": "google-skills",
+      "hash": "b7b98cf611e12829e8e98348db034d35a212fae7c30469fdd8135b3184137bd6",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 44.31303975112836,
+      "submittedAt": "2026-10-10T06:45:12.212Z"
+    },
+    {
       "name": "agent-evaluator",
       "repository": "ecc",
       "hash": "21456b7d097f8c07218637e16127a8f4100b9ae7e40864b490986e6175ca254f",
@@ -512,6 +881,15 @@
       "tier": "Tier 2",
       "overallScore": 44.312503460168976,
       "submittedAt": "2026-06-17T04:40:54.187Z"
+    },
+    {
+      "name": "gke-upgrades",
+      "repository": "google-skills",
+      "hash": "20f64b8b1222b5e713d4ace83f21a25bf79b1a7470ca8422ffff6e4f86683711",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 44.30812243677895,
+      "submittedAt": "2026-10-10T06:45:09.831Z"
     },
     {
       "name": "prompt-optimizer",
@@ -523,6 +901,33 @@
       "submittedAt": "2026-06-17T04:40:43.388Z"
     },
     {
+      "name": "google-cloud-filestore-log-troubleshooting",
+      "repository": "google-skills",
+      "hash": "14ba49cc3d72559042735717a66b8b6b0bdda857b8c2214d9f27138b99151de2",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 44.25409327376776,
+      "submittedAt": "2026-10-10T06:45:08.972Z"
+    },
+    {
+      "name": "agent-platform-troubleshooting",
+      "repository": "google-skills",
+      "hash": "51bd90d8a766c06957a6f8a87f04bd598d1a25bb94cc72c614a380dabda41dbd",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 44.24529249737913,
+      "submittedAt": "2026-10-10T06:45:13.539Z"
+    },
+    {
+      "name": "workload-manager-basics",
+      "repository": "google-skills",
+      "hash": "16efa2c83428484add0e60d5a22186087215f666822aed493fafacc4f325680d",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 44.228720760313436,
+      "submittedAt": "2026-10-10T06:45:06.442Z"
+    },
+    {
       "name": "django-celery",
       "repository": "ecc",
       "hash": "f6b16028d640d010214ed869b614fe0f61d58fa85329e3d881a40522d5fd6cdd",
@@ -530,6 +935,15 @@
       "tier": "Tier 2",
       "overallScore": 44.206276827015564,
       "submittedAt": "2026-06-17T04:40:50.700Z"
+    },
+    {
+      "name": "bigquery-troubleshooting",
+      "repository": "google-skills",
+      "hash": "05401253c8d89b049fa9af843845ad780ca7778204d3aa51f7a67cc919fd2d00",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 44.183191277573044,
+      "submittedAt": "2026-10-10T06:45:12.899Z"
     },
     {
       "name": "subagent-driven-development",
@@ -604,6 +1018,24 @@
       "submittedAt": "2026-06-17T04:40:48.903Z"
     },
     {
+      "name": "gke-cluster-creation",
+      "repository": "google-skills",
+      "hash": "c9b855f71a4603f8917d3a534bdf194f5d4c2401b67baf85ad2c9d2892e028f0",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.96591374481234,
+      "submittedAt": "2026-10-10T06:45:10.641Z"
+    },
+    {
+      "name": "secops-triage",
+      "repository": "google-skills",
+      "hash": "f14de1a2fa96374bfa1269c14c48ab6784e19e17b80ba67578f2f8dd57ec9dfe",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.95473534640568,
+      "submittedAt": "2026-10-10T06:45:06.592Z"
+    },
+    {
       "name": "quality-nonconformance",
       "repository": "ecc",
       "hash": "91c2361c84a349dffbf19f7eb394f8f41becfe00abc7621cb785205751a8f82a",
@@ -640,6 +1072,15 @@
       "submittedAt": "2026-06-17T04:40:44.021Z"
     },
     {
+      "name": "gke-alert-configuration",
+      "repository": "google-skills",
+      "hash": "20760f93ad9dce97d02315df17f785a7a9dbba62b9aaf61550d4816c02c32518",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.90649865244551,
+      "submittedAt": "2026-10-10T06:45:10.881Z"
+    },
+    {
       "name": "vue-patterns",
       "repository": "ecc",
       "hash": "cc6311067a8fb621450a0f2de39fe0f011a247955c2e3d479bd0d729003904c3",
@@ -658,6 +1099,15 @@
       "submittedAt": "2026-06-17T04:40:54.105Z"
     },
     {
+      "name": "gemini-interactions-api",
+      "repository": "google-skills",
+      "hash": "1afde57c85bc14cb12732ffffdb4d0dd91b00a90163a14b5482bcf3ad44f91de",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.87957935100943,
+      "submittedAt": "2026-10-10T06:45:11.352Z"
+    },
+    {
       "name": "harmonyos-app-resolver",
       "repository": "ecc",
       "hash": "8c0e29ef7a819221c63182dfd749d2dad66d0d713a79fdea94fde20ddb4472db",
@@ -665,6 +1115,15 @@
       "tier": "Tier 2",
       "overallScore": 43.859380727629706,
       "submittedAt": "2026-06-17T04:40:48.111Z"
+    },
+    {
+      "name": "alloydb-basics",
+      "repository": "google-skills",
+      "hash": "8647bb079fdd13db524211a920cf27ec06f105f1677fb69124e3bc140de91cf2",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.85825808367457,
+      "submittedAt": "2026-10-10T06:45:13.198Z"
     },
     {
       "name": "springboot-verification",
@@ -685,6 +1144,15 @@
       "submittedAt": "2026-06-17T04:40:50.750Z"
     },
     {
+      "name": "application-design-center-design-deploy",
+      "repository": "google-skills",
+      "hash": "f65efa5690eeec81a295b9c9f056301a54382c3369e8b08fd1a389386b5737c7",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.78455889891117,
+      "submittedAt": "2026-10-10T06:45:13.170Z"
+    },
+    {
       "name": "network-config-reviewer",
       "repository": "ecc",
       "hash": "4ff392b5a46197171a996d6dfefb31a84ae551eb0fad6ac3942e5918880e722a",
@@ -692,6 +1160,15 @@
       "tier": "Tier 2",
       "overallScore": 43.77973132396975,
       "submittedAt": "2026-06-17T04:40:44.798Z"
+    },
+    {
+      "name": "secops-detection-engineering",
+      "repository": "google-skills",
+      "hash": "8c63d03719a069b006ca5df01479ccf28b38237072950f6d84e3ee13e1fa66e8",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.75476164478833,
+      "submittedAt": "2026-10-10T06:45:06.801Z"
     },
     {
       "name": "swift-build-resolver",
@@ -721,6 +1198,15 @@
       "submittedAt": "2026-06-17T04:40:52.482Z"
     },
     {
+      "name": "company-researcher",
+      "repository": "stripe-ai",
+      "hash": "4412c132930683b523f0ccdece3aa5412310a4536fd42deba9e5a6b0a376348b",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.64730159471389,
+      "submittedAt": "2026-10-10T06:45:06.415Z"
+    },
+    {
       "name": "logistics-exception-management",
       "repository": "ecc",
       "hash": "8e2d5d1ad2eb9fb19ba35677c54ab924ed6c6e913b7dc75d14ac6e1a4713b34d",
@@ -728,6 +1214,15 @@
       "tier": "Tier 2",
       "overallScore": 43.643074646368454,
       "submittedAt": "2026-06-17T04:40:45.712Z"
+    },
+    {
+      "name": "google-cloud-recipe-foundation-builder",
+      "repository": "google-skills",
+      "hash": "2e5a064b8b3f6195b3bcb74385a741734acc00a4f3308130b0fa8123d331dca7",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.64000330048315,
+      "submittedAt": "2026-10-10T06:45:08.729Z"
     },
     {
       "name": "gan-evaluator",
@@ -739,6 +1234,51 @@
       "submittedAt": "2026-06-17T04:40:48.742Z"
     },
     {
+      "name": "workers-best-practices",
+      "repository": "cloudflare-skills",
+      "hash": "0cd4a7608b905cd41d423b51e2a0fcfff119de4d9b4c6beb8117df5023e689d5",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.61957239390393,
+      "submittedAt": "2026-10-10T06:45:27.835Z"
+    },
+    {
+      "name": "cb-list-build-zero-state",
+      "repository": "google-skills",
+      "hash": "4911336f4fecd374c9750cbb4a038f030fbe69cf3b5bef0498d3f5e54d4fea28",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.60632831206133,
+      "submittedAt": "2026-10-10T06:45:12.790Z"
+    },
+    {
+      "name": "gke-service-networking",
+      "repository": "google-skills",
+      "hash": "26cc30d1759c9e66efb8ac0cbaeee5d4f74f4ecba789758dfce6de38089f990d",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.601353611230145,
+      "submittedAt": "2026-10-10T06:45:09.978Z"
+    },
+    {
+      "name": "cloud-logging-query-generation",
+      "repository": "google-skills",
+      "hash": "283d47c2d7ae91c11e8e6e1c9afa1e2a81573d111c5c4726f54d9814ddf27da3",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.601020911347284,
+      "submittedAt": "2026-10-10T06:45:12.535Z"
+    },
+    {
+      "name": "bigquery-optimization",
+      "repository": "google-skills",
+      "hash": "08ffd84e27e9709b448b5398e782961f3ceae87f51ffc71cea601ba602238495",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.59693596467653,
+      "submittedAt": "2026-10-10T06:45:12.971Z"
+    },
+    {
       "name": "opensource-forker",
       "repository": "ecc",
       "hash": "a3b1b4c3504ee71abdc0b266ab39ea36e80d4ab9c4c09e5186faab6381b3c184",
@@ -748,6 +1288,24 @@
       "submittedAt": "2026-06-17T04:40:44.536Z"
     },
     {
+      "name": "developer-device-platform-basics",
+      "repository": "google-skills",
+      "hash": "a42d969c358619e1fd4cdc4424b0f4d5d94ca340bc8dd28521f45d2c36ab982a",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.567228641181096,
+      "submittedAt": "2026-10-10T06:45:11.855Z"
+    },
+    {
+      "name": "bigquery-basics",
+      "repository": "google-skills",
+      "hash": "48e1eef4aca98a282b1c31ee95999a1d87eb548461a824dcc1492e387debf129",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.55911892105884,
+      "submittedAt": "2026-10-10T06:45:13.078Z"
+    },
+    {
       "name": "homelab-architect",
       "repository": "ecc",
       "hash": "c4b307d8096abde58e579b7c75dd5754bbb1b784c3585934e0e2e1a6371a996a",
@@ -755,6 +1313,15 @@
       "tier": "Tier 2",
       "overallScore": 43.55633311870465,
       "submittedAt": "2026-06-17T04:40:47.802Z"
+    },
+    {
+      "name": "google-cloud-filestore-autoscale",
+      "repository": "google-skills",
+      "hash": "8bb3f886cfe05cc21bca44ac339ce925b35bd4b5866de71e9945fd40a373a09f",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.54745773309142,
+      "submittedAt": "2026-10-10T06:45:09.032Z"
     },
     {
       "name": "e2e",
@@ -802,6 +1369,15 @@
       "submittedAt": "2026-06-17T04:40:51.249Z"
     },
     {
+      "name": "managed-airflow-dag-authoring",
+      "repository": "google-skills",
+      "hash": "a2b227fcd99512b3d348b9558d8b49cb2c91a2318012a5e30d703a8c4894f506",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.47277248552005,
+      "submittedAt": "2026-10-10T06:45:07.033Z"
+    },
+    {
       "name": "iterative-retrieval",
       "repository": "ecc",
       "hash": "a4654ff19dd917dafdc8c0859d19e453f854a9b11e34577af4b2419b3ce30c76",
@@ -809,6 +1385,15 @@
       "tier": "Tier 2",
       "overallScore": 43.46429090845538,
       "submittedAt": "2026-06-17T04:40:47.140Z"
+    },
+    {
+      "name": "google-ads-api-quickstart",
+      "repository": "google-skills",
+      "hash": "36acb9cb98b5319a4f87951e2e92db3a1079a3a0b061cf1d6eb142a286dcbd3c",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.457845451515986,
+      "submittedAt": "2026-10-10T06:45:09.279Z"
     },
     {
       "name": "dynamic-workflow-mode",
@@ -829,6 +1414,42 @@
       "submittedAt": "2026-06-17T04:40:44.716Z"
     },
     {
+      "name": "gke-ai-troubleshooting-jobset-interruption",
+      "repository": "google-skills",
+      "hash": "eb9d672cce91b3d4c3757a430ef6792e77146a229b4a0116a69fa149a23728d7",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.431500751818255,
+      "submittedAt": "2026-10-10T06:45:11.204Z"
+    },
+    {
+      "name": "retrieving-developer-knowledge",
+      "repository": "google-skills",
+      "hash": "a71a1d7ad6acc9bed954301f50fb0c9faf7d27537705fde9fd20cabd63357408",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.425223930673354,
+      "submittedAt": "2026-10-10T06:45:06.894Z"
+    },
+    {
+      "name": "metronome",
+      "repository": "stripe-ai",
+      "hash": "30000e4b3c037a939ba3461d08051d6d288139586d8241efc7ab6a35f4cdf2d9",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.42338092546811,
+      "submittedAt": "2026-10-10T06:45:06.139Z"
+    },
+    {
+      "name": "agent-platform-deploy",
+      "repository": "google-skills",
+      "hash": "512294a6b0779f63130e902be6a1935499f5d72943531186d6679ae6882f854d",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.418787470334095,
+      "submittedAt": "2026-10-10T06:45:14.175Z"
+    },
+    {
       "name": "silent-failure-hunter",
       "repository": "ecc",
       "hash": "97607791d5bc947d322a730909c65b8458f903cb11a592959d203778acb8a068",
@@ -836,6 +1457,24 @@
       "tier": "Tier 2",
       "overallScore": 43.41234321457469,
       "submittedAt": "2026-06-17T04:40:41.129Z"
+    },
+    {
+      "name": "google-cloud-solution-guided-gke-ai-migration",
+      "repository": "google-skills",
+      "hash": "b014d5c675b5e82593d075dfec58aafa6d866a5df4e56610f2efe64bd09b09ad",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.40242574376071,
+      "submittedAt": "2026-10-10T06:45:08.142Z"
+    },
+    {
+      "name": "google-cloud-recipe-auth",
+      "repository": "google-skills",
+      "hash": "9d2f86d2ad0305a501e2c54716135712445d794d0a2afe726af4f5f5d5bd604e",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.39466862204061,
+      "submittedAt": "2026-10-10T06:45:08.784Z"
     },
     {
       "name": "mle-workflow",
@@ -854,6 +1493,15 @@
       "tier": "Tier 2",
       "overallScore": 43.38774146494011,
       "submittedAt": "2026-06-17T04:40:51.691Z"
+    },
+    {
+      "name": "cloudflare-one-migrations",
+      "repository": "cloudflare-skills",
+      "hash": "f4136ec39897cadd44eba3785ccd303faafd505c181bc3b1914a8eae63b4a805",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.377349859894046,
+      "submittedAt": "2026-10-10T06:45:28.409Z"
     },
     {
       "name": "intent-driven-development",
@@ -901,6 +1549,24 @@
       "submittedAt": "2026-06-17T04:40:43.122Z"
     },
     {
+      "name": "data-manager-api-event-ingestion",
+      "repository": "google-skills",
+      "hash": "0a65e2b197ff920aac75f5f83fb6080314afa75593b6b088b12d6e441281dc3b",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.27279555946234,
+      "submittedAt": "2026-10-10T06:45:12.139Z"
+    },
+    {
+      "name": "gke-golden-path",
+      "repository": "google-skills",
+      "hash": "72f49ede41a1d4cb662b1f4e0c0c82d7a5b673e2c513b9b12f6b646fc463e5d0",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.26336431857464,
+      "submittedAt": "2026-10-10T06:45:10.373Z"
+    },
+    {
       "name": "clickhouse-io",
       "repository": "ecc",
       "hash": "e22b688e8e795638e5979b84b18d8bca2e8181c4b564000e9cf53c55feae6c0a",
@@ -919,6 +1585,15 @@
       "submittedAt": "2026-06-17T04:40:43.990Z"
     },
     {
+      "name": "cloud-monitoring-chart-generation",
+      "repository": "google-skills",
+      "hash": "6c4e65a57ec68d48f0b6c6d0412b93d0ab7bd48f23d7b980beb1cefbd71b5ef4",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.23989202838203,
+      "submittedAt": "2026-10-10T06:45:12.503Z"
+    },
+    {
       "name": "mysql-patterns",
       "repository": "ecc",
       "hash": "912c387ad3aa161529a609511e767668dd853fdd414934e5bba8786ee59d0ff2",
@@ -928,6 +1603,15 @@
       "submittedAt": "2026-06-17T04:40:44.971Z"
     },
     {
+      "name": "gke-workload-security",
+      "repository": "google-skills",
+      "hash": "cd86cca866550e5cb5cc1b51b9a4abdf94e6b33fe18a562461e9002ecaade7dd",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.1989556085516,
+      "submittedAt": "2026-10-10T06:45:09.549Z"
+    },
+    {
       "name": "network-architect",
       "repository": "ecc",
       "hash": "ad5b3484944b95d5d9fd6c3910dd5ffcac2047b8c1270dba7c3423c3a83f4b59",
@@ -935,6 +1619,15 @@
       "tier": "Tier 2",
       "overallScore": 43.19779262964373,
       "submittedAt": "2026-06-17T04:40:44.848Z"
+    },
+    {
+      "name": "google-cloud-solution-agentic-analytics-spark-knowledge-catalog",
+      "repository": "google-skills",
+      "hash": "4dbc509a54d6bde07b633bbbf8f62ac945a4fd3a90c218942062291cf24a192a",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.18044648552045,
+      "submittedAt": "2026-10-10T06:45:08.324Z"
     },
     {
       "name": "django-reviewer",
@@ -953,6 +1646,15 @@
       "tier": "Tier 2",
       "overallScore": 43.122252371895456,
       "submittedAt": "2026-06-17T04:40:49.032Z"
+    },
+    {
+      "name": "gke-ai-troubleshooting-node-unresponsive-timeout",
+      "repository": "google-skills",
+      "hash": "c9fde95f1135a0015dbe02490d8cc4ac75e345c4d7b2155b164dff822a39eb6d",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.118929882952536,
+      "submittedAt": "2026-10-10T06:45:11.154Z"
     },
     {
       "name": "blender-motion-state-inspection",
@@ -1000,6 +1702,15 @@
       "submittedAt": "2026-06-17T04:40:47.327Z"
     },
     {
+      "name": "secops-hunt",
+      "repository": "google-skills",
+      "hash": "3bd65e3928bb1b56ea13718d69bc286d774a5b769b3e47dd84dd8bdfa4322ae5",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.08998552466533,
+      "submittedAt": "2026-10-10T06:45:06.713Z"
+    },
+    {
       "name": "dmux-workflows",
       "repository": "ecc",
       "hash": "6b19d886335a44a90499c5974a70bf7d426f972dc39a8575afa5072496aef9df",
@@ -1036,6 +1747,24 @@
       "submittedAt": "2026-06-17T04:40:43.719Z"
     },
     {
+      "name": "google-cloud-networking-observability",
+      "repository": "google-skills",
+      "hash": "ec0a0c8cbf7089ce01cb1c1c0a49f5faab68970dc12d7cb8a5647dda7f56e339",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.05061486004813,
+      "submittedAt": "2026-10-10T06:45:08.822Z"
+    },
+    {
+      "name": "sandbox-next",
+      "repository": "cloudflare-skills",
+      "hash": "4335bc90f6e65c43f2ae6f369b5be944e59cd2d9c9e3a4579fce90f834d58494",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.04628793138491,
+      "submittedAt": "2026-10-10T06:45:28.077Z"
+    },
+    {
       "name": "java-coding-standards",
       "repository": "ecc",
       "hash": "1639340f76ad33810f8d7f52500b4819e554fd8d2328b54dd6fb391fc25c756c",
@@ -1061,6 +1790,42 @@
       "tier": "Tier 2",
       "overallScore": 43.01254687381151,
       "submittedAt": "2026-06-17T04:40:45.418Z"
+    },
+    {
+      "name": "connect-required-verification-information",
+      "repository": "stripe-ai",
+      "hash": "c6dd3d102fc3940cd1b7610b986095f5a441dcb18db0168e170ffaba1c781d11",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.9927547839698,
+      "submittedAt": "2026-10-10T06:45:06.268Z"
+    },
+    {
+      "name": "google-cloud-storage-basics",
+      "repository": "google-skills",
+      "hash": "a4ac0a83825e67aa5371081884dd057335af7a8e157dfd8d989adc7cab18f19a",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.98882867922326,
+      "submittedAt": "2026-10-10T06:45:07.703Z"
+    },
+    {
+      "name": "bigquery-bigframes",
+      "repository": "google-skills",
+      "hash": "98638ac2707263ac6d23ccc2ff6aca161162964ab88308040323c7030be77f0f",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.988083089205595,
+      "submittedAt": "2026-10-10T06:45:13.058Z"
+    },
+    {
+      "name": "iam-helper-for-privileged-access-management",
+      "repository": "google-skills",
+      "hash": "4745cb1018469b955fcf6bbca1a1f6794deb91770c508b022be92e9491ff541c",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.976109744762724,
+      "submittedAt": "2026-10-10T06:45:07.142Z"
     },
     {
       "name": "agentic-os",
@@ -1090,6 +1855,15 @@
       "submittedAt": "2026-06-17T04:40:44.777Z"
     },
     {
+      "name": "gemini-live-api",
+      "repository": "google-skills",
+      "hash": "86c078a74409155487ef18ab06153ecf6efd6537a33e90c9f9dc08900c2cbaba",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.93387155179475,
+      "submittedAt": "2026-10-10T06:45:11.277Z"
+    },
+    {
       "name": "latency-critical-systems",
       "repository": "ecc",
       "hash": "3e0914fd56aea555b99aaf97304c9cbd2758f59fa4f2593125c8d059a930aa20",
@@ -1099,6 +1873,24 @@
       "submittedAt": "2026-06-17T04:40:45.902Z"
     },
     {
+      "name": "spanner-basics",
+      "repository": "google-skills",
+      "hash": "61f5012df2e5b12406a81060a805b6e315e4513b2adc8895f7c40955348a50b6",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.926836672836004,
+      "submittedAt": "2026-10-10T06:45:06.457Z"
+    },
+    {
+      "name": "google-cloud-waf-security",
+      "repository": "google-skills",
+      "hash": "1f4305c7284fdcd8ad82a07b1bc8b2b0da3d0241c827b661b3242de7a131ede9",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.924628565381404,
+      "submittedAt": "2026-10-10T06:45:07.431Z"
+    },
+    {
       "name": "writing-plans",
       "repository": "superpowers",
       "hash": "4adddc9888ca706d9d02e1053216febea1d55bb1f6f28533d0488d0c0ca28e87",
@@ -1106,6 +1898,15 @@
       "tier": "Tier 2",
       "overallScore": 42.90269505372911,
       "submittedAt": "2026-06-17T04:44:04.479Z"
+    },
+    {
+      "name": "durable-objects",
+      "repository": "cloudflare-skills",
+      "hash": "ca1fbd0ad9e62329280ecab46b3fc56b228558843e062884762e2b0b92c6f0d1",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.882182836616686,
+      "submittedAt": "2026-10-10T06:45:28.164Z"
     },
     {
       "name": "motion-foundations",
@@ -1144,6 +1945,15 @@
       "submittedAt": "2026-06-17T04:40:40.860Z"
     },
     {
+      "name": "data-manager-api-audience-ingestion",
+      "repository": "google-skills",
+      "hash": "cf3450febe8fcb96c1acb0136a19b7723a1b69256017983e47da222495dd7a36",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.836164716773865,
+      "submittedAt": "2026-10-10T06:45:12.183Z"
+    },
+    {
       "name": "ml-adoption-playbook",
       "repository": "ecc",
       "hash": "e6defd56948a1c8c58d3fe95dded5f0a4f51493e532846f3b20818028f5170c3",
@@ -1162,6 +1972,15 @@
       "submittedAt": "2026-06-17T04:40:43.565Z"
     },
     {
+      "name": "agent-platform-prompt-management",
+      "repository": "google-skills",
+      "hash": "58847f8b5feed857c8a063bc4e41774dfece4a1008d8cbce57fe3cc85e1735e0",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.786910969851654,
+      "submittedAt": "2026-10-10T06:45:13.635Z"
+    },
+    {
       "name": "jira-integration",
       "repository": "ecc",
       "hash": "405b70172a31d2b297ec540f14aba801c096a6e629c3c2000a5c2e51dd02b878",
@@ -1171,6 +1990,24 @@
       "submittedAt": "2026-06-17T04:40:46.951Z"
     },
     {
+      "name": "design",
+      "repository": "google-skills",
+      "hash": "be892442e61a3291647e0ad5890a12fa35c4932e7605e2865eb9b2620ab31096",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.76453246675015,
+      "submittedAt": "2026-10-10T06:45:11.973Z"
+    },
+    {
+      "name": "google-mobile-ads-android-migrate-to-next-gen",
+      "repository": "google-skills",
+      "hash": "623ffca530b6327131bb65eec060b3a322482c155ed2bc285a4f5aa27e1d9c3e",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.756334001898246,
+      "submittedAt": "2026-10-10T06:45:07.307Z"
+    },
+    {
       "name": "laravel-patterns",
       "repository": "ecc",
       "hash": "04020d14bb9124e2e708541fe732da2a91daea38d30d320d3a6315ffb1c39369",
@@ -1178,6 +2015,42 @@
       "tier": "Tier 2",
       "overallScore": 42.75570466484088,
       "submittedAt": "2026-06-17T04:40:46.232Z"
+    },
+    {
+      "name": "detection-engineering-coverage-evaluation",
+      "repository": "google-skills",
+      "hash": "5ef1a2645e39ec4b670cb05fc810141b260ef8928cad0b310c2fb512f1c1a465",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.73877314324663,
+      "submittedAt": "2026-10-10T06:45:11.910Z"
+    },
+    {
+      "name": "google-cloud-scc-remediation",
+      "repository": "google-skills",
+      "hash": "e678295548acd1346c52ef4ff11a60b2e5e6c2467d2dfad7e954b2507f024a85",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.71104352521592,
+      "submittedAt": "2026-10-10T06:45:08.547Z"
+    },
+    {
+      "name": "agent-platform-tuning-management",
+      "repository": "google-skills",
+      "hash": "c46f9281bf052c4a055fbbf1bc197ffeab3fa6abd4c2cf4defe45dd229176d81",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.70042720047897,
+      "submittedAt": "2026-10-10T06:45:13.414Z"
+    },
+    {
+      "name": "dbt-sf-to-bq-translator",
+      "repository": "google-skills",
+      "hash": "9ace0a767f9452309c0508911b4ea5fd7333319bd72294d975f82a91b99d7c9f",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.69937215871196,
+      "submittedAt": "2026-10-10T06:45:12.022Z"
     },
     {
       "name": "perl-patterns",
@@ -1214,6 +2087,24 @@
       "tier": "Tier 2",
       "overallScore": 42.67741751247167,
       "submittedAt": "2026-06-17T04:40:47.721Z"
+    },
+    {
+      "name": "gke-ai-troubleshooting-tpu-performance-degradation",
+      "repository": "google-skills",
+      "hash": "0ae7a623bf1f8c452cc1d8b969701047762d33c123c8d374533076c108f77b2e",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.66701562453046,
+      "submittedAt": "2026-10-10T06:45:10.971Z"
+    },
+    {
+      "name": "secops-investigate",
+      "repository": "google-skills",
+      "hash": "7da7675f3ae25f2d90756a1808528334e04625f461d56bafd1fa29298c3a6a6d",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.66055571403629,
+      "submittedAt": "2026-10-10T06:45:06.666Z"
     },
     {
       "name": "motion-ui",
@@ -1261,6 +2152,15 @@
       "submittedAt": "2026-06-17T04:40:44.616Z"
     },
     {
+      "name": "iam-helper-for-policy-management",
+      "repository": "google-skills",
+      "hash": "81e882bd5e63b59cdc6fabe635f4985621ee8c494832a5e321041d6fd9f0542c",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.57619480260231,
+      "submittedAt": "2026-10-10T06:45:07.190Z"
+    },
+    {
       "name": "videodb",
       "repository": "ecc",
       "hash": "fb6c02b196de07bf88a458e921db8084baf662d80f4a4e58bd05ecac7bb2748e",
@@ -1268,6 +2168,24 @@
       "tier": "Tier 2",
       "overallScore": 42.56159407853113,
       "submittedAt": "2026-06-17T04:40:39.764Z"
+    },
+    {
+      "name": "sandbox-migrate-to-next",
+      "repository": "cloudflare-skills",
+      "hash": "e00dc0524a7341d04cd4d8b71a35e9b9785025846b9d9ba4bd18d4fe21259adb",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.557053501425614,
+      "submittedAt": "2026-10-10T06:45:28.115Z"
+    },
+    {
+      "name": "wrangler",
+      "repository": "cloudflare-skills",
+      "hash": "68d8db4dd09c3a37209f53b6c0247833fea5ab6d12eac73b85ca7ebb61ab6ead",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.5526128927778,
+      "submittedAt": "2026-10-10T06:45:27.812Z"
     },
     {
       "name": "quarkus-verification",
@@ -1297,6 +2215,42 @@
       "submittedAt": "2026-06-17T04:40:50.208Z"
     },
     {
+      "name": "gke-ai-troubleshooting-tpu-mxla-hang",
+      "repository": "google-skills",
+      "hash": "09ccf2a5c60542c58c1249ab874481151c3f7ed3188a248d84c531602cb2b445",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.51021660311564,
+      "submittedAt": "2026-10-10T06:45:11.036Z"
+    },
+    {
+      "name": "google-cloud-solution-agentic-ai-borderless-data-lakehouse",
+      "repository": "google-skills",
+      "hash": "ba5422542cd1cf6035de8e2e13c1fd53d1b9e97192e7622a6c3bcbd2b1fbe78f",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.50710857082336,
+      "submittedAt": "2026-10-10T06:45:08.411Z"
+    },
+    {
+      "name": "gemini-api",
+      "repository": "google-skills",
+      "hash": "4b86f6871e933b61fc0a7445aebe84f9b721a96ed8f5488ddc37bb15712cbb6b",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.49798054959561,
+      "submittedAt": "2026-10-10T06:45:11.394Z"
+    },
+    {
+      "name": "gemini-agents-api",
+      "repository": "google-skills",
+      "hash": "1778c634c9636e1269a0430c635cc080cc0db1ca4d0cdda8f4884ba53bd516dc",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.461841074230655,
+      "submittedAt": "2026-10-10T06:45:11.446Z"
+    },
+    {
       "name": "learn-eval",
       "repository": "ecc",
       "hash": "1eae90ce173e0634ff61529f9fd82c122ee0daeb43e227ee97938ad5d199f885",
@@ -1304,6 +2258,24 @@
       "tier": "Tier 2",
       "overallScore": 42.412247715621795,
       "submittedAt": "2026-06-17T04:40:45.826Z"
+    },
+    {
+      "name": "google-cloud-waf-reliability",
+      "repository": "google-skills",
+      "hash": "5150e5e46f5acd03a078416f5becbab39065f7f5e6dd159a0fa5a86760d08fad",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.39168947642595,
+      "submittedAt": "2026-10-10T06:45:07.470Z"
+    },
+    {
+      "name": "sandbox-stable",
+      "repository": "cloudflare-skills",
+      "hash": "2b30edd55939ff7fb901b5e68a64e18559e3e068e28490888ac135ddcb9aa98f",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.39073095344067,
+      "submittedAt": "2026-10-10T06:45:28.046Z"
     },
     {
       "name": "golang-testing",
@@ -1315,6 +2287,15 @@
       "submittedAt": "2026-06-17T04:40:48.160Z"
     },
     {
+      "name": "cloud-run-alert-configuration",
+      "repository": "google-skills",
+      "hash": "b01f7f10f7e2e8289793935f68c21453bb83cb39f36d1b36939a49933b8975e1",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.37434363606024,
+      "submittedAt": "2026-10-10T06:45:12.327Z"
+    },
+    {
       "name": "data-throughput-accelerator",
       "repository": "ecc",
       "hash": "8113ab478fb9bebb20bd27f6e0d9339386daf23e4deb9cab409622834cb5fec3",
@@ -1322,6 +2303,15 @@
       "tier": "Tier 2",
       "overallScore": 42.351984244663306,
       "submittedAt": "2026-06-17T04:40:50.981Z"
+    },
+    {
+      "name": "iam-helper-for-policy-simulator",
+      "repository": "google-skills",
+      "hash": "b4d078d5aecbdac2bc5fd2cf3f66390ae1b273c41215c279b8ea5359055a282c",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.34534400411401,
+      "submittedAt": "2026-10-10T06:45:07.168Z"
     },
     {
       "name": "pubmed-database",
@@ -1342,6 +2332,51 @@
       "submittedAt": "2026-06-17T04:40:48.552Z"
     },
     {
+      "name": "google-analytics-data-api-basics",
+      "repository": "google-skills",
+      "hash": "26085b7e6d275047b4675fb5f2dcb0f6a107088890157ee0356453cc269c1e6e",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.33086799843125,
+      "submittedAt": "2026-10-10T06:45:09.141Z"
+    },
+    {
+      "name": "google-cloud-solution-hybrid-search-alloydb",
+      "repository": "google-skills",
+      "hash": "3900ce4305599517009fc1f469853ebd8539ebeddcfc0e77e620c31d2b8f7901",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.31450386525838,
+      "submittedAt": "2026-10-10T06:45:07.986Z"
+    },
+    {
+      "name": "finding-google-skills",
+      "repository": "google-skills",
+      "hash": "1ba52d4c061ef1383985c9daa8cb61aeeb64a236bfc5934b81bc4f99f845bb2c",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.30715410625552,
+      "submittedAt": "2026-10-10T06:45:11.566Z"
+    },
+    {
+      "name": "cloud-monitoring-list-time-series-request",
+      "repository": "google-skills",
+      "hash": "b74d8c399b4ff814e413893bae670fb47f1d0b02e6cdcb87f5c83f0855f3fe49",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.27501520415522,
+      "submittedAt": "2026-10-10T06:45:12.458Z"
+    },
+    {
+      "name": "bigquery-slot-cost-optimizer",
+      "repository": "google-skills",
+      "hash": "41a5648db6c519d9296f141b89707cf0c251ca0c1744c3d05a2b0c06b07ed43d",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.264594864166405,
+      "submittedAt": "2026-10-10T06:45:12.935Z"
+    },
+    {
       "name": "gan-planner",
       "repository": "ecc",
       "hash": "4fd9855df8f3fc95b6fac30c216cafa86281740ce771fc3b761729d0b888aad5",
@@ -1349,6 +2384,15 @@
       "tier": "Tier 2",
       "overallScore": 42.246105944498936,
       "submittedAt": "2026-06-17T04:40:48.667Z"
+    },
+    {
+      "name": "managed-airflow-dag-troubleshooting",
+      "repository": "google-skills",
+      "hash": "3d35ff55ad9a34e0643c96ca1b51fcd4f6aaa5403bcb6a59e7ac6c4880f42272",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.244347829876304,
+      "submittedAt": "2026-10-10T06:45:07.008Z"
     },
     {
       "name": "fsharp-testing",
@@ -1387,6 +2431,15 @@
       "submittedAt": "2026-06-17T04:40:53.818Z"
     },
     {
+      "name": "cloud-logging-cross-project-configuration",
+      "repository": "google-skills",
+      "hash": "34e7d03a147e5f162e758d80deaad5f396eeba5554f96c7ed5890040b9ea8565",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.203296229163016,
+      "submittedAt": "2026-10-10T06:45:12.607Z"
+    },
+    {
       "name": "rules-distill",
       "repository": "ecc",
       "hash": "e9f3ca6c03e6afd9696e7eb0dadcc4691d98089f446f16196ffc611058b30fff",
@@ -1423,6 +2476,24 @@
       "submittedAt": "2026-06-17T04:40:54.049Z"
     },
     {
+      "name": "agent-platform-model-registry",
+      "repository": "google-skills",
+      "hash": "4b4124c6af36e29687965840e778ad9fd189d4bc8a1100b8fee70cc25a575c90",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.17247999953809,
+      "submittedAt": "2026-10-10T06:45:13.683Z"
+    },
+    {
+      "name": "upgrade-stripe",
+      "repository": "stripe-ai",
+      "hash": "d23c3262f118d3016e87c8881fd7f167d031552e39a1b9a48ca08a2b8441a4f3",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.15397205884148,
+      "submittedAt": "2026-10-10T06:45:05.916Z"
+    },
+    {
       "name": "skill-create",
       "repository": "ecc",
       "hash": "663338b63bc2b5250e85b0e92f4cbe7c832b735853d81927619e80653c9dbaf2",
@@ -1450,6 +2521,15 @@
       "submittedAt": "2026-06-17T04:40:52.810Z"
     },
     {
+      "name": "google-ads-api-account-diagnostics",
+      "repository": "google-skills",
+      "hash": "79a5e36aa5fc09acf75f0718f11d57731281db7e3d96b6fc3c743980d4a6b806",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.119915812015826,
+      "submittedAt": "2026-10-10T06:45:09.436Z"
+    },
+    {
       "name": "network-interface-health",
       "repository": "ecc",
       "hash": "1cf728d6736294882a0647110b53694b01ba1ec3b89c94c4a8440181d20c897e",
@@ -1468,6 +2548,15 @@
       "submittedAt": "2026-06-17T04:40:52.323Z"
     },
     {
+      "name": "cloud-monitoring-metric-selection",
+      "repository": "google-skills",
+      "hash": "aace6d08f876b8e785d8aa39eaff51af54fa297c393ecc9a0a9c0ab967b8775c",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.07554091630142,
+      "submittedAt": "2026-10-10T06:45:12.411Z"
+    },
+    {
       "name": "agent-introspection-debugging",
       "repository": "ecc",
       "hash": "cb163ad8e9eaf8785294ce3df0879b3bbbdbe14473b5cde78b862525a236295a",
@@ -1475,6 +2564,15 @@
       "tier": "Tier 2",
       "overallScore": 42.05136263663625,
       "submittedAt": "2026-06-17T04:40:54.134Z"
+    },
+    {
+      "name": "stripe-directory",
+      "repository": "stripe-ai",
+      "hash": "0b8f179bebbc24f056706f107341c1d95066426c0f1fb9098a75879034763d92",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.04206750967243,
+      "submittedAt": "2026-10-10T06:45:06.020Z"
     },
     {
       "name": "healthcare-eval-harness",
@@ -1511,6 +2609,15 @@
       "tier": "Tier 2",
       "overallScore": 41.975669369895456,
       "submittedAt": "2026-06-17T04:40:52.729Z"
+    },
+    {
+      "name": "cloudflare-email-service",
+      "repository": "cloudflare-skills",
+      "hash": "8b5d6831701b474d7cf2636d83510933ff20ff5fc7c2ba9891b782ec634b00bc",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.97151864979414,
+      "submittedAt": "2026-10-10T06:45:28.440Z"
     },
     {
       "name": "strategic-compact",
@@ -1594,6 +2701,15 @@
       "submittedAt": "2026-06-17T04:40:43.887Z"
     },
     {
+      "name": "gke-ai-troubleshooting-tpu-dynamic-slices-monitoring",
+      "repository": "google-skills",
+      "hash": "7ada0a8f208252ea7bc717c0f6169d64e7b4803d4ff9c5e24ca7533bec93c753",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.93441076411527,
+      "submittedAt": "2026-10-10T06:45:11.100Z"
+    },
+    {
       "name": "evolve",
       "repository": "ecc",
       "hash": "ed8265bd52b0d3e87150109bfbffb287a4e38daf5e33f6405a1ec70e1f4b6f3e",
@@ -1610,6 +2726,24 @@
       "tier": "Tier 2",
       "overallScore": 41.91042293484485,
       "submittedAt": "2026-06-17T04:40:42.316Z"
+    },
+    {
+      "name": "gke-cost-optimization",
+      "repository": "google-skills",
+      "hash": "f34506120864c5e9d91adf7ee7c751c0053ae5cd62d5931e5505fde1f5b3755f",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.90709898861782,
+      "submittedAt": "2026-10-10T06:45:10.427Z"
+    },
+    {
+      "name": "agent-platform-rag-engine-management",
+      "repository": "google-skills",
+      "hash": "6673b48f7e666735f286bee3912fc1e233b6c432191400c1b29e68c0f7c6ed35",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.90412151936838,
+      "submittedAt": "2026-10-10T06:45:13.592Z"
     },
     {
       "name": "rust-build-resolver",
@@ -1657,6 +2791,15 @@
       "submittedAt": "2026-06-17T04:40:48.642Z"
     },
     {
+      "name": "gke-productionize",
+      "repository": "google-skills",
+      "hash": "289d5690a44cdcfa63660f6c8a6f84ad3302e0da02a6da3bd3fa14b48f53fc79",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.84260529216478,
+      "submittedAt": "2026-10-10T06:45:10.037Z"
+    },
+    {
       "name": "agentic-engineering",
       "repository": "ecc",
       "hash": "e46638a629b8f6f24e2dc7291dd35a37946e97a1b39e9e0b5472127356d8822f",
@@ -1664,6 +2807,24 @@
       "tier": "Tier 2",
       "overallScore": 41.83410239502763,
       "submittedAt": "2026-06-17T04:40:53.978Z"
+    },
+    {
+      "name": "datalineage-bigquery-asset-impact-analysis",
+      "repository": "google-skills",
+      "hash": "d7ad9a9c7363da1c29eadce95f869d075954c987518fef7785142d1ea43c3a54",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.81875285154518,
+      "submittedAt": "2026-10-10T06:45:12.079Z"
+    },
+    {
+      "name": "agent-platform-endpoint-management",
+      "repository": "google-skills",
+      "hash": "d7415f15510e6afb946984299a60f960df21c42a5e2efd48feac3220a439751d",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.812392582807774,
+      "submittedAt": "2026-10-10T06:45:14.081Z"
     },
     {
       "name": "kotlin-exposed-patterns",
@@ -1682,6 +2843,24 @@
       "tier": "Tier 2",
       "overallScore": 41.79630131480302,
       "submittedAt": "2026-06-17T04:40:48.800Z"
+    },
+    {
+      "name": "cb-create-trigger",
+      "repository": "google-skills",
+      "hash": "8ec52760e841c8f5f1011b54309b98139f7c411ac36a54d0bce8abd9a9344a64",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.770878702602644,
+      "submittedAt": "2026-10-10T06:45:12.832Z"
+    },
+    {
+      "name": "google-cloud-scc-query",
+      "repository": "google-skills",
+      "hash": "044b5b4e55ad18f6160cd61d53e8579fde49ee864e9187cf9e573305a004e700",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.763625531257,
+      "submittedAt": "2026-10-10T06:45:08.599Z"
     },
     {
       "name": "kotlin-build-resolver",
@@ -1720,6 +2899,15 @@
       "submittedAt": "2026-06-17T04:40:52.148Z"
     },
     {
+      "name": "stripe-apps",
+      "repository": "stripe-ai",
+      "hash": "9089bb1ca5d9d2e0cc398dd534b9275458055949e58d8ba3c44945a093d2b7c4",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.71680891881156,
+      "submittedAt": "2026-10-10T06:45:06.082Z"
+    },
+    {
       "name": "architecture-decision-records",
       "repository": "ecc",
       "hash": "fb35a0169191cb7c0b7275adb89e5754119d701bfbebab8da69d801f9634d76d",
@@ -1747,6 +2935,15 @@
       "submittedAt": "2026-06-17T04:40:43.264Z"
     },
     {
+      "name": "google-cloud-solution-rag-enterprise-search-gke-sqldb",
+      "repository": "google-skills",
+      "hash": "23c6e8881976c347b8247bcb04a40d4cbdeaa29404cd6f5e8acfa22304ca6e4c",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.6856661147877,
+      "submittedAt": "2026-10-10T06:45:07.769Z"
+    },
+    {
       "name": "python-reviewer",
       "repository": "ecc",
       "hash": "e50149870c73ebde8051d661422ed768bfc1eedbd5bd77d09680e1a5edfa5c3d",
@@ -1772,6 +2969,24 @@
       "tier": "Tier 2",
       "overallScore": 41.64759720654849,
       "submittedAt": "2026-06-17T04:40:44.331Z"
+    },
+    {
+      "name": "google-cloud-solution-architecture",
+      "repository": "google-skills",
+      "hash": "bb9c20a2ed366a17f0446f682b5ee8c6ca4c94c91a9e04966d46b038bec6d406",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.64507579910275,
+      "submittedAt": "2026-10-10T06:45:08.252Z"
+    },
+    {
+      "name": "iam-helper-for-troubleshooting",
+      "repository": "google-skills",
+      "hash": "dd1684c3bc5e5f840a4e7ff88cc660d44a7d71211d24f93d27f3319440419161",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.63585049128572,
+      "submittedAt": "2026-10-10T06:45:07.091Z"
     },
     {
       "name": "email-ops",
@@ -1808,6 +3023,15 @@
       "tier": "Tier 2",
       "overallScore": 41.586616889980455,
       "submittedAt": "2026-06-17T04:40:41.412Z"
+    },
+    {
+      "name": "gke-multitenancy",
+      "repository": "google-skills",
+      "hash": "b109893bc9ee7e1b53f531829b7cc46902ed6d2f77b4442329064799df00af94",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.586046572853554,
+      "submittedAt": "2026-10-10T06:45:10.254Z"
     },
     {
       "name": "code-explorer",
@@ -1855,6 +3079,42 @@
       "submittedAt": "2026-06-17T04:40:40.168Z"
     },
     {
+      "name": "google-agents-cli-onboarding",
+      "repository": "google-skills",
+      "hash": "43f016f03c7b3d82dbfb143a3fd22806b8c7e3becc0f28aafb5a686cf35d0c3b",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.531397549224344,
+      "submittedAt": "2026-10-10T06:45:09.193Z"
+    },
+    {
+      "name": "firebase-basics",
+      "repository": "google-skills",
+      "hash": "8b297ffeed776d36c90a07ab95feac96ebf1610e90fa3ca20ab09317285b75be",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.53114422496797,
+      "submittedAt": "2026-10-10T06:45:11.535Z"
+    },
+    {
+      "name": "agent-platform-skill-registry",
+      "repository": "google-skills",
+      "hash": "e8cadaaed32442470cacd70ab647ddd4528281523df9ffe2df2ce0dc7753d22c",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.51489457620611,
+      "submittedAt": "2026-10-10T06:45:13.549Z"
+    },
+    {
+      "name": "google-cloud-slo-alert-configuration",
+      "repository": "google-skills",
+      "hash": "54409e0a14553be14d73235762ccd774255dea944a268150cd6b882ef4fc9079",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.51356661003395,
+      "submittedAt": "2026-10-10T06:45:08.500Z"
+    },
+    {
       "name": "database-reviewer",
       "repository": "ecc",
       "hash": "86fea10da6c3a6e65552a4bec2c48047f5daf0f58097a508f7846914928ceb9e",
@@ -1882,6 +3142,33 @@
       "submittedAt": "2026-06-17T04:40:48.228Z"
     },
     {
+      "name": "google-cloud-solution-agentic-ai-data-science-workflow",
+      "repository": "google-skills",
+      "hash": "7f67c731e0dff3ee0f9c4c38e53369cd1a8722cb6a2556aa2dff1960351430b4",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.4948902936358,
+      "submittedAt": "2026-10-10T06:45:08.371Z"
+    },
+    {
+      "name": "google-cloud-waf-cost-optimization",
+      "repository": "google-skills",
+      "hash": "62aabb7ca133b311c9bc9d5ecb59420075048d4eb5cecd100efee49ded773186",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.490763745309685,
+      "submittedAt": "2026-10-10T06:45:07.572Z"
+    },
+    {
+      "name": "managed-airflow-migrations",
+      "repository": "google-skills",
+      "hash": "0cfbf0ecc6acd2be2493683d7e2734b034b11d4ccdde0dd239c8e4cbd9ade219",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.48928763541537,
+      "submittedAt": "2026-10-10T06:45:06.945Z"
+    },
+    {
       "name": "recsys-pipeline-architect",
       "repository": "ecc",
       "hash": "c29f0a5a26d2e9621be745554b1877262ddb142627c415ba4589f0c5c8204d7a",
@@ -1889,6 +3176,33 @@
       "tier": "Tier 3",
       "overallScore": 41.471611200088496,
       "submittedAt": "2026-06-17T04:40:42.179Z"
+    },
+    {
+      "name": "gke-backup-dr",
+      "repository": "google-skills",
+      "hash": "3edb0c627364c11e5d7cd805d3625e840150d0e3a7aedfd8918aa268530f1907",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.447902225111285,
+      "submittedAt": "2026-10-10T06:45:10.772Z"
+    },
+    {
+      "name": "google-cloud-storage-bucket-architect",
+      "repository": "google-skills",
+      "hash": "d666d8eb9cf1573f94a4ddb92bc636186b0c1a040430130cfe6112eae6587f91",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.42790105107614,
+      "submittedAt": "2026-10-10T06:45:07.652Z"
+    },
+    {
+      "name": "gke-reliability",
+      "repository": "google-skills",
+      "hash": "a0fe5b73debcd199d89a4c2b153b084a1f3216c1011d7f5b796a4b3431cacf35",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.418563365557226,
+      "submittedAt": "2026-10-10T06:45:10.005Z"
     },
     {
       "name": "messages-ops",
@@ -1927,6 +3241,15 @@
       "submittedAt": "2026-06-17T04:44:04.600Z"
     },
     {
+      "name": "google-cloud-waf-sustainability",
+      "repository": "google-skills",
+      "hash": "e5d8f304c83aa95aaacbaf9dda4faf9d2fd4d60e28ce06a54159c52703c3fb84",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.36214567904333,
+      "submittedAt": "2026-10-10T06:45:07.360Z"
+    },
+    {
       "name": "energy-procurement",
       "repository": "ecc",
       "hash": "0f5c35db9f185baa58ff4f73936d2e3577e9deefff3e0374f11364a88c4ffc6e",
@@ -1943,6 +3266,15 @@
       "tier": "Tier 3",
       "overallScore": 41.35810223295503,
       "submittedAt": "2026-06-17T04:40:50.247Z"
+    },
+    {
+      "name": "gke-inference",
+      "repository": "google-skills",
+      "hash": "409430b5872f3e8574bf71dddc2d002457fedb983b2bfbf2070a6bfdce6541b5",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.354148476169875,
+      "submittedAt": "2026-10-10T06:45:10.336Z"
     },
     {
       "name": "motion-advanced",
@@ -2044,6 +3376,15 @@
       "submittedAt": "2026-06-17T04:40:52.964Z"
     },
     {
+      "name": "google-cloud-storage-fuse",
+      "repository": "google-skills",
+      "hash": "75c9ce98d203a4da43c5072a08003a8daf3d48e46419f91870f1b6180e28169f",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.25881220532379,
+      "submittedAt": "2026-10-10T06:45:07.603Z"
+    },
+    {
       "name": "pr-test-analyzer",
       "repository": "ecc",
       "hash": "d271a7030fbe7d781d8ffc4496efcfcf72f1a19e0199ec84ef44d0e1eadafae1",
@@ -2116,6 +3457,15 @@
       "submittedAt": "2026-06-17T04:40:48.060Z"
     },
     {
+      "name": "gke-networking",
+      "repository": "google-skills",
+      "hash": "d63b900bb35dbc4c15757b1d9f0f584af0296939e76792844240b7cc0960c91f",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.173402340434286,
+      "submittedAt": "2026-10-10T06:45:10.232Z"
+    },
+    {
       "name": "cost-tracking",
       "repository": "ecc",
       "hash": "8e9bc35b1a95520358d2df0864eb998fa2cde50eff168188a364b8a5ca5c059b",
@@ -2152,6 +3502,15 @@
       "submittedAt": "2026-06-17T04:40:47.819Z"
     },
     {
+      "name": "google-cloud-solution-agentic-ai-bidirectional-streaming",
+      "repository": "google-skills",
+      "hash": "0eed046e79b898926b67374032ad58c1ebaa1287f407eb56527ab01ef36d0309",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.11160497130335,
+      "submittedAt": "2026-10-10T06:45:08.447Z"
+    },
+    {
       "name": "homelab-network-setup",
       "repository": "ecc",
       "hash": "0975c91a3b414ba0222b0d61a0027dd0f26fde7e718dc326c26461fe2d147da6",
@@ -2159,6 +3518,24 @@
       "tier": "Tier 3",
       "overallScore": 41.109384590153084,
       "submittedAt": "2026-06-17T04:40:47.742Z"
+    },
+    {
+      "name": "gke-ai-troubleshooting-handle-disruption-gpu-tpu",
+      "repository": "google-skills",
+      "hash": "75e79b16744f5660a17c6cc523fd3f065d2bc7726facb14f55c6db16f9406112",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.097454263349704,
+      "submittedAt": "2026-10-10T06:45:11.232Z"
+    },
+    {
+      "name": "stripe-projects",
+      "repository": "stripe-ai",
+      "hash": "fee9406dc242572470a8dc2be9ddb0eab5f2ae39fd7536e2415786871f492692",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.08490356188076,
+      "submittedAt": "2026-10-10T06:45:05.954Z"
     },
     {
       "name": "content-hash-cache-pattern",
@@ -2278,6 +3655,15 @@
       "submittedAt": "2026-06-17T04:40:52.755Z"
     },
     {
+      "name": "gke-workload-scaling",
+      "repository": "google-skills",
+      "hash": "561f709968f72f267d99d3a561c338a1f7036a3b1147454e866c38310f784225",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.92704285355565,
+      "submittedAt": "2026-10-10T06:45:09.572Z"
+    },
+    {
       "name": "ecc-tools-cost-audit",
       "repository": "ecc",
       "hash": "1e70ae9d692ed3d54ad4f9bb39fa2d10f6694e1e69cd0953f0165667841d077e",
@@ -2303,6 +3689,15 @@
       "tier": "Tier 3",
       "overallScore": 40.903639990985766,
       "submittedAt": "2026-06-17T04:40:54.144Z"
+    },
+    {
+      "name": "gke-ai-troubleshooting-tpu-vbar-oom",
+      "repository": "google-skills",
+      "hash": "5946574ba2f101c2d12454c9b90804b40814fd3731a59b5d55d2df785edb754d",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.90228157385635,
+      "submittedAt": "2026-10-10T06:45:10.911Z"
     },
     {
       "name": "pm2",
@@ -2350,6 +3745,24 @@
       "submittedAt": "2026-06-17T04:40:48.580Z"
     },
     {
+      "name": "stripe-pay",
+      "repository": "stripe-ai",
+      "hash": "934236be70aa711a305f7077044203f84c9f866f5ffd7cfed72262b9c44514de",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.85697978517763,
+      "submittedAt": "2026-10-10T06:45:05.975Z"
+    },
+    {
+      "name": "gke-basics",
+      "repository": "google-skills",
+      "hash": "4528c0430f3f36a6a4bdaa293d81710c4f90e33e23363d82504af1cf27a0195c",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.856225234949484,
+      "submittedAt": "2026-10-10T06:45:10.736Z"
+    },
+    {
       "name": "homelab-vlan-segmentation",
       "repository": "ecc",
       "hash": "abc18dbf3855ac5bc5e758837df2b60449b95eb0116e891599350e374b6a2221",
@@ -2357,6 +3770,24 @@
       "tier": "Tier 3",
       "overallScore": 40.84874408958007,
       "submittedAt": "2026-06-17T04:40:47.671Z"
+    },
+    {
+      "name": "k2",
+      "repository": "cloudflare-skills",
+      "hash": "c483072f247c5ecf9dc4747ac450ef27b055b9bb5aea7ffd7d74d706ee3ebad4",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.84761952650732,
+      "submittedAt": "2026-10-10T06:45:28.136Z"
+    },
+    {
+      "name": "connect-recommend",
+      "repository": "stripe-ai",
+      "hash": "06083fdb54f2c4e4271bf2fcf51ad34da4623c1a9cf0404ee0b01348110bc347",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.83404178151997,
+      "submittedAt": "2026-10-10T06:45:06.375Z"
     },
     {
       "name": "github-ops",
@@ -2384,6 +3815,15 @@
       "tier": "Tier 3",
       "overallScore": 40.80564992502712,
       "submittedAt": "2026-06-17T04:40:49.353Z"
+    },
+    {
+      "name": "gke-storage",
+      "repository": "google-skills",
+      "hash": "fb3f0e8a03f24ea0a97c6e5fee5b660f6fb0267342a0cd06ac8b175beac2b7b2",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.7944743798248,
+      "submittedAt": "2026-10-10T06:45:09.861Z"
     },
     {
       "name": "context-budget",
@@ -2476,6 +3916,15 @@
       "submittedAt": "2026-06-17T04:40:40.636Z"
     },
     {
+      "name": "datalineage-summary",
+      "repository": "google-skills",
+      "hash": "8921d6fce66248778db0903de774d8bee39ba16f06b22954db63d1642cc660cb",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.71914537026767,
+      "submittedAt": "2026-10-10T06:45:12.050Z"
+    },
+    {
       "name": "council",
       "repository": "ecc",
       "hash": "82b01f9a71861062b907c754794290b4d0e04c4cc3b01f67c88d4e8257715681",
@@ -2566,6 +4015,15 @@
       "submittedAt": "2026-06-17T04:40:47.502Z"
     },
     {
+      "name": "google-cloud-waf-performance-optimization",
+      "repository": "google-skills",
+      "hash": "babcf0e4b0eddf5735cbb0ddebd099d24df437541fee0a5846d88a72285e8ab1",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.57427456776355,
+      "submittedAt": "2026-10-10T06:45:07.499Z"
+    },
+    {
       "name": "pytorch-build-resolver",
       "repository": "ecc",
       "hash": "f53055dfec9132e9cb5ac2336816d5c07afb993d2e635356437db5bf2daf4271",
@@ -2582,6 +4040,15 @@
       "tier": "Tier 3",
       "overallScore": 40.56138291756262,
       "submittedAt": "2026-06-17T04:40:45.584Z"
+    },
+    {
+      "name": "stripe-best-practices",
+      "repository": "stripe-ai",
+      "hash": "5c221122202285371567098f6520b6bac85cfb0afbdf05ace3a34facfd6035ad",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.557188590881516,
+      "submittedAt": "2026-10-10T06:45:06.050Z"
     },
     {
       "name": "skill-scout",
@@ -2609,6 +4076,15 @@
       "tier": "Tier 3",
       "overallScore": 40.541670551462786,
       "submittedAt": "2026-06-17T04:40:45.132Z"
+    },
+    {
+      "name": "gke-custom-golden-image-discovery",
+      "repository": "google-skills",
+      "hash": "1f4ac1a6df3ad54d6e6c61bfc49ceb21ad13358145d4a6e99c66ad0a22c0e7c8",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.536192557459756,
+      "submittedAt": "2026-10-10T06:45:10.389Z"
     },
     {
       "name": "rust-reviewer",
@@ -2665,6 +4141,15 @@
       "submittedAt": "2026-06-17T04:40:44.665Z"
     },
     {
+      "name": "data-manager-api-setup",
+      "repository": "google-skills",
+      "hash": "0fc27d5e5c988086501fa891b7de79042d129b51c16b87aceac1a3441577f92b",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.457437498666714,
+      "submittedAt": "2026-10-10T06:45:12.090Z"
+    },
+    {
       "name": "benchmark-optimization-loop",
       "repository": "ecc",
       "hash": "5302f360c2aa1b83611b4e6530b74d4a04500328aa35a764e5cf2fe873720c42",
@@ -2699,6 +4184,15 @@
       "tier": "Tier 3",
       "overallScore": 40.43132087705331,
       "submittedAt": "2026-06-17T04:40:50.185Z"
+    },
+    {
+      "name": "cloud-sql-basics",
+      "repository": "google-skills",
+      "hash": "8a3f5027db4e7590b69b8743c07611f8b8cedf4c258dfe14cb14e418495a87cb",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.429062647537535,
+      "submittedAt": "2026-10-10T06:45:12.228Z"
     },
     {
       "name": "research-ops",
@@ -2782,6 +4276,15 @@
       "submittedAt": "2026-06-17T04:40:47.527Z"
     },
     {
+      "name": "google-cloud-solution-build-deploy-agents",
+      "repository": "google-skills",
+      "hash": "7b397270bc9cc6430e2fedea46fe1bd46a42b0b0f612e7177ea26be397b9f24d",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.333071344027886,
+      "submittedAt": "2026-10-10T06:45:08.197Z"
+    },
+    {
       "name": "everything-claude-code",
       "repository": "ecc",
       "hash": "2b25b27d25e65efb52bfa905cc157ca9f4b9ed902aee3a167c2108a5d238f1b3",
@@ -2789,6 +4292,15 @@
       "tier": "Tier 3",
       "overallScore": 40.332234696999016,
       "submittedAt": "2026-06-17T04:40:49.621Z"
+    },
+    {
+      "name": "web-perf",
+      "repository": "cloudflare-skills",
+      "hash": "7704368ca097bbc2694db7ab35b59f08619e54cbd7b27cbf8b70a26d357b4998",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.32402376214095,
+      "submittedAt": "2026-10-10T06:45:27.876Z"
     },
     {
       "name": "brand-discovery",
@@ -2818,6 +4330,33 @@
       "submittedAt": "2026-06-17T04:40:39.975Z"
     },
     {
+      "name": "google-cloud-global-frontend-configuration",
+      "repository": "google-skills",
+      "hash": "ef48836f18dc28323e92e7ca8409e1981c0cfe3fe3f00d8a9bd6a99231db6d9b",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.29787851088401,
+      "submittedAt": "2026-10-10T06:45:08.871Z"
+    },
+    {
+      "name": "google-analytics-admin-api-basics",
+      "repository": "google-skills",
+      "hash": "54e03f7a664efbe7856bea3d94c76232ff7efd2763a33ead781fda7678666ba6",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.29653307068871,
+      "submittedAt": "2026-10-10T06:45:09.172Z"
+    },
+    {
+      "name": "nextjs-on-cloudflare",
+      "repository": "cloudflare-skills",
+      "hash": "7e88594b64647d466b7c821165891c7f992e67e0d68a26797ec456b090455b11",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.262056811664735,
+      "submittedAt": "2026-10-10T06:45:28.127Z"
+    },
+    {
       "name": "swiftui-patterns",
       "repository": "ecc",
       "hash": "2ffd3b3b074f43c8aa762e9a113ef2c8a2ad65bd84eb0ab58966eba9c4abbec9",
@@ -2845,6 +4384,15 @@
       "submittedAt": "2026-06-17T04:40:45.799Z"
     },
     {
+      "name": "bigtable-basics",
+      "repository": "google-skills",
+      "hash": "1feb5479094f37ff659a8f0026661ecd810e34eb4ca57ee1146d3e0572f101df",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.238726593813404,
+      "submittedAt": "2026-10-10T06:45:12.856Z"
+    },
+    {
       "name": "browser-qa",
       "repository": "ecc",
       "hash": "505bc85c7b2372f8a6a7c94316d1d9272a2169779321619a78052626ac4a8929",
@@ -2861,6 +4409,24 @@
       "tier": "Tier 3",
       "overallScore": 40.23138119395772,
       "submittedAt": "2026-06-17T04:40:45.467Z"
+    },
+    {
+      "name": "google-cloud-waf-operational-excellence",
+      "repository": "google-skills",
+      "hash": "8701511e38e9475ea944aaef78893626573c7f94222f6457e7a0bc1ed0d459f3",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.22301785365564,
+      "submittedAt": "2026-10-10T06:45:07.529Z"
+    },
+    {
+      "name": "gke-batch-hpc",
+      "repository": "google-skills",
+      "hash": "1a03fcb40b1edf8d8baec69bed21d2b56e4d106806ff7f9bc77132b046d176d7",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.203768964115845,
+      "submittedAt": "2026-10-10T06:45:10.720Z"
     },
     {
       "name": "skill-health",
@@ -2926,6 +4492,15 @@
       "submittedAt": "2026-06-17T04:40:41.113Z"
     },
     {
+      "name": "ima-sdk-client-side",
+      "repository": "google-skills",
+      "hash": "78ae4cae08d85feb9a755ca7f36881e8f110fd59bae6ebac594122d90e258e3e",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.07433098020238,
+      "submittedAt": "2026-10-10T06:45:07.057Z"
+    },
+    {
       "name": "sessions",
       "repository": "ecc",
       "hash": "ed4d45b554524c9e7f5ea8940a8aa34317e322d6743bd0469d3eb79ca8e0e6d3",
@@ -2933,6 +4508,15 @@
       "tier": "Tier 3",
       "overallScore": 40.07356082153674,
       "submittedAt": "2026-06-17T04:40:41.217Z"
+    },
+    {
+      "name": "gke-ai-troubleshooting-tpu-metrics-monitoring",
+      "repository": "google-skills",
+      "hash": "3a85a06bc8d420c310a12683ee46ba75c2de065f3a50391f111e892023836ddd",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.03016112619496,
+      "submittedAt": "2026-10-10T06:45:11.065Z"
     },
     {
       "name": "everything-claude-code-conventions",
@@ -3124,6 +4708,15 @@
       "submittedAt": "2026-06-17T04:40:44.352Z"
     },
     {
+      "name": "infra-deployment-debugging",
+      "repository": "google-skills",
+      "hash": "d5d54f2e9ef1410ef03f077a825a79a39f5f84a6bc61bc203269222ac3f56d72",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 39.72621574732369,
+      "submittedAt": "2026-10-10T06:45:07.047Z"
+    },
+    {
       "name": "code-tour",
       "repository": "ecc",
       "hash": "0222ebfdfb5f683d88507207133cd0df2f6d205c22b7f49574db34cf48230810",
@@ -3149,6 +4742,15 @@
       "tier": "Tier 3",
       "overallScore": 39.68373866735481,
       "submittedAt": "2026-06-17T04:40:54.008Z"
+    },
+    {
+      "name": "cloud-databases-onboarding",
+      "repository": "google-skills",
+      "hash": "06606e73c17e554aa7d1094de2e2ec861a3c142b4adae61eda55838056aeeed5",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 39.67766028417083,
+      "submittedAt": "2026-10-10T06:45:12.694Z"
     },
     {
       "name": "audio",
@@ -3241,6 +4843,15 @@
       "submittedAt": "2026-06-17T04:40:44.577Z"
     },
     {
+      "name": "gke-cost-analysis",
+      "repository": "google-skills",
+      "hash": "b4cfd4db452e1195947efaadd6252f626ae13370b8ecbd38d66588764d69837d",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 39.52816524638253,
+      "submittedAt": "2026-10-10T06:45:10.455Z"
+    },
+    {
       "name": "product-lens",
       "repository": "ecc",
       "hash": "8bd79ad95c1c2229fa1eb23b1056039b4aaf927ccd4a2c3e52aa0c9008e50f9c",
@@ -3293,6 +4904,15 @@
       "tier": "Tier 3",
       "overallScore": 39.4616147378399,
       "submittedAt": "2026-06-17T04:40:41.299Z"
+    },
+    {
+      "name": "stripe-docs",
+      "repository": "stripe-ai",
+      "hash": "12ea0be41303d60de41aa529c9a4095357e736ab8ac2f41490b43a1bccd68da9",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 39.460396380989906,
+      "submittedAt": "2026-10-10T06:45:05.983Z"
     },
     {
       "name": "compositions",
@@ -3385,6 +5005,15 @@
       "submittedAt": "2026-06-17T04:40:50.767Z"
     },
     {
+      "name": "bigquery-ai-ml",
+      "repository": "google-skills",
+      "hash": "47d167dc962093dd3866b0aef074fb5b04ba168bade7c26e67b9bc7bab7d334c",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 39.237987138470025,
+      "submittedAt": "2026-10-10T06:45:13.092Z"
+    },
+    {
       "name": "nextjs-turbopack",
       "repository": "ecc",
       "hash": "6f75445064be71c5accd70ad0336b0b5061f9cdb9eedabd73d93ddcbe0c415d4",
@@ -3428,6 +5057,15 @@
       "tier": "Tier 3",
       "overallScore": 39.200385794294306,
       "submittedAt": "2026-06-17T04:40:39.663Z"
+    },
+    {
+      "name": "google-mobile-ads-validate",
+      "repository": "google-skills",
+      "hash": "42747bd6d69b384c21d11e54c5168c751164310581c825cb0c65c42ae2306c0d",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 39.1558079885411,
+      "submittedAt": "2026-10-10T06:45:07.207Z"
     },
     {
       "name": "outreach-drafter",
@@ -3574,6 +5212,15 @@
       "submittedAt": "2026-06-17T04:40:43.295Z"
     },
     {
+      "name": "basin",
+      "repository": "cloudflare-skills",
+      "hash": "e8935cff7022f7db87906e9dfd58ba1ba8f3cdb6dace4fbadbaa1d055aade423",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 38.701272030324596,
+      "submittedAt": "2026-10-10T06:45:28.454Z"
+    },
+    {
       "name": "ai-first-engineering",
       "repository": "ecc",
       "hash": "3c063188ee1a8fb190d28b9f0a33b7a6e4555fdc23e02cd853bf5350bfd23841",
@@ -3619,6 +5266,15 @@
       "submittedAt": "2026-06-17T04:40:52.313Z"
     },
     {
+      "name": "ima-dai-sdk",
+      "repository": "google-skills",
+      "hash": "e32029f899d4ed5d24e4cad454807919656545ff4207645d8f5fa4b1d0f545b0",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 38.62884379129407,
+      "submittedAt": "2026-10-10T06:45:07.067Z"
+    },
+    {
       "name": "tailwind",
       "repository": "ecc",
       "hash": "acfdf1fe1d4ea4ba5a854ba5322bc2467f59f68564a4ec47ffe7eab085bac994",
@@ -3655,6 +5311,15 @@
       "submittedAt": "2026-06-17T04:40:47.560Z"
     },
     {
+      "name": "google-mobile-ads-get-started",
+      "repository": "google-skills",
+      "hash": "c77130ac5e99263d60a7dde70e5affe959c0504aeb461f02d673b2082b282be9",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 38.40038965910756,
+      "submittedAt": "2026-10-10T06:45:07.225Z"
+    },
+    {
       "name": "charts",
       "repository": "ecc",
       "hash": "c958b77779a04b6c0c28b398fc686c25fa7c4283a0e9b64d5e6ecac5eecfcf50",
@@ -3671,6 +5336,24 @@
       "tier": "Tier 3",
       "overallScore": 38.245374564092536,
       "submittedAt": "2026-06-17T04:40:42.015Z"
+    },
+    {
+      "name": "google-mobile-ads-banner",
+      "repository": "google-skills",
+      "hash": "b4fab0bc240501818fed6742bba7ee838fe52bcc452baa39f19663c638806053",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 38.17423441799121,
+      "submittedAt": "2026-10-10T06:45:07.233Z"
+    },
+    {
+      "name": "google-mobile-ads-rewarded",
+      "repository": "google-skills",
+      "hash": "19004eaebe13b9a2127de7597295ba62ef7d5a1cb789ad1869d7b830de494676",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 38.13804186796703,
+      "submittedAt": "2026-10-10T06:45:07.214Z"
     },
     {
       "name": "ios-icon-gen",
@@ -3698,6 +5381,15 @@
       "tier": "Tier 3",
       "overallScore": 38.00625081523177,
       "submittedAt": "2026-06-17T04:40:47.454Z"
+    },
+    {
+      "name": "google-mobile-ads-interstitial",
+      "repository": "google-skills",
+      "hash": "f5d8e7c87fa5ea26b776c4b6afbca4aae2fbcba2b8c892eeef4e47045bffd94a",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 37.90548212065392,
+      "submittedAt": "2026-10-10T06:45:07.219Z"
     }
   ]
 }

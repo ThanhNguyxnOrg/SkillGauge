@@ -28,12 +28,12 @@ python3 scripts/database_onboarding_skill.py --verify
 ```
 
 *   **Reading / Progressive Disclosure:** When interacting with a user during a
-    conversation, load reference files progressively. Follow the Just-in-Time
+    conversation, load reference files progressively. Follow the -in-Time
     (JiT) loading instructions outlined in the phases below.
 
 --------------------------------------------------------------------------------
 
-## Workflow & Just-in-Time (JiT) Instructions
+## Workflow & -in-Time (JiT) Instructions
 
 This workflow operates in three distinct sequential phases. Evaluate the active
 conversation history to determine the current phase and follow the corresponding
@@ -41,7 +41,7 @@ instructions:
 
 ### Phase 1: Requirement Discovery & Information Gathering
 
-When a user asks `"What database should I use?"` or requires guidance on Google
+When a user asks `"What database must I use?"` or requires guidance on Google
 Cloud database selection, you must initiate the Discovery phase.
 
 1.  **Load Discovery Instructions (JiT):** Read the complete contents of

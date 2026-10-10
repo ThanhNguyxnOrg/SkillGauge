@@ -53,7 +53,7 @@ The user pasted the prompt. You are in a multi-step dialog. Detect what you can,
      1. **Export + relaunch** (token enters neither chat nor shell history): `read -rsp 'Cloudflare API token: ' token; echo; export CLOUDFLARE_API_TOKEN="$token"; unset token`, then restart the agent from that terminal.
      2. **Save to file** (token in a user-only file): `umask 077; read -rsp 'Cloudflare API token: ' token; echo; printf '%s' "$token" > ~/.cf-turnstile-token; unset token`, then load it without printing it.
      Do not ask the user to paste the API token into chat. When auth is established, re-run `auth-probe.sh` and resume from Step 4.
-   - `network_failure`: the probe could not reach `api.cloudflare.com`. Show the diagnostic (VPN/proxy, TLS interception, DNS). Do not treat this as a scope problem. Ask the user to fix connectivity, then re-run `auth-probe.sh`.
+   - `network_failure`: the probe shall not reach `api.cloudflare.com`. Show the diagnostic (VPN/proxy, TLS interception, DNS). Do not treat this as a scope problem. Ask the user to fix connectivity, then re-run `auth-probe.sh`.
    - `upstream_failure`: the API returned an unexpected response (`http_code` non-4xx). Do not assume the token is bad. Show the code, ask the user to retry after a brief wait, and re-run `auth-probe.sh`.
    - `multiple_accounts`: the token covers more than one account and `$CLOUDFLARE_ACCOUNT_ID` is unset. Present the numbered `accounts` list. **[wait for user]** Then export `CLOUDFLARE_ACCOUNT_ID=<chosen>` and re-run `auth-probe.sh`.
    - `account_mismatch`: `$CLOUDFLARE_ACCOUNT_ID` is set but isn't one of the token's accounts. Show the `accounts` list and ask the user to either `unset CLOUDFLARE_ACCOUNT_ID` or set it to one of those IDs.
@@ -149,7 +149,7 @@ The user pasted the prompt. You are in a multi-step dialog. Detect what you can,
 
 Spin validates the Turnstile token via canonical siteverify before the user's existing handler runs. Everything else is out of scope:
 
-- **Email / SMS / notification delivery.** Leave the existing submit handler alone (just gate it on `success === true`). Don't propose Resend, Mailchannels, SMTP, mailto.
+- **Email / SMS / notification delivery.** Leave the existing submit handler alone ( gate it on `success === true`). Don't propose Resend, Mailchannels, SMTP, mailto.
 - **Adding a new backend.** If the form has no backend handler today (pure-static site, mailto-only contact form), say so and exit. Spin requires a server-side place to put siteverify.
 - **Database / payment / OAuth / form persistence.** Out of scope.
 - **Frontend framework migration, refactoring, or styling.** Edit only what's needed.

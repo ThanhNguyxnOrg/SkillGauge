@@ -49,7 +49,7 @@ Choose **Direct Rule Authoring** when the threat behavior, specific indicators, 
 - **Incident Response & Triage Findings**: An active security investigation or high-severity alert reveals a specific attacker technique, LOLBin invocation, or adversary command-line pattern requiring immediate detection.
 - **Confirmed Threat Hunt Hypotheses**: A proactive threat hunt identifies malicious persistence, credential access, or lateral movement that lacked detection coverage.
 - **Known Detection Logic & IoCs**: The engineer has specific rules, regex patterns, or explicit UDM filtering criteria to implement directly (e.g., detecting unauthorized use of `vssadmin.exe delete shadows`).
-- **Rule Tuning, Modernization & Refinement**: An existing rule requires optimization, threshold adjustments, false-positive exclusion, or conversion to YARA-L 2.0 syntax.
+- **Rule Tuning, Modernization & Refinement**: An existing rule requires optimization, threshold adments, false-positive exclusion, or conversion to YARA-L 2.0 syntax.
 - **Core Path**: Draft YARA-L 2.0 logic → Validate syntax with `validate_rule` → Test against historical telemetry with `list_rule_detections` → Request user approval → Deploy with `create_rule` → Verify status with `get_rule`.
 
 ### When to Evaluate Detection Coverage Gaps (`Workflow 2`)

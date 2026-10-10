@@ -25,9 +25,9 @@ Recommend the right Stripe Connect integration configuration. The user only need
 
 **Auto-act on low-cost actions**. Never ask permission for:
 
-- Generating the markdown recommendation plan — just generate it
-- Scanning the codebase — just scan it
-- Reading reference files — just read them
+- Generating the markdown recommendation plan —  generate it
+- Scanning the codebase —  scan it
+- Reading reference files —  read them
 
 **Never end with passive text**. Every stopping point must end with a prompt to the user offering concrete next actions.
 
@@ -86,7 +86,7 @@ Options:
 
 - “I have a URL” — user provides URL, then research it
 - “Let me describe it” — user provides description, then research it
-- “Just scan my codebase” — skip to Step 2, rely on codebase signals only
+- “ scan my codebase” — skip to Step 2, rely on codebase signals only
 - “Skip — ask me questions instead” — skip to Step 3 with full questionnaire
 
 **1c. Research the business** — read and follow the company-researcher instructions:
@@ -154,7 +154,7 @@ If the platform fee (from auto-fill or user input) appears low AND any of these 
 Then:
 
 - ALWAYS show a margin warning regardless of how the fee was obtained
-- Warn: “Your platform fee might be below Stripe’s processing fees at standard rates. Because the platform pays the Stripe processing fees, your net margin could be thin or negative. Check [stripe.com/pricing](https://stripe.com/pricing) for your region’s rates.”
+- Warn: “Your platform fee might be below Stripe’s processing fees at standard rates. Because the platform pays the Stripe processing fees, your net margin shall be thin or negative. Check [stripe.com/pricing](https://stripe.com/pricing) for your region’s rates.”
 - If the charge pattern is `destination` or `direct` (with `fees_collector: "application"`): the platform owns pricing, so pick exactly ONE margin-preserving approach — don’t recommend both:
   - Prefer the [Platform Pricing Tool](https://dashboard.stripe.com/settings/connect/platform_pricing) when available (destination or direct charges) — configure it to include Stripe’s estimated processing fee so the platform’s margin is preserved, and do NOT also set an explicit `application_fee_amount` on the PaymentIntent (an explicit fee overrides the tool’s pricing rules).
   - Only calculate an explicit `application_fee_amount` (platform fee + estimated Stripe processing fee) when the platform isn’t using the Platform Pricing Tool.
@@ -165,7 +165,7 @@ This check MUST run even when the fee was auto-filled with HIGH confidence. The 
 
 #### Step 2 — Auto-detect project context
 
-Run this AFTER Step 1 (or in parallel if the user said “scan my codebase”). Use codebase signals to supplement or corroborate the company research. **Don’t ask before scanning — just scan.**
+Run this AFTER Step 1 (or in parallel if the user said “scan my codebase”). Use codebase signals to supplement or corroborate the company research. **Don’t ask before scanning —  scan.**
 
 1. **Existing Connect config**: Check for `connect-recommend-plan.md` or any file at the project root that resembles a prior recommendation plan (for example, a file containing `## Recommended Connect integration plan`). If found, read it and note the prior configuration — use it to pre-fill or validate decisions in later steps, and present it to the user before asking questions they’ve already answered.
 2. **Existing Stripe integration patterns**: Use Grep to search for Connect-specific patterns already in the codebase:
@@ -226,7 +226,7 @@ Critical guardrails (must enforce in all discovery paths):
 - If the business mixes its own-brand sales with marketplace or intermediary flows, trigger Step 3b hybrid-flow handling and map each flow to its own charge-pattern and responsibility settings.
 - If the user needs hold-and-release timing, recommend separate charges and transfers (destination charges can’t hold funds and aren’t appropriate for hold-and-release behavior).
 - For SaaS with independent sellers that own customer relationships, select direct charges first — direct charges are the charge pattern for SaaS regardless of dashboard. Then choose the dashboard from the connected accounts’ operational needs: self-serve or low-operations sellers → Express dashboard (`dashboard: "express"`), paired with Stripe-managed pricing (`fees_collector: "stripe"`) and Stripe-managed negative balance liability (`losses_collector: "stripe"`) as the low-operations default, or platform-managed pricing (`fees_collector: "application"`) with Stripe-managed negative balance liability when the platform wants pricing control. Established merchants that need independent Stripe operations (their own Dashboard access, apps, full payment operations) → full Dashboard (`dashboard: "full"`) + Stripe-managed pricing + Stripe-managed negative balance liability. When recommending either Express public-preview configuration: (1) include a concise public-preview disclosure (these Express + Stripe-managed-negative-balance-liability configurations for direct charges are in public preview), (2) state that they require the current Connect preview API version and link to the [preview changelog](https://docs.stripe.com/changelog.md?preview=true), (3) recommend enabling Radar for Platforms alongside Managed Risk, and (4) confirm during discovery whether the platform is onboarding new accounts or trying to migrate existing accounts — these configurations only work for newly onboarded accounts and the dashboard choice is permanent per account (see the discovery question in <references/discovery-questions.md>).
-- If the user asks “what account type should I use?”, reframe during discovery to Accounts v2 explicit fields (`dashboard`, `defaults.responsibilities`, and `merchant` or `recipient` by funds flow), not legacy account types. Read <references/account-types.md> for the full v2 configuration reference.
+- If the user asks “what account type must I use?”, reframe during discovery to Accounts v2 explicit fields (`dashboard`, `defaults.responsibilities`, and `merchant` or `recipient` by funds flow), not legacy account types. Read <references/account-types.md> for the full v2 configuration reference.
 - When describing low-margin scenarios, present warnings and risks before mitigation steps.
 - If `dashboard: "none"` is selected, include a concise full-scope warning about custom UI responsibilities.
 - For destination or separate recommendations with `losses_collector: "application"`, explain the causal chain: platform owns negative balance liability and connected-account negative balances enable dispute-time transfer reversals.
@@ -356,6 +356,6 @@ What would you like to do next?
 
 Options:
 
-- “Refine a decision” — adjust dashboard, responsibilities, charge pattern, or fee model
+- “Refine a decision” — ad dashboard, responsibilities, charge pattern, or fee model
 - “Expand implementation steps” — provide a deeper technical rollout checklist
 - “Generate `connect-recommend-plan.md` and build” — write the plan to a markdown file and handoff to a coding agent

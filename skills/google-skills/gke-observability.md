@@ -59,7 +59,7 @@ scheduling delays, stuck controllers).
     same is true of `DCGM`, `CADVISOR`, `KUBELET`, and kube-state (`POD`,
     `DEPLOYMENT`, `STATEFULSET`, `DAEMONSET`, `HPA`, `STORAGE`, `JOBSET`).
     `SYSTEM` is the only package on by default. A user asking "why are there no
-    API server metrics" has almost always simply never enabled them.
+    API server metrics" has almost always  never enabled them.
 2.  **The flag replaces, it does not append.** The set supplied to `--monitoring`
     overrides the previous setting entirely, so omitting a component silently
     turns it off. Always pass the full desired list, and always include `SYSTEM`

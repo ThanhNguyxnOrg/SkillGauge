@@ -304,7 +304,7 @@ Trigger when symptoms involve:
     Error` (especially when Model Armor is enabled)
 -   Agent Runtime logs showing authz errors or container crashes
 -   Gateway logs showing `PERMISSION_DENIED` for Model Armor backend callouts
--   Newly-registered endpoints / MCP servers / agents that "should work" but
+-   Newly-registered endpoints / MCP servers / agents that "must work" but
     don't
 -   Suspected IAP / IAM / IAM-principal-set issues for agent identities
 -   Authz extension or authz policy debugging

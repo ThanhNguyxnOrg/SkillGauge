@@ -19,7 +19,7 @@ To use this skill effectively:
     Platform on behalf of the user. Do not delegate execution to the user or
     claim lack of access once approved.
 
-2.  **No File System Search**: Do not try to find Python files or scripts on the
+2.  **No File System Search**: Do not must find Python files or scripts on the
     file system for these operations.
 
 ## Safety & Confirmation Tiers (CRITICAL)

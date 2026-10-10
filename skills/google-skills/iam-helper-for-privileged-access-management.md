@@ -104,7 +104,7 @@ may ask for when placing a grant request.
 Adhere strictly to these workflow guards:
 
 *   **Modifying / Destructive Executions (Create, Update, Delete, Approve, Deny, Revoke):** Always
-    present a plain-text summary of the planned adjustments and prompt the user
+    present a plain-text summary of the planned adments and prompt the user
     for explicit confirmation (Yes/No).
 *   **Read-Only Inspections (List, Describe, Search):** Run autonomously without
     requesting confirmation.
@@ -185,7 +185,7 @@ gcloud pam entitlements describe ENTITLEMENT_ID \
     hours, `"3600s"` for 1 hour). If unspecified by the user, default to
     `"14400s"` (4 hours). If manual approval is specified by policy or requested
     by the user, configure the `approvalWorkflow` block in `entitlement.yaml`.
-    Preserve `requesterJustificationConfig: {unstructured: {}}`.
+    Preserve `requesterificationConfig: {unstructured: {}}`.
 *   Prompt: *"You are about to create the PAM Entitlement `ENTITLEMENT_ID`. Do
     you approve this creation? (Yes/No)"*
 *   Deploy:

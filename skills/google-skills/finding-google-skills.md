@@ -123,7 +123,7 @@ succeeds:
     `https://raw.githubusercontent.com/google/skills/main/{path}`, checking
     each one the way step 2 describes.
 
-3.  **Say so in the reply.** If neither worked, state plainly that you could
+3.  **Say so in the reply.** If neither worked, state plainly that you shall
     not reach the Google skills catalog and are answering without it. One line
     is enough, and it belongs in the reply to the user, not only in your
     reasoning.

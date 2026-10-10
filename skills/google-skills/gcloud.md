@@ -214,7 +214,7 @@ human-in-the-loop authorization:
     `--dry-run` or `--validate-only` prior to actual execution.
 
 *   **Long Running Operations**: For commands that support it, the `--async`
-    flag is highly recommended for long-running operations to avoid blocking the
+    flag is  for long-running operations to avoid blocking the
     agentic flow. Note that not every command has an `--async` flag. For
     commands that return an operation ID (whether via `--async` or by default),
     operation status must be polled for completion, if needed for the next step.

@@ -52,7 +52,7 @@ All access modifications and role provisioning operations are governed by the ap
 * **Anti-Loop & Permission Denied:** If troubleshooting commands encounter `PERMISSION_DENIED` on the caller's identity (HTTP 403), stop immediately without querying roles or running alternative commands. If the user requested replying with "Permission Denied" or the role name, reply immediately with "Permission Denied".
 
 > [!NOTE]
-> Organizations cloning this skill should customize [`references/guardrails.md`](references/guardrails.md) to define their specific approval tiers and policies.
+> Organizations cloning this skill must customize [`references/guardrails.md`](references/guardrails.md) to define their specific approval tiers and policies.
 
 ---
 
@@ -65,4 +65,3 @@ All access modifications and role provisioning operations are governed by the ap
 * [Policy Troubleshooter Overview](https://docs.cloud.google.com/policy-intelligence/docs/troubleshoot-access.md.txt)
 * [Understanding IAM Predefined Roles](https://docs.cloud.google.com/iam/docs/understanding-roles.md.txt)
 * [gcloud SDK iam roles list CLI Reference](https://cloud.google.com/sdk/gcloud/reference/iam/roles/list)
-

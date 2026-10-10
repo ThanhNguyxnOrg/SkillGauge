@@ -236,7 +236,7 @@ happen as expected.
 
 -   **Won't scale up** — check, in order:
     -   **Replica limits**: `currentReplicas` is already at `minReplicas` /
-        `maxReplicas` (see the `ScalingLimited` condition); adjust the bounds.
+        `maxReplicas` (see the `ScalingLimited` condition); ad the bounds.
     -   **Tolerance window**: Kubernetes ignores changes while the
         current/target ratio stays within `0.9`–`1.1` (default **10%
         tolerance**). Example: target 85% CPU, current 93% → ratio ≈ 1.094 < 1.1,

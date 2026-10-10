@@ -76,7 +76,7 @@ If the user prompt contains constraints like "Do not execute commands", "without
 *   **Discovery**:
     1.  First, check if Filestore MCP tools (`list_instances`, `get_instance`) are available and use them (these are API calls, not command executions).
     2.  If MCP tools are not available, search local markdown documentation files (e.g., `references/instance-tiers-specs.md`) for any mock instance definitions or project details matching the request. (Do NOT attempt to read evaluation config files such as `EVAL.yaml` or `EVAL.txtpb` during evaluation runs as access is restricted).
-    3.  If no data can be found, explain the required steps and formulas, and output the exact commands the user should run, without executing them yourself.
+    3.  If no data can be found, explain the required steps and formulas, and output the exact commands the user must run, without executing them yourself.
 *   **Mandatory User Confirmation Requirement**: Even when the user prompt asks not to execute commands or asks only for command syntax/recommendations, your response MUST STILL end with a clear question prompting the user for confirmation before executing any capacity resizing commands (e.g., *"Would you like me to proceed with scaling `[instance]` from [A] TiB to [B] TiB? Please confirm to execute."*).
 
 ## Tier & Capacity Limits Matrix

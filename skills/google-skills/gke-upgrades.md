@@ -22,7 +22,7 @@ description: >-
 
 # GKE Upgrades & Maintenance
 
-Produce clear, actionable documents — upgrade plans, runbooks, or checklists — tailored to the user's environment. Output should be specific to their cluster mode, release channel, version, and workload types rather than generic advice.
+Produce clear, actionable documents — upgrade plans, runbooks, or checklists — tailored to the user's environment. Output must be specific to their cluster mode, release channel, version, and workload types rather than generic advice.
 
 Always frame guidance around the auto-upgrade model: auto-upgrade with maintenance windows and exclusions is the preferred control mechanism.
 
@@ -46,7 +46,7 @@ GKE versions follow Kubernetes version terminology: **Major.Minor.Patch** (e.g.,
 2. **Control plane first** -- Control plane must be upgraded before node pools. Nodes can trail by up to 2 minor versions.
 3. **Environment progression** -- Always upgrade dev/staging before production. Use **Rollout Sequencing** (preferred) to automate and enforce this progression across environments (e.g., dev → staging → prod), or manually coordinate version progression if Rollout Sequencing is not used.
 4. **Workload-aware** -- Upgrade strategy depends on what's running (stateless, stateful, GPU, batch).
-5. **Release channels first** -- Always recommend release channels. Note that "No channel" (static versioning) is deprecated and clusters should be migrated to release channels.
+5. **Release channels first** -- Always recommend release channels. Note that "No channel" (static versioning) is deprecated and clusters must be migrated to release channels.
 6. **Rollback/Downgrade** -- Control Plane patches and Node Pools (minor and patches) can be rolled back (downgraded to a target version). GKE supports a 2-step Control Plane minor upgrade where step 1 is rollbackable. Other Control Plane minor version rollbacks are NOT customer-doable and require GKE Support.
 7. **Node pool upgrade ordering** -- When upgrading multiple node pools, always recommend sequential ordering: upgrade non-critical/stateless pools first (acting as a canary) to verify cluster health before upgrading critical stateful (database) or GPU pools.
 
@@ -68,7 +68,7 @@ Standard GKE versions are supported for 14 months after they become available in
 
 ### Current Capabilities
 
-- **Extended channel math**: 14 months of standard support + ~10 months of extended support ≈ 24 months total per minor version. Even on Extended, forced upgrades still occur: if you take no action, GKE auto-upgrades the cluster at End of Support — averaging a minor version bump roughly every 4 months, the same cadence as other channels (features just arrive later).
+- **Extended channel math**: 14 months of standard support + ~10 months of extended support ≈ 24 months total per minor version. Even on Extended, forced upgrades still occur: if you take no action, GKE auto-upgrades the cluster at End of Support — averaging a minor version bump roughly every 4 months, the same cadence as other channels (features  arrive later).
 - **Upgrade reliability (KubeCon NA 2025)**: Google reports a 99.99% upgrade success rate across GKE control planes and nodes, with safe rollback and skip-version upgrade support positioned to let teams upgrade less often (e.g., annually instead of quarterly). Pilot skip-version upgrades in non-production clusters first.
 - **Autoscaled blue-green node upgrades** (Preview): a blue-green variant that scales the green pool on demand instead of pre-provisioning a full duplicate pool — for disruption-sensitive workloads that cannot reserve 2x capacity.
 - **Scheduled cluster upgrade notifications** (Preview): opt in to be notified ahead of scheduled minor upgrades and wire the notifications into alerting.
@@ -109,7 +109,7 @@ GKE reserves the right to override user-defined maintenance windows and exclusio
 
 **Guidance (MUST follow when overrides are discussed):**
 
-1. **Correlate with Bulletins**: If GKE performs an unexpected upgrade, you MUST explicitly suggest checking GKE Release Notes or Security Bulletins to correlate the event with emergency patches (do not just suggest checking Cloud Audit Logs).
+1. **Correlate with Bulletins**: If GKE performs an unexpected upgrade, you MUST explicitly suggest checking GKE Release Notes or Security Bulletins to correlate the event with emergency patches (do not  suggest checking Cloud Audit Logs).
 2. **Design for Resilience**: Workloads must be designed to survive unexpected control plane or node rotation. You MUST recommend:
    - Regional clusters (multi-master) to ensure API availability during control plane upgrades.
    - Multi-zone workload deployments.

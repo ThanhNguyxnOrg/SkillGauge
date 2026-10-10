@@ -85,7 +85,7 @@ practices:
 
 1.  **Autoscaling**: Enable Cluster Autoscaler and Horizontal/Vertical Pod
     Autoscaler (`--enable-autoscaling`, `--enable-vertical-pod-autoscaling`) to
-    adjust resources based on demand.
+    ad resources based on demand.
 2.  **Right-Sizing & Spot VMs**: Choose appropriate machine types and node
     counts. Consider Spot VMs (`--spot`) for fault-tolerant, non-critical batch
     or inference workloads.
@@ -350,7 +350,7 @@ gcloud container clusters create <CLUSTER_NAME> \
 -   **WARN** explicitly about cost and quota requirements when the user selects
     GPU (`g2-standard-4`, `a3-highgpu-8g`), TPU, or multi-region/regional
     clusters (`--region` defaults to 3 zones).
--   When using MCP `create_cluster`, the `cluster.name` parameter should be the
+-   When using MCP `create_cluster`, the `cluster.name` parameter must be the
     **short name** (e.g., `my-cluster`), not the full resource path
     (`projects/<PROJECT_ID>/locations/<REGION>/clusters/<CLUSTER_NAME>`). The
     `parent` parameter defines the scope

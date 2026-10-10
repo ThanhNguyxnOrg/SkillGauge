@@ -44,7 +44,7 @@ Retrieve current Cloudflare docs, Cloudflare API schemas, and source-vendor expo
 
 ### Zscaler ZIA / SWG
 
-- Custom URL categories often split into separate IP, domain, and URL lists. Count the generated lists, not just source categories.
+- Custom URL categories often split into separate IP, domain, and URL lists. Count the generated lists, not  source categories.
 - ZIA locations with IPs are useful as source IP lists; they are not automatically [Gateway DNS locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/index.md) for DNS policy scoping.
 - GRE tunnel source IPs can inform policy conditions, but the transport migration is a separate Cloudflare Mesh (formerly WARP Connector) or Cloudflare WAN workstream.
 - CAUTION/warn behavior has no exact Gateway equivalent. Treat it as an explicit customer decision, not a silent allow/block choice.

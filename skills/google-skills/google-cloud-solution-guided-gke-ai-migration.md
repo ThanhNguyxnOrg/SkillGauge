@@ -83,7 +83,6 @@ When designing the solution, always default to the latest GKE AI best practices:
 
 ## Workflow
 
-
 The solution design and implementation workflow consists of the following 4 phases:
 
 - **Phase 1: Discovery:** Inspect existing infrastructure via `gcloud` and gather model/traffic requirements.
@@ -160,7 +159,7 @@ Based on the discovery phase, design the architecture and manifests needed to ac
 
 **Phase 2 Response Requirements:** Every response during Phase 2 MUST begin with the visual progress indicator: `**Migration Progress:** [○ Discovery] ➔ [● Solution Design] ➔ [○ Implementation] ➔ [○ Validation]`.
 
-**Just-in-Time Context Loading:** When evaluating specific architectural choices below (e.g., storage options, load balancing, or autoscaling), fetch and read the relevant reference documentation link from the **Supporting links** section as needed.
+**-in-Time Context Loading:** When evaluating specific architectural choices below (e.g., storage options, load balancing, or autoscaling), fetch and read the relevant reference documentation link from the **Supporting links** section as needed.
 
 1. **Map components and alternatives:** For each major component (e.g., Load Balancing, Autoscaling, Single vs Multi-node), present your recommended "Golden Path" option along with alternatives. If the user requested HPA, ensure the design addresses the LLM Autoscaling Trap and recommends custom metrics (defaulting to Queue Size).
 2.  **Accelerator Selection:** Refer to
@@ -212,7 +211,7 @@ Carry out the approved design per the Execution policy: generate the commands be
 4. **Model Staging:** Apply conditional logic based on the design from Phase 2.
     - **Skipped:** If the model is already in GCS and using GCS FUSE, skip to step 5.
     - **Hugging Face Source:** If using a gated model (e.g., Llama 3, Gemma), explicitly instruct the user to run the `kubectl create secret generic hf-secret ...` command locally **before** applying any jobs or deployments (see Gated Model Secret Security rules). Once the secret is created, instruct the user to run `kubectl apply -f model-staging-job.yaml`.
-    - **GCS to Lustre Source:** Instruct the user to run `kubectl apply -f model-staging-job.yaml` (which should be configured to use `gcloud storage cp` or similar).
+    - **GCS to Lustre Source:** Instruct the user to run `kubectl apply -f model-staging-job.yaml` (which must be configured to use `gcloud storage cp` or similar).
     - **Completion Gate:** For any active staging Job, gate on completion with `kubectl wait --for=condition=complete job/{workload_name}-model-staging --timeout=90m` (scale the timeout to the model size). If the Job fails, inspect it with `kubectl logs job/{workload_name}-model-staging` before retrying. Explain that staging through a cluster Job avoids downloading heavy weights to the user's workstation and avoids re-downloading on every container restart.
 5. **Workload Deployment:** Provide explicit `kubectl apply` commands to deploy the storage config (`kubectl apply -f storage-config.yaml`), ComputeClass (`kubectl apply -f ccc-profile.yaml`), vLLM deployment (`kubectl apply -f vllm-deployment.yaml`), and Inference Gateway (`kubectl apply -f gke-inference-gateway.yaml`). Ensure the vLLM deployment spec mounts the staged model weights from the PVC into `/models`. Ensure that if a Secret was created for a gated model, it is referenced correctly in the Deployment manifest. Set vLLM's `--model` flag to the staged local path (`/models/{model_name}`), never to the Hugging Face repo ID; a repo ID makes vLLM re-download the full weights on every pod start and silently defeats the staging step. Preserve the model's public name for API clients with `--served-model-name={model_id}`.
 6. **Verify the rollout:** Confirm success with `kubectl rollout status deployment/{workload_name}-vllm --timeout=30m` and `kubectl get pods -l app={workload_name}-vllm -o wide`. If the rollout fails or times out, go directly to Troubleshooting Guidance with the observed error; do not ask the user whether the deployment succeeded when the command output already answers it. Ask the user only about outcomes the cluster cannot verify (for example, whether response quality matches the source system).

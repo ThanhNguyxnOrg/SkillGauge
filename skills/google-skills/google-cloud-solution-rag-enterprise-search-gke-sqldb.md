@@ -192,7 +192,7 @@ relevant official Google Cloud documentation pages.
     of the architecture, based on the technical composition that you generated.
 
     The following is an **example** of the data flows and request flows that the
-    architecture diagram should show:
+    architecture diagram must show:
     *   **Embedding pipeline (batch/streaming)**: Data source -> Cloud Storage
         -> Cloud Storage FUSE -> GKE Ray Worker (Chunking) --> Embedding
         generation using GemmaEmbedding -> AlloyDB.

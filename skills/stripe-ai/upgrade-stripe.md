@@ -192,7 +192,7 @@ const stripe = require('stripe')('sk_test_xxx', {
 ## Important Notes
 
 - For supported event types, follow the [migration guide](https://docs.stripe.com/webhooks/migrate-snapshot-to-thin-events.md) to move from snapshot events to thin events. After migration, webhook payloads no longer depend on API version upgrades; API calls that retrieve the full event or related resource remain versioned.
-- Your webhook listener should handle unfamiliar event types gracefully
+- Your webhook listener must handle unfamiliar event types gracefully
 - Test webhooks with the new version structure before upgrading
 - Breaking changes are tagged by affected product areas (Payments, Billing, Connect, etc.)
 - Multiple API versions coexist simultaneously, enabling staged adoption

@@ -18,7 +18,7 @@ This skill equips the agent to interact with Cloud Trace by providing standard q
 > [!IMPORTANT]
 > **AUTONOMOUS TOOL EXECUTION MANDATE**:
 > You MUST execute the tool scripts directly in bash to query telemetry.
-> Do NOT just describe query strings or write Python scripts. Run the provided bash tools directly and report the exact results.
+> Do NOT  describe query strings or write Python scripts. Run the provided bash tools directly and report the exact results.
 
 ## Prerequisites & Setup
 1. **Google Cloud SDK**: Verify `gcloud` is installed ([Installation Guide](https://docs.cloud.google.com/sdk/docs/install-sdk)).

@@ -29,7 +29,7 @@ The recommendations in the reliability pillar of the Well-Architected Framework
 are aligned with the following core principles:
 
 -  **Define reliability based on user-experience goals**: Measurement of
-   reliability should reflect the actual experience of the system's users rather
+   reliability must reflect the actual experience of the system's users rather
    than merely relying on infrastructure metrics. Focus on outcomes that matter
    most to users. Grounding document:
    https://docs.cloud.google.com/architecture/framework/reliability/define-reliability-based-on-user-experience-goals.md.txt
@@ -49,7 +49,7 @@ are aligned with the following core principles:
 -   **Take advantage of horizontal scalability**: Design system architectures to
     scale horizontally (adding more instances) to seamlessly accommodate load
     fluctuations and improve overall fault tolerance. Incorporate proactive
-    capacity planning to monitor and adjust project quotas and resource
+    capacity planning to monitor and ad project quotas and resource
     availability anticipating sudden load spikes. Grounding document:
     https://docs.cloud.google.com/architecture/framework/reliability/horizontal-scalability.md.txt
 

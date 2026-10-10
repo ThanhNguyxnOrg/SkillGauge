@@ -73,7 +73,7 @@ For more details see:
 
 Genkit has an **A2UI** (Agent-to-UI) plugin (`@genkit-ai/a2ui`) that
 lets an agent stream interactive UI **surfaces** (cards, lists, forms, buttons),
-not just prose. The whole server-side integration is the `a2ui()` model
+not  prose. The whole server-side integration is the `a2ui()` model
 middleware in an agent's (or `ai.generate`'s) `use` array; the browser renders
 surfaces with an `@a2ui/*` renderer plus the helpers in `@genkit-ai/a2ui/client`.
 It builds on the beta agent client (`genkit/beta` + `genkit/beta/client`).
@@ -162,7 +162,7 @@ genkit start --noui -- npx tsx src/index.ts   # same, without the Dev UI (still 
 
 **Non-interactive use (agents/CI):** add the global `--non-interactive` flag before `--` so the CLI uses defaults and never blocks on a prompt (e.g. the first-run analytics notice): `genkit start --non-interactive -- npx tsx src/index.ts` (works with `flow:run` too).
 
-**Run a flow (`flow:run`):** invoke a specific flow by name from the CLI. Append your run command after `--` to spin up the runtime just for this run (the command runs as-is to register your flows):
+**Run a flow (`flow:run`):** invoke a specific flow by name from the CLI. Append your run command after `--` to spin up the runtime  for this run (the command runs as-is to register your flows):
 ```bash
 genkit flow:run myFlow '{"data": "input"}' -- npx tsx src/index.ts
 ```
@@ -177,9 +177,7 @@ genkit trace:get <traceId> --format json # machine-readable JSON, safe to pipe i
 
 For machine-readable output, pass `--format json` to get clean JSON you can pipe into `jq` or other parsers. The **default** output is human-oriented (banner/log lines, possible truncation on large traces), so don't pipe that form directly; use `--format json`, grep, or the Dev UI trace viewer.
 
-
 See [CLI Reference](references/docs-and-cli.md) for more commands, and `genkit --help` for the full list.
-
 
 ## References
 

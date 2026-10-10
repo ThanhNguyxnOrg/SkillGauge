@@ -10,7 +10,6 @@ description: Guides the usage of Gemini Interactions API on Gemini Enterprise Ag
 
 This skill provides instructions for authenticating, connecting to, and utilizing the stateful, server-managed **Gemini Interactions API** on Gemini Enterprise Agent Platform.
 
-
 The Interactions API is the modern, recommended way to execute Generative AI agent conversations, background research tasks, multi-turn chats, and structured, multi-step workflows.
 
 > [!IMPORTANT] **CRITICAL: Unified SDK, Latest Models & Model/Agent Targeting** *
@@ -489,4 +488,3 @@ For complete `curl` examples (single-turn, multi-turn stateful, SSE streaming, a
 An `Interaction` response contains a flat `steps` timeline (`user_input`, `model_output`, `thought`, `function_call`, `function_result`, and built-in tool steps) along with convenience accessors (`output_text`, `output_image`, `output_audio`) and SSE streaming events (`interaction.created`, `step.start`, `step.delta`, `step.stop`, `interaction.completed`).
 
 For the complete step types, content types, streaming event table, and 7-day retention rules, read [references/data_model.md](references/data_model.md).
-

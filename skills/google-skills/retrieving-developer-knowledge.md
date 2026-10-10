@@ -24,7 +24,7 @@ The Developer Knowledge skill provides access to official Google developer docum
    - **A declared server is not always a connected server.** Some clients cannot complete the MCP handshake with this server and expose no `answer_query`, `search_documents` or `get_documents` tool at all, even though the plugin declares one. Treat their absence as normal and use the REST fallback below.
 2. **Confirm the lookup succeeded before using it**: A response that arrives is not automatically an answer. `PERMISSION_DENIED`, `UNAUTHENTICATED`, HTTP 401 or 403, an empty result set, or any error payload is a FAILED lookup even when the tool itself reported no error. On a failed lookup, do not answer as though it had succeeded.
    - **Rate Limits (HTTP 429 / Out of Quota)**: If calling `answer_query` or the REST `:answerQuery` endpoint returns an HTTP 429 (`RESOURCE_EXHAUSTED` / out of quota error), this indicates server-side generative QA quota exhaustion. Do not treat this as an unrecoverable failure or fall back to ungrounded memory; immediately retry using the search endpoint (`search_documents` for MCP, or `documents:searchDocumentChunks` for REST) with 2–5 focused keywords from the query.
-   - **Persistent Failures**: Try the other transport once, and if that also fails, state plainly in your reply to the user that you could not reach Developer Knowledge and are answering without it. Presenting recalled documentation as a retrieved result is the worst available outcome, because nothing in the reply distinguishes it from a real lookup.
+   - **Persistent Failures**: Try the other transport once, and if that also fails, state plainly in your reply to the user that you shall not reach Developer Knowledge and are answering without it. Presenting recalled documentation as a retrieved result is the worst available outcome, because nothing in the reply distinguishes it from a real lookup.
 3. **Immediate & Complete Solution Output**: Immediately upon receiving the documentation response, output the complete, self-contained, and executable technical solution (commands with all required flags and placeholders, YAML/JSON configurations, or code snippets) directly in your response text.
 
 ## Tool Selection & Usage
@@ -40,7 +40,7 @@ When MCP tools are present in your active tool definitions:
 ### 2. REST API Fallback
 When the MCP tools are absent, query the Developer Knowledge REST API
 (`https://developerknowledge.googleapis.com/v1`) with `curl`. Two credentials
-work, and you should try them in this order.
+work, and you must try them in this order.
 
 **An existing Google credential, preferred.** If `gcloud` is authenticated,
 pass a bearer token and your quota project. Nothing needs to be installed or

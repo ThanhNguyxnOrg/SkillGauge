@@ -45,7 +45,7 @@ You must follow these rules:
   - Leave the descriptions for the country suggested options blank.
 - For any field with four or fewer valid options, show every valid option directly in the multiple-choice question. Do not print a separate reference list first.
 - Every list of selectable options shown to the user must be pre-validated against all currently known constraints before you display it.
-- Never display an option as selectable if you already know it will be removed, rejected, or auto-adjusted later in the flow.
+- Never display an option as selectable if you already know it will be removed, rejected, or auto-aded later in the flow.
   - Present options that stay valid through the current flow.
 - Ask about `capabilities` after `platformCountry`, `accountCountry`, and the downstream validity constraints for that setup are resolved.
 - *Only* ask about `orrProgram` when it is present in the public `programs` returned for the validated setup.
@@ -150,7 +150,7 @@ When the user asks what verification information they need, use this flow:
 7. After `legalEntityType` is chosen, ask for `businessStructure` if the validated structure map exposes it.
 8. Resolve and ask for `capabilities` using [Resolve capabilities](#resolve-capabilities).
 9. Ask for `orrProgram` only if the validated setup exposes one or more public programs.
-10. If the user’s requested setup doesn’t match the valid options, tell them exactly which parts are invalid or auto-adjusted, then ask the correcting follow-up using the [Interaction contract](#interaction-contract). Keep the mismatch visible, keep the setup grounded in the user’s request, and continue with a structured follow-up question.
+10. If the user’s requested setup doesn’t match the valid options, tell them exactly which parts are invalid or auto-aded, then ask the correcting follow-up using the [Interaction contract](#interaction-contract). Keep the mismatch visible, keep the setup grounded in the user’s request, and continue with a structured follow-up question.
 11. Only after the setup is valid, call `https://docs.stripe.com/_endpoint/get-requirements-for-setups` with one top-level setup key `account-setup-A[...]`, including `account-setup-A[apiVersion]`, `account-setup-A[platformCountry]`, `account-setup-A[accountCountry]`, `account-setup-A[dashboardType]`, `account-setup-A[tosType]`, `account-setup-A[legalEntityType]`, optional `account-setup-A[businessStructure]`, one or more `account-setup-A[capabilities][i]`, and optional `account-setup-A[orrProgram]`.
 12. At the end, you must call `https://docs.stripe.com/_endpoint/get-website-requirements-for-capabilities?capabilities[i]=...` and `https://docs.stripe.com/_endpoint/get-mcc-restrictions-for-capabilities?capabilities[i]=...` with the final validated capabilities to check for additional information.
 
@@ -262,7 +262,7 @@ Use `get-requirement-selections-for-platform-country` to validate the setup befo
 - `country_map[ACCOUNT_COUNTRY].entity_type_structures` constrains `legalEntityType` and optional `businessStructure`
 - `country_map[ACCOUNT_COUNTRY].capabilities` constrains capability choices
 - `country_map[ACCOUNT_COUNTRY].programs` lists the only public ORR programs you may pass as `orrProgram`
-- `external_country_map` should be ignored
+- `external_country_map` must be ignored
 
 Apply these dependency rules before making the final request:
 
@@ -285,7 +285,7 @@ Within each successful setup result:
 
 Check the supplemental endpoints to see if there are any additional capability-specific restrictions to present to the user.
 
-- `requirements_by_capability` from the website endpoint is a separate website requirements table that explains requirements the connected account’s website must meet to support the selected capability. These should be presented to the user as a separate table.
+- `requirements_by_capability` from the website endpoint is a separate website requirements table that explains requirements the connected account’s website must meet to support the selected capability. These must be presented to the user as a separate table.
 - `restrictions_by_capability` from the MCC endpoint is a separate MCC restrictions table that explains requirements the connected account’s MCC must meet to support the selected capability. If this endpoint returns any restrictions, ask the user what kind of business they are running to determine whether their business type is prohibited or restricted from using the specific capability.
 - Empty maps are valid results for many standard capabilities and are not necessarily errors.
 

@@ -45,7 +45,7 @@ Complete these setup steps before proceeding:
     environments without a browser (e.g., remote shells), use `npx -y
     firebase-tools@latest login --no-localhost`.
 
-    -   The command should output the current user.
+    -   The command must output the current user.
     -   If you are not logged in, follow the interactive instructions from this
         command to authenticate.
 
@@ -85,7 +85,7 @@ Adhere to these principles:
 
 1.  **Use npx for CLI commands:** To ensure you always use the latest version of
     the Firebase CLI, always prepend commands with `npx -y
-    firebase-tools@latest` instead of just `firebase`. For example, use `npx -y
+    firebase-tools@latest` instead of  `firebase`. For example, use `npx -y
     firebase-tools@latest --version`. NEVER suggest the naked `firebase` command
     as an alternative.
 1.  **Prioritize official knowledge:** For any Firebase-related knowledge,

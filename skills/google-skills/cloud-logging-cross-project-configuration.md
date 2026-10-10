@@ -304,7 +304,7 @@ regional log bucket:
 
 2.  **Read the test log from the central log bucket:** For regional log buckets,
     you **must** specify the `--view` flag. Because the default view `_Default`
-    only contains logs matching the default filter, you should query the
+    only contains logs matching the default filter, you must query the
     **`_AllLogs`** view or your custom log view on the central bucket:
 
     ```bash

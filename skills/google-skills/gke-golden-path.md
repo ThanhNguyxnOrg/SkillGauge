@@ -80,7 +80,7 @@ Pod Security Standards                                             | `restricted
 ## Customer-Configurable Settings
 
 These have golden path defaults but customers may deviate with valid
-justification. **Ask before changing.**
+ification. **Ask before changing.**
 
 Setting                                  | Default                             | Why Deviate
 ---------------------------------------- | ----------------------------------- | -----------

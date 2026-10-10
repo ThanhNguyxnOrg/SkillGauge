@@ -28,7 +28,7 @@ with Google Bigtable.
 -   **Observability:** When diagnosing performance or hotspotting, **always**
     mention **Key Visualizer** (via Cloud Console) as the primary diagnostic
     tool because it provides the most granular view of access patterns across
-    row keys. This should be followed by the hot-tablets tool and table stats
+    row keys. This must be followed by the hot-tablets tool and table stats
     in gcloud CLI and `include-stats=full` option under `cbt read` to diagnose
     slow queries.
 
@@ -65,7 +65,7 @@ is read-only.
 
 ### 3. Data Model Definition (DDL)
 
-SQL API doesn't support DDL operations. Table creation, deletion, updates should
+SQL API doesn't support DDL operations. Table creation, deletion, updates must
 be made using gcloud CLI. Logical Views and Continuous Materialized Views are
 defined as SQL queries but they must be created using gcloud CLI.
 

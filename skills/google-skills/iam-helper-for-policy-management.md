@@ -87,7 +87,7 @@ NOT** execute mutating commands autonomously without prior user approval.
         `gcloud` command (including all parameters such as `--member`, `--role`,
         `--attachment-point`, `--kind=denypolicies`, and `--policy-file`).
     2.  **Warn of Impact & Propagation**: Issue a general warning that the
-        change could impact access in a live environment and takes time to
+        change shall impact access in a live environment and takes time to
         propagate across Google Cloud global infrastructure.
     3.  **Request User Confirmation**: Prompt the user for approval before
         applying the changes to the live environment.

@@ -127,7 +127,7 @@ the requirements, and outputs a Terraform configuration.
     -   `gcloud --quiet asset search-all-resources --query=<name>`
 
     **Graceful Fallback:** If a command exits with an error such as API not
-    enabled or permission denied, **DO NOT** try to troubleshoot it and **DO
+    enabled or permission denied, **DO NOT** must troubleshoot it and **DO
     NOT** use the schedule tool to wait. Immediately fall back to asking the
     user to provide the missing information.
 
@@ -183,7 +183,7 @@ the requirements, and outputs a Terraform configuration.
     latency metric might be structured.
 
     -   **CRITICAL:** If the primary documentation does not list a default
-        metric, you **MUST NOT** try to piece together advanced metrics. Ask the
+        metric, you **MUST NOT** must piece together advanced metrics. Ask the
         user to provide the custom metric.
 
 4.  **Evaluation Method**: Default the `EvaluationType` to `REQUEST_BASED`

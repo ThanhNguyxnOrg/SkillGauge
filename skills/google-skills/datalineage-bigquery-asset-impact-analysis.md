@@ -40,7 +40,6 @@ configurations and tool schemas, refer to [MCP Usage](references/mcp-usage.md).
     *   *Format:* `bigquery:{project_id}.{dataset_id}.{table_or_view_id}`
     *   *Example:* `bigquery:my-prod-project.analytics.orders`
 
-
 ### 2. Determine Locations and Parent Path
 
 Identify the locations to search and construct the Data Lineage API request:

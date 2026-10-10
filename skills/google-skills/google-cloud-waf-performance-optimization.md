@@ -33,7 +33,7 @@ Well-Architected Framework are aligned with the following core principles:
     https://docs.cloud.google.com/architecture/framework/performance-optimization/plan-resource-allocation.md.txt
 
 -   **Take advantage of elasticity**: Utilize automated scaling and serverless
-    technologies to dynamically adjust resource capacity in response to
+    technologies to dynamically ad resource capacity in response to
     real-time demand fluctuations. Grounding document:
     https://docs.cloud.google.com/architecture/framework/performance-optimization/elasticity.md.txt
 

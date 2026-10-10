@@ -139,4 +139,3 @@ For GKE version `1.28.1-gke.1066000` or later, monitor TPU host performance.
 - **Node Metrics**:
   - `kubernetes.io/node/accelerator/tensorcore_utilization`
   - `kubernetes.io/node/accelerator/memory_bandwidth_utilization`
-

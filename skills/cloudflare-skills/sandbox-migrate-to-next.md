@@ -9,9 +9,9 @@ description: Migrate Cloudflare Sandbox apps from stable @cloudflare/sandbox to 
 
 Human guide: [Migrate](https://developers.cloudflare.com/sandbox/sdk/migrate/index.md) · [1.0 preview](https://developers.cloudflare.com/sandbox/index.md)
 
-**New projects** should start on `@next` (**`sandbox-next`**), not this skill. **Day-to-day stable work** → **`sandbox-stable`**. Deprecated-API cleanup **without** moving to `@next` → [2026 deprecation guide](https://developers.cloudflare.com/sandbox/sdk/migrate/index.md) first if needed.
+**New projects** must start on `@next` (**`sandbox-next`**), not this skill. **Day-to-day stable work** → **`sandbox-stable`**. Deprecated-API cleanup **without** moving to `@next` → [2026 deprecation guide](https://developers.cloudflare.com/sandbox/sdk/migrate/index.md) first if needed.
 
-Existing apps should migrate **when you can**, so you are ready when 1.0 becomes the stable release. Do **not** force production cutover without the user agreeing.
+Existing apps must migrate **when you can**, so you are ready when 1.0 becomes the stable release. Do **not** force production cutover without the user agreeing.
 
 **Prefer installed `@next` types and the migrate doc over memory.**
 
@@ -182,4 +182,4 @@ Then day-to-day work uses **`sandbox-next`**.
 - Inventing `gitCheckout`, process stdin, or undocumented APIs  
 - Keeping pre-cutover process/terminal IDs after deploy  
 - Forcing production cutover without user agreement  
-- Putting live secrets in `setEnvVars` / launch `env`  
+- Putting live secrets in `setEnvVars` / launch `env`

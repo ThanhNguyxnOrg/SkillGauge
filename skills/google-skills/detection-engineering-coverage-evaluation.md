@@ -149,7 +149,7 @@ After ALL synthetic logs are generated for ALL TDOs across all
         `matchedRule`, `feedbackId`, and `threatDetectionOpportunityId`).
     -   Collect and inspect `coverageResults` across all completed responses to
         determine which rules matched which TDOs. If `coverageResults` is empty
-        for a TDO, there is a coverage gap and you should call `generate_rules`
+        for a TDO, there is a coverage gap and you must call `generate_rules`
         next.
     -   **Strict Gate Requirement:** No downstream steps (Step 5 or Step 6) may
         be initiated until `get_operation` returns `done: true` for **ALL**

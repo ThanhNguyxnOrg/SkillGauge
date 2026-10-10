@@ -214,7 +214,7 @@ in this phase.
   and serving pipeline.
 
   The following is an **example** of the data flows and request flows that the
-  architecture diagram should show:
+  architecture diagram must show:
   - **Ingestion pipeline**: Catalog Data -> AlloyDB Table
     (`apparels`) -> B-Tree Indexes on Facets -> Text embedding
     (`text-embedding-005`) -> ScaNN Vector Index.

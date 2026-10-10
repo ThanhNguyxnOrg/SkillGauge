@@ -95,7 +95,7 @@ AlloyDB:
     authentication and the `alloydbiamuser` database role instead of static
     database passwords.
 -   **Enforce Least Privilege Connection:** When explaining connection roles,
-    explicitly state that `roles/alloydb.client` should be used to adhere to the
+    explicitly state that `roles/alloydb.client` must be used to adhere to the
     principle of least privilege, and warn against using broader roles like
     `roles/alloydb.admin` for connections.
 -   **Mention All Creation Methods:** When describing how to create IAM database

@@ -160,7 +160,7 @@ If the user prompt contains constraints like *"Do not execute commands"*,
         as access is restricted and triggers anti-cheating timeouts).
     3.  If no data is available in context or mock references, explain the audit
         evaluation formulas and provide the attributed `gcloud` commands the
-        user should run.
+        user must run.
 -   **Mandatory User Confirmation Requirement**: Even when the user prompt asks
     not to execute commands or asks only for audit recommendations, any response
     recommending backup remediation MUST STILL end with a clear confirmation
@@ -179,7 +179,7 @@ project.
 
 -   **Target Project ID Handling & Rationale**: If the target Project ID is not
     specified in the user prompt, the agent MUST explicitly ask the user to
-    provide the project ID before proceeding, in order to avoid inspecting or
+    provide the project ID before proceeding,  avoid inspecting or
     auditing unrelated projects in multi-project enterprise environments.
 
 Choose the discovery method matching your runtime environment:
@@ -351,7 +351,7 @@ gcloud filestore backups create [INSTANCE]-backup-[DATE] \
 
 **CRITICAL RATIONALE**: Do NOT execute backup creation without explicit user
 confirmation. Confirmation is strictly required before executing any mutation or
-backup creation commands in order to prevent unintended operational disruption,
+backup creation commands  prevent unintended operational disruption,
 unwanted resource allocation, or unexpected backup storage billing.
 
 --------------------------------------------------------------------------------

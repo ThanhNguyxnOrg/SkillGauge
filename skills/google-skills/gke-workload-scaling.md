@@ -69,7 +69,7 @@ Managed Service for Prometheus** or the Prometheus Adapter.
 
 ### 3. Vertical Pod Autoscaling (VPA)
 
-Automatically adjust the CPU and memory reservations for your pods to match
+Automatically ad the CPU and memory reservations for your pods to match
 actual usage. This is critical for right-sizing workloads.
 
 **Prerequisites:**

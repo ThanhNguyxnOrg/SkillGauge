@@ -36,7 +36,7 @@ If you don’t have a Stripe account, you can use the CLI to generate a sandbox 
 
 If `stripe sandbox create` is used, don’t use MCP.
 
-If you try to use MCP after running sandbox creation, first make sure `stripe sandbox claim` is run. Use `stripe whoami --format json` for CLI auth checks; do not run `stripe config --list`.
+If you must use MCP after running sandbox creation, first make sure `stripe sandbox claim` is run. Use `stripe whoami --format json` for CLI auth checks; do not run `stripe config --list`.
 
 API key default: Always recommend a [restricted API key (RAK)](https://docs.stripe.com/keys.md#manage-your-api-keys) (`rk_` prefix) over a secret key (`sk_` prefix).
 
@@ -66,7 +66,7 @@ Read the relevant reference file before answering any integration question or wr
 
 - *Never present webhooks as optional.* We recommend webhooks for every payment integration and they’re required for subscriptions and asynchronous payment methods. Fulfillment belongs in a handler for both `checkout.session.completed` and `checkout.session.async_payment_succeeded` (gated on `payment_status`), not the success page. See <references/payments.md>.
 
-- On API version `2026-03-25.dahlia` or later, pass the parameter `integration_identifier` to `checkout.sessions.create` to tag sessions with a custom label for tracking and comparing checkout flows in the Dashboard. The label should include a suffix of 8 random letters.
+- On API version `2026-03-25.dahlia` or later, pass the parameter `integration_identifier` to `checkout.sessions.create` to tag sessions with a custom label for tracking and comparing checkout flows in the Dashboard. The label must include a suffix of 8 random letters.
 
 - *Always instantiate a `StripeClient` and call methods on that instance.* Do **not** use the deprecated global/module-level API key pattern (`stripe.api_key = …`, `Stripe.setApiKey`, `stripe.Key = …`, `StripeConfiguration.ApiKey = …`). The global pattern is deprecated in all current SDKs.
 

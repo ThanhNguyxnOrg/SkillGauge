@@ -72,7 +72,7 @@ phases:
 
 *   **Phase 1: Requirements discovery and analysis**: Analyze the workload's
     requirements, constraints, dependencies, and current state.
-*   **Phase 2: Solution design & IaC drafting**: Build a technology stack, architecture, and deployment configuration for the workload. **IMPORTANT: You should offer to generate the complete Terraform code (based on `assets/main.tf` and adhering to all Phase 3 specifications) alongside the solution architecture during this phase.** This allows the user to immediately review and iteratively modify the code as the conversation continues. However, if the user explicitly states they do not want code, do not generate it yet.
+*   **Phase 2: Solution design & IaC drafting**: Build a technology stack, architecture, and deployment configuration for the workload. **IMPORTANT: You must offer to generate the complete Terraform code (based on `assets/main.tf` and adhering to all Phase 3 specifications) alongside the solution architecture during this phase.** This allows the user to immediately review and iteratively modify the code as the conversation continues. However, if the user explicitly states they do not want code, do not generate it yet.
 *   **Phase 3: Implementation plan & iterative refinement**: Modify and refine the generated design and deployment instructions as the conversation and user feedback evolve.
 *   **Phase 4: Solution validation**: Validate that the deployment meets the
     requirements of the workload.
@@ -94,8 +94,8 @@ To prevent multi-turn interview fatigue and maintain trajectory determinism acro
 2.  **Disambiguation Protocol (`Optional Clarification Questions`)**:
     If the user's initial prompt leaves requirements open-ended (and is not fast-forwarding with exact specs), do **not** present a multi-topic questionnaire. Only ask concise clarifying questions as needed before confirmation:
     1.  **Load Balancer & Residency Topology**: Do you require a **Global Application Load Balancer with Cloud CDN** (default for worldwide users), or a **Regional Application Load Balancer without CDN** (for strict EU/regional data residency compliance)?
-    2.  **Custom Domain vs. Sandbox Testing**: Do you have a **registered domain name** to configure with a Google-managed certificate, or should we configure **self-signed testing mode** (`use_self_signed_cert = true`) for immediate sandbox testing over IP?
-    3.  **In-Memory Caching Tier**: Should we provision an optional **Memorystore for Redis** caching tier (`Private Services Access`) alongside Cloud SQL to accelerate read queries?
+    2.  **Custom Domain vs. Sandbox Testing**: Do you have a **registered domain name** to configure with a Google-managed certificate, or must we configure **self-signed testing mode** (`use_self_signed_cert = true`) for immediate sandbox testing over IP?
+    3.  **In-Memory Caching Tier**: must we provision an optional **Memorystore for Redis** caching tier (`Private Services Access`) alongside Cloud SQL to accelerate read queries?
 
 3.  **Verify & Confirm**: Present the confirmed 3-tier golden path decomposition to the user and request confirmation before proceeding to Phase 2 (or fast-forward automatically when instructed).
 

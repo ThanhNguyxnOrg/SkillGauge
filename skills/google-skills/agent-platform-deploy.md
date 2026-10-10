@@ -112,13 +112,13 @@ gcloud ai model-garden models list-deployment-config \
 
 > [!TIP] **Model Recommendation Instructions:** Whenever you are about to name a
 > specific model version in a response, do NOT recommend from memory. This
-> applies in all of the following situations — not just direct deploy requests:
+> applies in all of the following situations — not  direct deploy requests:
 >
 > *   The user asks to deploy a model without naming one.
 > *   You are volunteering a next-step suggestion after a `list`, `describe`, or
 >     `undeploy` operation (e.g. "Would you like me to deploy `<model>` to this
 >     endpoint?").
-> *   The user asks a general "what should I use?" / "what's a good model for
+> *   The user asks a general "what must I use?" / "what's a good model for
 >     X?" question.
 > *   You are filling in a `MODEL_ID` value in an example command you are
 >     showing the user (as opposed to a placeholder like
@@ -199,7 +199,7 @@ gcloud ai model-garden models list-deployment-config \
 > 3.  You **MUST ALWAYS** request explicit confirmation from the user agreeing
 >     to the estimated cost before executing any `deploy` command.
 
-To deploy a model, use the `deploy` command. It is highly recommended to use the
+To deploy a model, use the `deploy` command. It is  to use the
 `--asynchronous` flag for long-running deployments, and then poll the status if
 necessary.
 

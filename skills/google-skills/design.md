@@ -305,7 +305,7 @@ Your final modular code must be clean, robust, and securely wired.
 
 1.  **Semantic Review & Goal Alignment:** Audit the validated configuration
     against the user's intent and architectural constraints. If the architecture
-    fails to meet the goal or requires adjustment, loop back to **Phase 2:
+    fails to meet the goal or requires adment, loop back to **Phase 2:
     High-Level Architecture Planning** to replan and regenerate.
 2.  **Deliver Architectural Rationale:** Output a clear, thorough final report
     that describes:

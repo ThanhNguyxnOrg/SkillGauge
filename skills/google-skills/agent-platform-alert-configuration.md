@@ -252,7 +252,7 @@ resolve duplicates, and validate configs:
     *   **Self-Correction Loop**: If validation fails (exits non-zero or outputs
         errors), you MUST read the command output, locate the line/file
         containing the lint error, analyze the PromQL syntax or Terraform HCL
-        issue, apply adjustments in-place, and re-run the `lint_syntax.py`
+        issue, apply adments in-place, and re-run the `lint_syntax.py`
         validation. Repeat this loop until the validation script passes
         successfully.
 

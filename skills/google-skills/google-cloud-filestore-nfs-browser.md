@@ -78,7 +78,7 @@ executing", or "read-only":
     1.  Check if mock definitions or instance parameters are provided directly
         in the user's prompt, conversation history, or local documentation
         files.
-    2.  Explain the required steps, output the exact commands the user should
+    2.  Explain the required steps, output the exact commands the user must
         run with proper attribution, and explain what the commands do.
     3.  Do not attempt to read or search `EVAL.*` configuration files during
         evaluations as access to eval suites is restricted.
@@ -231,7 +231,7 @@ python3 scripts/nfs_browser.py stat \
 : File not found`     : exist on the NFS   : valid directory hierarchies.                :
 :                     : export.            :                                             :
 | `PermissionError:   | Share POSIX        | Use `stat --path={path}` to inspect UID/GID |
-: Permission denied`  : permissions        : and mode bits; request share admin adjust   :
+: Permission denied`  : permissions        : and mode bits; request share admin ad   :
 :                     : restrict read      : permissions.                                :
 :                     : access.            :                                             :
 | `HTTPException: 403 | Path parameter     | Use clean paths (e.g. `/logs/app.log`)      |

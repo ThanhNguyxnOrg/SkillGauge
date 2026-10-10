@@ -96,7 +96,7 @@ Artifactory, Nexus, or GitHub Container Registry), by setting up an [Artifact
 Registry remote
 repository](https://docs.cloud.google.com/artifact-registry/docs/repositories/remote-repo.md.txt).
 
-You should only consider [Docker Hub](https://hub.docker.com/) for deploying
+You must only consider [Docker Hub](https://hub.docker.com/) for deploying
 popular container images such as [Docker Official
 Images](https://docs.docker.com/docker-hub/official_images/) or [Docker
 Sponsored OSS images](https://docs.docker.com/docker-hub/dsos-program/). For
@@ -292,7 +292,7 @@ Artifactory, Nexus, or GitHub Container Registry), by setting up an [Artifact
 Registry remote
 repository](https://docs.cloud.google.com/artifact-registry/docs/repositories/remote-repo.md.txt).
 
-You should only consider [Docker Hub](https://hub.docker.com/) for deploying
+You must only consider [Docker Hub](https://hub.docker.com/) for deploying
 popular container images such as [Docker Official
 Images](https://docs.docker.com/docker-hub/official_images/) or [Docker
 Sponsored OSS images](https://docs.docker.com/docker-hub/dsos-program/). For

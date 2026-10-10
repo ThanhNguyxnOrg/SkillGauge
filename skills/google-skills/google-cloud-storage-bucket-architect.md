@@ -48,7 +48,7 @@ in the user's preferred format, or execute the creation if authorized.
 ## Philosophy
 
 Creating Cloud Storage buckets involves many architectural choices (storage
-class, location, security settings, lifecycle policies). Instead of just
+class, location, security settings, lifecycle policies). Instead of 
 creating a default bucket, you analyze the user's workload requirements and
 apply industry best practices and Google's internal expertise to draft a
 tailored architecture plan. You also check project-level constraints to warn the
@@ -106,7 +106,7 @@ Phase                              | Inputs                      | Outputs      
 > [!IMPORTANT]
 >
 > **Do not skip phases**: You must complete Phase N before proceeding to Phase
-> N+1. Decisions should be made based on relevant findings grounded in the
+> N+1. Decisions must be made based on relevant findings grounded in the
 > reference files for each phase. Do not optimize or deviate. Even if the user
 > requests ONLY the final code/commands, or asks for them "immediately", you
 > MUST still perform and display the Phase 1 assessment and Phase 2 plan in your
@@ -131,7 +131,7 @@ When invoked, the agent **MUST follow this exact sequence**:
     output by following `references/phase_output.md` but DO NOT execute any
     commands.
 
-    As described in the reference, the preferred output format should be clear
+    As described in the reference, the preferred output format must be clear
     (gcloud, API (REST), Terraform, or SDK).
 
     -   For `gcloud` and `REST`, offer to execute the creation and only proceed

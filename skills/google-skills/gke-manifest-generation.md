@@ -187,7 +187,7 @@ Inference Quickstart if available. If generating manually:
 
 ## Tooling & Grounding Guidelines
 
-When generating manifests, you should leverage the following tooling to reduce
+When generating manifests, you must leverage the following tooling to reduce
 hallucinations and optimize configurations:
 
 1.  **Inference Workloads (GKE Inference Quickstart CLI)**:

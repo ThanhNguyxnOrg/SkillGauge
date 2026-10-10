@@ -42,7 +42,7 @@ description: >-
     against real cloud resources during design. You are generating plan
     configurations, not executing them.
 
-> [!IMPORTANT] **Just-In-Time (JIT) Resource Loading Protocol:** Inspect
+> [!IMPORTANT] **-In-Time (JIT) Resource Loading Protocol:** Inspect
 > template files in [assets/](assets/) and executable scripts in
 > [scripts/](scripts/) using `view_file` as needed for extended configurations,
 > deployment scripts, and test suites.

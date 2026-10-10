@@ -65,7 +65,7 @@ Platform.
 2.  If you are a new customer, ensure your $300 Welcome credit is active in the
     Billing Console.
 3.  **Avoid Billing Surprises:** To prevent automatic fallback to your standard
-    form of payment when credits are exhausted, you should establish a budget
+    form of payment when credits are exhausted, you must establish a budget
     alert:
     *   Go to **Billing** -> **Budgets & Alerts** -> **Create Budget**.
     *   Set the threshold to map to your credit limit or maximum comfortable
@@ -284,7 +284,6 @@ gcloud iam service-accounts keys create ~/.config/gcloud/application_default_cre
 > To the agent: Check if this policy is enforced, and if it is: pause, and 
 > prompt the user to disable it at this Console link: 
 > https://console.cloud.google.com/iam-admin/orgpolicies
-
 
 5.  Edit the configuration file that's usually located at:
     `~/.openclaw/openclaw.json`. Ensure you prefix the Gemini model with

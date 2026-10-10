@@ -14,7 +14,7 @@ description: >-
 
 > [!WARNING] This skill is currently in a preview state. It will deploy a secure
 > foundation, but does not have all advanced features. Users who want more
-> options should visit
+> options must visit
 > [Google Cloud Setup](https://docs.cloud.google.com/docs/enterprise/cloud-setup).
 
 This skill guides the setup of a secure, enterprise-grade Google Cloud landing

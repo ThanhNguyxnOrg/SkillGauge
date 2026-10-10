@@ -86,11 +86,11 @@ spec:
       app: my-app
 ```
 
-> Every production Deployment with 2+ replicas should have a PDB.
+> Every production Deployment with 2+ replicas must have a PDB.
 
 ### 3. Health Probes
 
-Every production container should have liveness and readiness probes. Startup
+Every production container must have liveness and readiness probes. Startup
 probes are recommended for slow-starting apps.
 
 **Check existing probes:**

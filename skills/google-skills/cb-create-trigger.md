@@ -76,7 +76,7 @@ Name                     | Type    | Description                                
 `require_approval`       | Boolean | Whether builds require manual approval before execution.                                                      | Optional                             | `false`
 `pubsub_topic`           | String  | The Pub/Sub topic to subscribe to.                                                                            | Required for Pub/Sub events          | -
 `webhook_secret`         | String  | Secret Manager secret version path (e.g., `projects/.../secrets/.../versions/...`).                           | Required for Webhook events          | -
-`ignored_files`          | List    | Glob patterns for files that should not trigger builds.                                                       | Optional                             | -
+`ignored_files`          | List    | Glob patterns for files that must not trigger builds.                                                       | Optional                             | -
 `included_files`         | List    | Glob patterns for files that MUST be changed to trigger builds.                                               | Optional                             | -
 `cel_filter`             | String  | Common Expression Language (CEL) filter for Pub/Sub or Webhook events.                                        | Optional                             | -
 

@@ -107,7 +107,7 @@ kubectl top pods --all-namespaces --containers
 ## Applying Cost Optimizations
 
 To apply rightsizing changes based on analysis (such as setting up `VPA`
-recommendation mode, adjusting CPU/memory to `P95 * 1.2`, configuring Spot VMs
+recommendation mode, ading CPU/memory to `P95 * 1.2`, configuring Spot VMs
 via `nodeSelector` or `ComputeClass`, enforcing `ResourceQuotas`, or selecting
 machine types and CUDs), use the **`gke-cost-optimization`** skill.
 

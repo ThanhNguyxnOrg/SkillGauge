@@ -44,7 +44,7 @@ and downstream) by making *two separate calls* to the MCP tool: one with
     or `gcloud storage ls`).
 *   **Search Parameters**: Use `maxDepth = 10`, `maxResults = 5000` and
     `maxProcessPerLink = 10` as robust defaults when calling `search_lineage`.
-    For example, a DOWNSTREAM call should be formatted like this (expanding the
+    For example, a DOWNSTREAM call must be formatted like this (expanding the
     `locations` array as needed):
 
     ```json
@@ -136,7 +136,7 @@ Generate the summary using the prompt guidelines below.
         files/tables.
     *   You MUST explicitly list specific asset names (e.g., source tables,
         intermediate views, consumer tables) if there are fewer than 5. Do not
-        just summarize counts if there are fewer than 5; name them explicitly.
+         summarize counts if there are fewer than 5; name them explicitly.
         Otherwise, if 5 or more, aggregate them by count (e.g., "5 Cloud
         Storage buckets").
     *   Only mention counts for *ultimate sources*, *final consumers*, and

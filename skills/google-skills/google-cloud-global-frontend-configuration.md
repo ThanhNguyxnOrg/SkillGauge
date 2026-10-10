@@ -36,7 +36,7 @@ When executing this skill, the agent must:
 ### Step 1: Basics
 *   **Project Discovery:** Consult `references/resource-discovery.md` to auto-detect the Google Cloud project ID. Present the discovered project ID to the user.
 *   Ask the user for the foundational details of their load balancer:
-    *   **Name & Description:** What should we call this load balancer?
+    *   **Name & Description:** What must we call this load balancer?
     *   **Protocol Selection:** Do they need HTTP, HTTPS, or both?
     *   **Certificate Management:** Do they want to use Google-managed certificates or bring their own existing certificates?
 
@@ -46,13 +46,13 @@ Help the user define their backend workloads through a strictly sequential, step
 *   **Sub-step A - Origin Setup:** Ask if they have a single origin or need multi-origin support. Wait for response.
 *   **Sub-step B - Origin Types:** Ask them to select the backend types from: Cloud Storage Buckets, Compute Engine Managed Instance Groups (MIGs), Google Kubernetes Engine (GKE) Clusters, Cloud Run Services, or External/Internet origins (IP/FQDN). Wait for response.
 *   **Sub-step C - Origin Definition Loop:** Execute the following loop sequentially for EACH origin type selected in Sub-step B. Wait for the user to answer for one origin before asking about the next:
-    *   **Resource Discovery:** For Google Cloud-native origins (Cloud Storage, MIGs, GKE, Cloud Run), consult `references/resource-discovery.md` to fetch resources. Present the list starting with **1. Create New**, **2. NA**. For External/Internet origins, just ask for the FQDN/IP.
+    *   **Resource Discovery:** For Google Cloud-native origins (Cloud Storage, MIGs, GKE, Cloud Run), consult `references/resource-discovery.md` to fetch resources. Present the list starting with **1. Create New**, **2. NA**. For External/Internet origins,  ask for the FQDN/IP.
     *   **Workload Type (CRITICAL):** Immediately after they define the resource, ask exactly what type of workload is being served:
         1.  **Static Images / Objects** (Static content, images, videos, styling assets)
         2.  **Cacheable API** (Read-only, public APIs where cached data is acceptable)
         3.  **Uncacheable API / Transactions** (Transactional endpoints, login, checkout, account changes)
         4.  **Dynamic Web (SSR)** (Dynamic pages, server-side rendered apps, custom dynamic sessions)
-*   **Sub-step D - Routing Rules:** Once ALL origins have been fully defined one by one, ask how traffic should be routed between them (Path-based, header-based, or query-param-based). Wait for response.
+*   **Sub-step D - Routing Rules:** Once ALL origins have been fully defined one by one, ask how traffic must be routed between them (Path-based, header-based, or query-param-based). Wait for response.
 *   **Sub-step E - Logging:** After routing is established, ask if they want to enable Cloud CDN logging, and if so, at what sampling rate (0-100%). Wait for response.
 
 ### Step 3: Traffic Management & Extensibility
@@ -106,7 +106,7 @@ Propose a "Recommended Configuration" based entirely on the Workload Type from S
 ### Step 6: Review & Deploy
 *   **Configuration Summary:** Generate a complete, formatted markdown table showing all finalized settings from Steps 1 through 5, using Google Cloud product names. Follow this exact template structure:
 
-    | Component | Parameter / Setting | Value & Justification |
+    | Component | Parameter / Setting | Value & ification |
     | :--- | :--- | :--- |
     | **Load Balancer** | Name & Protocol | `<Name>` (HTTP/HTTPS) |
     | **Origins** | Backends & Workloads | `<Backend 1>` (`<Workload Type>`), `<Backend 2>`... |
@@ -118,7 +118,7 @@ Propose a "Recommended Configuration" based entirely on the Workload Type from S
 *   **Next Action:** Ask the user to choose their deployment/generation format (Terraform HCL or gcloud CLI Bash Script) and their next action:
     1.  **Show Code / Script** (Display the HCL code or gcloud bash script. Once displayed, offer options to **Download** or **Deploy/Execute**)
     2.  **Download files** (Save `main.tf` or `deploy.sh` to the local workspace)
-    3.  **Deploy Configuration:** Initiate the deployment via Infrastructure Manager or execute the gcloud script. This should be done using the deployment instructions in `references/managed-deployment.md`.
+    3.  **Deploy Configuration:** Initiate the deployment via Infrastructure Manager or execute the gcloud script. This must be done using the deployment instructions in `references/managed-deployment.md`.
 
 ---
 

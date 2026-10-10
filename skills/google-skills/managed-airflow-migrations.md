@@ -8,7 +8,7 @@ metadata:
 
 # Managed Service for Apache Airflow (formerly Cloud Composer) Migration Guide
 
-This skill guides you through the process of adjusting Airflow DAGs from an
+This skill guides you through the process of ading Airflow DAGs from an
 existing Managed Service for Apache Airflow (formerly Cloud Composer)
 environment (or available locally) to make them compatible with **Airflow
 2.11.1** (MSAA Gen 2 or 3) or **Airflow 3** (MSAA Gen 3).

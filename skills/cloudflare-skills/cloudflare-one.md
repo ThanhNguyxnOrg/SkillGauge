@@ -79,7 +79,7 @@ Use these to avoid jumping straight to configuration. Ask only the prompts relev
 
 - Access Groups are Cloudflare objects; IdP/SCIM groups are identity claims. Gateway group selectors use synced IdP groups, not Access Groups.
 - Group names and SAML/OIDC attributes are case-sensitive. Verify exact claim names and values before creating group-based rules.
-- SCIM changes and group membership can be stale until sync and re-authentication complete. Troubleshoot with the user's last authenticated identity, not just the IdP state.
+- SCIM changes and group membership can be stale until sync and re-authentication complete. Troubleshoot with the user's last authenticated identity, not  the IdP state.
 - Access policies are default-deny. A private app with routes but no Allow policy still blocks access.
 - Access policy selectors can use IP lists, not Gateway domain or URL lists.
 - SaaS federation handles authentication into the SaaS app. SaaS authorization and tenant restrictions usually require SaaS-side roles and/or Gateway tenant controls.
@@ -105,12 +105,12 @@ Use these to avoid jumping straight to configuration. Ask only the prompts relev
 - Split tunnel entries must align with tunnel routes bidirectionally. A CIDR in the include list without a matching tunnel route causes a black hole. A tunnel route without a matching device profile entry means traffic never enters the tunnel.
 - MDM parameters (`mdm.xml` / managed preferences) override dashboard-configured profile settings for any setting specified in the file. If dashboard changes appear to have no effect on managed devices, check MDM config. Retrieve [MDM deployment](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/index.md) docs for platform-specific file locations and parameters.
 - If another VPN client or agent controls DNS on the device, the device client's DNS interception will conflict. In coexistence scenarios, use "traffic only" mode to avoid routing table and DNS conflicts.
-- Captive portal detection temporarily disconnects the client when it detects a portal (hotel WiFi, airport).  This is a common source of end-user friction and should be managed carefully.
+- Captive portal detection temporarily disconnects the client when it detects a portal (hotel WiFi, airport).  This is a common source of end-user friction and must be managed carefully.
 
 ### Private Networking
 
 - Split tunnel mode changes the meaning of every route decision: Exclude mode sends traffic to Cloudflare when removed from excludes; Include mode sends traffic only when added to includes.
-- Virtual networks should be used primarily when IP subnets overlap and hostname-based routing is not used. It can be used to control other user connectivity behavior, but it is recommended to manage through security policies.
+- Virtual networks must be used primarily when IP subnets overlap and hostname-based routing is not used. It can be used to control other user connectivity behavior, but it is recommended to manage through security policies.
 - A healthy tunnel only proves cloudflared can reach Cloudflare. The tunnel must have appropriate published application routes, network routes, or hostname routes for connectivity to function.
 - Cloudflare Tunnel and Cloudflare Mesh can both be used to facilitate connectivity to internal networks. Cloudflare WAN can as well, but it is gated behind Enterprise subscriptions. Retrieve [choose an on-ramp](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/index.md) when deliberating between Tunnel types.
 - Run multiple cloudflared connectors for production HA, preferably on separate hosts. Token-based, remotely managed tunnels are the default for new deployments.

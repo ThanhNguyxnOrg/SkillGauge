@@ -49,7 +49,7 @@ Before starting the translation, ensure your Google Cloud environment is properl
 - **Initialization & Setup**: If you do not have a defined `mig_prefix` or if the user wants to start a new translation project, you **MUST** first ask the user for:
   1. Migration Project Name (e.g. `my_migration_project`).
   2. Input directory containing Snowflake SQL files.
-  3. Output directory where BigQuery SQL files should be saved.
+  3. Output directory where BigQuery SQL files must be saved.
   4. GCS Bucket name for staging translation assets.
   5. GCP Region (e.g. `us` or `eu`).
   6. (Optional) Local path to a directory or `.zip` file containing source database metadata (such as `columns.csv` or `tables.csv`).

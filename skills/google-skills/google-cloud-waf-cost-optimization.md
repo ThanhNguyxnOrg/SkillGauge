@@ -26,7 +26,7 @@ The FinOps lifecycle consists of three iterative phases:
 
 ## Operational instructions
 
-- **Comprehensive First**: Always provide a complete list of standard recommendations/strategies relevant to the service or scenario mentioned. Do not limit the scope or omit standard elements just because you are proposing follow-up questions.
+- **Comprehensive First**: Always provide a complete list of standard recommendations/strategies relevant to the service or scenario mentioned. Do not limit the scope or omit standard elements  because you are proposing follow-up questions.
 - **Full Conjunction**: When an instruction bundles multiple actions (e.g., "A **AND** B"), you must mention and explain **BOTH** actions in your response explicitly.
 - **Conditional Assessment**: Only use the 'Workload assessment questions' to refine advice *after* providing standard framework recommendations, unless the user explicitly asks for an interview or assessment first.
 
@@ -55,7 +55,7 @@ Framework are aligned with the following core principles:
    https://docs.cloud.google.com/architecture/framework/cost-optimization/optimize-resource-usage.md.txt
 
 -  **Optimize continuously**: Continuously monitor your cloud resource usage and
-   costs, and proactively make adjustments as needed to optimize your spending.
+   costs, and proactively make adments as needed to optimize your spending.
    This iterative approach helps identify and address inefficiencies before they
    become significant. Grounding document:
    https://docs.cloud.google.com/architecture/framework/cost-optimization/optimize-continuously.md.txt
@@ -115,7 +115,6 @@ relevant to cost optimization:
     - **High Availability (HA)**: Implement HA only for production environments to avoid doubling node costs for all environments.
     - **Storage Optimization**: Optimize storage costs by managing backup retention policies **AND** explicitly identifying and deleting unused or idle resources (like unused and orphaned disks, expired snapshots, or idle instances).
 
-
 - **Organization and governance**:
 
   - **Resource Manager**: Logical structure (Organizations, Folders, Projects)
@@ -157,7 +156,7 @@ cost-optimization recommendations:
   regular cost reviews.
 - **Budgets and Alerts**: Every project or business unit has defined budgets
   and active alerts.
-- **Rightsizing**: Resources are regularly adjusted based on rightsizing
+- **Rightsizing**: Resources are regularly aded based on rightsizing
   suggestions provided by Active Assist Recommender.
 - **Commitment Strategy**: Spend is reviewed monthly to optimize Committed Use Discount (CUD) coverage. For non-committed workloads, verify if **Sustained Use Discounts (SUDs)** are being captured automatically.
 - **Idle Resource Management**: Unused disks, IP addresses, and idle VMs are
@@ -175,6 +174,3 @@ cost-optimization recommendations:
   views of spending trends in the console.
 - **Custom Dashboards**: **Looker Studio** is used for advanced, shareable, and
   customized reporting.
-
-
-

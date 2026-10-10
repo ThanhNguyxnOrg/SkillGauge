@@ -89,7 +89,7 @@ For details see:
 Genkit Go has an **A2UI** (Agent-to-UI) plugin
 (`github.com/genkit-ai/genkit/go/plugins/a2ui/exp`, imported as `a2uix`) that
 lets an agent stream interactive UI **surfaces** (cards, lists, forms, buttons),
-not just prose. The whole integration is the `&a2uix.Surfaces{}` model
+not  prose. The whole integration is the `&a2uix.Surfaces{}` model
 middleware added via `ai.WithUse`
 on a generate call or agent inline prompt. **Go is server-only: it has no A2UI
 client/renderer.** Render surfaces with a JS or Dart/Flutter client that talks to
@@ -116,7 +116,7 @@ genkit start -o -- go run .       # also opens the browser
 
 **Non-interactive use (agents/CI):** add the global `--non-interactive` flag before `--` so the CLI uses defaults and never blocks on a prompt (e.g. the first-run analytics notice): `genkit start --non-interactive -- go run .` (works with `flow:run` too).
 
-**Run a flow (`flow:run`):** invoke a specific flow by name from the CLI. Append your run command after `--` to spin up the runtime just for this run (the command runs as-is to register your flows):
+**Run a flow (`flow:run`):** invoke a specific flow by name from the CLI. Append your run command after `--` to spin up the runtime  for this run (the command runs as-is to register your flows):
 ```bash
 genkit flow:run myFlow '{"data": "input"}' -- go run .
 genkit flow:run myFlow '{"data": "input"}' --stream -- go run .   # with streaming
@@ -133,7 +133,6 @@ genkit trace:get <traceId> --format json # machine-readable JSON, safe to pipe i
 
 For machine-readable output, pass `--format json` to get clean JSON you can pipe into `jq` or other parsers. The **default** output is human-oriented (banner/log lines, possible truncation on large traces), so don't pipe that form directly; use `--format json`, grep, or the Dev UI trace viewer.
 
-
 **Documentation:**
 ```bash
 genkit docs:search "streaming" go
@@ -145,11 +144,10 @@ See [references/getting-started.md](references/getting-started.md) for full CLI 
 
 ## Key Guidance
 
-
 - **Pass `g` explicitly.** The `*Genkit` instance returned by `genkit.Init` is the central registry. Pass it to all Genkit functions rather than storing it as a global. This is a core pattern throughout the SDK.
-- **Wrap AI logic in flows.** Flows give you tracing, observability, HTTP deployment via `genkit.Handler`, and the ability to test from the Developer UI and CLI. Any generation call worth keeping should live in a flow.
+- **Wrap AI logic in flows.** Flows give you tracing, observability, HTTP deployment via `genkit.Handler`, and the ability to test from the Developer UI and CLI. Any generation call worth keeping must live in a flow.
 - **Verify with traces, not a blind run.** Running the app directly (`go run .`) does not capture dev traces. See the [Genkit CLI](#genkit-cli-recommended) section for how to run your app and capture traces.
-- **Use `jsonschema:"description=..."` struct tags on output types.** The model uses these descriptions to understand what each field should contain. Without them, structured output quality drops significantly.
+- **Use `jsonschema:"description=..."` struct tags on output types.** The model uses these descriptions to understand what each field must contain. Without them, structured output quality drops significantly.
 - **Write good tool descriptions.** The model decides which tools to call based on their description string. Vague descriptions lead to missed or incorrect tool calls.
 - **Use `.prompt` files for complex prompts.** They separate prompt content from Go code, support Handlebars templating, and can be iterated on without recompilation. Code-defined prompts are better for simple, single-line cases.
 - **Reach for built-in middleware before writing one.** `Retry`, `Fallback`, `ToolApproval`, `Filesystem`, and `Skills` cover the common cross-cutting needs and compose with each other via `ai.WithUse`. See [references/middleware.md](references/middleware.md). When you do write custom middleware, allocate per-call state in closures captured by `New`, and guard anything that `WrapTool` mutates because tools may run concurrently.

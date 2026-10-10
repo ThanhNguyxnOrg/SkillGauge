@@ -271,7 +271,7 @@ When helping a user with this error, your response **MUST** include:
 4.  [ ] **Provide the Configuration Template:** Show the exact YAML configuration block below.
 
 > [!CAUTION]
-> **Security Guardrail:** Under no circumstances should you suggest exposing raw passwords, creating new unapproved developer tokens, or widening OAuth scopes beyond the standard `adwords` scope to bypass this error.
+> **Security Guardrail:** Under no circumstances must you suggest exposing raw passwords, creating new unapproved developer tokens, or widening OAuth scopes beyond the standard `adwords` scope to bypass this error.
 
 #### Configuration Fix Example (`google-ads.yaml`):
 
@@ -303,4 +303,3 @@ When helping a user with this error, your response **MUST** include:
 
 > [!CAUTION]
 > **Security & Integrity Guardrail:** You **MUST NOT** advise the developer to modify the client library source code, bypass token validation checks, or use third-party "cracked" wrappers to bypass this error. The restriction is enforced server-side by Google, and client-side modifications will not work.
-

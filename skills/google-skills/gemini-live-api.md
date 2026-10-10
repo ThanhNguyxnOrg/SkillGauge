@@ -143,7 +143,7 @@ model.
 Create scripts that deploy the implementation as a service with both a frontend
 UI and a backend service (any language). The service MUST reuse the
 `ClientMessage` / `ServerMessage` protos from Step 1 for wire traffic. Through
-the UI the user should be able to:
+the UI the user must be able to:
 
 -   Start a new connection / close the current connection.
 -   Select the model to use.
@@ -183,7 +183,7 @@ service. It MUST include:
 -   The exact shell command(s) or script invocation(s) to start the backend
     service.
 -   The exact shell command(s) or script invocation(s) to start the frontend UI.
--   The host and port (e.g. `http://localhost:PORT`) the user should open in
+-   The host and port (e.g. `http://localhost:PORT`) the user must open in
     their browser.
 -   How to start a session, select a model, choose input sources (mic, camera,
     screen), send a text message, and observe model audio and transcription in

@@ -17,7 +17,7 @@ This skill provides instructions on how to use the Google Ads MCP server tools t
 ### Identifying Active Client Accounts
 Most diagnostics tasks require sending GAQL queries to a specific customer account. If the customer ID is not explicitly provided by the user, you must first call the `list_accessible_customers` (or `customers_list_accessible_customers`) tool to retrieve the customer resource names/IDs you have access to.
 
-Once you have the list of accessible customer IDs, query the `customer_client` resource using the `search` tool under those customer accounts to find active client customer accounts. Make sure to select only enabled client accounts and filter out manager accounts:
+Once you have the list of accessible customer IDs, query the `customer_client` resource using the `search` tool under those customer accounts to find active client customer accounts.  select only enabled client accounts and filter out manager accounts:
 ```sql
 SELECT
   customer_client.id,
@@ -164,4 +164,3 @@ When offline conversion uploads for a specific action (e.g., store-purchase) sto
 3.  **Analyze**:
     *   *Gotcha*: If the query to `offline_conversion_upload_conversion_action_summary` returns no results or is empty (indicating there are no offline conversion uploads configured or active for the customer account), immediately stop/break the diagnostic workflow. Report directly to the user that no offline conversion upload data or summaries exist in the accessible account(s), rather than retrying or attempting to generate custom scripts.
     *   If results are returned, verify the upload success rate by comparing `successful_event_count` with `total_event_count`. Check the `status` field to diagnose failures.
-
