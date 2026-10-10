@@ -140,7 +140,8 @@ program
   .option('-f, --format <format>', 'Output format: json, pretty', 'pretty')
   .option('--fail-under <tier>', 'Exit status fails (non-zero) if tier is below given value (1, 2, or 3)', '0')
   .option('--summary <file>', 'Path to write a markdown summary report (great for GitHub Step Summary)')
-  .option('-v, --verbose', 'Verbose mode: outputs all 390 individual scientific metrics')
+  .option('-v, --verbose', 'Verbose mode: outputs all 390 raw static signals')
+  .option('--llm', 'Opt in to Gemini LLM rescoring (disclosed multiplier; default off, static only)')
   .action(async (target, options) => {
     let tempDirToDelete: string | undefined;
     try {
@@ -160,7 +161,10 @@ program
       let summaryContent = '';
 
       if (isDirectory) {
-        // Directory auditing mode
+        // Directory auditing mode (always static; --llm is file-mode only by design)
+        if (options.llm) {
+          console.log(chalk.yellow('⚠️ --llm is ignored for directory aggregates: package scoring stays static.'));
+        }
         const normalizedTarget = path.join(auditTarget, '**/*').replace(/\\/g, '/');
         const allFiles = await glob(normalizedTarget, { nodir: true });
         const virtualFiles: VirtualFile[] = allFiles.map(file => {
@@ -250,7 +254,8 @@ program
             continue;
           }
 
-          const report = await auditSkillAsync(content);
+          // Static by default; LLM rescoring only with explicit --llm (multiplier disclosed in explanation)
+          const report = options.llm ? await auditSkillAsync(content) : auditSkill(content);
 
           let tierNum = 3;
           if (report.tier === 'Tier 1') tierNum = 1;
@@ -288,7 +293,7 @@ program
             console.log(`  Dim G: Syntax, Structure & Metadata:    ${report.dimensions.dimG.toFixed(2)} / 15.00`);
             
             if (options.verbose) {
-              console.log('\nIndividual 390 Scientific Scores:');
+              console.log('\nIndividual 390 raw static signals:');
               const sortedKeys = Object.keys(report.scores).sort();
               for (const key of sortedKeys) {
                 console.log(`  ${key}: ${report.scores[key].toFixed(2)}`);
@@ -413,6 +418,7 @@ program
   .requiredOption('--db <db>', 'Path to leaderboard.json database')
   .requiredOption('--readme <readme>', 'Path to README.md')
   .requiredOption('--author <author>', 'GitHub username of contributor')
+  .option('--llm', 'Opt in to Gemini LLM rescoring (disclosed multiplier; default off, static only)')
   .action(async (options) => {
     let tempDirToDelete: string | undefined;
     try {
@@ -445,7 +451,7 @@ program
         }
 
         const hash = getNormalizedHash(content);
-        const report = await auditSkillAsync(content);
+        const report = options.llm ? await auditSkillAsync(content) : auditSkill(content);
         const parsedSkillName = getIntelligentSkillName(file, report.name);
         const repoName = getRepositoryName(file);
         const displayName = parsedSkillName;
