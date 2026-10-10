@@ -7,7 +7,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import { execSync } from 'child_process';
 import * as os from 'os';
-import { auditSkill, auditSkillAsync, auditPackage, VirtualFile, optimizeSkill, runDynamicTests } from '@skillgauge/core';
+import { auditSkill, auditSkillAsync, auditPackage, VirtualFile, optimizeSkill, runDynamicTests, isDuplicateEntry, nearDupeWarnings } from '@skillgauge/core';
 
 const program = new Command();
 
@@ -370,12 +370,8 @@ program
         db = JSON.parse(fs.readFileSync(options.db, 'utf-8'));
       }
 
-      // Line-set for near-dupe warnings (Jaccard on normalized lines; warn-only, never fail).
-      // DB stores hashes only, so near-dupe compares submitted files pairwise.
-      const lineSet = (c: string): Set<string> => new Set(
-        c.replace(/<!--[\s\S]*?-->/g, '').split(/\r?\n/).map(l => l.trim().toLowerCase()).filter(l => l.length > 5)
-      );
-      const seen: { file: string; lines: Set<string> }[] = [];
+      // Near-dupe warnings computed pairwise after the loop (pure helper in core).
+      const warnTargets: { file: string; content: string }[] = [];
 
       for (const file of files) {
         const content = fs.readFileSync(file, 'utf-8');
@@ -391,30 +387,16 @@ program
         const repoName = getRepositoryName(file);
         const displayName = parsedName;
 
-        // Same content hash blocks only when it appears under a different identity
-        // (clean name + repository). Unchanged files (same hash, name, repo) pass so
-        // PRs touching skills/** are not rejected for files that are already merged.
-        const isDuplicate = db.skills.some((s: any) => {
-          if (s.hash !== hash) return false;
-          const sCleanName = String(s.name).replace('🌟 ', '');
-          return !(sCleanName === displayName && s.repository === repoName);
-        });
-
-        if (isDuplicate) {
+        if (isDuplicateEntry(db.skills, hash, displayName, repoName)) {
           console.error(chalk.red(`🚨 Duplicate detected for file: ${file} (content hash matches existing entry)`));
           process.exit(2); // Exit with code 2 to indicate duplicate
         }
 
-        const mine = lineSet(content);
-        for (const prev of seen) {
-          let inter = 0;
-          for (const l of mine) if (prev.lines.has(l)) inter++;
-          const sim = inter / Math.max(1, mine.size + prev.lines.size - inter);
-          if (sim > 0.9) {
-            console.log(chalk.yellow(`⚠️ Near-duplicate warning: ${file} ~ ${prev.file} (line similarity ${sim.toFixed(2)})`));
-          }
-        }
-        seen.push({ file, lines: mine });
+        warnTargets.push({ file, content });
+      }
+
+      for (const w of nearDupeWarnings(warnTargets)) {
+        console.log(chalk.yellow(`⚠️ Near-duplicate warning: ${w}`));
       }
 
       console.log(chalk.green('✅ No duplicates found. Safe to proceed!'));
