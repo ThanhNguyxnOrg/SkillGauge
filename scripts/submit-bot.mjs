@@ -105,10 +105,46 @@ if (validSkills.length === 0) {
   process.exit(1);
 }
 
-// Copy skill files into the monorepo skills directory.
-// Slug is owner+repo (lowercased, sanitized): bare repo names collide
-// (google/skills vs cloudflare/skills both yielded skills/skills/).
-const slug = `${repoOwner}-${repoName}`.toLowerCase().replace(/[^a-z0-9_\-]+/g, '-').replace(/^-+|-+$/g, '');
+// Duplicate policy (same repo only — names may collide across repos):
+// identical (same name + same content) -> auto-close with "already exists";
+// updated (same name, new content) -> proceed, update-leaderboard overwrites;
+// new names -> proceed. Cross-repo hash matches stay a manual review matter.
+const { createHash } = await import('crypto');
+const normalizedHash = (c) => createHash('sha256')
+  .update(c.replace(/<!--[\s\S]*?-->/g, '').replace(/\s+/g, '').toLowerCase())
+  .digest('hex');
+const cleanName = (n) => String(n).replace('🌟 ', '');
+const slugOf = (o, r) => `${o}-${r}`.toLowerCase().replace(/[^a-z0-9_\-]+/g, '-').replace(/^-+|-+$/g, '');
+const slug = slugOf(repoOwner, repoName);
+let dbSkills = [];
+try {
+  dbSkills = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'leaderboard.json'), 'utf-8')).skills || [];
+} catch {}
+const fresh = validSkills.filter((s) => {
+  const hit = dbSkills.find((d) => cleanName(d.name) === cleanName(s.name) && d.repository === slug);
+  return !hit || hit.hash !== normalizedHash(s.content);
+});
+if (fresh.length === 0) {
+  const branchName = `contrib-${slug}`;
+  console.log('All submitted skills already exist with identical content.');
+  try {
+    const openPrs = JSON.parse(execSync(`gh pr list --head "${branchName}" --json url number`).toString().trim());
+    if (openPrs && openPrs.length > 0) {
+      execSync(`gh pr comment ${openPrs[0].number} --body "Already exists: every skill in this submission matches the leaderboard byte-for-byte. Auto-closing."`);
+      execSync(`gh pr close ${openPrs[0].number}`);
+      console.log(`Closed already-up-to-date PR #${openPrs[0].number}.`);
+    } else {
+      console.log('No open PR to close. Nothing to do.');
+    }
+  } catch (err) {
+    console.error('Failed to close already-existing PR:', err.message || err);
+  }
+  process.exit(0);
+}
+console.log(`${fresh.length}/${validSkills.length} skills are new or updated; proceeding.`);
+
+// Copy skill files into the monorepo skills directory (slug defined above:
+// owner+repo, collision-proof across same-named repos).
 const destDir = path.join(process.cwd(), 'skills', slug);
 if (!fs.existsSync(destDir)) {
   fs.mkdirSync(destDir, { recursive: true });
