@@ -8,10 +8,10 @@ describe('Optimizer Module', () => {
     `;
     const optimized = optimizeTextHeuristics(rawText);
 
-    // Assert weak words are replaced with strong ones
+    // Assert weak words are replaced with strong ones (spec: no semantic rewrites like ideally->strictly)
     expect(optimized).toContain('must');
     expect(optimized).toContain('shall');
-    expect(optimized).toContain('strictly');
+    expect(optimized).toContain('always');
     
     // Assert filler phrases are removed
     expect(optimized).not.toContain('Please note that');

@@ -370,6 +370,13 @@ program
         db = JSON.parse(fs.readFileSync(options.db, 'utf-8'));
       }
 
+      // Line-set for near-dupe warnings (Jaccard on normalized lines; warn-only, never fail).
+      // DB stores hashes only, so near-dupe compares submitted files pairwise.
+      const lineSet = (c: string): Set<string> => new Set(
+        c.replace(/<!--[\s\S]*?-->/g, '').split(/\r?\n/).map(l => l.trim().toLowerCase()).filter(l => l.length > 5)
+      );
+      const seen: { file: string; lines: Set<string> }[] = [];
+
       for (const file of files) {
         const content = fs.readFileSync(file, 'utf-8');
         
@@ -382,20 +389,27 @@ program
         const report = auditSkill(content);
         const parsedName = getIntelligentSkillName(file, report.name);
         const repoName = getRepositoryName(file);
-        const displayName = parsedName;
+        void parsedName;
+        void repoName;
 
-        const isDuplicate = db.skills.some((s: any) => {
-          // Duplicate content in a different repository is flagged as plagiarism
-          if (s.hash === hash && s.repository !== repoName) {
-            return true;
-          }
-          return false;
-        });
+        // Same content hash blocks regardless of repository (re-submits included)
+        const isDuplicate = db.skills.some((s: any) => s.hash === hash);
 
         if (isDuplicate) {
-          console.error(chalk.red(`🚨 Duplicate detected for file: ${file} (Name: "${displayName}" in repo "${repoName}" or content hash matches existing entry)`));
+          console.error(chalk.red(`🚨 Duplicate detected for file: ${file} (content hash matches existing entry)`));
           process.exit(2); // Exit with code 2 to indicate duplicate
         }
+
+        const mine = lineSet(content);
+        for (const prev of seen) {
+          let inter = 0;
+          for (const l of mine) if (prev.lines.has(l)) inter++;
+          const sim = inter / Math.max(1, mine.size + prev.lines.size - inter);
+          if (sim > 0.9) {
+            console.log(chalk.yellow(`⚠️ Near-duplicate warning: ${file} ~ ${prev.file} (line similarity ${sim.toFixed(2)})`));
+          }
+        }
+        seen.push({ file, lines: mine });
       }
 
       console.log(chalk.green('✅ No duplicates found. Safe to proceed!'));

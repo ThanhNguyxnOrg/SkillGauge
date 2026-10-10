@@ -4,8 +4,15 @@ import { auditSkill } from './engine.js';
  * Clean up text using heuristics (fallback mode if no LLM key is provided)
  */
 export function optimizeTextHeuristics(content: string): string {
-  // 1. Clean up YAML frontmatter formatting if present
-  let result = content;
+  // Split off YAML frontmatter and fenced code: never rewrite those (prose-only optimizer).
+  let frontmatter = '';
+  let body = content;
+  const fmMatch = content.match(/^---\r?\n[\s\S]*?\r?\n---\r?\n/);
+  if (fmMatch) {
+    frontmatter = fmMatch[0];
+    body = content.slice(fmMatch[0].length);
+  }
+  const segments = body.split(/(```[\s\S]*?```)/g);
 
   // 2. Remove common filler phrases / bloat to reduce friction and saturation risk
   const fillPhrases = [
@@ -19,35 +26,33 @@ export function optimizeTextHeuristics(content: string): string {
     /highly recommended/gi,
     /best effort/gi,
   ];
-  for (const regex of fillPhrases) {
-    result = result.replace(regex, '');
-  }
-
-  // 3. Resolve ambiguity: replace weak words with strong words
+  // 3. Resolve ambiguity: replace weak words with strong words.
+  // Dropped usually/mostly/likely/probably/optionally/ideally/if possible->strictly maps: they change semantics, not just tone.
   const weakToStrong: { [key: string]: string } = {
     'try to': 'must',
     'should': 'must',
     'could': 'shall',
     'maybe': 'always',
-    'sometimes': 'always',
-    'usually': 'required',
-    'if possible': 'strictly',
-    'ideally': 'strictly',
-    'optionally': 'strictly',
-    'mostly': 'strictly',
-    'likely': 'strictly',
-    'probably': 'strictly'
+    'sometimes': 'always'
   };
 
-  for (const [weak, strong] of Object.entries(weakToStrong)) {
-    const regex = new RegExp(`\\b${weak}\\b`, 'gi');
-    result = result.replace(regex, strong);
-  }
+  let result = segments.map((seg, i) => {
+    if (i % 2 === 1) return seg; // fenced code: untouched
+    let s = seg;
+    for (const regex of fillPhrases) {
+      s = s.replace(regex, '');
+    }
+    for (const [weak, strong] of Object.entries(weakToStrong)) {
+      const regex = new RegExp(`\\b${weak}\\b`, 'gi');
+      s = s.replace(regex, strong);
+    }
+    return s;
+  }).join('');
 
   // 4. Clean up multiple empty lines
   result = result.replace(/\n{3,}/g, '\n\n');
 
-  return result.trim() + '\n';
+  return (frontmatter + result).trim() + '\n';
 }
 
 /**

@@ -10,6 +10,8 @@ export interface PackageReport {
   tier: 'Tier 1' | 'Tier 2' | 'Tier 3';
   integrityScore: number;
   redundancyPenalty: number;
+  /** Same value as redundancyPenalty; the old name misleads (it is a retention factor ≈1.0). */
+  retentionFactor: number;
   individualAudits: { path: string; report: AuditReport }[];
 }
 
@@ -27,21 +29,19 @@ export function auditPackage(files: VirtualFile[]): PackageReport {
     };
   });
 
-  // Calculate integrity score (references validation)
+  // Integrity: only real markdown link targets count as references (prose mentions are not refs).
+  // shortcut: frontmatter references:/scripts: lists not parsed yet; add when skills use them.
   let totalRefs = 0;
   let brokenRefs = 0;
 
   for (const skill of skills) {
-    // Find file linkages like tools/my-tool.json
-    const matches = skill.content.match(/([a-zA-Z0-9_\-\/]+\.(json|yaml|md))/g);
-    if (matches) {
-      for (const match of matches) {
-        totalRefs++;
-        const targetPath = match.toLowerCase();
-        const exists = files.some(f => f.path.toLowerCase().endsWith(targetPath));
-        if (!exists) {
-          brokenRefs++;
-        }
+    const linkTargets = [...skill.content.matchAll(/\[.*?\]\((.*?)\)/g)].map(m => m[1]).filter(t => /\.(json|yaml|yml|md|ts|js)$/i.test(t.trim()));
+    for (const target of linkTargets) {
+      totalRefs++;
+      const clean = target.trim().toLowerCase().split('#')[0];
+      const exists = files.some(f => f.path.toLowerCase().endsWith(clean));
+      if (!exists) {
+        brokenRefs++;
       }
     }
   }
@@ -68,18 +68,20 @@ export function auditPackage(files: VirtualFile[]): PackageReport {
   const duplicationRatio = totalLines === 0 ? 0 : duplicatedLines / totalLines;
   const redundancyPenalty = 1.0 - Math.pow(duplicationRatio, 2);
 
-  // Compute aggregate package score as the sum of overall scores of all skills
+  // Headline and tier move together: both use the mean (sum rewarded adding mediocre skills).
   const totalOverallScore = individualAudits.reduce((acc, current) => acc + current.report.overallScore, 0);
-  const packageScore = totalOverallScore * integrityScore * redundancyPenalty;
+  const meanOverallScore = individualAudits.length === 0 ? 0.0 : totalOverallScore / individualAudits.length;
+  const packageScore = meanOverallScore * integrityScore * redundancyPenalty;
 
   // Determine the Quality Tier based on the average overall score
-  const avgOverallScore = individualAudits.length === 0 ? 0.0 : totalOverallScore / individualAudits.length;
+  const avgOverallScore = meanOverallScore;
   const packageAverage = avgOverallScore * integrityScore * redundancyPenalty;
 
+  // Same percentile tiers as single-skill scoring (population P90 34.39 / P50 30.60 on 2026-10-10).
   let tier: 'Tier 1' | 'Tier 2' | 'Tier 3' = 'Tier 3';
-  if (packageAverage >= 85.0) {
+  if (packageAverage >= 34.39) {
     tier = 'Tier 1';
-  } else if (packageAverage >= 60.0) {
+  } else if (packageAverage >= 30.60) {
     tier = 'Tier 2';
   }
 
@@ -88,6 +90,7 @@ export function auditPackage(files: VirtualFile[]): PackageReport {
     tier,
     integrityScore,
     redundancyPenalty,
+    retentionFactor: redundancyPenalty,
     individualAudits
   };
 }
