@@ -1721,7 +1721,7 @@ The static score is calculated using the normalized sum of the 105 criteria:
 $S_{\text{static}} = \frac{100.00}{390.00} \sum_{i=1}^{390} M_i$
 
 #### Phase 2: Dynamic Semantic Audit ($M_{\text{semantic}}$)
-A cost-efficient model (`gemini-2.5-flash-lite`) is invoked to assess the prompt on qualitative properties. The model outputs a JSON payload containing:
+A cost-efficient model (`gemini-3.5-flash-lite`) is invoked to assess the prompt on qualitative properties. The model outputs a JSON payload containing:
 - **Coherence** ($C \in [0.0, 1.0]$): Readability, grammar, and instructions clarity.
 - **Depth** ($D \in [0.0, 1.0]$): Breadth, detail, and applicability.
 - **Gaming Flag** ($G \in \{0.15, 1.0\}$): Set to $0.15$ if the prompt is flagged for keyword stuffing or attempting to cheat the static checkers, $1.0$ otherwise.

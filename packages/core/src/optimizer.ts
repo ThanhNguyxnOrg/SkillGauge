@@ -83,7 +83,7 @@ Original Skill Content:
 ${content}
 ---`;
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${finalApiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${finalApiKey}`;
     const response = await fetch(url, {
       method: 'POST',
       headers: {
