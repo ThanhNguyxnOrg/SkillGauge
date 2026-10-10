@@ -208,10 +208,10 @@ Agents don't craft clever loopholes. They hit a red check and take the cheapest 
 1. **The threshold moved.** A budget lowered, a severity dropped, a check removed from the fast stage. Compare `CONSTRAINTS.md` against its state at the branch point.
 2. **A test got easier.** `.skip` added, a test file deleted, assertions pulled out of tests that stayed.
 3. **A checker got silenced.** New `@ts-ignore` or `eslint-disable`. Four suppressions deserve special attention because they switch off a check you're relying on: `istanbul ignore` drops code from coverage instead of testing it, `Stryker disable` hides a surviving mutant, `nosemgrep` and `gitleaks:allow` do it for security findings.
-4. **Work is unfinished.** A stub that throws, an empty `catch` turning a failure into silence, a `TODO` standing where the implementation should be.
+4. **Work is unfinished.** A stub that throws, an empty `catch` turning a failure into silence, a `TODO` standing where the implementation must be.
 5. **An exception appeared.** A new row in the Exceptions table nobody discussed.
 
-None of this needs tooling beyond `git diff`. Tightening the bar should be silent; loosening it should be loud.
+None of this needs tooling beyond `git diff`. Tightening the bar must be silent; loosening it must be loud.
 
 Unlike the numbered dimensions, the floor has no de facto tool of its own, so an agent asked to enforce it tends to write a checker from scratch, and two agents write two different ones. A reference implementation of these five checks ships with this skill in [references/floor-guard.md](references/floor-guard.md) (diff-scoped, exit `0`/`1`/`2`, patterns adaptable per ecosystem). Adapt that rather than reinventing it, for the same reason every dimension names a de facto tool: so the mechanism is the same across runs and stacks.
 
@@ -257,7 +257,7 @@ Constraints work at three levels of teeth. Start at the first.
 2. **Scripted.** An `npm run check` (or `make check`) that runs the fast checks, wired into your agent's post-edit hook and your CI. Deterministic, no new dependency.
 3. **Tool-backed.** A dedicated runner that handles diff scoping, budgets, ratchets, and the guard checks. Use when the config outgrows a shell script. The floor-guard reference in [references/floor-guard.md](references/floor-guard.md) is the starting point for the guard-checks half of this.
 
-Most projects should stop at 2. Move to 3 when you're maintaining more than about thirty lines of check-running shell.
+Most projects must stop at 2. Move to 3 when you're maintaining more than about thirty lines of check-running shell.
 
 **A first run can be floor-only.** The floor guard is diff-only and needs no installs, so you can enforce the floor on day one and add numbered dimensions as you install each tool, rather than standing up every checker before the first commit is protected. Security tools that install machine-wide (gitleaks, osv-scanner) can also run CI-only if you'd rather keep laptops clean; declare where each dimension runs in the `Runs at` column.
 
@@ -307,5 +307,5 @@ The skill was applied correctly when:
 - `code-review-and-quality` — how to review; this skill decides what the review enforces
 - `ci-cd-and-automation` — building the pipeline these constraints run in
 - `test-driven-development` — the suite that coverage and mutation constraints measure
-- `security-and-hardening` — what the security dimension should contain
+- `security-and-hardening` — what the security dimension must contain
 - `performance-optimization` — where the performance numbers come from

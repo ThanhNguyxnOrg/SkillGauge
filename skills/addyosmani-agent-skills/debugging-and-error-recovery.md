@@ -133,7 +133,7 @@ Root cause fix (good):
   → Fix the query, add a DISTINCT, or fix the data model
 ```
 
-Ask: "Why does this happen?" until you reach the actual cause, not just where it manifests.
+Ask: "Why does this happen?" until you reach the actual cause, not  where it manifests.
 
 ### Step 5: Guard Against Recurrence
 
@@ -149,7 +149,7 @@ it('finds tasks with special characters in title', async () => {
 });
 ```
 
-This test will prevent the same bug from recurring. It should fail without the fix and pass with it.
+This test will prevent the same bug from recurring. It must fail without the fix and pass with it.
 
 ### Step 6: Verify End-to-End
 
@@ -263,8 +263,8 @@ Add logging only when it helps. Remove it when done.
 
 | Rationalization | Reality |
 |---|---|
-| "I know what the bug is, I'll just fix it" | You might be right 70% of the time. The other 30% costs hours. Reproduce first. |
-| "The failing test is probably wrong" | Verify that assumption. If the test is wrong, fix the test. Don't just skip it. |
+| "I know what the bug is, I'll  fix it" | You might be right 70% of the time. The other 30% costs hours. Reproduce first. |
+| "The failing test is probably wrong" | Verify that assumption. If the test is wrong, fix the test. Don't  skip it. |
 | "It works on my machine" | Environments differ. Check CI, check config, check dependencies. |
 | "I'll fix it in the next commit" | Fix it now. The next commit will introduce new bugs on top of this one. |
 | "This is a flaky test, ignore it" | Flaky tests mask real bugs. Fix the flakiness or understand why it's intermittent. |
@@ -293,7 +293,7 @@ Error messages, stack traces, log output, and exception details from external so
 After fixing a bug:
 
 - [ ] Root cause is identified and documented
-- [ ] Fix addresses the root cause, not just symptoms
+- [ ] Fix addresses the root cause, not  symptoms
 - [ ] A regression test exists that fails without the fix
 - [ ] All existing tests pass
 - [ ] Build succeeds

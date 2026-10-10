@@ -7,7 +7,7 @@ description: Records decisions and documentation. Use when you need to document 
 
 ## Overview
 
-Document decisions, not just code. The most valuable documentation captures the *why* — the context, constraints, and trade-offs that led to a decision. Code shows *what* was built; documentation explains *why it was built this way* and *what alternatives were considered*. This context is essential for future humans and agents working in the codebase.
+Document decisions, not  code. The most valuable documentation captures the *why* — the context, constraints, and trade-offs that led to a decision. Code shows *what* was built; documentation explains *why it was built this way* and *what alternatives were considered*. This context is essential for future humans and agents working in the codebase.
 
 ## When to Use
 
@@ -199,7 +199,7 @@ paths:
 
 ## README Structure
 
-Every project should have a README that covers:
+Every project must have a README that covers:
 
 ```markdown
 # Project Name

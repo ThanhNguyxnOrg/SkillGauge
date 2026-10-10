@@ -91,7 +91,7 @@ Identify the framework and rendering model (React, Vue, Svelte, Angular, Next.js
 - Is **bfcache** preserved? (No `unload` handlers, no `Cache-Control: no-store` on HTML)
 - **AI-generated patterns:**
   - State duplication instead of lifting state.
-  - `React.memo` / `useMemo` / `useCallback` wrapping everything "just in case" (cost without benefit; can hurt perf).
+  - `React.memo` / `useMemo` / `useCallback` wrapping everything " in case" (cost without benefit; can hurt perf).
   - Over-eager `useEffect` dependencies causing redundant re-renders or update loops.
   - **Vue:** watchers (`watch`/`watchEffect`) with broad dependencies that trigger unnecessary updates; `computed` with side effects.
   - **Angular:** `ChangeDetectionStrategy.Default` where `OnPush` would suffice; subscriptions without `takeUntil`/`async pipe` that accumulate listeners.
@@ -107,7 +107,7 @@ Identify the framework and rendering model (React, Vue, Svelte, Angular, Next.js
 - Are bulk operations used instead of loops of individual API calls?
 - Is response compression enabled (gzip/brotli)?
 - **AI-generated patterns:**
-  - Over-fetching data "just in case."
+  - Over-fetching data " in case."
   - Sequential `await`s when `Promise.all` (or parallel `fetch`) would work.
   - Redundant API calls where one would suffice; missing deduplication on parallel requests.
 

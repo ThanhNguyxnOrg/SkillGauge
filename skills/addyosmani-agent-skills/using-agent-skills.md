@@ -90,7 +90,7 @@ Your natural tendency is to overcomplicate. Actively resist it.
 Before finishing any implementation, ask:
 - Can this be done in fewer lines?
 - Are these abstractions earning their complexity?
-- Would a staff engineer look at this and say "why didn't you just..."?
+- Would a staff engineer look at this and say "why didn't you ..."?
 
 If you build 1000 lines and 100 would suffice, you have failed. Prefer the boring, obvious solution. Cleverness is expensive.
 
@@ -187,6 +187,6 @@ Not every task needs every skill. A bug fix might only need: `debugging-and-erro
 | Ship | git-workflow-and-versioning | Atomic commits, clean history |
 | Ship | ci-cd-and-automation | Automated quality gates on every change |
 | Ship | deprecation-and-migration | Remove old systems and migrate users safely |
-| Ship | documentation-and-adrs | Document the why, not just the what |
+| Ship | documentation-and-adrs | Document the why, not  the what |
 | Ship | observability-and-instrumentation | Structured logs, RED metrics, traces, symptom-based alerts |
 | Ship | shipping-and-launch | Pre-launch checklist, monitoring, rollback plan |

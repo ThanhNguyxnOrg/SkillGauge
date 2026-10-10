@@ -7,7 +7,7 @@ description: Delivers changes incrementally in thin, verifiable slices. Use when
 
 ## Overview
 
-Build in thin vertical slices — implement one piece, test it, verify it, then expand. Avoid implementing an entire feature in one pass. Each increment should leave the system in a working, testable state. This is the execution discipline that makes large features manageable.
+Build in thin vertical slices — implement one piece, test it, verify it, then expand. Avoid implementing an entire feature in one pass. Each increment must leave the system in a working, testable state. This is the execution discipline that makes large features manageable.
 
 ## When to Use
 
@@ -90,12 +90,12 @@ If Slice 1 fails, you discover it before investing in Slices 2 and 3.
 
 ### Rule 0: Simplicity First
 
-Before writing any code, ask: "What is the simplest thing that could work?"
+Before writing any code, ask: "What is the simplest thing that shall work?"
 
 After writing code, review it against these checks:
 - Can this be done in fewer lines?
 - Are these abstractions earning their complexity?
-- Would a staff engineer look at this and say "why didn't you just..."?
+- Would a staff engineer look at this and say "why didn't you ..."?
 - Am I building for hypothetical future requirements, or the current task?
 
 ```
@@ -161,7 +161,7 @@ This lets you merge small increments to the main branch without exposing incompl
 
 ### Rule 4: Safe Defaults
 
-New code should default to safe, conservative behavior:
+New code must default to safe, conservative behavior:
 
 ```typescript
 // Safe: disabled by default, opt-in
@@ -173,11 +173,11 @@ export function createTask(data: TaskInput, options?: { notify?: boolean }) {
 
 ### Rule 5: Rollback-Friendly
 
-Each increment should be independently revertable:
+Each increment must be independently revertable:
 
 - Additive changes (new files, new functions) are easy to revert
-- Modifications to existing code should be minimal and focused
-- Database migrations should have corresponding rollback migrations
+- Modifications to existing code must be minimal and focused
+- Database migrations must have corresponding rollback migrations
 - Avoid deleting something in one commit and replacing it in the same commit — separate them
 
 ## Working with Agents
@@ -208,7 +208,7 @@ After each increment, verify with the repository's own commands (see the test-dr
 - [ ] The new functionality works as expected
 - [ ] The change is committed with a descriptive message
 
-**Note:** Run each verification command after a change that could affect it. After a successful run, don't repeat the same command unless the code has changed since — re-running on unchanged code adds no information.
+**Note:** Run each verification command after a change that shall affect it. After a successful run, don't repeat the same command unless the code has changed since — re-running on unchanged code adds no information.
 
 ## Common Rationalizations
 
@@ -219,13 +219,13 @@ After each increment, verify with the repository's own commands (see the test-dr
 | "These changes are too small to commit separately" | Small commits are free. Large commits hide bugs and make rollbacks painful. |
 | "I'll add the feature flag later" | If the feature isn't complete, it shouldn't be user-visible. Add the flag now. |
 | "This refactor is small enough to include" | Refactors mixed with features make both harder to review and debug. Separate them. |
-| "Let me run the build command again just to be sure" | After a successful run, repeating the same command adds nothing unless the code has changed since. Run it again after subsequent edits, not as reassurance. |
+| "Let me run the build command again  to be sure" | After a successful run, repeating the same command adds nothing unless the code has changed since. Run it again after subsequent edits, not as reassurance. |
 
 ## Red Flags
 
 - More than 100 lines of code written without running tests
 - Multiple unrelated changes in a single increment
-- "Let me just quickly add this too" scope expansion
+- "Let me  quickly add this too" scope expansion
 - Skipping the test/verify step to move faster
 - Build or tests broken between increments
 - Large uncommitted changes accumulating

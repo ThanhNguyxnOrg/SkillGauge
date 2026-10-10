@@ -24,11 +24,11 @@ Most engineering organizations are good at building things. Few are good at remo
 
 ### Code Is a Liability
 
-Every line of code has ongoing cost: it needs tests, documentation, security patches, dependency updates, and mental overhead for anyone working nearby. The value of code is the functionality it provides, not the code itself. When the same functionality can be provided with less code, less complexity, or better abstractions — the old code should go.
+Every line of code has ongoing cost: it needs tests, documentation, security patches, dependency updates, and mental overhead for anyone working nearby. The value of code is the functionality it provides, not the code itself. When the same functionality can be provided with less code, less complexity, or better abstractions — the old code must go.
 
 ### Hyrum's Law Makes Removal Hard
 
-With enough users, every observable behavior becomes depended on — including bugs, timing quirks, and undocumented side effects. This is why deprecation requires active migration, not just announcement. Users can't "just switch" when they depend on behaviors the replacement doesn't replicate.
+With enough users, every observable behavior becomes depended on — including bugs, timing quirks, and undocumented side effects. This is why deprecation requires active migration, not  announcement. Users can't " switch" when they depend on behaviors the replacement doesn't replicate.
 
 ### Deprecation Planning Starts at Design Time
 
@@ -62,7 +62,7 @@ Before deprecating anything, answer these questions:
 | **Advisory** | Migration is optional, old system is stable | Warnings, documentation, nudges. Users migrate on their own timeline. |
 | **Compulsory** | Old system has security issues, blocks progress, or maintenance cost is unsustainable | Hard deadline. Old system will be removed by date X. Provide migration tooling. |
 
-**Default to advisory.** Use compulsory only when the maintenance cost or risk justifies forcing migration. Compulsory deprecation requires providing migration tooling, documentation, and support — you can't just announce a deadline.
+**Default to advisory.** Use compulsory only when the maintenance cost or risk ifies forcing migration. Compulsory deprecation requires providing migration tooling, documentation, and support — you can't  announce a deadline.
 
 ## The Migration Process
 
@@ -72,7 +72,7 @@ Don't deprecate without a working alternative. The replacement must:
 
 - Cover all critical use cases of the old system
 - Have documentation and migration guides
-- Be proven in production (not just "theoretically better")
+- Be proven in production (not  "theoretically better")
 
 ### Step 2: Announce and Document
 
@@ -206,12 +206,12 @@ Zombie code is code that nobody owns but everybody depends on. It's not actively
 | Rationalization | Reality |
 |---|---|
 | "It still works, why remove it?" | Working code that nobody maintains accumulates security debt and complexity. Maintenance cost grows silently. |
-| "Someone might need it later" | If it's needed later, it can be rebuilt. Keeping unused code "just in case" costs more than rebuilding. |
+| "Someone might need it later" | If it's needed later, it can be rebuilt. Keeping unused code " in case" costs more than rebuilding. |
 | "The migration is too expensive" | Compare migration cost to ongoing maintenance cost over 2-3 years. Migration is usually cheaper long-term. |
 | "We'll deprecate it after we finish the new system" | Deprecation planning starts at design time. By the time the new system is done, you'll have new priorities. Plan now. |
 | "Users will migrate on their own" | They won't. Provide tooling, documentation, and incentives — or do the migration yourself (the Churn Rule). |
 | "We can maintain both systems indefinitely" | Two systems doing the same thing is double the maintenance, testing, documentation, and onboarding cost. |
-| "Just rename the column, it's one line" | During the rollout, old and new code run together — one will query a column that no longer exists. Expand/contract, never rename in place. |
+| " rename the column, it's one line" | During the rollout, old and new code run together — one will query a column that no longer exists. Expand/contract, never rename in place. |
 | "I'll add the column and drop the old one in the same migration" | That couples a safe add to a destructive drop. Drops get their own deploy, after no code references the old shape. |
 | "We'll write the rollback if we need it" | A migration with no down path is a deploy you can't reverse. Write and run the `down` before merging. |
 

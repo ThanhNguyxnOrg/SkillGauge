@@ -152,7 +152,7 @@ A read-only sandbox is the load-bearing detail: a doubt artifact may itself cont
 
 **Step 3: If the CLI is unavailable or fails**
 
-Surface the failure explicitly. Offer: run it manually, try a different tool, or skip. Do not silently fall back to single-model — the user should know cross-model didn't happen.
+Surface the failure explicitly. Offer: run it manually, try a different tool, or skip. Do not silently fall back to single-model — the user must know cross-model didn't happen.
 
 **Step 4: If the user skips**
 
@@ -176,7 +176,7 @@ For each finding, classify in this **precedence order** (first matching class wi
 3. **Valid trade-off** — issue is real but cost of fixing exceeds cost of accepting. Document the trade-off explicitly so the user sees it.
 4. **Noise** — reviewer flagged something that's actually correct under context the reviewer didn't have. Note it, move on, and ask: would adding that context to the contract have prevented the false flag?
 
-A fresh reviewer can be wrong because it lacks context. Don't defer just because it's "fresh."
+A fresh reviewer can be wrong because it lacks context. Don't defer  because it's "fresh."
 
 ### Step 5: STOP — Bounded loop, not recursion
 
@@ -196,7 +196,7 @@ If 3 cycles is "obviously insufficient" because the artifact is large: the artif
 |---|---|
 | "I'm confident, skip the doubt step" | Confidence correlates poorly with correctness on novel problems. Moments of certainty are exactly when blind spots hide. |
 | "Spawning a reviewer is expensive" | Debugging a wrong commit in production is more expensive. The check is bounded; the bug isn't. |
-| "The reviewer will just nitpick" | Only if unscoped. Constrain the prompt to "issues that would make this fail under the contract." |
+| "The reviewer will  nitpick" | Only if unscoped. Constrain the prompt to "issues that would make this fail under the contract." |
 | "I'll do doubt at the end with `/review`" | `/review` is a final gate. Doubt-driven catches wrong directions early when course-correction is cheap. By PR time it's too late. |
 | "If I doubt every step I'll never ship" | The skill applies to non-trivial decisions, not every keystroke. Re-read "When NOT to Use." |
 | "Two opinions are always better than one" | Not when the second has less context and produces noise. Reconcile, don't defer. |

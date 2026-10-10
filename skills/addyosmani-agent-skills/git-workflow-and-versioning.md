@@ -64,7 +64,7 @@ x1y2z3a Add task feature, fix sidebar, update deps, refactor utils
 
 ### 3. Descriptive Messages
 
-Commit messages explain the *why*, not just the *what*:
+Commit messages explain the *why*, not  the *what*:
 
 ```
 # Good: Explains intent
@@ -95,7 +95,7 @@ update auth.ts
 
 ### 4. Keep Concerns Separate
 
-Don't combine formatting changes with behavior changes. Don't combine refactors with features. Each type of change should be a separate commit — and ideally a separate PR:
+Don't combine formatting changes with behavior changes. Don't combine refactors with features. Each type of change must be a separate commit — and ideally a separate PR:
 
 ```
 # Good: Separate concerns
@@ -110,7 +110,7 @@ git commit -m "refactor validation and add phone number field"
 
 ### 5. Size Your Changes
 
-Target ~100 lines per commit/PR. Changes over ~1000 lines should be split. See the splitting strategies in `code-review-and-quality` for how to break down large changes.
+Target ~100 lines per commit/PR. Changes over ~1000 lines must be split. See the splitting strategies in `code-review-and-quality` for how to break down large changes.
 
 ```
 ~100 lines  → Easy to review, easy to revert
@@ -320,8 +320,8 @@ Write the entry in the same change that makes the change, while the impact is fr
 | "Branches add overhead" | Short-lived branches are free and prevent conflicting work from colliding. Long-lived branches are the problem — merge within 1-3 days. |
 | "I'll split this change later" | Large changes are harder to review, riskier to deploy, and harder to revert. Split before submitting, not after. |
 | "I don't need a .gitignore" | Until `.env` with production secrets gets committed. Set it up immediately. |
-| "It's just a small fix, bump the patch" | Check what consumers can observe. A behavior change they relied on is a major, whatever the diff size. |
-| "The changelog is just the commit log" | Commits are for you; the changelog is for consumers, curated by impact. Generating one from raw commits buries what matters. |
+| "It's  a small fix, bump the patch" | Check what consumers can observe. A behavior change they relied on is a major, whatever the diff size. |
+| "The changelog is  the commit log" | Commits are for you; the changelog is for consumers, curated by impact. Generating one from raw commits buries what matters. |
 | "We'll write the changelog at release time" | By then the impact is reconstructed from memory and half of it is missing. Write the entry with the change. |
 
 ## Red Flags
@@ -335,7 +335,7 @@ Write the entry in the same change that makes the change, while the impact is fr
 - Force-pushing to shared branches
 - A breaking change shipped under a minor or patch version bump
 - A release with no tag, or a version number hand-edited out of sync with the tag
-- A user-facing release with no changelog entry, or a changelog that's just dumped commit messages
+- A user-facing release with no changelog entry, or a changelog that's  dumped commit messages
 
 ## Verification
 

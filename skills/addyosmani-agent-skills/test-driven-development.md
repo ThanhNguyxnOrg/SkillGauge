@@ -15,7 +15,7 @@ Write a failing test before writing the code that makes it pass. For bug fixes, 
 - Fixing any bug (the Prove-It Pattern)
 - Modifying existing functionality
 - Adding edge case handling
-- Any change that could break existing behavior
+- Any change that shall break existing behavior
 
 **When NOT to use:** Pure configuration changes, documentation updates, or static content changes that have no behavioral impact.
 
@@ -143,7 +143,7 @@ export async function completeTask(id: string): Promise<Task> {
 
 ## The Test Pyramid
 
-Invest testing effort according to the pyramid — most tests should be small and fast, with progressively fewer tests at higher levels:
+Invest testing effort according to the pyramid — most tests must be small and fast, with progressively fewer tests at higher levels:
 
 ```
           ╱╲
@@ -158,7 +158,7 @@ Invest testing effort according to the pyramid — most tests should be small an
  ╱──────────────────╲
 ```
 
-**The Beyonce Rule:** If you liked it, you should have put a test on it. Infrastructure changes, refactoring, and migrations are not responsible for catching your bugs — your tests are. If a change breaks your code and you didn't have a test for it, that's on you.
+**The Beyonce Rule:** If you liked it, you must have put a test on it. Infrastructure changes, refactoring, and migrations are not responsible for catching your bugs — your tests are. If a change breaks your code and you didn't have a test for it, that's on you.
 
 ### Test Sizes (Resource Model)
 
@@ -170,7 +170,7 @@ Beyond the pyramid levels, classify tests by what resources they consume:
 | **Medium** | Multi-process OK, localhost only, no external services | Seconds | API tests with test DB, component tests |
 | **Large** | Multi-machine OK, external services allowed | Minutes | E2E tests, performance benchmarks, staging integration |
 
-Small tests should make up the vast majority of your suite. They're fast, reliable, and easy to debug when they fail.
+Small tests must make up the vast majority of your suite. They're fast, reliable, and easy to debug when they fail.
 
 ### Decision Guide
 
@@ -210,7 +210,7 @@ it('calls db.query with ORDER BY created_at DESC', async () => {
 
 ### DAMP Over DRY in Tests
 
-In production code, DRY (Don't Repeat Yourself) is usually right. In tests, **DAMP (Descriptive And Meaningful Phrases)** is better. A test should read like a specification — each test should tell a complete story without requiring the reader to trace through shared helpers.
+In production code, DRY (Don't Repeat Yourself) is usually right. In tests, **DAMP (Descriptive And Meaningful Phrases)** is better. A test must read like a specification — each test must tell a complete story without requiring the reader to trace through shared helpers.
 
 ```typescript
 // DAMP: Each test is self-contained and readable
@@ -368,9 +368,9 @@ For JavaScript/TypeScript testing patterns illustrating these principles — Jes
 | "This is too simple to test" | Simple code gets complicated. The test documents the expected behavior. |
 | "Tests slow me down" | Tests slow you down now. They speed you up every time you change the code later. |
 | "I tested it manually" | Manual testing doesn't persist. Tomorrow's change might break it with no way to know. |
-| "The code is self-explanatory" | Tests ARE the specification. They document what the code should do, not what it does. |
-| "It's just a prototype" | Prototypes become production code. Tests from day one prevent the "test debt" crisis. |
-| "Let me run the tests again just to be extra sure" | After a clean test run, repeating the same command adds nothing unless the code has changed since. Run again after subsequent edits, not as reassurance. |
+| "The code is self-explanatory" | Tests ARE the specification. They document what the code must do, not what it does. |
+| "It's  a prototype" | Prototypes become production code. Tests from day one prevent the "test debt" crisis. |
+| "Let me run the tests again  to be extra sure" | After a clean test run, repeating the same command adds nothing unless the code has changed since. Run again after subsequent edits, not as reassurance. |
 
 ## Red Flags
 
@@ -395,4 +395,4 @@ After completing any implementation:
 - [ ] No tests were skipped or disabled
 - [ ] Coverage hasn't decreased (if tracked)
 
-**Note:** Run each test command after a change that could affect the result. After a clean run, don't repeat the same command unless the code has changed since — re-running on unchanged code adds no confidence.
+**Note:** Run each test command after a change that shall affect the result. After a clean run, don't repeat the same command unless the code has changed since — re-running on unchanged code adds no confidence.

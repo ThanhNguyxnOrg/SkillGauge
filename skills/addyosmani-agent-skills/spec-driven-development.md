@@ -38,8 +38,8 @@ Most requests describe one capability. If this one does, skip this phase and go 
 **Detection.** Decompose before specifying when a single requirement bundles several independently testable capabilities:
 
 - The requirement names distinct capabilities with their own consumers or data (e.g. identity, billing, notifications, reporting)
-- Acceptance criteria cluster into groups that could ship and be verified separately
-- One capability could be cut or replaced without rewriting the others' requirements
+- Acceptance criteria cluster into groups that shall ship and be verified separately
+- One capability shall be cut or replaced without rewriting the others' requirements
 
 **Propose a capability map before writing any spec.** Small and reviewable — a module table plus a build order, not a project plan:
 
@@ -85,7 +85,7 @@ Don't silently fill in ambiguous requirements. The spec's entire purpose is to s
 
 1. **Objective** — What are we building and why? Who is the user? What does success look like?
 
-2. **Commands** — Full executable commands with flags, not just tool names.
+2. **Commands** — Full executable commands with flags, not  tool names.
    ```
    Build: npm run build
    Test: npm test -- --coverage
@@ -187,17 +187,17 @@ With the validated spec, generate a technical implementation plan:
 >
 > **Output convention:** Save the plan to `tasks/plan.md` and record the task list in the task list target defined by `planning-and-task-breakdown` (default `tasks/todo.md`; projects may designate an external tracker instead). Create `tasks/` if it does not exist. Downstream commands (`/build`, etc.) expect these defaults.
 
-The plan should be reviewable: the human should be able to read it and say "yes, that's the right approach" or "no, change X."
+The plan must be reviewable: the human must be able to read it and say "yes, that's the right approach" or "no, change X."
 
 ### Phase 3: Tasks
 
 Break the plan into discrete, implementable tasks:
 
-- Each task should be completable in a single focused session
+- Each task must be completable in a single focused session
 - Each task has explicit acceptance criteria
 - Each task includes a verification step (test, build, manual check)
 - Tasks are ordered by dependency, not by perceived importance
-- No task should require changing more than ~5 files
+- No task must require changing more than ~5 files
 
 > Follow `planning-and-task-breakdown` for the full task-sizing and dependency-ordering mechanics; it is the canonical source. The template below is a lightweight inline form; if they ever diverge, `planning-and-task-breakdown` takes precedence.
 
@@ -218,7 +218,7 @@ Execute tasks one at a time following `skills/incremental-implementation/SKILL.m
 The spec is a living document, not a one-time artifact:
 
 - **Update when decisions change** — If you discover the data model needs to change, update the spec first, then implement.
-- **Update when scope changes** — Features added or cut should be reflected in the spec.
+- **Update when scope changes** — Features added or cut must be reflected in the spec.
 - **Commit the spec** — The spec belongs in version control alongside the code.
 - **Reference the spec in PRs** — Link back to the spec section that each PR implements.
 
@@ -237,7 +237,7 @@ The spec is a living document, not a one-time artifact:
 ## Red Flags
 
 - Starting to write code without any written requirements
-- Asking "should I just start building?" before clarifying what "done" means
+- Asking "must I  start building?" before clarifying what "done" means
 - Implementing features not mentioned in any spec or task list
 - Making architectural decisions without documenting them
 - Skipping the spec because "it's obvious what to build"

@@ -127,6 +127,15 @@
       "submittedAt": "2026-06-17T04:40:44.085Z"
     },
     {
+      "name": "security-and-hardening",
+      "repository": "addyosmani-agent-skills",
+      "hash": "3e7a28b31e67eed813b95c3a0d08e08cb31ecf53ed1583ce6da7a11009d9536a",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 1",
+      "overallScore": 46.3158893582972,
+      "submittedAt": "2026-10-10T06:52:16.489Z"
+    },
+    {
       "name": "coding-standards",
       "repository": "ecc",
       "hash": "f6eaa88894cff482f79e87e7ba1ee56ac271fbbda3e0143291389223f14e949e",
@@ -802,6 +811,24 @@
       "submittedAt": "2026-06-17T04:40:49.277Z"
     },
     {
+      "name": "observability-and-instrumentation",
+      "repository": "addyosmani-agent-skills",
+      "hash": "3021119d77bc95e526301c971e684b11104f66e2fb3113b7abc3cb1b32f20ded",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 44.467677956409275,
+      "submittedAt": "2026-10-10T06:52:16.699Z"
+    },
+    {
+      "name": "code-review-and-quality",
+      "repository": "addyosmani-agent-skills",
+      "hash": "94a6b8695dca02ef9102e9c5b813de128550e0cf9ac1e079685d55bfe799253a",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 44.45863904076897,
+      "submittedAt": "2026-10-10T06:52:17.628Z"
+    },
+    {
       "name": "cloudflare-one",
       "repository": "cloudflare-skills",
       "hash": "33c6c7e757117a18ac2b537d7b776128e25a29505dac1634f949588df5affa99",
@@ -962,6 +989,15 @@
       "tier": "Tier 2",
       "overallScore": 44.17208556861982,
       "submittedAt": "2026-06-17T04:40:41.327Z"
+    },
+    {
+      "name": "documentation-and-adrs",
+      "repository": "addyosmani-agent-skills",
+      "hash": "df856c28c8ffc44219b839129f7438f08a1eb7bf21218c460e2cb4039e2061b6",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 44.16285419239364,
+      "submittedAt": "2026-10-10T06:52:17.129Z"
     },
     {
       "name": "perl-security",
@@ -1189,6 +1225,15 @@
       "submittedAt": "2026-06-17T04:40:50.095Z"
     },
     {
+      "name": "ci-cd-and-automation",
+      "repository": "addyosmani-agent-skills",
+      "hash": "3064b1c709cc5e405a826e962b644d847c293571eca22ccf1443c83e1ff14bea",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.67005662903532,
+      "submittedAt": "2026-10-10T06:52:17.681Z"
+    },
+    {
       "name": "codebase-onboarding",
       "repository": "ecc",
       "hash": "4a040fb85b4602f209e94bf4808b3adc91dce823aec6f7e44ef281688a384c04",
@@ -1324,6 +1369,15 @@
       "submittedAt": "2026-10-10T06:45:09.032Z"
     },
     {
+      "name": "test-driven-development",
+      "repository": "addyosmani-agent-skills",
+      "hash": "b8e10c835f542a439ba046338e89dadf1bc95bb69dad7645930ecc60309d241e",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.52785979702194,
+      "submittedAt": "2026-10-10T06:52:16.207Z"
+    },
+    {
       "name": "e2e",
       "repository": "ecc",
       "hash": "0119651f0f827648db95ef4c0240af882f4aedafa3a5b89dc678a8857535da96",
@@ -1340,6 +1394,15 @@
       "tier": "Tier 2",
       "overallScore": 43.52043433876256,
       "submittedAt": "2026-06-17T04:40:42.288Z"
+    },
+    {
+      "name": "security-auditor",
+      "repository": "addyosmani-agent-skills",
+      "hash": "97ee27bfae5a070bbf194ec0b32630ed4c84c690309590654737c0543aab0401",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.51162422474758,
+      "submittedAt": "2026-10-10T06:52:16.404Z"
     },
     {
       "name": "healthcare-reviewer",
@@ -1403,6 +1466,15 @@
       "tier": "Tier 2",
       "overallScore": 43.45597544530081,
       "submittedAt": "2026-06-17T04:40:50.122Z"
+    },
+    {
+      "name": "web-performance-auditor",
+      "repository": "addyosmani-agent-skills",
+      "hash": "2d0450ffd9f4c2e0026ee064a7357f25cd869bfdc541f5040dd4760a7e83e994",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.45055823954081,
+      "submittedAt": "2026-10-10T06:52:16.057Z"
     },
     {
       "name": "network-troubleshooter",
@@ -1502,6 +1574,15 @@
       "tier": "Tier 2",
       "overallScore": 43.377349859894046,
       "submittedAt": "2026-10-10T06:45:28.409Z"
+    },
+    {
+      "name": "using-agent-skills",
+      "repository": "addyosmani-agent-skills",
+      "hash": "487209507d6beeded30ae87ffcfc4b91040fadd9ad859b66247f0ff0db0d5dcb",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.36504429975041,
+      "submittedAt": "2026-10-10T06:52:16.104Z"
     },
     {
       "name": "intent-driven-development",
@@ -1628,6 +1709,15 @@
       "tier": "Tier 2",
       "overallScore": 43.18044648552045,
       "submittedAt": "2026-10-10T06:45:08.324Z"
+    },
+    {
+      "name": "performance-optimization",
+      "repository": "addyosmani-agent-skills",
+      "hash": "c37abddc9befceaaede99b1c5d243598267ee9d7f09a009d5d7dcd1e844a45eb",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 43.16434654565504,
+      "submittedAt": "2026-10-10T06:52:16.627Z"
     },
     {
       "name": "django-reviewer",
@@ -1855,6 +1945,15 @@
       "submittedAt": "2026-06-17T04:40:44.777Z"
     },
     {
+      "name": "browser-testing-with-devtools",
+      "repository": "addyosmani-agent-skills",
+      "hash": "c21ce1ada2765c3570c642d81a21d17a6007bbfac8527276571a150aff8e0cd0",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.93419436505503,
+      "submittedAt": "2026-10-10T06:52:17.751Z"
+    },
+    {
       "name": "gemini-live-api",
       "repository": "google-skills",
       "hash": "86c078a74409155487ef18ab06153ecf6efd6537a33e90c9f9dc08900c2cbaba",
@@ -1981,6 +2080,15 @@
       "submittedAt": "2026-10-10T06:45:13.635Z"
     },
     {
+      "name": "context-engineering",
+      "repository": "addyosmani-agent-skills",
+      "hash": "4cdf54af3e64ba704ab82465e56d51eaf44c03559a95884d635652b42aebc857",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.78682892705883,
+      "submittedAt": "2026-10-10T06:52:17.324Z"
+    },
+    {
       "name": "jira-integration",
       "repository": "ecc",
       "hash": "405b70172a31d2b297ec540f14aba801c096a6e629c3c2000a5c2e51dd02b878",
@@ -1997,6 +2105,15 @@
       "tier": "Tier 2",
       "overallScore": 42.76453246675015,
       "submittedAt": "2026-10-10T06:45:11.973Z"
+    },
+    {
+      "name": "shipping-and-launch",
+      "repository": "addyosmani-agent-skills",
+      "hash": "0d4a4adbdc5627b5f0c14067205950df00cef7370265561a25ecbf51fc5514d8",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.76331943568395,
+      "submittedAt": "2026-10-10T06:52:16.379Z"
     },
     {
       "name": "google-mobile-ads-android-migrate-to-next-gen",
@@ -2071,6 +2188,15 @@
       "submittedAt": "2026-06-17T04:40:54.336Z"
     },
     {
+      "name": "incremental-implementation",
+      "repository": "addyosmani-agent-skills",
+      "hash": "30ee2894b31f7017c35415ec6ed004400943e67d79e6b498d20de6222c8cff6e",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.689174296028334,
+      "submittedAt": "2026-10-10T06:52:16.825Z"
+    },
+    {
       "name": "unified-notifications-ops",
       "repository": "ecc",
       "hash": "440a64e85268e5fb604e606d70da1982e9e1ef1902d87ce7c8e2b6853725af15",
@@ -2087,6 +2213,15 @@
       "tier": "Tier 2",
       "overallScore": 42.67741751247167,
       "submittedAt": "2026-06-17T04:40:47.721Z"
+    },
+    {
+      "name": "code-reviewer",
+      "repository": "addyosmani-agent-skills",
+      "hash": "e7b6a6fc031d10a390f53c318d631ec19c9486bfbf644aecb9c074c45ad6643e",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.673052917977905,
+      "submittedAt": "2026-10-10T06:52:17.523Z"
     },
     {
       "name": "gke-ai-troubleshooting-tpu-performance-degradation",
@@ -2188,6 +2323,15 @@
       "submittedAt": "2026-10-10T06:45:27.812Z"
     },
     {
+      "name": "source-driven-development",
+      "repository": "addyosmani-agent-skills",
+      "hash": "5d91058ec2b65f887abde6adc96d8616099d2c153b01fe9fd96c73e564200257",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.544711357670856,
+      "submittedAt": "2026-10-10T06:52:16.322Z"
+    },
+    {
       "name": "quarkus-verification",
       "repository": "ecc",
       "hash": "8a9f986123b38e936007d042049cfd18477a7145ec3ed13099b7f197b416da6c",
@@ -2206,6 +2350,15 @@
       "submittedAt": "2026-06-17T04:40:41.963Z"
     },
     {
+      "name": "api-and-interface-design",
+      "repository": "addyosmani-agent-skills",
+      "hash": "678c3f17fc8cc8033149812cfb8df68b247ce6c1c3bb05624bfc085a98f37edf",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.52236116757135,
+      "submittedAt": "2026-10-10T06:52:17.825Z"
+    },
+    {
       "name": "docs-lookup",
       "repository": "ecc",
       "hash": "b84722150b3d14f9ffdc5067a03c56f17a946ade441b34c369aedf22e8f75d7b",
@@ -2222,6 +2375,15 @@
       "tier": "Tier 2",
       "overallScore": 42.51021660311564,
       "submittedAt": "2026-10-10T06:45:11.036Z"
+    },
+    {
+      "name": "frontend-ui-engineering",
+      "repository": "addyosmani-agent-skills",
+      "hash": "20a75e0facc3c75e758db0212fdae4db9ed0085abcf879944e5cf99285b5eab5",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.509452521856154,
+      "submittedAt": "2026-10-10T06:52:16.997Z"
     },
     {
       "name": "google-cloud-solution-agentic-ai-borderless-data-lakehouse",
@@ -2404,6 +2566,15 @@
       "submittedAt": "2026-06-17T04:40:48.779Z"
     },
     {
+      "name": "doubt-driven-development",
+      "repository": "addyosmani-agent-skills",
+      "hash": "2fa1697c541365725bf54f00938907b8f38611a8b057efab563bcb74dd33d4dd",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.236941660580115,
+      "submittedAt": "2026-10-10T06:52:17.080Z"
+    },
+    {
       "name": "kotlin-reviewer",
       "repository": "ecc",
       "hash": "e7d568655bae757c125f28a00737c2177274323c0357e2f9ce82f89527b3f6d3",
@@ -2411,6 +2582,15 @@
       "tier": "Tier 2",
       "overallScore": 42.236384909113674,
       "submittedAt": "2026-06-17T04:40:46.508Z"
+    },
+    {
+      "name": "supabase",
+      "repository": "supabase-agent-skills",
+      "hash": "eadeda798fb9018ac90d3320e17a49366c1b95a2123965cad029334886d7209a",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.23556553541733,
+      "submittedAt": "2026-10-10T06:52:06.467Z"
     },
     {
       "name": "click-path-audit",
@@ -2530,6 +2710,15 @@
       "submittedAt": "2026-10-10T06:45:09.436Z"
     },
     {
+      "name": "test-engineer",
+      "repository": "addyosmani-agent-skills",
+      "hash": "aa15c455de54a78a141f15b9dbb25b3d266efaa796d1c21964d97d004ee6e404",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.115571373098085,
+      "submittedAt": "2026-10-10T06:52:16.122Z"
+    },
+    {
       "name": "network-interface-health",
       "repository": "ecc",
       "hash": "1cf728d6736294882a0647110b53694b01ba1ec3b89c94c4a8440181d20c897e",
@@ -2548,6 +2737,15 @@
       "submittedAt": "2026-06-17T04:40:52.323Z"
     },
     {
+      "name": "constraint-driven-development",
+      "repository": "addyosmani-agent-skills",
+      "hash": "2a3f7611a38bfbd8f9ca31adc17da4c0c38e4e0b2f971465f96feb31d32f08b7",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.08144093379538,
+      "submittedAt": "2026-10-10T06:52:17.436Z"
+    },
+    {
       "name": "cloud-monitoring-metric-selection",
       "repository": "google-skills",
       "hash": "aace6d08f876b8e785d8aa39eaff51af54fa297c393ecc9a0a9c0ab967b8775c",
@@ -2564,6 +2762,15 @@
       "tier": "Tier 2",
       "overallScore": 42.05136263663625,
       "submittedAt": "2026-06-17T04:40:54.134Z"
+    },
+    {
+      "name": "idea-refine",
+      "repository": "addyosmani-agent-skills",
+      "hash": "f902c921e9e5a8dff8ee9d9f7cf6ad80735874ddd849c943159d09f29850cdfa",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 42.04872718554778,
+      "submittedAt": "2026-10-10T06:52:16.867Z"
     },
     {
       "name": "stripe-directory",
@@ -2737,6 +2944,15 @@
       "submittedAt": "2026-10-10T06:45:10.427Z"
     },
     {
+      "name": "git-workflow-and-versioning",
+      "repository": "addyosmani-agent-skills",
+      "hash": "2b48067279362ea7f29e5fc25b9c77f58675583dc2e3eef67822f913ebfab04f",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.90644705870803,
+      "submittedAt": "2026-10-10T06:52:16.938Z"
+    },
+    {
       "name": "agent-platform-rag-engine-management",
       "repository": "google-skills",
       "hash": "6673b48f7e666735f286bee3912fc1e233b6c432191400c1b29e68c0f7c6ed35",
@@ -2825,6 +3041,15 @@
       "tier": "Tier 2",
       "overallScore": 41.812392582807774,
       "submittedAt": "2026-10-10T06:45:14.081Z"
+    },
+    {
+      "name": "debugging-and-error-recovery",
+      "repository": "addyosmani-agent-skills",
+      "hash": "d4bbe83df09b380d18a2dc191cfe49cd01626dde3321b1fffd69f0b67cc279b9",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.80496642040954,
+      "submittedAt": "2026-10-10T06:52:17.248Z"
     },
     {
       "name": "kotlin-exposed-patterns",
@@ -2942,6 +3167,15 @@
       "tier": "Tier 2",
       "overallScore": 41.6856661147877,
       "submittedAt": "2026-10-10T06:45:07.769Z"
+    },
+    {
+      "name": "spec-driven-development",
+      "repository": "addyosmani-agent-skills",
+      "hash": "516f93fae2b6727b95c2398ecfa40523a9561d454feb2d12c608f1efd3bdf664",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 2",
+      "overallScore": 41.667737676652806,
+      "submittedAt": "2026-10-10T06:52:16.273Z"
     },
     {
       "name": "python-reviewer",
@@ -3392,6 +3626,15 @@
       "tier": "Tier 3",
       "overallScore": 41.25489484480391,
       "submittedAt": "2026-06-17T04:40:43.750Z"
+    },
+    {
+      "name": "code-simplification",
+      "repository": "addyosmani-agent-skills",
+      "hash": "c4f41282760a1297f2e7f5a5483547d540504b554a463b803baf14f70685f2e9",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 41.24303409139494,
+      "submittedAt": "2026-10-10T06:52:17.503Z"
     },
     {
       "name": "java-build-resolver",
@@ -4303,6 +4546,15 @@
       "submittedAt": "2026-10-10T06:45:27.876Z"
     },
     {
+      "name": "planning-and-task-breakdown",
+      "repository": "addyosmani-agent-skills",
+      "hash": "d880c8ca6f76422795bda632a75f71598a30501de0ae36d278ba483e7eb643f4",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.318345423563976,
+      "submittedAt": "2026-10-10T06:52:16.543Z"
+    },
+    {
       "name": "brand-discovery",
       "repository": "ecc",
       "hash": "6b4ea3e622c9b1a3f5594f3ea6b26f6ee24de3630bb4d84e7f89d3170069a656",
@@ -4346,6 +4598,15 @@
       "tier": "Tier 3",
       "overallScore": 40.29653307068871,
       "submittedAt": "2026-10-10T06:45:09.172Z"
+    },
+    {
+      "name": "deprecation-and-migration",
+      "repository": "addyosmani-agent-skills",
+      "hash": "2742526dd8b893b08480de5d8633dfe75fa8ff4da44bd908f5979d292c54733a",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.277353812335484,
+      "submittedAt": "2026-10-10T06:52:17.191Z"
     },
     {
       "name": "nextjs-on-cloudflare",
@@ -4526,6 +4787,15 @@
       "tier": "Tier 3",
       "overallScore": 40.020546620425016,
       "submittedAt": "2026-06-17T04:40:49.680Z"
+    },
+    {
+      "name": "interview-me",
+      "repository": "addyosmani-agent-skills",
+      "hash": "7707fce444dc831aadc8aa21edabe89befbb1c563305a746be1bda98a2b8a990",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 40.01002545978067,
+      "submittedAt": "2026-10-10T06:52:16.777Z"
     },
     {
       "name": "frontend-design-direction",
@@ -4841,6 +5111,15 @@
       "tier": "Tier 3",
       "overallScore": 39.55343036137543,
       "submittedAt": "2026-06-17T04:40:44.577Z"
+    },
+    {
+      "name": "supabase-postgres-best-practices",
+      "repository": "supabase-agent-skills",
+      "hash": "918aa21bc5a2abcd8ff61de72ac97b4e85e915c584b4ba5438f62a46aad0f6eb",
+      "author": "thanhnguyxnagent[bot]",
+      "tier": "Tier 3",
+      "overallScore": 39.54161708444041,
+      "submittedAt": "2026-10-10T06:52:06.485Z"
     },
     {
       "name": "gke-cost-analysis",

@@ -18,7 +18,7 @@ Automate quality gates so that no change reaches production without passing test
 - Setting up a new project's CI pipeline
 - Adding or modifying automated checks
 - Configuring deployment pipelines
-- When a change should trigger automated verification
+- When a change must trigger automated verification
 - Debugging CI failures
 
 ## The Quality Gate Pipeline
@@ -246,7 +246,7 @@ PR merged to main
 
 ### Rollback Plan
 
-Every deployment should be reversible:
+Every deployment must be reversible:
 
 ```yaml
 # Manual rollback workflow
@@ -278,7 +278,7 @@ CI secrets          → Stored in GitHub Secrets / vault
 Production secrets  → Stored in deployment platform / vault
 ```
 
-CI should never have production secrets. Use separate secrets for CI testing.
+CI must never have production secrets. Use separate secrets for CI testing.
 
 ## Automation Beyond CI
 
@@ -363,7 +363,7 @@ jobs:
 |---|---|
 | "CI is too slow" | Optimize the pipeline (see CI Optimization below), don't skip it. A 5-minute pipeline prevents hours of debugging. |
 | "This change is trivial, skip CI" | Trivial changes break builds. CI is fast for trivial changes anyway. |
-| "The test is flaky, just re-run" | Flaky tests mask real bugs and waste everyone's time. Fix the flakiness. |
+| "The test is flaky,  re-run" | Flaky tests mask real bugs and waste everyone's time. Fix the flakiness. |
 | "We'll add CI later" | Projects without CI accumulate broken states. Set it up on day one. |
 | "Manual testing is enough" | Manual testing doesn't scale and isn't repeatable. Automate what you can. |
 
