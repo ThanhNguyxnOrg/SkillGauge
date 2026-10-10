@@ -77,11 +77,11 @@ export function auditPackage(files: VirtualFile[]): PackageReport {
   const avgOverallScore = meanOverallScore;
   const packageAverage = avgOverallScore * integrityScore * redundancyPenalty;
 
-  // Same percentile tiers as single-skill scoring (population P90 34.39 / P50 30.60 on 2026-10-10).
+  // Same percentile tiers as single-skill scoring (population P90 37.46 / P50 34.32 on 2026-10-10).
   let tier: 'Tier 1' | 'Tier 2' | 'Tier 3' = 'Tier 3';
-  if (packageAverage >= 34.39) {
+  if (packageAverage >= 37.46) {
     tier = 'Tier 1';
-  } else if (packageAverage >= 30.60) {
+  } else if (packageAverage >= 34.32) {
     tier = 'Tier 2';
   }
 

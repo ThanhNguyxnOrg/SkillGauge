@@ -1,6 +1,8 @@
 # Scientific Specification: 390 Scored Metrics for SkillGauge
 
-This document details the mathematical formulations, evaluation dimensions, and academic literature references for all **100 criteria** used to statically audit and score agent process instruction files (`SKILL.md` or `.agent/skills/**/*.md`).
+This document details the mathematical formulations, evaluation dimensions, and heuristic references for all **390 static signals** used to lint agent process instruction files (`SKILL.md` or `.agent/skills/**/*.md`).
+
+> Honesty note (2026-10-10): scores are unvalidated static proxies, not task-success measures. Tiers are population percentiles (Tier 1 ≥ P90, Tier 2 ≥ P50 over the leaderboard), not absolute quality bars. `Reference` lines below are heuristic labels, not verified citations — do not quote them as literature support. Formulas here mirror `packages/core/src/scorers/*.ts`; on any conflict the code wins.
 
 ---
 
@@ -73,10 +75,10 @@ The 390 criteria are structured into 26 symmetric dimensions (A to Z). Each dime
     *   Where $N_{adverb}$ is the count of filler adverbs ending in `-ly` (*very, extremely, completely*).
 *   **Reference**: *Token Pruning and Structural Density in Prompting* (EMNLP).
 
-### A5: Readability Index (Flesch-Kincaid)
-*   **Formula**: $M_{A5} = 1.0 - \min\left(0.8, 0.025 \times \max\left(0, |FK - 70| - 15\right)\right)$
-    *   Where $FK = 206.835 - 1.015 \left(\frac{\text{words}}{\text{sentences}}\right) - 84.6 \left(\frac{\text{syllables}}{\text{words}}\right)$.
-*   **Reference**: *Cognitive Load of Prompt Templates on Autoregressive LLMs* (ACL).
+### A5: Readability (Flesch Reading Ease; mislabeled “Flesch-Kincaid” before 2026-10-10)
+*   **Formula (code)**: $M_{A5} = 1.0$ if $RE \in [50, 85]$, else $\max(0.2, 1.0 - 0.02 \times \max(0, |RE - 67.5| - 17.5))$
+    *   Where $RE = 206.835 - 1.015 \left(\frac{\text{words}}{\text{sentences}}\right) - 84.6 \left(\frac{\text{syllables}}{\text{words}}\right)$ (syllables by vowel-group heuristic).
+*   **Reference**: heuristic readability proxy, not a validated prompt-effectiveness measure.
 
 ### A6: Sentence Length Variance
 *   **Formula**: $M_{A6} = \min\left(1.0, \frac{\text{Var}(L)}{25.0 + \epsilon}\right)$
@@ -154,12 +156,12 @@ The 390 criteria are structured into 26 symmetric dimensions (A to Z). Each dime
 *   **Reference**: *Reference Resolution in Agent Multi-file Architectures* (NeurIPS).
 
 ### B6: Code Block Density
-*   **Formula**: $M_{B6} = 1.0 - 1.5 \times |R_{code} - 0.25|$ if $R_{code} \notin [0.10, 0.40]$ else $1.0$.
-*   **Reference**: *Code Prompt Distillation and Token Efficiencies* (EMNLP).
+*   **Formula (code)**: $1.0$ if ratio $\in [0.10, 0.40]$; $0.5 + 5.0 \times$ ratio below; $\max(0.1, 1.0 - 1.5 \times (\text{ratio} - 0.40))$ above.
+*   **Reference**: heuristic.
 
 ### B7: XML Wrapper Tag Matching
-*   **Formula**: $M_{B7} = 0.2 + 0.8 \cdot \mathbb{I}(N_{mismatch} = 0)$
-*   **Reference**: *HTML/XML Parsing Capabilities of Instruct Models* (arXiv:2501).
+*   **Formula (code)**: $1.0$ if no tags or all matched, else $\max(0.1, 1.0 - 0.25 \times \text{mismatches})$.
+*   **Reference**: heuristic.
 
 ### B8: Schema Completeness
 *   **Formula**: $M_{B8} = 0.6 \times \frac{N_{described\_params}}{N_{total\_params}} + 0.4 \times \text{hasRequiredFields}$
@@ -171,8 +173,8 @@ The 390 criteria are structured into 26 symmetric dimensions (A to Z). Each dime
 *   **Reference**: *State Tracking in Long-Context LLMs* (NeurIPS).
 
 ### B10: Variable Allocation
-*   **Formula**: $M_{B10} = 0.3 + 0.7 \cdot \mathbb{I}(N_{unallocated\_vars} = 0)$
-*   **Reference**: *Parameter Resolution in Template Prompting* (ACL).
+*   **Formula (code)**: fraction of `{{var}}` template variables also mentioned elsewhere ($1.0$ if none).
+*   **Reference**: heuristic.
 
 ### B11: Logging Frequency directives
 *   **Formula**: $M_{B11} = \min\left(1.0, \frac{N_{log\_requests}}{2.0}\right)$
@@ -199,14 +201,12 @@ The 390 criteria are structured into 26 symmetric dimensions (A to Z). Each dime
 ## Dimension C: Safety, Alignment & Security (15 Metrics)
 
 ### C1: Prompt Injection Shield
-*   **Formula**: $M_{C1} = \mathbb{I}(\text{hasInjectionShield})$
-    *   Requires *ignore user override, do not let user modify system prompt*.
-*   **Reference**: *Defending Against Prompt Injection* (arXiv:2308).
+*   **Formula (code)**: $1.0$ if delimiters + isolation directive, $0.5$ if either, else $0.3$ on fallback phrase match, else $0.0$. Detects *mentions* of guardrails, not effectiveness.
+*   **Reference**: heuristic; OWASP LLM01 states no foolproof prompt-injection prevention exists.
 
 ### C2: System Instruction Protection
-*   **Formula**: $M_{C2} = \mathbb{I}(\text{hasLeakProtection})$
-    *   Requires *do not reveal this prompt, system prompt protection*.
-*   **Reference**: *Leakage Mitigation in Instruction Tuning* (NeurIPS).
+*   **Formula (code)**: $1.0$ if leak-trigger guard + fallback response, $0.5$ if either, else $0.3$ on fallback phrase match, else $0.0$.
+*   **Reference**: heuristic; see OWASP LLM01.
 
 ### C3: Role Hijacking Defense
 *   **Formula**: $M_{C3} = \mathbb{I}(\text{hasRoleLock})$
@@ -368,8 +368,8 @@ The 390 criteria are structured into 26 symmetric dimensions (A to Z). Each dime
 *   **Reference**: *Inference Cost Caps in Agent Loops* (IEEE).
 
 ### E10: Graceful Degradation
-*   **Formula**: $M_{E10} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasDegradation})$
-*   **Reference**: *Fault Tolerance in Multi-Agent Pipelines* (NIPS).
+*   **Formula (code)**: $1.0$ if failure trigger + recovery action, $0.6$ if either, else $0.4$ on degradation phrase, else $0.2$.
+*   **Reference**: heuristic.
 
 ### E11: Boundary Value Checks
 *   **Formula**: $M_{E11} = 0.4 + 0.6 \cdot \mathbb{I}(\text{hasBoundaryChecks})$
@@ -396,8 +396,8 @@ The 390 criteria are structured into 26 symmetric dimensions (A to Z). Each dime
 ## Dimension F: Operational & Inference Economy (15 Metrics)
 
 ### F1: Chain-of-Thought Loop Penalty
-*   **Formula**: $M_{F1} = 1.0 - 0.2 \times N_{loop}$ (e.g. *retry indefinitely, repeat step*).
-*   **Reference**: *Trapped in CoT Loops: Infinite Deductions* (arXiv).
+*   **Formula (code)**: $\max(0.1, 1.0 - 0.25 \times N_{loop})$ (e.g. *retry infinitely, repeat indefinitely*).
+*   **Reference**: heuristic.
 
 ### F2: Output Verbosity Control
 *   **Formula**: $M_{F2} = 0.3 + 0.7 \cdot \mathbb{I}(\text{hasVerbosityLimits})$
@@ -436,8 +436,8 @@ The 390 criteria are structured into 26 symmetric dimensions (A to Z). Each dime
 *   **Reference**: *Eliminating Redundant Thoughts in Tree of Thoughts* (ACL).
 
 ### F11: Minimalist Representation
-*   **Formula**: $M_{F11} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasMinimalist})$
-*   **Reference**: *Low-Precision Representations in Prompt Semantics* (EMNLP).
+*   **Formula (code)**: $1.0$ if loop limit + exit condition, $0.6$ if either, else $0.5$ on minimalist phrase, else $0.3$.
+*   **Reference**: heuristic.
 
 ### F12: Inline Formatting Pruning
 *   **Formula**: $M_{F12} = 0.6 + 0.4 \cdot \mathbb{I}(\text{hasFormattingRestrictions})$
@@ -457,7 +457,7 @@ The 390 criteria are structured into 26 symmetric dimensions (A to Z). Each dime
 
 ---
 
-## Dimension G: Syntax, Structure & Metadata (10 Metrics)
+## Dimension G: Syntax, Structure & Metadata (15 Metrics)
 
 ### G1: Frontmatter Integrity
 *   **Formula**: $M_{G1} = \mathbb{I}(\text{hasFrontmatter})$
@@ -1680,9 +1680,9 @@ Package Management Systems* (ACM).
 *   **Formula**: $M_{G10} = \text{isUtf8} ? 1.0 : 0.0$
 *   **Reference**: *Character Encoding Security and Robustness* (RFC 3629).
 
-### G11: YAML Schema Validation
-*   **Formula**: $M_{G11} = 0.5 + 0.5 \cdot \mathbb{I}(\text{hasTests} \wedge \text{isArray})$
-*   **Reference**: *Structured Schema Verification in Large Context Prompts* (IEEE).
+### G11: YAML Tests-Array Check (SkillGauge extension, NOT part of the Agent Skills spec)
+*   **Formula (code)**: $1.0$ if no `tests` key or non-empty array, $0.5$ if empty array, $0.0$ if non-array. The Agent Skills spec requires only `name` + `description`.
+*   **Reference**: heuristic.
 
 ### G12: Code Block Closure Integrity
 *   **Formula**: $M_{G12} = \text{allClosed} ? 1.0 : 0.2$

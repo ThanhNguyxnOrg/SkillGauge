@@ -469,7 +469,7 @@ program
         const parsedSkillName = getIntelligentSkillName(file, report.name);
         const repoName = getRepositoryName(file);
         const displayName = parsedSkillName;
-        const skillName = report.tier === 'Tier 1' ? '🌟 ' + displayName : displayName;
+        const skillName = displayName; // tier column carries Tier; names stay clean and stable
 
         // Check if exists, update or add
         const cleanName = displayName;

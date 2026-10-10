@@ -96,7 +96,7 @@ function App() {
             Optimize Your Agent <span>Skills & Prompts</span>
           </h1>
           <p className="hero-subtitle">
-            A static analysis suite and evaluation engine testing process instructions against a strict 100-criteria scientific matrix.
+            A static analysis suite and community leaderboard testing process instructions against 390 static signals. Scores are linter references, not task-success measures.
           </p>
         </section>
 

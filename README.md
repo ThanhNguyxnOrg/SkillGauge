@@ -2,7 +2,7 @@
 
 **SkillGauge** is an automated static auditing engine and leaderboard platform for agentic process instructions (such as Anthropic-style `SKILL.md` or `.agent/skills/` files). 
 
-Instead of evaluating AI agent executions dynamically (which is expensive and non-deterministic), **SkillGauge** audits the structural quality, safety, and operational economy of skill prompts directly through a strict **100-criteria scientific matrix**.
+Instead of evaluating AI agent executions dynamically (which is expensive and non-deterministic), **SkillGauge** audits the structural quality, safety, and operational economy of skill prompts directly through **390 static signals (26 dimensions × 15)**. Scores are a cheap community-linter reference, not a measure of task success.
 
 ---
 
@@ -19,7 +19,7 @@ The live ranking table is dynamically managed and updated on our web dashboard:
 To learn more about the scientific methodology, CLI commands, and automated pipelines, please check the detailed guides:
 
 1. **[Scientific Specification](docs/scientific_metrics.md)**
-   Detailed formulas, quality tier divisions, and academic whitepaper references for each of the 100 criteria across the 7 dimensions:
+   Detailed formulas, quality tier divisions, and references for each of the 390 static signals across the 26 dimensions:
    * **Dim A:** Instruction Quality & Clarity
    * **Dim B:** Context & Memory Management
    * **Dim C:** Safety, Alignment & Security
@@ -49,7 +49,7 @@ Submitting your agent skills to the global leaderboard is incredibly simple and 
 2. **Via Manual Pull Request**:
    * Place your markdown skill files (which must start with YAML frontmatter containing `name:` and `description:`) in a folder named `skills/<your-repo-name>/<skill-name>.md`.
    * Open a Pull Request against the `main` branch.
-   * Our verification runner will automatically check for duplicate entries, score your skill against the 100-criteria scientific matrix, and comment with a detailed report card.
+   * Our verification runner will automatically check for duplicate entries, score your skill against the 390-signal static matrix, and comment with a detailed report card.
 
 ---
 

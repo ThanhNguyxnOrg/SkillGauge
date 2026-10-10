@@ -240,10 +240,10 @@ export function auditSkill(content: string): AuditReport {
   scores['variableSafety'] = scores['B10'];
   scores['exampleRatio'] = scores['B6'];
 
-  // Percentile tiers from 411-skill distribution on 2026-10-10 (min 26.3, P50 30.60, P90 34.39, max 38.21).
+  // Percentile tiers from 411-skill distribution on 2026-10-10 after dedup (min 30.70, P50 34.32, P90 37.46, max 40.81).
   // Recompute via re-audit-all when the population changes; absolute 85/60 was unreachable (ceiling ~40).
-  const TIER_P90 = 34.39;
-  const TIER_P50 = 30.60;
+  const TIER_P90 = 37.46;
+  const TIER_P50 = 34.32;
   let tier: 'Tier 1' | 'Tier 2' | 'Tier 3' = 'Tier 3';
   if (overallScore >= TIER_P90) {
     tier = 'Tier 1';
@@ -355,9 +355,9 @@ ${content}
 
     // Same percentile tiers as static path; multiplier disclosed in explanation below.
     let tier: 'Tier 1' | 'Tier 2' | 'Tier 3' = 'Tier 3';
-    if (newOverallScore >= 34.39) {
+    if (newOverallScore >= 37.46) {
       tier = 'Tier 1';
-    } else if (newOverallScore >= 30.60) {
+    } else if (newOverallScore >= 34.32) {
       tier = 'Tier 2';
     }
 

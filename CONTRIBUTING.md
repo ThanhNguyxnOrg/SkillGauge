@@ -10,7 +10,7 @@ This guide outlines our submission flows, codebase structure, and verification c
 
 SkillGauge is built as a TypeScript monorepo using npm Workspaces:
 
-*   **[`packages/core`](file:///d:/Code/SkillGauge/packages/core)**: The central static auditing engine. Contains the scoring algorithms for all 100 criteria across the 7 dimensions, the prompt optimizer, and GitHub API helper utilities.
+*   **[`packages/core`](file:///d:/Code/SkillGauge/packages/core)**: The central static auditing engine. Contains the scoring algorithms for all 390 static signals across the 26 dimensions, the prompt optimizer, and GitHub API helper utilities.
 *   **[`packages/cli`](file:///d:/Code/SkillGauge/packages/cli)**: The command-line utility used to audit local/remote files, run duplicate filters, and update the database and README leaderboard.
 *   **[`packages/web`](file:///d:/Code/SkillGauge/packages/web)**: The premium client-side Single Page Application (built with React + Vite + TypeScript) serving as the interactive dashboard, sandbox auditor, and repository scanner.
 *   **`skills/`**: The folder containing all accepted skill prompt configurations. Each repository's skills are stored under `skills/<repository-name>/`.
@@ -79,7 +79,7 @@ You can submit new agent skills (e.g. `SKILL.md` or custom prompt instruction se
 When you open a Pull Request, our automated GitHub Actions workflow will:
 1. **Verify Formatting & Headers**: Ensure all files in `skills/` contain valid YAML frontmatter header configurations.
 2. **Filter Duplicates (Anti-Spam)**: Compare content hashes (SHA-256) and clean names against the database to block duplicate submissions.
-3. **Audit Quality Grades**: Grade each skill against the **100-criteria matrix** to calculate dimensions scores and tiers.
+3. **Audit Quality Grades**: Grade each skill against the **390-signal static matrix** to calculate dimensions scores and tiers.
    * If any check fails (e.g. formatting issue or missing metadata), the CI **will not close your PR**. It will comment on the PR with a detailed report card and diagnostic warnings to help you fix the issues.
 4. **Auto-Optimize Prompts**: Run our optimization compiler to compress adverbs, tighten list formatting, and convert weak qualifiers into strict instructions.
 5. **Re-rank & Rebuild Leaderboard**: Once merged by a maintainer, the database (`leaderboard.json`) and the root `README.md` ranking table will be updated.

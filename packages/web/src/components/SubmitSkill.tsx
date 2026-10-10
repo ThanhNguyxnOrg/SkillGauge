@@ -523,7 +523,7 @@ export const SubmitSkill: React.FC = () => {
                 1. Clicking submit triggers our remote GitHub Actions runner bot.
               </span>
               <span style={{ color: 'var(--text-secondary)' }}>
-                2. The bot clones your repo, audits all valid skills against the 100-criteria static matrix, and opens a Pull Request.
+                2. The bot clones your repo, audits all valid skills against the 390-signal static matrix, and opens a Pull Request.
               </span>
               <span style={{ color: 'var(--text-secondary)' }}>
                 3. Once the PR is ready, you can choose to run dynamic runtime tests either instantly in the browser or on the CI runner.
@@ -596,7 +596,7 @@ export const SubmitSkill: React.FC = () => {
                     Cloning & Auditing Repository...
                   </span>
                   <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
-                    The runner is cloning your repository and evaluating files against the 100-criteria matrix.
+                    The runner is cloning your repository and evaluating files against the 390-signal static matrix.
                   </span>
                 </div>
               </div>
