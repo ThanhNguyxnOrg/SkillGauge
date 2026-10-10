@@ -10,6 +10,12 @@ on:
 permissions:
   contents: write
 
+# Serialize runs: concurrent merges race on push (non-fast-forward).
+# Queue instead of cancel — every merge's skills must be audited.
+concurrency:
+  group: update-leaderboard
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
