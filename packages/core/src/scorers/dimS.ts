@@ -17,8 +17,7 @@ export function scoreS2(text: string): number {
 }
 
 export function scoreS3(text: string): number {
-  const dens = calculateDensity(text, /\brun\b/gi);
-  return Math.min(1.0, dens * 13);
+  return 0.5; // neutral: density rewards repetition-gaming (b1)
 }
 
 export function scoreS4(text: string): number {
@@ -48,8 +47,7 @@ export function scoreS7(text: string): number {
 }
 
 export function scoreS8(text: string): number {
-  const dens = calculateDensity(text, /\bstderr\b/gi);
-  return Math.min(1.0, dens * 18);
+  return 0.5; // neutral: density rewards repetition-gaming (b1)
 }
 
 export function scoreS9(text: string): number {

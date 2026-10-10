@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const skillsLockPath = path.resolve('skills-lock.json');
 const leaderboardPath = path.resolve('leaderboard.json');
 const outputDir = path.resolve('packages/web/src/data');
 
@@ -19,52 +18,35 @@ if (fs.existsSync(leaderboardPath)) {
   console.log('Created fallback leaderboard.json');
 }
 
-// 2. Bundle skills
-if (fs.existsSync(skillsLockPath)) {
-  const lock = JSON.parse(fs.readFileSync(skillsLockPath, 'utf8'));
-  const bundle = {};
-
-  for (const [key, meta] of Object.entries(lock.skills)) {
-    // Check local path (copied to .agents/skills/ in workspace)
-    let skillFile = path.resolve('.agents', 'skills', key, 'SKILL.md');
-    
-    // Fallbacks
-    if (!fs.existsSync(skillFile)) {
-      skillFile = path.resolve('.agents', 'skills', key, 'skill.md');
-    }
-    if (!fs.existsSync(skillFile)) {
-      // Try resolving directly using lock path relative
-      skillFile = path.resolve(meta.skillPath);
-    }
-    if (!fs.existsSync(skillFile)) {
-      // Try resolving under skills/
-      skillFile = path.resolve('skills', key, 'SKILL.md');
-    }
-
-    if (fs.existsSync(skillFile)) {
-      const content = fs.readFileSync(skillFile, 'utf8');
-      bundle[key] = {
-        name: key,
-        path: skillFile,
-        content
-      };
-      console.log(`Bundled skill: ${key}`);
-    } else {
-      console.warn(`Could not find file for skill ${key} at ${skillFile}`);
+// 2. Bundle skills straight from skills/ (source of truth; no skills-lock.json indirection)
+const skillsRoot = path.resolve('skills');
+const bundle = {};
+function walk(dir) {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    const p = path.join(dir, e.name);
+    if (e.isDirectory()) { walk(p); continue; }
+    if (!e.name.endsWith('.md')) continue;
+    const content = fs.readFileSync(p, 'utf8');
+    // Valid skill files only (same rule as CLI audit)
+    if (!content.trim().startsWith('---') || !content.includes('name:') || !content.includes('description:')) continue;
+    const fm = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    const nameMatch = fm && fm[1].match(/^name:\s*(.+)$/m);
+    const key = (nameMatch ? nameMatch[1] : path.basename(e.name, '.md')).trim().replace(/^["']|["']$/g, '');
+    if (!bundle[key]) {
+      bundle[key] = { name: key, path: path.relative(path.resolve('.'), p).replace(/\\/g, '/'), content };
     }
   }
-
-  fs.writeFileSync(
-    path.join(outputDir, 'skills-bundle.json'),
-    JSON.stringify(bundle, null, 2),
-    'utf8'
-  );
-  console.log('Saved skills-bundle.json');
-} else {
-  console.warn('skills-lock.json not found, skipping skill bundling.');
-  fs.writeFileSync(
-    path.join(outputDir, 'skills-bundle.json'),
-    JSON.stringify({}, null, 2),
-    'utf8'
-  );
 }
+if (fs.existsSync(skillsRoot)) {
+  walk(skillsRoot);
+  console.log(`Bundled ${Object.keys(bundle).length} skills from skills/`);
+} else {
+  console.warn('skills/ not found, writing empty bundle.');
+}
+
+fs.writeFileSync(
+  path.join(outputDir, 'skills-bundle.json'),
+  JSON.stringify(bundle, null, 2),
+  'utf8'
+);
+console.log('Saved skills-bundle.json');

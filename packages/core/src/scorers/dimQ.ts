@@ -17,8 +17,7 @@ export function scoreQ2(text: string): number {
 }
 
 export function scoreQ3(text: string): number {
-  const dens = calculateDensity(text, /\blimit\b/gi);
-  return Math.min(1.0, dens * 13);
+  return 0.5; // neutral: density rewards repetition-gaming (b1)
 }
 
 export function scoreQ4(text: string): number {
@@ -48,8 +47,7 @@ export function scoreQ7(text: string): number {
 }
 
 export function scoreQ8(text: string): number {
-  const dens = calculateDensity(text, /\bbudget\b/gi);
-  return Math.min(1.0, dens * 18);
+  return 0.5; // neutral: density rewards repetition-gaming (b1)
 }
 
 export function scoreQ9(text: string): number {

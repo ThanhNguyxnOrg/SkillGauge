@@ -17,8 +17,7 @@ export function scoreY2(text: string): number {
 }
 
 export function scoreY3(text: string): number {
-  const dens = calculateDensity(text, /\bmonth\b/gi);
-  return Math.min(1.0, dens * 13);
+  return 0.5; // neutral: density rewards repetition-gaming (b1)
 }
 
 export function scoreY4(text: string): number {
@@ -48,8 +47,7 @@ export function scoreY7(text: string): number {
 }
 
 export function scoreY8(text: string): number {
-  const dens = calculateDensity(text, /\bepoch\b/gi);
-  return Math.min(1.0, dens * 18);
+  return 0.5; // neutral: density rewards repetition-gaming (b1)
 }
 
 export function scoreY9(text: string): number {

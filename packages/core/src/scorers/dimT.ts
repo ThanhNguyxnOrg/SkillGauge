@@ -17,8 +17,7 @@ export function scoreT2(text: string): number {
 }
 
 export function scoreT3(text: string): number {
-  const dens = calculateDensity(text, /\bfinally\b/gi);
-  return Math.min(1.0, dens * 13);
+  return 0.5; // neutral: density rewards repetition-gaming (b1)
 }
 
 export function scoreT4(text: string): number {
@@ -48,8 +47,7 @@ export function scoreT7(text: string): number {
 }
 
 export function scoreT8(text: string): number {
-  const dens = calculateDensity(text, /\bstep\b/gi);
-  return Math.min(1.0, dens * 18);
+  return 0.5; // neutral: density rewards repetition-gaming (b1)
 }
 
 export function scoreT9(text: string): number {
