@@ -132,9 +132,9 @@ execSync(`node packages/cli/dist/index.js update-leaderboard --target "skills/${
 // Git branching and PR creation
 const branchName = `contrib-${repoName.toLowerCase()}`;
 try {
-  // Configure bot git identity
-  execSync('git config user.name "github-actions[bot]"');
-  execSync('git config user.email "41898282+github-actions[bot]@users.noreply.github.com"');
+  // Configure bot git identity (ThanhNguyxnAgent, never github-actions[bot])
+  execSync('git config user.name "ThanhNguyxnAgent[bot]"');
+  execSync('git config user.email "296222857+thanhnguyxnagent[bot]@users.noreply.github.com"');
 
   // Check if branch already exists locally/remotely to clean it up
   try {

@@ -40,9 +40,17 @@ jobs:
         run: |
           node packages/cli/dist/index.js dynamic-test "skills/**/*.md"
 
+      - name: 🤖 Generate GitHub App Token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+
       - name: 📈 Update PR Description with Phase 2 Scores
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
           GEMINI_API_KEY: ${{ github.event.inputs.gemini_api_key || secrets.GEMINI_API_KEY }}
         run: |
           node scripts/update-pr-dynamic.mjs

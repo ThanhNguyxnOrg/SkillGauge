@@ -45,7 +45,7 @@ This workflow is triggered automatically from the SkillGauge website via the Git
     *   Builds the `@skillgauge/core` and `@skillgauge/cli` packages.
     *   Executes the helper script [submit-bot.mjs](file:///scripts/submit-bot.mjs) which clones the target repository, extracts skill markdown files, audits them, syncs the web bundle, and creates a git commit.
     *   Pushes a branch named `contrib-<repo-name>` and opens/updates a Pull Request on GitHub.
-*   **Author Identity**: Runs using `secrets.GITHUB_TOKEN` so that `github-actions[bot]` is the author of the commit and PR.
+*   **Author Identity**: Runs using a GitHub App token (`ThanhNguyxnAgent[bot]`) so that bot commits and PRs never appear as `github-actions[bot]`.
 
 ### 2. Manual PR Verification (`pr-verification.yml`)
 This workflow validates incoming Pull Requests that modify files inside the `skills/` directory.
