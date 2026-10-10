@@ -7,7 +7,7 @@ on:
       - 'skills/**/*.md'
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 jobs:
@@ -62,5 +62,38 @@ jobs:
 
       - name: 📤 Publish Step Summary
         run: cat summary.md >> $GITHUB_STEP_SUMMARY
+
+      - name: 🤖 Generate Merge Token
+        if: env.exit_code == '0' && startsWith(github.head_ref, 'contrib-')
+        id: merge-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+
+      - name: ✅ Auto-Merge Gated Skill PRs
+        # All four gates must hold, else the PR waits for a human:
+        # 1. duplicate check clean (exit 0) 2. audit passed (reached here)
+        # 3. source repo license allowlisted AND has LICENSE file
+        # 4. fewer than 50 skill files (big corpora go manual)
+        if: env.exit_code == '0' && startsWith(github.head_ref, 'contrib-')
+        env:
+          GH_TOKEN: ${{ steps.merge-token.outputs.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          BODY=$(gh pr view "$PR_NUMBER" --json body --jq .body)
+          SRC=$(printf '%s' "$BODY" | grep -oP '\*\*Source Repository:\*\* \[\K[^]]+' | head -1)
+          if [ -z "$SRC" ]; then echo "No source repo in body; leaving for human."; exit 0; fi
+          LIC=$(gh api "repos/$SRC" --jq .license.spdx_id)
+          gh api "repos/$SRC/contents/LICENSE" --jq .sha > /dev/null || { echo "No LICENSE file; leaving for human."; exit 0; }
+          case "$LIC" in
+            Apache-2.0|MIT|BSD-2-Clause|BSD-3-Clause) ;;
+            *) echo "License $LIC not allowlisted; leaving for human."; exit 0 ;;
+          esac
+          COUNT=$(gh pr view "$PR_NUMBER" --json files --jq '[.files[] | select(.filename | startswith("skills/"))] | length')
+          TOTAL=$(gh pr view "$PR_NUMBER" --json files --jq '.files | length')
+          if [ "$COUNT" -ge 50 ] || [ "$COUNT" != "$TOTAL" ]; then echo "Too big or touches non-skills files; leaving for human."; exit 0; fi
+          gh pr merge "$PR_NUMBER" --squash --delete-branch
+          echo "Auto-merged PR #$PR_NUMBER ($SRC, $COUNT skills, $LIC)."
 
 
