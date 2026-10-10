@@ -105,8 +105,11 @@ if (validSkills.length === 0) {
   process.exit(1);
 }
 
-// Copy skill files into the monorepo skills directory
-const destDir = path.join(process.cwd(), 'skills', repoName);
+// Copy skill files into the monorepo skills directory.
+// Slug is owner+repo (lowercased, sanitized): bare repo names collide
+// (google/skills vs cloudflare/skills both yielded skills/skills/).
+const slug = `${repoOwner}-${repoName}`.toLowerCase().replace(/[^a-z0-9_\-]+/g, '-').replace(/^-+|-+$/g, '');
+const destDir = path.join(process.cwd(), 'skills', slug);
 if (!fs.existsSync(destDir)) {
   fs.mkdirSync(destDir, { recursive: true });
 }
@@ -127,10 +130,10 @@ execSync('node scripts/sync-skills.js', { stdio: 'inherit' });
 
 // Run CLI update-leaderboard
 console.log('Updating leaderboard...');
-execSync(`node packages/cli/dist/index.js update-leaderboard --target "skills/${repoName}/*.md" --db leaderboard.json --readme README.md --author "${author}"`, { stdio: 'inherit' });
+execSync(`node packages/cli/dist/index.js update-leaderboard --target "skills/${slug}/*.md" --db leaderboard.json --readme README.md --author "${author}"`, { stdio: 'inherit' });
 
 // Git branching and PR creation
-const branchName = `contrib-${repoName.toLowerCase()}`;
+const branchName = `contrib-${slug}`;
 try {
   // Configure bot git identity (ThanhNguyxnAgent, never github-actions[bot])
   execSync('git config user.name "ThanhNguyxnAgent[bot]"');
