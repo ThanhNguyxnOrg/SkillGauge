@@ -89,7 +89,7 @@ export const SubmitSkill: React.FC = () => {
         return { owner: parts[0], repo: parts[1] };
       }
     }
-    const match = normalized.match(/(?:github\.com[\/:])([^\/]+)\/([^\/\.]+)/);
+    const match = normalized.match(/(?:github\.com[\/:])([^\/]+)\/([^\/]+?)(?:\.git)?\/?$/);
     if (!match) {
       throw new Error(`Unsupported Git repository URL or identifier "${url}". Use "owner/repo" or a GitHub HTTPS URL.`);
     }
@@ -381,8 +381,9 @@ export const SubmitSkill: React.FC = () => {
         }, 3000);
       }
 
-      // 4. Poll for the created Pull Request
-      const branchName = `contrib-${repo.toLowerCase()}`;
+      // 4. Poll for the created Pull Request (branch uses owner-qualified slug, mirroring submit-bot.mjs)
+      const slug = `${owner}-${repo}`.toLowerCase().replace(/[^a-z0-9_\-]+/g, '-').replace(/^-+|-+$/g, '');
+      const branchName = `contrib-${slug}`;
       setPrBranch(branchName);
       const prUrl = `https://api.github.com/repos/${targetOwner}/${targetRepo}/pulls?head=${targetOwner}:${branchName}`;
       

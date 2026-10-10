@@ -42,7 +42,7 @@ function parseGitUrl(url: string): { owner: string; repo: string } {
       return { owner: parts[0], repo: parts[1] };
     }
   }
-  const match = normalized.match(/(?:github\.com[\/:])([^\/]+)\/([^\/\.]+)/);
+  const match = normalized.match(/(?:github\.com[\/:])([^\/]+)\/([^\/]+?)(?:\.git)?\/?$/);
   if (!match) {
     throw new Error(`Unsupported Git repository URL or identifier "${url}". Use "owner/repo" or a GitHub HTTPS/SSH URL.`);
   }

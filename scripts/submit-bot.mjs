@@ -18,11 +18,11 @@ if (!repoUrl) {
   process.exit(1);
 }
 
-// Helper to parse owner/repo
+// Helper to parse owner/repo (dots preserved: owner/my.repo stays my.repo)
 function parseGitUrl(url) {
-  const match = url.match(/(?:github\.com[\/:])([^\/]+)\/([^\/\.]+)/);
+  const match = url.match(/(?:github\.com[\/:])([^\/]+)\/([^\/]+?)(?:\.git)?\/?$/);
   if (!match) throw new Error(`Invalid GitHub repository URL: ${url}`);
-  return { owner: match[1], repo: match[2].replace(/\.git$/, '') };
+  return { owner: match[1], repo: match[2] };
 }
 
 const { owner: repoOwner, repo: repoName } = parseGitUrl(repoUrl);
