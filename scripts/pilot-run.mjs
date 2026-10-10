@@ -51,6 +51,11 @@ async function runArm({ task, arm, skill, out, key }) {
   }
   fs.mkdirSync(out, { recursive: true });
   fs.writeFileSync(path.join(out, 'output.txt'), text);
+  // Python tasks grade output.py: extract the first python fence, else raw text.
+  if (task.startsWith('py-')) {
+    const m = text.match(/```python\n([\s\S]*?)```/i) || text.match(/```\n([\s\S]*?)```/);
+    fs.writeFileSync(path.join(out, 'output.py'), (m ? m[1] : text).trim() + '\n');
+  }
   fs.writeFileSync(path.join(out, 'trajectory.json'), JSON.stringify({ task, arm, model: MODEL, temperature: 0, skill, at: new Date().toISOString() }, null, 2));
 }
 
