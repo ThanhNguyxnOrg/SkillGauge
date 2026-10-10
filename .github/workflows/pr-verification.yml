@@ -7,7 +7,7 @@ on:
       - 'skills/**/*.md'
 
 permissions:
-  contents: write
+  contents: read
   pull-requests: write
 
 jobs:
@@ -64,7 +64,7 @@ jobs:
         run: cat summary.md >> $GITHUB_STEP_SUMMARY
 
       - name: 🤖 Generate Merge Token
-        if: env.exit_code == '0' && startsWith(github.head_ref, 'contrib-')
+        if: env.exit_code == '0' && startsWith(github.head_ref, 'contrib-') && github.event.pull_request.head.repo.full_name == github.repository
         id: merge-token
         uses: actions/create-github-app-token@v3
         with:
@@ -73,26 +73,37 @@ jobs:
 
       - name: ✅ Auto-Merge Gated Skill PRs
         # All four gates must hold, else the PR waits for a human:
-        # 1. duplicate check clean (exit 0) 2. audit passed (reached here)
-        # 3. source repo license allowlisted AND has LICENSE file
-        # 4. fewer than 50 skill files (big corpora go manual)
-        if: env.exit_code == '0' && startsWith(github.head_ref, 'contrib-')
+        # 1. duplicate check clean (exit 0) 2. audit ran without crashing
+        # 3. source repo license allowlisted AND has a license file
+        # 4. fewer than 50 skill files, all under the claimed source dir
+        if: env.exit_code == '0' && startsWith(github.head_ref, 'contrib-') && github.event.pull_request.head.repo.full_name == github.repository
         env:
           GH_TOKEN: ${{ steps.merge-token.outputs.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
+          set -euo pipefail
           BODY=$(gh pr view "$PR_NUMBER" --json body --jq .body)
-          SRC=$(printf '%s' "$BODY" | grep -oP '\*\*Source Repository:\*\* \[\K[^]]+' | head -1)
+          SRC=$(printf '%s' "$BODY" | grep -oP '\*\*Source Repository:\*\* \[\K[^]]+' | head -1 || true)
           if [ -z "$SRC" ]; then echo "No source repo in body; leaving for human."; exit 0; fi
+          # Bind the body claim to actual content: every skill file must live
+          # under skills/<owner-repo-slug>/, else the claim is spoofed.
+          SLUG=$(printf '%s' "$SRC" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9_-]\+/-/g; s/^-\+//; s/-\+$//')
           LIC=$(gh api "repos/$SRC" --jq .license.spdx_id)
-          gh api "repos/$SRC/contents/LICENSE" --jq .sha > /dev/null || { echo "No LICENSE file; leaving for human."; exit 0; }
+          FOUND_LICENSE=""
+          for CAND in LICENSE LICENSE.md LICENSE.txt LICENCE COPYING; do
+            if gh api "repos/$SRC/contents/$CAND" --jq .sha > /dev/null 2>&1; then FOUND_LICENSE="$CAND"; break; fi
+          done
+          if [ -z "$FOUND_LICENSE" ]; then echo "No license file; leaving for human."; exit 0; fi
           case "$LIC" in
             Apache-2.0|MIT|BSD-2-Clause|BSD-3-Clause) ;;
             *) echo "License $LIC not allowlisted; leaving for human."; exit 0 ;;
           esac
-          COUNT=$(gh pr view "$PR_NUMBER" --json files --jq '[.files[] | select(.filename | startswith("skills/"))] | length')
-          TOTAL=$(gh pr view "$PR_NUMBER" --json files --jq '.files | length')
-          if [ "$COUNT" -ge 50 ] || [ "$COUNT" != "$TOTAL" ]; then echo "Too big or touches non-skills files; leaving for human."; exit 0; fi
+          FILES_JSON=$(gh pr view "$PR_NUMBER" --json files --jq '.files')
+          COUNT=$(printf '%s' "$FILES_JSON" | jq '[.[] | select(.path | startswith("skills/"))] | length')
+          TOTAL=$(printf '%s' "$FILES_JSON" | jq 'length')
+          MATCHED=$(printf '%s' "$FILES_JSON" | jq --arg d "skills/$SLUG/" '[.[] | select(.path | startswith($d))] | length')
+          : "${COUNT:?}" "${TOTAL:?}" "${MATCHED:?}"
+          if [ "$COUNT" -ge 50 ] || [ "$COUNT" != "$TOTAL" ] || [ "$MATCHED" != "$COUNT" ]; then echo "Too big, touches non-skills files, or dir does not match claimed source; leaving for human."; exit 0; fi
           gh pr merge "$PR_NUMBER" --squash --delete-branch
           echo "Auto-merged PR #$PR_NUMBER ($SRC, $COUNT skills, $LIC)."
 
