@@ -8,3 +8,5 @@ coverage/
 
 __pycache__/
 *.pyc
+# Pilot skill mounts (runtime only, never commit)
+pilot/tasks/*/environment/skill/

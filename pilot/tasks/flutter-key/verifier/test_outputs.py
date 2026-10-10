@@ -14,6 +14,11 @@ def test_mentions_keys():
     assert "key" in _text()
 
 
+def test_mentions_oracle_fix():
+    # Oracle-distinctive: the fix must be named, not just the bug (anti-template).
+    assert "stable" in _text()
+
+
 def test_has_severity_tag():
     t = _text()
     assert "[high]" in t or "[critical]" in t

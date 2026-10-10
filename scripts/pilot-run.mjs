@@ -5,6 +5,7 @@ import path from 'path';
 
 const MODEL = 'gemini-3.5-flash-lite';
 const AGENT_TIMEOUT_MS = 900000;
+const ARMS = ['with', 'without'];
 
 function args(argv) {
   const o = {};
@@ -14,20 +15,34 @@ function args(argv) {
   return o;
 }
 
-function failClosed(arm, mountPresent) {
-  if (arm === 'with' && !mountPresent) throw new Error('with-arm requires skill mount present');
-  if (arm === 'without' && mountPresent) throw new Error('without-arm must not see skill mount');
+function failClosed(arm, skillFilePresent) {
+  if (!ARMS.includes(arm)) throw new Error(`unknown arm ${arm}`);
+  if (arm === 'with' && !skillFilePresent) throw new Error('with-arm requires skill file present');
+  if (arm === 'without' && skillFilePresent) throw new Error('without-arm must not see skill file');
+}
+
+// Pure prompt builder (network-free, self-testable): user text = task.md plus
+// every environment file except the skill mount; system = skill or bare sentence.
+function buildPrompt(taskDir, arm) {
+  if (!ARMS.includes(arm)) throw new Error(`unknown arm ${arm}`);
+  const taskMd = fs.readFileSync(path.join(taskDir, 'task.md'), 'utf8');
+  const envDir = path.join(taskDir, 'environment');
+  const parts = [taskMd.trim()];
+  for (const e of fs.readdirSync(envDir)) {
+    if (e === 'skill') continue;
+    parts.push(`--- ${e} ---\n` + fs.readFileSync(path.join(envDir, e), 'utf8').trim());
+  }
+  const skillFile = path.join(envDir, 'skill', 'SKILL.md');
+  const skillFilePresent = fs.existsSync(skillFile);
+  failClosed(arm, skillFilePresent);
+  const system = arm === 'with' ? fs.readFileSync(skillFile, 'utf8') : 'You are a helpful assistant.';
+  return { system, user: parts.join('\n\n') };
 }
 
 async function runArm({ task, arm, skill, out, key }) {
   const taskDir = path.resolve('pilot/tasks', task);
-  const taskMd = fs.readFileSync(path.join(taskDir, 'task.md'), 'utf8');
-  const mountPath = path.join(taskDir, 'environment', 'skill');
-  const mountPresent = fs.existsSync(mountPath);
-  failClosed(arm, mountPresent);
-  const system = arm === 'with'
-    ? fs.readFileSync(path.join(mountPath, 'SKILL.md'), 'utf8')
-    : 'You are a helpful assistant.';
+  if (!fs.existsSync(path.join(taskDir, 'task.md'))) throw new Error(`unknown task ${task}`);
+  const { system, user } = buildPrompt(taskDir, arm);
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${key}`;
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), AGENT_TIMEOUT_MS);
@@ -37,7 +52,7 @@ async function runArm({ task, arm, skill, out, key }) {
       method: 'POST', signal: ctrl.signal,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: taskMd }] }],
+        contents: [{ parts: [{ text: user }] }],
         systemInstruction: { parts: [{ text: system }] },
         generationConfig: { temperature: 0 }
       })
@@ -60,21 +75,25 @@ async function runArm({ task, arm, skill, out, key }) {
 }
 
 async function selfTest() {
-  const cases = [
-    () => failClosed('with', false),
-    () => failClosed('without', true)
-  ];
-  for (const [i, fn] of cases.entries()) {
+  // fail-closed file checks
+  for (const fn of [() => failClosed('with', false), () => failClosed('without', true)]) {
     let threw = false;
     try { fn(); } catch { threw = true; }
-    if (!threw) throw new Error(`self-test case ${i} did not throw`);
+    if (!threw) throw new Error('fail-closed case did not throw');
   }
-  // Positive controls must not throw.
   failClosed('with', true);
   failClosed('without', false);
+  // arm enum
+  let threw = false;
+  try { failClosed('With', false); } catch { threw = true; }
+  if (!threw) throw new Error('bad arm accepted');
+  // prompt builder sends the snippet (C2): review-null user text must contain it
+  const p = buildPrompt(path.resolve('pilot/tasks/review-null'), 'without');
+  if (!p.user.includes('sk-live-abc123')) throw new Error('snippet missing from prompt');
+  if (!p.user.includes('Review the code snippet')) throw new Error('task.md missing from prompt');
   const o = args(['--task', 'py-add', '--arm', 'with']);
   if (o.task !== 'py-add' || o.arm !== 'with') throw new Error('arg parse broken');
-  console.log('self-test: 3/3 PASS');
+  console.log('self-test: 5/5 PASS');
 }
 
 const o = args(process.argv.slice(2));

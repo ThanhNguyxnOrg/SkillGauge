@@ -14,6 +14,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        task: [py-add, py-immutable, review-null, review-unused, flutter-setstate, flutter-key]
+        arm: [with, without]
         include:
           - task: py-add
             skill: skills/ecc/python-coding-style.md
@@ -27,10 +29,12 @@ jobs:
             skill: skills/ecc/flutter-reviewer.md
           - task: flutter-key
             skill: skills/ecc/flutter-reviewer.md
-        arm: [with, without]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Remove oracle outputs from agent legs
+        run: rm -rf pilot/tasks/*/oracle
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -81,8 +85,9 @@ jobs:
           import json, pathlib
           rows = []
           for reward_file in sorted(pathlib.Path('legs').rglob('logs/reward.txt')):
-            leg = reward_file.parts[1]  # leg-<task>-<arm>
-            _, task, arm = leg.split('-', 2)
+            leg = reward_file.parts[1]  # leg-<task>-<arm>, task itself hyphenated
+            task, arm = leg.removeprefix('leg-').rsplit('-', 1)
+            assert arm in ('with', 'without'), f'bad arm in {leg}'
             rows.append({'task': task, 'arm': arm, 'reward': int(reward_file.read_text().strip())})
           by_task = {}
           for r in rows:

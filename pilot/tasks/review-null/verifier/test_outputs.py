@@ -19,6 +19,11 @@ def test_mentions_planted_secret():
     assert "apikey" in t.replace(" ", "") or "api key" in t
 
 
+def test_mentions_oracle_fix():
+    # Oracle-distinctive: the fix must be named, not just the bug (anti-template).
+    assert "environment variable" in _text()
+
+
 def test_has_summary():
     assert "## review summary" in _text()
 

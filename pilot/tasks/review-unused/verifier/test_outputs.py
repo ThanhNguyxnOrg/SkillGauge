@@ -15,6 +15,11 @@ def test_mentions_dead_code():
     assert "console" in t or "unused" in t or "dead code" in t
 
 
+def test_mentions_oracle_fix():
+    # Oracle-distinctive: the fix must be named, not just the bug (anti-template).
+    assert "remove the unused import" in _text()
+
+
 def test_has_summary():
     assert "## review summary" in _text()
 

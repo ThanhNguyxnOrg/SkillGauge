@@ -15,6 +15,11 @@ def test_mentions_lifecycle():
     assert "mounted" in t or "dispose" in t
 
 
+def test_mentions_oracle_fix():
+    # Oracle-distinctive: the guard must be named, not just the bug (anti-template).
+    assert "!mounted" in _text()
+
+
 def test_has_severity_tag():
     t = _text()
     assert "[high]" in t or "[critical]" in t
