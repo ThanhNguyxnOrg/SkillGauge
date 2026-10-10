@@ -487,7 +487,10 @@ program
         let leaderboardTable = `\n| Rank 🏆 | Skill Name 📦 | Repository 🏠 | Tier 🏷️ | Score ⭐️ | Author 👤 |\n`;
         leaderboardTable += `| --- | --- | --- | --- | --- | --- |\n`;
         
-        db.skills.forEach((skill: any, index: number) => {
+        // README shows top 30 only (full table lives on the dashboard;
+        // a 600+ row table slows rendering and churns every re-audit).
+        const README_TOP_N = 30;
+        db.skills.slice(0, README_TOP_N).forEach((skill: any, index: number) => {
           let rankEmoji = `${index + 1}`;
           if (index === 0) rankEmoji = '🏆 1';
           else if (index === 1) rankEmoji = '🥈 2';
@@ -500,6 +503,9 @@ program
           const repoText = skill.repository ? `\`${skill.repository}\`` : `\_unknown\_`;
           leaderboardTable += `| ${rankEmoji} | \`${skill.name}\` | ${repoText} | ${tierEmoji} **${skill.tier}** | **${skill.overallScore.toFixed(3)}** | @${skill.author} |\n`;
         });
+        if (db.skills.length > README_TOP_N) {
+          leaderboardTable += `\n*Showing top ${README_TOP_N} of ${db.skills.length} skills — [view the full Live Leaderboard](https://thanhnguyxnorg.github.io/SkillGauge/).*\n`;
+        }
 
         // Replace between placeholders
         const startMarker = '<!-- LEADERBOARD_START -->';
