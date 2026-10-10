@@ -1,7 +1,6 @@
 import {
   tokenize, calculateShannonEntropy, calculateTTR,
-  calculateStandardDeviation, calculateSemanticDependencyDistance,
-  calculateDensity, calculateRLCR, calculateActionVerbMatrix
+  calculateStandardDeviation, calculateSemanticDependencyDistance
 } from './scientificUtils.js';
 
 export function scoreH1(text: string): number {
@@ -83,4 +82,5 @@ export function scoreH14(text: string): number {
 export function scoreH15(text: string): number {
   return scoreH5(text); // dedup: canonical scoreH5
 }
+
 
