@@ -5,6 +5,20 @@ export interface LeaderboardEntry {
 }
 
 /**
+ * Resolve the origin repository of a skill file. Matches `skills/<repo>/`
+ * with or without a leading slash (relative CLI globs have none); clone temp
+ * dirs yield the cloned repo name; otherwise defers to the caller fallback.
+ */
+export function getRepositoryName(filePath: string, fallback?: () => string): string {
+  const normalized = filePath.replace(/\\/g, '/');
+  const clones = normalized.match(/\/skillgauge-clones\/[^/]+_([^/]+)/);
+  if (clones && clones[1]) return clones[1];
+  const match = normalized.match(/(?:^|\/)skills\/([^/]+)\//i);
+  if (match && match[1]) return match[1];
+  return fallback ? fallback() : 'SkillGauge';
+}
+
+/**
  * Pure duplicate decision (CLI keeps process.exit; logic lives here so it is testable).
  * Same content hash blocks only under a different identity (clean name + repository);
  * unchanged files (same hash, name, repo) pass so full-glob CI runs stay green.

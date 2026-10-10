@@ -7,7 +7,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import { execSync } from 'child_process';
 import * as os from 'os';
-import { auditSkill, auditSkillAsync, auditPackage, VirtualFile, optimizeSkill, runDynamicTests, isDuplicateEntry, nearDupeWarnings } from '@skillgauge/core';
+import { auditSkill, auditSkillAsync, auditPackage, VirtualFile, optimizeSkill, runDynamicTests, isDuplicateEntry, nearDupeWarnings, getRepositoryName as coreGetRepositoryName } from '@skillgauge/core';
 
 const program = new Command();
 
@@ -28,20 +28,10 @@ function getNormalizedHash(content: string): string {
 
 function getRepositoryName(filePath: string): string {
   const normalized = filePath.replace(/\\/g, '/');
-  if (normalized.includes('/skillgauge-clones/')) {
-    const match = normalized.match(/\/skillgauge-clones\/[^/]+_([^/]+)/);
-    if (match && match[1]) {
-      return match[1];
-    }
-  }
   if (normalized.includes('.agent/skills/')) {
     return getGitOrWorkspaceRepoName(filePath);
   }
-  const match = normalized.match(/\/skills\/([^/]+)\//i);
-  if (match && match[1]) {
-    return match[1];
-  }
-  return getGitOrWorkspaceRepoName(filePath);
+  return coreGetRepositoryName(filePath, () => getGitOrWorkspaceRepoName(filePath));
 }
 
 function parseGitUrl(url: string): { owner: string; repo: string } {
