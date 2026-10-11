@@ -13,6 +13,7 @@ interface AuditReport {
     dimE: number;
     dimF: number;
     dimG: number;
+    [key: string]: number;
   };
   scores: { [key: string]: number };
   explanation?: string;
@@ -516,7 +517,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({ report, skil
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div className="dimensions-list">
                 {DIMENSION_METADATA.map((dim) => {
-                  const score = (report.dimensions as any)[dim.id] || 0;
+                  const score = report.dimensions[dim.id] || 0;
                   const percent = (score / dim.max) * 100;
                   return (
                     <div key={dim.id} className="dimension-bar-wrapper">
@@ -588,7 +589,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({ report, skil
                       <span style={{ fontSize: '14px', fontWeight: 600, color: '#fff' }}>{dim.name}</span>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                         <span style={{ fontFamily: 'var(--mono-font)', fontSize: '13px', fontWeight: 'bold' }}>
-                          {((report.dimensions as any)[dim.id] || 0).toFixed(2)} / {dim.max.toFixed(2)}
+                          {(report.dimensions[dim.id] || 0).toFixed(2)} / {dim.max.toFixed(2)}
                         </span>
                         {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                       </div>

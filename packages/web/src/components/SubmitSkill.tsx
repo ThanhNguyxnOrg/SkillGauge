@@ -2,16 +2,39 @@ import React, { useState } from 'react';
 import { Send, AlertTriangle, Loader2, FolderOpen, CheckCircle, Info, Key, Terminal, ExternalLink, Zap } from 'lucide-react';
 
 // Self-contained parser for extracting YAML frontmatter and tests block
+interface ParsedTest {
+  [key: string]: string | string[] | boolean;
+}
+
+interface ParsedMetadata {
+  name?: string;
+  description?: string;
+  tests?: ParsedTest[];
+}
+
+interface PrSkill {
+  name: string;
+  filePath: string;
+  rawText: string;
+  tests: ParsedTest[];
+}
+
+interface RunStep {
+  name?: string;
+  status?: string;
+  conclusion?: string | null;
+}
+
 function parseFrontmatter(markdown: string) {
   const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  if (!match) return { metadata: {} as any, body: markdown };
+  if (!match) return { metadata: {} as ParsedMetadata, body: markdown };
   const yamlText = match[1];
   const body = markdown.substring(match[0].length);
-  
-  const metadata: any = {};
+
+  const metadata: ParsedMetadata = {};
   const lines = yamlText.split('\n');
   let inTests = false;
-  let currentTest: any = null;
+  let currentTest: ParsedTest | null = null;
   
   for (let line of lines) {
     line = line.trim();
@@ -28,7 +51,7 @@ function parseFrontmatter(markdown: string) {
       inTests = true;
     } else if (inTests && line.startsWith('-')) {
       currentTest = {};
-      metadata.tests.push(currentTest);
+      (metadata.tests as ParsedTest[]).push(currentTest);
       
       const rest = line.substring(1).trim();
       if (rest) {
@@ -39,7 +62,7 @@ function parseFrontmatter(markdown: string) {
     }
   }
   
-  function parseYamlLine(line: string, testObj: any) {
+  function parseYamlLine(line: string, testObj: ParsedTest) {
     const colonIdx = line.indexOf(':');
     if (colonIdx === -1) return;
     const key = line.substring(0, colonIdx).trim();
@@ -72,10 +95,10 @@ export const SubmitSkill: React.FC = () => {
   const [submitError, setSubmitError] = useState('');
   const [prLink, setPrLink] = useState('');
   const [prBranch, setPrBranch] = useState('');
-  const [runSteps, setRunSteps] = useState<any[]>([]);
+  const [runSteps, setRunSteps] = useState<RunStep[]>([]);
 
   // Dynamic test states
-  const [prSkills, setPrSkills] = useState<any[]>([]);
+  const [prSkills, setPrSkills] = useState<PrSkill[]>([]);
   const [dynamicRunning, setDynamicRunning] = useState(false);
   const [dynamicConsoleLogs, setDynamicConsoleLogs] = useState<string[]>([]);
   const [actionsTriggering, setActionsTriggering] = useState(false);
@@ -89,7 +112,7 @@ export const SubmitSkill: React.FC = () => {
         return { owner: parts[0], repo: parts[1] };
       }
     }
-    const match = normalized.match(/(?:github\.com[\/:])([^\/]+)\/([^\/]+?)(?:\.git)?\/?$/);
+    const match = normalized.match(/(?:github\.com[/:])([^/]+)\/([^/]+?)(?:\.git)?\/?$/);
     if (!match) {
       throw new Error(`Unsupported Git repository URL or identifier "${url}". Use "owner/repo" or a GitHub HTTPS URL.`);
     }
@@ -102,7 +125,7 @@ export const SubmitSkill: React.FC = () => {
       if (!response.ok) return;
       const files = await response.json();
       
-      const skillsToTest: any[] = [];
+      const skillsToTest: PrSkill[] = [];
       for (const file of files) {
         if (file.filename.startsWith('skills/') && file.filename.endsWith('.md')) {
           const rawRes = await fetch(file.raw_url);
@@ -159,8 +182,8 @@ export const SubmitSkill: React.FC = () => {
       }
 
       setActionsRunLink(`https://github.com/${targetOwner}/${targetRepo}/actions/workflows/dynamic-tests.yml`);
-    } catch (err: any) {
-      alert(err.message || 'Failed to trigger Actions run');
+    } catch (err: unknown) {
+      alert(err instanceof Error ? err.message : 'Failed to trigger Actions run');
     } finally {
       setActionsTriggering(false);
     }
@@ -252,8 +275,8 @@ export const SubmitSkill: React.FC = () => {
           } else {
             addLog(`  🔴 Scenario "${scenario}" FAILED`);
           }
-        } catch (err: any) {
-          addLog(`  🔴 Scenario "${scenario}" ERRORED: ${err.message}`);
+        } catch (err: unknown) {
+          addLog(`  🔴 Scenario "${scenario}" ERRORED: ${err instanceof Error ? err.message : 'unknown error'}`);
         }
       }
     }
@@ -277,8 +300,8 @@ export const SubmitSkill: React.FC = () => {
     setActionsRunLink('');
     setRunSteps([]);
 
-    let prPoll: any = null;
-    let jobsInterval: any = null;
+    let prPoll: ReturnType<typeof setInterval> | null = null;
+    let jobsInterval: ReturnType<typeof setInterval> | null = null;
 
     const clearAllIntervals = () => {
       if (prPoll) clearInterval(prPoll);
@@ -366,7 +389,7 @@ export const SubmitSkill: React.FC = () => {
                   setRunSteps(job.steps);
                 }
                 if (job.status === 'completed') {
-                  clearInterval(jobsInterval);
+                  if (jobsInterval) clearInterval(jobsInterval);
                   if (job.conclusion !== 'success') {
                     setSubmitStep('error');
                     setSubmitError('The submission bot execution failed on GitHub Actions.');
@@ -382,7 +405,7 @@ export const SubmitSkill: React.FC = () => {
       }
 
       // 4. Poll for the created Pull Request (branch uses owner-qualified slug, mirroring submit-bot.mjs)
-      const slug = `${owner}-${repo}`.toLowerCase().replace(/[^a-z0-9_\-]+/g, '-').replace(/^-+|-+$/g, '');
+      const slug = `${owner}-${repo}`.toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '');
       const branchName = `contrib-${slug}`;
       setPrBranch(branchName);
       const prUrl = `https://api.github.com/repos/${targetOwner}/${targetRepo}/pulls?head=${targetOwner}:${branchName}`;
@@ -422,10 +445,10 @@ export const SubmitSkill: React.FC = () => {
         }
       }, 5000);
 
-    } catch (err: any) {
+    } catch (err: unknown) {
       clearAllIntervals();
       setSubmitStep('error');
-      setSubmitError(err.message || 'Failed to submit repository');
+      setSubmitError(err instanceof Error ? err.message : 'Failed to submit repository');
     }
   };
 

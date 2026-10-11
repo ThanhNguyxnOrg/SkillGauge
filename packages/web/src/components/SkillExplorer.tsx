@@ -17,7 +17,7 @@ export const SkillExplorer: React.FC<SkillExplorerProps> = ({ skills, onSelectSk
   const getAuditResult = (content: string) => {
     try {
       return auditSkill(content);
-    } catch (err) {
+    } catch {
       return { overallScore: 0, tier: 'Tier 3' as const };
     }
   };

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Play, Sparkles, FileUp, Key } from 'lucide-react';
-import { auditSkill, auditSkillAsync, optimizeSkill } from '@skillgauge/core';
+import { auditSkill, auditSkillAsync, optimizeSkill, type AuditReport } from '@skillgauge/core';
 
 interface AuditSandboxProps {
-  onShowResult: (report: any, content: string) => void;
+  onShowResult: (report: AuditReport, content: string) => void;
 }
 
 const DEFAULT_TEMPLATE = `---
@@ -39,8 +39,8 @@ export const AuditSandbox: React.FC<AuditSandboxProps> = ({ onShowResult }) => {
         report = auditSkill(content);
       }
       onShowResult(report, content);
-    } catch (err: any) {
-      setErrorMsg(err.message || 'Audit failed');
+    } catch (err: unknown) {
+      setErrorMsg(err instanceof Error ? err.message : 'Audit failed');
     } finally {
       setIsLoading(false);
     }
@@ -61,8 +61,8 @@ export const AuditSandbox: React.FC<AuditSandboxProps> = ({ onShowResult }) => {
         report = auditSkill(optimized);
       }
       onShowResult(report, optimized);
-    } catch (err: any) {
-      setErrorMsg(err.message || 'Optimization failed');
+    } catch (err: unknown) {
+      setErrorMsg(err instanceof Error ? err.message : 'Optimization failed');
     } finally {
       setIsLoading(false);
     }
