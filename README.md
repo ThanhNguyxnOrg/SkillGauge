@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="packages/web/public/logo.png" alt="SkillGauge logo" width="120" />
+</p>
+
 # 🏆 SkillGauge: Agent Skills Leaderboard & Scientific Auditor
 
 **SkillGauge** is an automated static auditing engine and leaderboard platform for agentic process instructions (such as Anthropic-style `SKILL.md` or `.agent/skills/` files). 
