@@ -9,11 +9,27 @@ on:
 permissions:
   contents: read
   pull-requests: write
+  issues: write
 
 jobs:
   verify:
+    name: verify
     runs-on: ubuntu-latest
+    outputs:
+      auto_merge_eligible: ${{ steps.eligibility.outputs.auto_merge_eligible }}
     steps:
+      - name: Mark PR as awaiting SkillGauge verification
+        if: startsWith(github.head_ref, 'contrib-') && github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          gh label create skill-verification-pending --repo "$GITHUB_REPOSITORY" --color FBCA04 --description "SkillGauge's domain-specific gate is running; the central Agent will defer PR handling." --force
+          gh label create automerge --repo "$GITHUB_REPOSITORY" --color 0E8A16 --description "Explicit opt-in for central Agent merge after all repository checks pass." --force
+          gh label create needs-review --repo "$GITHUB_REPOSITORY" --color D93F0B --description "Requires maintainer review; automatic merge is blocked." --force
+          gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label skill-verification-pending
+
       - name: 📁 Checkout Code
         uses: actions/checkout@v4
         with:
@@ -38,7 +54,7 @@ jobs:
         continue-on-error: true
         run: |
           node packages/cli/dist/index.js check-duplicate --target "skills/**/*.md" --db "leaderboard.json"
-          echo "exit_code=$?" >> $GITHUB_ENV
+          echo "exit_code=$?" >> "$GITHUB_ENV"
 
       - name: 🤖 Generate GitHub App Token
         if: env.exit_code == '2'
@@ -61,50 +77,89 @@ jobs:
           node packages/cli/dist/index.js audit "skills/**/*.md" --fail-under 0 --summary summary.md
 
       - name: 📤 Publish Step Summary
-        run: cat summary.md >> $GITHUB_STEP_SUMMARY
+        run: cat summary.md >> "$GITHUB_STEP_SUMMARY"
 
-      - name: 🤖 Generate Merge Token
-        if: env.exit_code == '0' && startsWith(github.head_ref, 'contrib-') && github.event.pull_request.head.repo.full_name == github.repository
-        id: merge-token
-        uses: actions/create-github-app-token@v3
-        with:
-          app-id: ${{ secrets.BOT_APP_ID }}
-          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
-
-      - name: ✅ Auto-Merge Gated Skill PRs
-        # All four gates must hold, else the PR waits for a human:
-        # 1. duplicate check clean (exit 0) 2. audit ran without crashing
-        # 3. source repo license allowlisted AND has a license file
-        # 4. fewer than 50 skill files, all under the claimed source dir
+      - name: Evaluate SkillGauge's specialized merge gates
+        id: eligibility
         if: env.exit_code == '0' && startsWith(github.head_ref, 'contrib-') && github.event.pull_request.head.repo.full_name == github.repository
         env:
-          GH_TOKEN: ${{ steps.merge-token.outputs.token }}
+          GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           set -euo pipefail
-          BODY=$(gh pr view "$PR_NUMBER" --json body --jq .body)
+          echo "auto_merge_eligible=false" >> "$GITHUB_OUTPUT"
+
+          BODY=$(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json body --jq .body)
           SRC=$(printf '%s' "$BODY" | grep -oP '\*\*Source Repository:\*\* \[\K[^]]+' | head -1 || true)
-          if [ -z "$SRC" ]; then echo "No source repo in body; leaving for human."; exit 0; fi
-          # Bind the body claim to actual content: every skill file must live
-          # under skills/<owner-repo-slug>/, else the claim is spoofed.
+          if [ -z "$SRC" ]; then
+            echo "No source repository supplied; leaving for human review."
+            exit 0
+          fi
+          if [[ ! "$SRC" =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ ]]; then
+            echo "Source repository is not a valid owner/repository pair; leaving for human review."
+            exit 0
+          fi
+
+          # Bind the source claim to actual content under skills/<owner-repo-slug>/.
           SLUG=$(printf '%s' "$SRC" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9_-]\+/-/g; s/^-\+//; s/-\+$//')
           LIC=$(gh api "repos/$SRC" --jq .license.spdx_id)
           FOUND_LICENSE=""
           for CAND in LICENSE LICENSE.md LICENSE.txt LICENCE COPYING; do
-            if gh api "repos/$SRC/contents/$CAND" --jq .sha > /dev/null 2>&1; then FOUND_LICENSE="$CAND"; break; fi
+            if gh api "repos/$SRC/contents/$CAND" --jq .sha > /dev/null 2>&1; then
+              FOUND_LICENSE="$CAND"
+              break
+            fi
           done
-          if [ -z "$FOUND_LICENSE" ]; then echo "No license file; leaving for human."; exit 0; fi
+          if [ -z "$FOUND_LICENSE" ]; then
+            echo "No license file found; leaving for human review."
+            exit 0
+          fi
           case "$LIC" in
             Apache-2.0|MIT|BSD-2-Clause|BSD-3-Clause) ;;
-            *) echo "License $LIC not allowlisted; leaving for human."; exit 0 ;;
+            *)
+              echo "License $LIC is not allowlisted; leaving for human review."
+              exit 0
+              ;;
           esac
-          FILES_JSON=$(gh pr view "$PR_NUMBER" --json files --jq '.files')
+
+          FILES_JSON=$(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json files --jq '.files')
           COUNT=$(printf '%s' "$FILES_JSON" | jq '[.[] | select(.path | startswith("skills/"))] | length')
           TOTAL=$(printf '%s' "$FILES_JSON" | jq 'length')
           MATCHED=$(printf '%s' "$FILES_JSON" | jq --arg d "skills/$SLUG/" '[.[] | select(.path | startswith($d))] | length')
           : "${COUNT:?}" "${TOTAL:?}" "${MATCHED:?}"
-          if [ "$COUNT" -ge 50 ] || [ "$COUNT" != "$TOTAL" ] || [ "$MATCHED" != "$COUNT" ]; then echo "Too big, touches non-skills files, or dir does not match claimed source; leaving for human."; exit 0; fi
-          gh pr merge "$PR_NUMBER" --squash --delete-branch
-          echo "Auto-merged PR #$PR_NUMBER ($SRC, $COUNT skills, $LIC)."
+          if [ "$COUNT" -ge 50 ] || [ "$COUNT" != "$TOTAL" ] || [ "$MATCHED" != "$COUNT" ]; then
+            echo "Too many files, non-skill files included, or source directory mismatch; leaving for human review."
+            exit 0
+          fi
 
+          echo "SkillGauge domain gates passed for $SRC ($COUNT files, $LIC)."
+          echo "auto_merge_eligible=true" >> "$GITHUB_OUTPUT"
 
+  handoff:
+    name: handoff-to-central-agent
+    needs: verify
+    if: always() && startsWith(github.head_ref, 'contrib-') && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Queue or hold the PR for the central Agent
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          VERIFY_RESULT: ${{ needs.verify.result }}
+          AUTO_MERGE_ELIGIBLE: ${{ needs.verify.outputs.auto_merge_eligible }}
+        run: |
+          set -euo pipefail
+          gh label create skill-verification-pending --repo "$GITHUB_REPOSITORY" --color FBCA04 --description "SkillGauge's domain-specific gate is running; the central Agent will defer PR handling." --force
+          gh label create automerge --repo "$GITHUB_REPOSITORY" --color 0E8A16 --description "Explicit opt-in for central Agent merge after all repository checks pass." --force
+          gh label create needs-review --repo "$GITHUB_REPOSITORY" --color D93F0B --description "Requires maintainer review; automatic merge is blocked." --force
+
+          if [ "$VERIFY_RESULT" = "success" ] && [ "$AUTO_MERGE_ELIGIBLE" = "true" ]; then
+            gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label skill-verification-pending --add-label automerge
+            echo "PR #$PR_NUMBER passed SkillGauge gates and is queued for the central Agent."
+          else
+            gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label skill-verification-pending --add-label needs-review
+            echo "PR #$PR_NUMBER did not satisfy every SkillGauge gate; central Agent will leave it for human review."
+          fi
