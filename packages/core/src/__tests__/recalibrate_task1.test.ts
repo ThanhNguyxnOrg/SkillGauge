@@ -1,6 +1,9 @@
 import { auditSkill } from '../engine.js';
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function loadSkill(rel: string): string {
   const p = path.resolve(__dirname, '..', '..', '..', '..', rel);
