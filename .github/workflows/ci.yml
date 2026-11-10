@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    uses: ThanhNguyxnOrg/.github/.github/workflows/ci-node.yml@5d251b08e6d0360e2eee2da4f792bd179d87ccc9
+    with:
+      job_name: Verify (SkillGauge)
+      node_version: "22"
+      package_manager: npm
+      cache: npm
+      cache_dependency_path: package-lock.json
+      test_command: npm test
+      build_command: >-
+        npm run build -w packages/core &&
+        npm run build -w packages/cli &&
+        npm run build -w packages/web
+      timeout_minutes: 30
