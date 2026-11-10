@@ -2,6 +2,9 @@ import { auditSkill } from '../engine.js';
 import { scoreH1, scoreH11, scoreH3, scoreH13, scoreH5, scoreH15 } from '../scorers/dimH.js';
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function gaming(): string {
   let s = `---\nname: gaming-test\ndescription: Gaming test skill with JSON YAML output format.\n---\n# Gaming Test\n`;
