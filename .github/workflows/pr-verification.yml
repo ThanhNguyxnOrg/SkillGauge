@@ -8,8 +8,6 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
-  issues: write
 
 jobs:
   verify:
@@ -18,10 +16,19 @@ jobs:
     outputs:
       auto_merge_eligible: ${{ steps.eligibility.outputs.auto_merge_eligible }}
     steps:
+      - name: Mint scoped ThanhNguyxnAgent token
+        id: agent
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        uses: ThanhNguyxnOrg/.github/.github/actions/agent-token@da9d02544f60aeec92f8c851846ee3a587044beb
+        with:
+          profile: issues
+          client-id: ${{ secrets.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+
       - name: Mark PR as awaiting SkillGauge verification
         if: startsWith(github.head_ref, 'contrib-') && github.event.pull_request.head.repo.full_name == github.repository
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.agent.outputs.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           set -euo pipefail
@@ -56,19 +63,10 @@ jobs:
           node packages/cli/dist/index.js check-duplicate --target "skills/**/*.md" --db "leaderboard.json"
           echo "exit_code=$?" >> "$GITHUB_ENV"
 
-      - name: 🤖 Generate GitHub App Token
-        if: env.exit_code == '2'
-        id: app-token
-        uses: ThanhNguyxnOrg/.github/.github/actions/agent-token@da9d02544f60aeec92f8c851846ee3a587044beb
-        with:
-          profile: issues
-          client-id: ${{ secrets.BOT_APP_ID }}
-          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
-
       - name: 🚨 Handle Duplicate PR
-        if: env.exit_code == '2'
+        if: env.exit_code == '2' && github.event.pull_request.head.repo.full_name == github.repository
         env:
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          GH_TOKEN: ${{ steps.agent.outputs.token }}
         run: |
           gh pr comment ${{ github.event.pull_request.number }} --body "🚨 **SkillGauge Audit Warning:** This skill matches an existing entry on the leaderboard. To prevent spam and plagiarized content, duplicate submissions are automatically rejected."
           exit 1
@@ -84,7 +82,7 @@ jobs:
         id: eligibility
         if: env.exit_code == '0' && startsWith(github.head_ref, 'contrib-') && github.event.pull_request.head.repo.full_name == github.repository
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.agent.outputs.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           set -euo pipefail
@@ -142,12 +140,19 @@ jobs:
     if: always() && startsWith(github.head_ref, 'contrib-') && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     permissions:
-      issues: write
-      pull-requests: write
+      contents: read
     steps:
+      - name: Mint scoped ThanhNguyxnAgent token
+        id: agent
+        uses: ThanhNguyxnOrg/.github/.github/actions/agent-token@da9d02544f60aeec92f8c851846ee3a587044beb
+        with:
+          profile: issues
+          client-id: ${{ secrets.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+
       - name: Queue or hold the PR for the central Agent
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.agent.outputs.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           VERIFY_RESULT: ${{ needs.verify.result }}
           AUTO_MERGE_ELIGIBLE: ${{ needs.verify.outputs.auto_merge_eligible }}
