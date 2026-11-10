@@ -1,6 +1,9 @@
 import { auditSkill, TIER_P90, TIER_P50 } from '../engine.js';
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const fx = (n: string) => fs.readFileSync(path.resolve(__dirname, 'fixtures', n), 'utf-8');
 
