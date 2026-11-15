@@ -19,10 +19,10 @@ jobs:
       - name: Mint scoped ThanhNguyxnAgent token
         id: agent
         if: github.event.pull_request.head.repo.full_name == github.repository
-        uses: ThanhNguyxnOrg/.github/.github/actions/agent-token@da9d02544f60aeec92f8c851846ee3a587044beb
+        uses: ThanhNguyxnOrg/.github/.github/actions/agent-token@2b5c5cad571ee93fd091e16e1734ebd819191e68
         with:
           profile: issues
-          client-id: ${{ secrets.BOT_APP_ID }}
+          app-id: ${{ vars.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
 
       - name: Mark PR as awaiting SkillGauge verification
@@ -147,7 +147,7 @@ jobs:
         uses: ThanhNguyxnOrg/.github/.github/actions/agent-token@da9d02544f60aeec92f8c851846ee3a587044beb
         with:
           profile: issues
-          client-id: ${{ secrets.BOT_APP_ID }}
+          app-id: ${{ vars.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
 
       - name: Queue or hold the PR for the central Agent
