@@ -33,8 +33,8 @@ jobs:
         run: |
           set -euo pipefail
           gh label create skill-verification-pending --repo "$GITHUB_REPOSITORY" --color FBCA04 --description "SkillGauge's domain-specific gate is running; the central Agent will defer PR handling." --force
-          gh label create automerge --repo "$GITHUB_REPOSITORY" --color 0E8A16 --description "Explicit opt-in for central Agent merge after all repository checks pass." --force
-          gh label create needs-review --repo "$GITHUB_REPOSITORY" --color D93F0B --description "Requires maintainer review; automatic merge is blocked." --force
+          gh label create automerge --repo "$GITHUB_REPOSITORY" --color 0E8A16 --description "SkillGauge verification passed; explicit opt-in for central Agent merge after required checks pass." --force
+          gh label create skill-verification-review --repo "$GITHUB_REPOSITORY" --color D93F0B --description "SkillGauge verification or contribution eligibility requires maintainer review." --force
           gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label skill-verification-pending
 
       - name: 📁 Checkout Code
@@ -159,13 +159,13 @@ jobs:
         run: |
           set -euo pipefail
           gh label create skill-verification-pending --repo "$GITHUB_REPOSITORY" --color FBCA04 --description "SkillGauge's domain-specific gate is running; the central Agent will defer PR handling." --force
-          gh label create automerge --repo "$GITHUB_REPOSITORY" --color 0E8A16 --description "Explicit opt-in for central Agent merge after all repository checks pass." --force
-          gh label create needs-review --repo "$GITHUB_REPOSITORY" --color D93F0B --description "Requires maintainer review; automatic merge is blocked." --force
+          gh label create automerge --repo "$GITHUB_REPOSITORY" --color 0E8A16 --description "SkillGauge verification passed; explicit opt-in for central Agent merge after required checks pass." --force
+          gh label create skill-verification-review --repo "$GITHUB_REPOSITORY" --color D93F0B --description "SkillGauge verification or contribution eligibility requires maintainer review." --force
 
           if [ "$VERIFY_RESULT" = "success" ] && [ "$AUTO_MERGE_ELIGIBLE" = "true" ]; then
-            gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label skill-verification-pending --add-label automerge
+            gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label skill-verification-pending --remove-label skill-verification-review --add-label automerge
             echo "PR #$PR_NUMBER passed SkillGauge gates and is queued for the central Agent."
           else
-            gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label skill-verification-pending --add-label needs-review
+            gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label skill-verification-pending --remove-label automerge --add-label skill-verification-review
             echo "PR #$PR_NUMBER did not satisfy every SkillGauge gate; central Agent will leave it for human review."
           fi
