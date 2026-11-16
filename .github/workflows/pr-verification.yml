@@ -177,7 +177,7 @@ jobs:
           gh label create skill-verification-review --repo "$GITHUB_REPOSITORY" --color D93F0B --description "SkillGauge verification or contribution eligibility requires maintainer review." --force
 
           if [ "$VERIFY_RESULT" = "success" ] && [ "$AUTO_MERGE_ELIGIBLE" = "true" ]; then
-            gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label skill-verification-pending --remove-label skill-verification-review --add-label automerge
+            gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label skill-verification-pending --remove-label skill-verification-review --remove-label needs-review --add-label automerge
             echo "PR #$PR_NUMBER passed SkillGauge gates and is queued for the central Agent."
           else
             gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label skill-verification-pending --remove-label automerge --add-label skill-verification-review
