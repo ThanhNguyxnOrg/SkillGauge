@@ -30,8 +30,14 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.agent.outputs.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           set -euo pipefail
+          CURRENT_SHA=$(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json headRefOid --jq .headRefOid)
+          if [ "$CURRENT_SHA" != "$HEAD_SHA" ]; then
+            echo "PR #$PR_NUMBER moved from $HEAD_SHA to $CURRENT_SHA before verification started; this stale run will not change labels."
+            exit 0
+          fi
           gh label create skill-verification-pending --repo "$GITHUB_REPOSITORY" --color FBCA04 --description "SkillGauge's domain-specific gate is running; the central Agent will defer PR handling." --force
           gh label create automerge --repo "$GITHUB_REPOSITORY" --color 0E8A16 --description "SkillGauge verification passed; explicit opt-in for central Agent merge after required checks pass." --force
           gh label create skill-verification-review --repo "$GITHUB_REPOSITORY" --color D93F0B --description "SkillGauge verification or contribution eligibility requires maintainer review." --force
