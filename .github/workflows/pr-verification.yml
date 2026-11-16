@@ -6,12 +6,6 @@ on:
     paths:
       - 'skills/**/*.md'
 
-# Serialize verification and handoff for each PR so an older result cannot
-# overwrite labels produced by a newer commit's verification run.
-concurrency:
-  group: skill-verification-${{ github.event.pull_request.number }}
-  cancel-in-progress: false
-
 permissions:
   contents: read
 
@@ -41,7 +35,8 @@ jobs:
           gh label create skill-verification-pending --repo "$GITHUB_REPOSITORY" --color FBCA04 --description "SkillGauge's domain-specific gate is running; the central Agent will defer PR handling." --force
           gh label create automerge --repo "$GITHUB_REPOSITORY" --color 0E8A16 --description "SkillGauge verification passed; explicit opt-in for central Agent merge after required checks pass." --force
           gh label create skill-verification-review --repo "$GITHUB_REPOSITORY" --color D93F0B --description "SkillGauge verification or contribution eligibility requires maintainer review." --force
-          gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label skill-verification-pending
+          # Clear the previous commit's opt-in before running this commit's domain checks.
+          gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label automerge --add-label skill-verification-pending
 
       - name: 📁 Checkout Code
         uses: actions/checkout@v4
@@ -160,10 +155,17 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.agent.outputs.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           VERIFY_RESULT: ${{ needs.verify.result }}
           AUTO_MERGE_ELIGIBLE: ${{ needs.verify.outputs.auto_merge_eligible }}
         run: |
           set -euo pipefail
+          CURRENT_SHA=$(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json headRefOid --jq .headRefOid)
+          if [ "$CURRENT_SHA" != "$HEAD_SHA" ]; then
+            echo "PR #$PR_NUMBER moved from $HEAD_SHA to $CURRENT_SHA during verification; this stale run will not change handoff labels."
+            exit 0
+          fi
+
           gh label create skill-verification-pending --repo "$GITHUB_REPOSITORY" --color FBCA04 --description "SkillGauge's domain-specific gate is running; the central Agent will defer PR handling." --force
           gh label create automerge --repo "$GITHUB_REPOSITORY" --color 0E8A16 --description "SkillGauge verification passed; explicit opt-in for central Agent merge after required checks pass." --force
           gh label create skill-verification-review --repo "$GITHUB_REPOSITORY" --color D93F0B --description "SkillGauge verification or contribution eligibility requires maintainer review." --force
