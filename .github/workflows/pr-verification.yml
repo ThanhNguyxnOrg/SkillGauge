@@ -6,6 +6,12 @@ on:
     paths:
       - 'skills/**/*.md'
 
+# Serialize verification and handoff for each PR so an older result cannot
+# overwrite labels produced by a newer commit's verification run.
+concurrency:
+  group: skill-verification-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
 permissions:
   contents: read
 
