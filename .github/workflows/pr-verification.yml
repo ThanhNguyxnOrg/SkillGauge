@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  statuses: write
 
 jobs:
   verify:
@@ -31,6 +32,7 @@ jobs:
           GH_TOKEN: ${{ steps.agent.outputs.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          STATUS_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           CURRENT_SHA=$(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json headRefOid --jq .headRefOid)
@@ -38,6 +40,7 @@ jobs:
             echo "PR #$PR_NUMBER moved from $HEAD_SHA to $CURRENT_SHA before verification started; this stale run will not change labels."
             exit 0
           fi
+          GH_TOKEN="$STATUS_TOKEN" gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$HEAD_SHA" -f state=pending -f context='skillgauge/verification' -f description='SkillGauge contribution eligibility is being verified for this exact commit.'
           gh label create skill-verification-pending --repo "$GITHUB_REPOSITORY" --color FBCA04 --description "SkillGauge's domain-specific gate is running; the central Agent will defer PR handling." --force
           gh label create automerge --repo "$GITHUB_REPOSITORY" --color 0E8A16 --description "SkillGauge verification passed; explicit opt-in for central Agent merge after required checks pass." --force
           gh label create skill-verification-review --repo "$GITHUB_REPOSITORY" --color D93F0B --description "SkillGauge verification or contribution eligibility requires maintainer review." --force
@@ -162,6 +165,7 @@ jobs:
           GH_TOKEN: ${{ steps.agent.outputs.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          STATUS_TOKEN: ${{ github.token }}
           VERIFY_RESULT: ${{ needs.verify.result }}
           AUTO_MERGE_ELIGIBLE: ${{ needs.verify.outputs.auto_merge_eligible }}
         run: |
@@ -177,9 +181,11 @@ jobs:
           gh label create skill-verification-review --repo "$GITHUB_REPOSITORY" --color D93F0B --description "SkillGauge verification or contribution eligibility requires maintainer review." --force
 
           if [ "$VERIFY_RESULT" = "success" ] && [ "$AUTO_MERGE_ELIGIBLE" = "true" ]; then
+            GH_TOKEN="$STATUS_TOKEN" gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$HEAD_SHA" -f state=success -f context='skillgauge/verification' -f description='SkillGauge domain and contribution-eligibility gates passed for this exact commit.'
             gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label skill-verification-pending --remove-label skill-verification-review --remove-label needs-review --add-label automerge
             echo "PR #$PR_NUMBER passed SkillGauge gates and is queued for the central Agent."
           else
+            GH_TOKEN="$STATUS_TOKEN" gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$HEAD_SHA" -f state=failure -f context='skillgauge/verification' -f description='SkillGauge domain or contribution-eligibility gates did not pass for this exact commit.'
             gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label skill-verification-pending --remove-label automerge --add-label skill-verification-review
             echo "PR #$PR_NUMBER did not satisfy every SkillGauge gate; central Agent will leave it for human review."
           fi
