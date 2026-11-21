@@ -1,12 +1,18 @@
+import { ParsedMarkdown } from '../types.js';
+
 /**
  * Dimension F: Operational & Inference Economy (15 Scorer Functions)
  */
 
+function getText(input: string | ParsedMarkdown): string {
+  return typeof input === 'string' ? input : input.bodyText;
+}
+
 /**
- * F1: Chain-of-Thought Loop Penalty
+ * F1: Chain-of-Thought Infinite Loop Penalty
  */
-export function scoreF1(text: string): number {
-  const cleanText = text.toLowerCase();
+export function scoreF1(input: string | ParsedMarkdown): number {
+  const cleanText = getText(input).toLowerCase();
   const loopTerms = cleanText.match(/\b(retry infinitely|loop back|repeat indefinitely|infinite loops?|recurse forever)\b/gi);
   const nLoop = loopTerms ? loopTerms.length : 0;
   return Math.max(0.1, 1.0 - 0.25 * nLoop);
@@ -15,120 +21,132 @@ export function scoreF1(text: string): number {
 /**
  * F2: Output Verbosity Control
  */
-export function scoreF2(text: string): number {
-  const verbosityPattern = /\b(be brief|succinct|short answers|limit verbosity|do not write prose|minimal output)\b/gi;
-  return verbosityPattern.test(text) ? 1.0 : 0.3;
+export function scoreF2(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(be brief|concise|succinct|short answers?|limit verbosity|do not write prose|minimal output|keep it short|terse|compact)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.45;
 }
 
 /**
- * F3: Token Pruning directives
+ * F3: Token & Context Pruning Directives
  */
-export function scoreF3(text: string): number {
-  const pruningPattern = /\b(remove filler|prune tokens|compact wording|token pruning|distill prompt)\b/gi;
-  return pruningPattern.test(text) ? 1.0 : 0.5;
+export function scoreF3(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(remove filler|prune|compact|distill|minimal|only read|avoid reading|don't read|targeted|focused)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
  * F4: Early Exit Criteria
  */
-export function scoreF4(text: string): number {
-  const earlyExitPattern = /\b(early exit|stop once found|exit when solved|terminate early|stop processing immediately)\b/gi;
-  return earlyExitPattern.test(text) ? 1.0 : 0.5;
+export function scoreF4(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(early exit|stop once|exit when|terminate early|stop immediately|short-circuit|return early|done when|completion criteria)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
- * F5: Query Cache Directives
+ * F5: Caching Directives
  */
-export function scoreF5(text: string): number {
-  const cachingPattern = /\b(caching|cache query|store calculation|query caching|cache hits?)\b/gi;
-  return cachingPattern.test(text) ? 1.0 : 0.5;
+export function scoreF5(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(caching|cache|memoize|memoization|ttl|etag|cache hit|invalidation)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
  * F6: Batching Directives
  */
-export function scoreF6(text: string): number {
-  const batchingPattern = /\b(batching|in batch|batch processing|process in groups|grouped items)\b/gi;
-  return batchingPattern.test(text) ? 1.0 : 0.5;
+export function scoreF6(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(batching|batch|in groups|bulk|combine|coalesce|single query|n\+1)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
  * F7: Context Compression Rules
  */
-export function scoreF7(text: string): number {
-  const compressionPattern = /\b(compress context|summarize history|context synthesis|reduce context history|summarize chat)\b/gi;
-  return compressionPattern.test(text) ? 1.0 : 0.5;
+export function scoreF7(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(compress|summarize|summary|synthesis|distill|condense|digest)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
  * F8: Computation Reuse
  */
-export function scoreF8(text: string): number {
-  const reusePattern = /\b(computation reuse|reuse calculations|share state|reuse intermediate|caching state)\b/gi;
-  return reusePattern.test(text) ? 1.0 : 0.5;
+export function scoreF8(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(reuse|reusable|share state|shared|deduplicate|avoid duplicate|already exists|helper)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
  * F9: Model Tier Routing
  */
-export function scoreF9(text: string): number {
-  const routingPattern = /\b(model routing|fallback model|cheap model|expensive model|smaller model|haiku|flash)\b/gi;
-  return routingPattern.test(text) ? 1.0 : 0.5;
+export function scoreF9(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(model routing|fallback model|cheap model|expensive model|smaller model|haiku|flash|lightweight|tier)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
- * F10: Redundant Thought Blocker
+ * F10: Redundant Work Blocker
  */
-export function scoreF10(text: string): number {
-  const thoughtBlockerPattern = /\b(thought blocker|avoid redundant reasoning|prune search space|stop reasoning|avoid repetition)\b/gi;
-  return thoughtBlockerPattern.test(text) ? 1.0 : 0.5;
+export function scoreF10(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(avoid redundant|prune search|avoid repetition|do not repeat|don't repeat|unnecessary|no-op|skip if)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
- * F11: Minimalist Representation
- * Upgraded logic: Checks for loop/recursion exit constraints in reasoning/correction steps.
+ * F11: Bounded Iteration & Structured Representation
  */
-export function scoreF11(text: string): number {
-  const cleanText = text.toLowerCase();
-  
-  const hasLoopLimit = /\b(max attempts|max retries|up to \d+ times|limit your corrections|exit loop|stop refining)\b/i.test(cleanText);
-  const hasExitCondition = /\b(if satisfied|once corrected|stop if|exit condition|until successful)\b/i.test(cleanText);
-  
+export function scoreF11(input: string | ParsedMarkdown): number {
+  const cleanText = getText(input).toLowerCase();
+
+  const hasLoopLimit = /\b(max attempts?|max retries|up to \d+ times|limit your|exit loop|stop refining|bounded)\b/i.test(cleanText);
+  const hasExitCondition = /\b(if satisfied|once corrected|stop if|exit condition|until successful|when passing|when green)\b/i.test(cleanText);
+
   if (hasLoopLimit && hasExitCondition) return 1.0;
-  if (hasLoopLimit || hasExitCondition) return 0.6;
-  
-  const minimalistPattern = /\b(minimalist|markdown table|bullet list|no prose|concise structure)\b/gi;
-  return minimalistPattern.test(text) ? 0.5 : 0.3;
+  if (hasLoopLimit || hasExitCondition) return 0.75;
+
+  const minimalistPattern = /\b(minimalist|markdown table|bullet list|no prose|concise|structured|checklist)\b/gi;
+  return minimalistPattern.test(cleanText) ? 0.65 : 0.45;
 }
 
 /**
- * F12: Inline Formatting Pruning
+ * F12: Formatting Discipline
  */
-export function scoreF12(text: string): number {
-  const formattingPattern = /\b(formatting restrictions|no bolding|restrict markdown styling|plain text output|no formatting)\b/gi;
-  return formattingPattern.test(text) ? 1.0 : 0.6;
+export function scoreF12(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(formatting|plain text|no markdown|valid json|strict format|exact format|table|code block|template)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.6;
 }
 
 /**
- * F13: Vocabulary Simplification
+ * F13: Clarity & Simplicity Guidelines
  */
-export function scoreF13(text: string): number {
-  const vocabPattern = /\b(simplified vocabulary|avoid complex words|common terminology|simple verbs|plain english)\b/gi;
-  return vocabPattern.test(text) ? 1.0 : 0.5;
+export function scoreF13(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(simple|simplif|plain english|clear|readable|explicit|direct|straightforward|yagni|minimal)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
- * F14: Non-Interactive Mode Directives
+ * F14: Non-Interactive / Automation Directives
  */
-export function scoreF14(text: string): number {
-  const nonInteractivePattern = /\b(non-interactive|batch mode|unattended execution|no confirmation|automated run)\b/gi;
-  return nonInteractivePattern.test(text) ? 1.0 : 0.5;
+export function scoreF14(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(non-interactive|batch mode|unattended|automated|ci\/cd|headless|--yes|-y|scriptable|deterministic)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
- * F15: Lazy Evaluation Guidelines
+ * F15: Lazy / On-Demand Loading Guidelines
  */
-export function scoreF15(text: string): number {
-  const lazyEvalPattern = /\b(lazy evaluation|postpone calculation|evaluate on demand|defer execution|lazy load)\b/gi;
-  return lazyEvalPattern.test(text) ? 1.0 : 0.5;
+export function scoreF15(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(lazy|on demand|on-demand|defer|only when needed|as needed|incremental|progressive)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }

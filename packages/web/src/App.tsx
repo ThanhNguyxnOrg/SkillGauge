@@ -96,7 +96,7 @@ function App() {
             Optimize Your Agent <span>Skills & Prompts</span>
           </h1>
           <p className="hero-subtitle">
-            A static analysis suite and community leaderboard testing process instructions against 390 static signals. Scores are linter references, not task-success measures.
+            A static analysis suite and community leaderboard testing process instructions against 105 weighted static signals across 7 dimensions with anti-gaming checks. Scores are linter references, not task-success measures.
           </p>
         </section>
 

@@ -6,32 +6,26 @@ import * as dimD from './scorers/dimD.js';
 import * as dimE from './scorers/dimE.js';
 import * as dimF from './scorers/dimF.js';
 import * as dimG from './scorers/dimG.js';
-import * as dimH from './scorers/dimH.js';
-import * as dimI from './scorers/dimI.js';
-import * as dimJ from './scorers/dimJ.js';
-import * as dimK from './scorers/dimK.js';
-import * as dimL from './scorers/dimL.js';
-import * as dimM from './scorers/dimM.js';
-import * as dimN from './scorers/dimN.js';
-import * as dimO from './scorers/dimO.js';
-import * as dimP from './scorers/dimP.js';
-import * as dimQ from './scorers/dimQ.js';
-import * as dimR from './scorers/dimR.js';
-import * as dimS from './scorers/dimS.js';
-import * as dimT from './scorers/dimT.js';
-import * as dimU from './scorers/dimU.js';
-import * as dimV from './scorers/dimV.js';
-import * as dimW from './scorers/dimW.js';
-import * as dimX from './scorers/dimX.js';
-import * as dimY from './scorers/dimY.js';
-import * as dimZ from './scorers/dimZ.js';
+import { evaluateAntiGaming, AntiGamingResult } from './scorers/antiGaming.js';
 
-// Percentile tiers from 411-skill distribution on 2026-10-10 after density-neutral
-// (min 38.01, P50 41.55, P90 44.65, max 48.01). Single source of truth; packageEngine
-// imports these. Recompute via re-audit-all when the population changes.
-// shortcut: absolute 85/60 was unreachable (ceiling ~40 pre-dedup).
-export const TIER_P90 = 44.65;
-export const TIER_P50 = 41.55;
+// Weighted 7-dimension static scoring (sum = 1.00).
+// Every dimension is normalized to [0, 1] (dimScore / 15) before weighting.
+export const DIMENSION_WEIGHTS = {
+  dimA: 0.22, // Instruction Quality & Clarity
+  dimB: 0.16, // Context & Memory Management
+  dimC: 0.14, // Safety, Alignment & Security
+  dimD: 0.10, // Tool-Use & MCP Clarity
+  dimE: 0.14, // Robustness & Exception Handling
+  dimF: 0.10, // Operational & Inference Economy
+  dimG: 0.14, // Syntax, Structure & Metadata
+} as const;
+
+// Percentile tiers calibrated from the live 630-skill corpus under v2 weighted 7-dim engine
+// (min 65.24, P50 80.35, P90 86.65, max 92.89). Single source of truth; packageEngine imports these.
+export const TIER_P90 = 86.65;
+export const TIER_P50 = 80.35;
+
+export const DIM_FAIL_BAR = 9.0; // 60% of 15.0
 
 export interface AuditReport {
   name?: string;
@@ -48,118 +42,117 @@ export interface AuditReport {
     [key: string]: number;
   };
   scores: { [key: string]: number };
+  antiGaming?: AntiGamingResult;
   explanation?: string;
 }
 
 export function auditSkill(content: string): AuditReport {
   const parsed = parseMarkdown(content);
-  const text = parsed.rawText;
-
   const scores: { [key: string]: number } = {};
 
-  // Dimension A: Quality & Clarity (15)
-  scores['A1'] = dimA.scoreA1(text);
-  scores['A2'] = dimA.scoreA2(text);
-  scores['A3'] = dimA.scoreA3(text);
-  scores['A4'] = dimA.scoreA4(text);
-  scores['A5'] = dimA.scoreA5(text);
-  scores['A6'] = dimA.scoreA6(text);
-  scores['A7'] = dimA.scoreA7(text);
-  scores['A8'] = dimA.scoreA8(text);
-  scores['A9'] = dimA.scoreA9(text);
-  scores['A10'] = dimA.scoreA10(text);
-  scores['A11'] = dimA.scoreA11(text);
-  scores['A12'] = dimA.scoreA12(text);
-  scores['A13'] = dimA.scoreA13(text);
-  scores['A14'] = dimA.scoreA14(text);
-  scores['A15'] = dimA.scoreA15(text);
+  // Dimension A: Instruction Quality & Clarity (15)
+  scores['A1'] = dimA.scoreA1(parsed);
+  scores['A2'] = dimA.scoreA2(parsed);
+  scores['A3'] = dimA.scoreA3(parsed);
+  scores['A4'] = dimA.scoreA4(parsed);
+  scores['A5'] = dimA.scoreA5(parsed);
+  scores['A6'] = dimA.scoreA6(parsed);
+  scores['A7'] = dimA.scoreA7(parsed);
+  scores['A8'] = dimA.scoreA8(parsed);
+  scores['A9'] = dimA.scoreA9(parsed);
+  scores['A10'] = dimA.scoreA10(parsed);
+  scores['A11'] = dimA.scoreA11(parsed);
+  scores['A12'] = dimA.scoreA12(parsed);
+  scores['A13'] = dimA.scoreA13(parsed);
+  scores['A14'] = dimA.scoreA14(parsed);
+  scores['A15'] = dimA.scoreA15(parsed);
 
-  // Dimension B: Context & Memory (15)
-  scores['B1'] = dimB.scoreB1(text);
-  scores['B2'] = dimB.scoreB2(text);
-  scores['B3'] = dimB.scoreB3(text);
+  // Dimension B: Context & Memory Management (15)
+  scores['B1'] = dimB.scoreB1(parsed);
+  scores['B2'] = dimB.scoreB2(parsed);
+  scores['B3'] = dimB.scoreB3(parsed);
   scores['B4'] = dimB.scoreB4(parsed);
-  scores['B5'] = dimB.scoreB5(text);
-  scores['B6'] = dimB.scoreB6(text);
-  scores['B7'] = dimB.scoreB7(text);
-  scores['B8'] = dimB.scoreB8(text);
-  scores['B9'] = dimB.scoreB9(text);
-  scores['B10'] = dimB.scoreB10(text);
-  scores['B11'] = dimB.scoreB11(text);
-  scores['B12'] = dimB.scoreB12(text);
-  scores['B13'] = dimB.scoreB13(text);
-  scores['B14'] = dimB.scoreB14(text);
-  scores['B15'] = dimB.scoreB15(text);
+  scores['B5'] = dimB.scoreB5(parsed);
+  scores['B6'] = dimB.scoreB6(parsed);
+  scores['B7'] = dimB.scoreB7(parsed);
+  scores['B8'] = dimB.scoreB8(parsed);
+  scores['B9'] = dimB.scoreB9(parsed);
+  scores['B10'] = dimB.scoreB10(parsed);
+  scores['B11'] = dimB.scoreB11(parsed);
+  scores['B12'] = dimB.scoreB12(parsed);
+  scores['B13'] = dimB.scoreB13(parsed);
+  scores['B14'] = dimB.scoreB14(parsed);
+  scores['B15'] = dimB.scoreB15(parsed);
 
-  // Dimension C: Safety & Alignment (15)
-  scores['C1'] = dimC.scoreC1(text);
-  scores['C2'] = dimC.scoreC2(text);
-  scores['C3'] = dimC.scoreC3(text);
-  scores['C4'] = dimC.scoreC4(text);
-  scores['C5'] = dimC.scoreC5(text);
-  scores['C6'] = dimC.scoreC6(text);
-  scores['C7'] = dimC.scoreC7(text);
-  scores['C8'] = dimC.scoreC8(text);
-  scores['C9'] = dimC.scoreC9(text);
-  scores['C10'] = dimC.scoreC10(text);
-  scores['C11'] = dimC.scoreC11(text);
-  scores['C12'] = dimC.scoreC12(text);
-  scores['C13'] = dimC.scoreC13(text);
-  scores['C14'] = dimC.scoreC14(text);
-  scores['C15'] = dimC.scoreC15(text);
+  // Dimension C: Safety, Alignment & Security (15)
+  scores['C1'] = dimC.scoreC1(parsed);
+  scores['C2'] = dimC.scoreC2(parsed);
+  scores['C3'] = dimC.scoreC3(parsed);
+  scores['C4'] = dimC.scoreC4(parsed);
+  scores['C5'] = dimC.scoreC5(parsed);
+  scores['C6'] = dimC.scoreC6(parsed);
+  scores['C7'] = dimC.scoreC7(parsed);
+  scores['C8'] = dimC.scoreC8(parsed);
+  scores['C9'] = dimC.scoreC9(parsed);
+  scores['C10'] = dimC.scoreC10(parsed);
+  scores['C11'] = dimC.scoreC11(parsed);
+  scores['C12'] = dimC.scoreC12(parsed);
+  scores['C13'] = dimC.scoreC13(parsed);
+  scores['C14'] = dimC.scoreC14(parsed);
+  scores['C15'] = dimC.scoreC15(parsed);
 
-  // Dimension D: Tool-Use & MCP (15)
-  scores['D1'] = dimD.scoreD1(text);
-  scores['D2'] = dimD.scoreD2(text);
-  scores['D3'] = dimD.scoreD3(text);
-  scores['D4'] = dimD.scoreD4(text);
-  scores['D5'] = dimD.scoreD5(text);
-  scores['D6'] = dimD.scoreD6(text);
-  scores['D7'] = dimD.scoreD7(text);
-  scores['D8'] = dimD.scoreD8(text);
-  scores['D9'] = dimD.scoreD9(text);
-  scores['D10'] = dimD.scoreD10(text);
-  scores['D11'] = dimD.scoreD11(text);
-  scores['D12'] = dimD.scoreD12(text);
-  scores['D13'] = dimD.scoreD13(text);
-  scores['D14'] = dimD.scoreD14(text);
-  scores['D15'] = dimD.scoreD15(text);
+  // Dimension D: Tool-Use & MCP Clarity (15)
+  scores['D1'] = dimD.scoreD1(parsed);
+  scores['D2'] = dimD.scoreD2(parsed);
+  scores['D3'] = dimD.scoreD3(parsed);
+  scores['D4'] = dimD.scoreD4(parsed);
+  scores['D5'] = dimD.scoreD5(parsed);
+  scores['D6'] = dimD.scoreD6(parsed);
+  scores['D7'] = dimD.scoreD7(parsed);
+  scores['D8'] = dimD.scoreD8(parsed);
+  scores['D9'] = dimD.scoreD9(parsed);
+  scores['D10'] = dimD.scoreD10(parsed);
+  scores['D11'] = dimD.scoreD11(parsed);
+  scores['D12'] = dimD.scoreD12(parsed);
+  scores['D13'] = dimD.scoreD13(parsed);
+  scores['D14'] = dimD.scoreD14(parsed);
+  scores['D15'] = dimD.scoreD15(parsed);
 
-  // Dimension E: Robustness (15)
-  scores['E1'] = dimE.scoreE1(text);
-  scores['E2'] = dimE.scoreE2(text);
-  scores['E3'] = dimE.scoreE3(text);
-  scores['E4'] = dimE.scoreE4(text);
-  scores['E5'] = dimE.scoreE5(text);
-  scores['E6'] = dimE.scoreE6(text);
-  scores['E7'] = dimE.scoreE7(text);
-  scores['E8'] = dimE.scoreE8(text);
-  scores['E9'] = dimE.scoreE9(text);
-  scores['E10'] = dimE.scoreE10(text);
-  scores['E11'] = dimE.scoreE11(text);
-  scores['E12'] = dimE.scoreE12(text);
-  scores['E13'] = dimE.scoreE13(text);
-  scores['E14'] = dimE.scoreE14(text);
-  scores['E15'] = dimE.scoreE15(text);
+  // Dimension E: Robustness & Exception Handling (15)
+  scores['E1'] = dimE.scoreE1(parsed);
+  scores['E2'] = dimE.scoreE2(parsed);
+  scores['E3'] = dimE.scoreE3(parsed);
+  scores['E4'] = dimE.scoreE4(parsed);
+  scores['E5'] = dimE.scoreE5(parsed);
+  scores['E6'] = dimE.scoreE6(parsed);
+  scores['E7'] = dimE.scoreE7(parsed);
+  scores['E8'] = dimE.scoreE8(parsed);
+  scores['E9'] = dimE.scoreE9(parsed);
+  scores['E10'] = dimE.scoreE10(parsed);
+  scores['E11'] = dimE.scoreE11(parsed);
+  scores['E12'] = dimE.scoreE12(parsed);
+  scores['E13'] = dimE.scoreE13(parsed);
+  scores['E14'] = dimE.scoreE14(parsed);
+  scores['E15'] = dimE.scoreE15(parsed);
 
-  // Dimension F: Economy (15)
-  scores['F1'] = dimF.scoreF1(text);
-  scores['F2'] = dimF.scoreF2(text);
-  scores['F3'] = dimF.scoreF3(text);
-  scores['F4'] = dimF.scoreF4(text);
-  scores['F5'] = dimF.scoreF5(text);
-  scores['F6'] = dimF.scoreF6(text);
-  scores['F7'] = dimF.scoreF7(text);
-  scores['F8'] = dimF.scoreF8(text);
-  scores['F9'] = dimF.scoreF9(text);
-  scores['F10'] = dimF.scoreF10(text);
-  scores['F11'] = dimF.scoreF11(text);
-  scores['F12'] = dimF.scoreF12(text);
-  scores['F13'] = dimF.scoreF13(text);
-  scores['F14'] = dimF.scoreF14(text);
-  scores['F15'] = dimF.scoreF15(text);
+  // Dimension F: Operational & Inference Economy (15)
+  scores['F1'] = dimF.scoreF1(parsed);
+  scores['F2'] = dimF.scoreF2(parsed);
+  scores['F3'] = dimF.scoreF3(parsed);
+  scores['F4'] = dimF.scoreF4(parsed);
+  scores['F5'] = dimF.scoreF5(parsed);
+  scores['F6'] = dimF.scoreF6(parsed);
+  scores['F7'] = dimF.scoreF7(parsed);
+  scores['F8'] = dimF.scoreF8(parsed);
+  scores['F9'] = dimF.scoreF9(parsed);
+  scores['F10'] = dimF.scoreF10(parsed);
+  scores['F11'] = dimF.scoreF11(parsed);
+  scores['F12'] = dimF.scoreF12(parsed);
+  scores['F13'] = dimF.scoreF13(parsed);
+  scores['F14'] = dimF.scoreF14(parsed);
+  scores['F15'] = dimF.scoreF15(parsed);
 
-  // Dimension G: Structure & Syntax (15)
+  // Dimension G: Syntax, Structure & Metadata (15)
   scores['G1'] = dimG.scoreG1(parsed);
   scores['G2'] = dimG.scoreG2(parsed);
   scores['G3'] = dimG.scoreG3(parsed);
@@ -176,58 +169,43 @@ export function auditSkill(content: string): AuditReport {
   scores['G14'] = dimG.scoreG14(parsed);
   scores['G15'] = dimG.scoreG15(parsed);
 
-  // Dimensions H to Z (19 dimensions, 15 metrics each = 285 metrics)
-  const dimScorers: Record<string, any> = {
-    H: dimH, I: dimI, J: dimJ, K: dimK, L: dimL, M: dimM,
-    N: dimN, O: dimO, P: dimP, Q: dimQ, R: dimR, S: dimS,
-    T: dimT, U: dimU, V: dimV, W: dimW, X: dimX, Y: dimY, Z: dimZ
-  };
-  const letters = ['H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-  for (const letter of letters) {
-    for (let idx = 1; idx <= 15; idx++) {
-      const code = `${letter}${idx}`;
-      const fnName = `score${code}`;
-      scores[code] = dimScorers[letter][fnName](text);
-    }
-  }
-
-  // Compute Dimension Sums
-  const dimAMetrics = ['A1','A2','A3','A4','A5','A6','A7','A8','A9','A10','A11','A12','A13','A14','A15'];
-  const dimBMetrics = ['B1','B2','B3','B4','B5','B6','B7','B8','B9','B10','B11','B12','B13','B14','B15'];
-  const dimCMetrics = ['C1','C2','C3','C4','C5','C6','C7','C8','C9','C10','C11','C12','C13','C14','C15'];
-  const dimDMetrics = ['D1','D2','D3','D4','D5','D6','D7','D8','D9','D10','D11','D12','D13','D14','D15'];
-  const dimEMetrics = ['E1','E2','E3','E4','E5','E6','E7','E8','E9','E10','E11','E12','E13','E14','E15'];
-  const dimFMetrics = ['F1','F2','F3','F4','F5','F6','F7','F8','F9','F10','F11','F12','F13','F14','F15'];
-  const dimGMetrics = ['G1','G2','G3','G4','G5','G6','G7','G8','G9','G10','G11','G12','G13','G14','G15'];
-
-  const getSum = (keys: string[]) => keys.reduce((acc, k) => acc + scores[k], 0);
-
-  const dimensions: any = {
-    dimA: getSum(dimAMetrics),
-    dimB: getSum(dimBMetrics),
-    dimC: getSum(dimCMetrics),
-    dimD: getSum(dimDMetrics),
-    dimE: getSum(dimEMetrics),
-    dimF: getSum(dimFMetrics),
-    dimG: getSum(dimGMetrics)
+  const sumDim = (prefix: string) => {
+    let total = 0;
+    for (let i = 1; i <= 15; i++) total += scores[`${prefix}${i}`];
+    return total;
   };
 
-  // Compute H to Z sums
-  const lettersForSum = ['H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-  for (const letter of lettersForSum) {
-    const keys = Array.from({ length: 15 }, (_, i) => `${letter}${i + 1}`);
-    dimensions[`dim${letter}`] = getSum(keys);
-  }
+  const dimensions = {
+    dimA: sumDim('A'),
+    dimB: sumDim('B'),
+    dimC: sumDim('C'),
+    dimD: sumDim('D'),
+    dimE: sumDim('E'),
+    dimF: sumDim('F'),
+    dimG: sumDim('G'),
+  };
 
-  // Compute Overall Score as the Sum of all 390 scores (normalized to 100 max)
-  const allMetricKeys = Object.keys(scores);
-  let scoreSum = 0;
-  for (const k of allMetricKeys) {
-    scoreSum += scores[k];
-  }
-  const overallScore = (scoreSum / 390.0) * 100.0;
+  // Weighted 0..100 score across the 7 real dimensions
+  const weightedRaw = (
+    (dimensions.dimA / 15.0) * DIMENSION_WEIGHTS.dimA +
+    (dimensions.dimB / 15.0) * DIMENSION_WEIGHTS.dimB +
+    (dimensions.dimC / 15.0) * DIMENSION_WEIGHTS.dimC +
+    (dimensions.dimD / 15.0) * DIMENSION_WEIGHTS.dimD +
+    (dimensions.dimE / 15.0) * DIMENSION_WEIGHTS.dimE +
+    (dimensions.dimF / 15.0) * DIMENSION_WEIGHTS.dimF +
+    (dimensions.dimG / 15.0) * DIMENSION_WEIGHTS.dimG
+  ) * 100.0;
 
-  // Map raw signals under b*_raw names; old names kept as deprecated aliases for 1 release (web bundle reads them).
+  // Static anti-gaming & naturalness multiplier
+  const antiGaming = evaluateAntiGaming(parsed);
+  const overallScore = Math.max(0.0, Math.min(100.0, weightedRaw * antiGaming.multiplier));
+
+  // Diagnostic & backward-compatible aliases
+  scores['antiGaming'] = antiGaming.multiplier;
+  scores['stuffingScore'] = antiGaming.stuffingScore;
+  scores['coherenceScore'] = antiGaming.coherenceScore;
+  scores['structureScore'] = antiGaming.structureScore;
+
   scores['b1_raw'] = scores['B1'];
   scores['b4_raw'] = scores['B4'];
   scores['b11_raw'] = scores['B11'];
@@ -247,7 +225,6 @@ export function auditSkill(content: string): AuditReport {
   scores['variableSafety'] = scores['B10'];
   scores['exampleRatio'] = scores['B6'];
 
-  // Percentile tiers (TIER_P90/TIER_P50 module constants, single source of truth).
   let tier: 'Tier 1' | 'Tier 2' | 'Tier 3' = 'Tier 3';
   if (overallScore >= TIER_P90) {
     tier = 'Tier 1';
@@ -255,39 +232,23 @@ export function auditSkill(content: string): AuditReport {
     tier = 'Tier 2';
   }
 
-  // Single 70% bar for all dims (10.5/15); old C<7.5/E<9.0 bars were arbitrary.
   const failedDims: string[] = [];
-  if (dimensions.dimA < 10.5) failedDims.push('A');
-  if (dimensions.dimB < 10.5) failedDims.push('B');
-  if (dimensions.dimC < 10.5) failedDims.push('C');
-  if (dimensions.dimD < 10.5) failedDims.push('D');
-  if (dimensions.dimE < 10.5) failedDims.push('E');
-  if (dimensions.dimF < 10.5) failedDims.push('F');
-  if (dimensions.dimG < 10.5) failedDims.push('G');
-  if (dimensions.dimH < 10.5) failedDims.push('H');
-  if (dimensions.dimI < 10.5) failedDims.push('I');
-  if (dimensions.dimJ < 10.5) failedDims.push('J');
-  if (dimensions.dimK < 10.5) failedDims.push('K');
-  if (dimensions.dimL < 10.5) failedDims.push('L');
-  if (dimensions.dimM < 10.5) failedDims.push('M');
-  if (dimensions.dimN < 10.5) failedDims.push('N');
-  if (dimensions.dimO < 10.5) failedDims.push('O');
-  if (dimensions.dimP < 10.5) failedDims.push('P');
-  if (dimensions.dimQ < 10.5) failedDims.push('Q');
-  if (dimensions.dimR < 10.5) failedDims.push('R');
-  if (dimensions.dimS < 10.5) failedDims.push('S');
-  if (dimensions.dimT < 10.5) failedDims.push('T');
-  if (dimensions.dimU < 10.5) failedDims.push('U');
-  if (dimensions.dimV < 10.5) failedDims.push('V');
-  if (dimensions.dimW < 10.5) failedDims.push('W');
-  if (dimensions.dimX < 10.5) failedDims.push('X');
-  if (dimensions.dimY < 10.5) failedDims.push('Y');
-  if (dimensions.dimZ < 10.5) failedDims.push('Z');
+  if (dimensions.dimA < DIM_FAIL_BAR) failedDims.push('A');
+  if (dimensions.dimB < DIM_FAIL_BAR) failedDims.push('B');
+  if (dimensions.dimC < DIM_FAIL_BAR) failedDims.push('C');
+  if (dimensions.dimD < DIM_FAIL_BAR) failedDims.push('D');
+  if (dimensions.dimE < DIM_FAIL_BAR) failedDims.push('E');
+  if (dimensions.dimF < DIM_FAIL_BAR) failedDims.push('F');
+  if (dimensions.dimG < DIM_FAIL_BAR) failedDims.push('G');
 
-  let explanation = 'Passes quality specifications.';
+  const notes: string[] = [];
   if (failedDims.length > 0) {
-    explanation = `Needs improvements in: ${failedDims.join(', ')}.`;
+    notes.push(`Needs improvements in: ${failedDims.join(', ')}.`);
   }
+  if (antiGaming.flags.length > 0) {
+    notes.push(`Integrity alerts (×${antiGaming.multiplier.toFixed(2)}): ${antiGaming.flags.join('; ')}.`);
+  }
+  const explanation = notes.length > 0 ? notes.join(' ') : 'Passes quality specifications.';
 
   return {
     name: parsed.metadata?.name ? String(parsed.metadata.name) : undefined,
@@ -295,6 +256,7 @@ export function auditSkill(content: string): AuditReport {
     tier,
     dimensions,
     scores,
+    antiGaming,
     explanation
   };
 }
@@ -357,7 +319,6 @@ ${content}
     const semanticMultiplier = coherence * depth * gamingScore;
     const newOverallScore = baseReport.overallScore * semanticMultiplier;
 
-    // Same percentile tiers as static path (module constants); multiplier disclosed in explanation below.
     let tier: 'Tier 1' | 'Tier 2' | 'Tier 3' = 'Tier 3';
     if (newOverallScore >= TIER_P90) {
       tier = 'Tier 1';
@@ -378,4 +339,3 @@ ${content}
     };
   }
 }
-

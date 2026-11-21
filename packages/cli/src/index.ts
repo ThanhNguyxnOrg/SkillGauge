@@ -130,7 +130,7 @@ program
   .option('-f, --format <format>', 'Output format: json, pretty', 'pretty')
   .option('--fail-under <tier>', 'Exit status fails (non-zero) if tier is below given value (1, 2, or 3)', '0')
   .option('--summary <file>', 'Path to write a markdown summary report (great for GitHub Step Summary)')
-  .option('-v, --verbose', 'Verbose mode: outputs all 390 raw static signals')
+  .option('-v, --verbose', 'Verbose mode: outputs all 105 static signals + anti-gaming diagnostics')
   .option('--llm', 'Opt in to Gemini LLM rescoring (disclosed multiplier; default off, static only)')
   .action(async (target, options) => {
     let tempDirToDelete: string | undefined;
@@ -281,9 +281,12 @@ program
             console.log(`  Dim E: Robustness & Exception Handling: ${report.dimensions.dimE.toFixed(2)} / 15.00`);
             console.log(`  Dim F: Operational & Inference Economy: ${report.dimensions.dimF.toFixed(2)} / 15.00`);
             console.log(`  Dim G: Syntax, Structure & Metadata:    ${report.dimensions.dimG.toFixed(2)} / 15.00`);
+            if (report.antiGaming) {
+              console.log(`  Anti-Gaming Integrity Multiplier:       ×${report.antiGaming.multiplier.toFixed(2)}`);
+            }
             
             if (options.verbose) {
-              console.log('\nIndividual 390 raw static signals:');
+              console.log('\nIndividual 105 static signals + diagnostics:');
               const sortedKeys = Object.keys(report.scores).sort();
               for (const key of sortedKeys) {
                 console.log(`  ${key}: ${report.scores[key].toFixed(2)}`);

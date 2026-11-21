@@ -51,7 +51,7 @@ Performs a structural and semantic audit on files, folders, or remote Git reposi
 *   `-f, --format <format>`: Determines output formatting. Available values: `pretty` (human-readable reports) or `json` (ideal for piping to other tools). Default is `pretty`.
 *   `--fail-under <tier>`: Exit with a non-zero exit code if the graded quality tier is below the target (e.g., set to `2` to fail builds if a skill falls to `Tier 3`). Default is `0` (never fail based on score).
 *   `--summary <file>`: Writes a structured markdown summary report of the audited target. Frequently used to populate GitHub `GITHUB_STEP_SUMMARY`.
-*   `-v, --verbose`: Verbose output. Prints the raw scores (out of 1.0) for all 100 scientific criteria individually.
+*   `-v, --verbose`: Verbose output. Prints the raw scores (out of 1.0) for all 105 static signals and anti-gaming integrity diagnostics.
 
 #### Command Examples:
 

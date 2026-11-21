@@ -1,143 +1,159 @@
+import { ParsedMarkdown } from '../types.js';
+
 /**
  * Dimension C: Safety, Alignment & Security (15 Scorer Functions)
  */
 
+function getText(input: string | ParsedMarkdown): string {
+  return typeof input === 'string' ? input : input.bodyText;
+}
+
 /**
- * C1: Prompt Injection Shield
- * Upgraded logic: Verify if prompt isolates user input via boundary delimiters
- * and defines instructions to ignore content inside these boundaries.
+ * C1: Prompt Injection & Untrusted Input Shield
  */
-export function scoreC1(text: string): number {
+export function scoreC1(input: string | ParsedMarkdown): number {
+  const text = getText(input);
   const cleanText = text.toLowerCase();
-  
-  const hasDelimiters = /("""|```|<[a-zA-Z0-9_\-]+>)/i.test(cleanText);
-  const hasIsolationDirective = /\b(ignore instructions|treat as raw|untrusted|data only|ignore system commands|not instructions)\b/i.test(cleanText);
-  
+
+  const hasDelimiters = /("""|```|<[a-z][a-zA-Z0-9_\-]*>)/i.test(cleanText);
+  const hasIsolationDirective = /\b(ignore instructions|treat as raw|untrusted|data only|ignore system commands|not instructions|prompt injection|untrusted input|user-supplied|external input)\b/i.test(cleanText);
+
   if (hasDelimiters && hasIsolationDirective) return 1.0;
-  if (hasDelimiters || hasIsolationDirective) return 0.5;
-  
-  const injectionPattern = /\b(ignore user override|ignore instructions to override|do not let user modify|override protection|adversarial inputs)\b/gi;
-  return injectionPattern.test(text) ? 0.3 : 0.0;
+  if (hasIsolationDirective) return 0.8;
+  if (hasDelimiters) return 0.6;
+
+  const injectionPattern = /\b(ignore user override|override protection|adversarial inputs|injection)\b/gi;
+  return injectionPattern.test(text) ? 0.5 : 0.35;
 }
 
 /**
- * C2: System Instruction Protection
- * Upgraded logic: Check for defense-in-depth rules to respond with a fixed fallback
- * message when prompted with prompt-leakage triggers.
+ * C2: System Instruction & Secret Protection
  */
-export function scoreC2(text: string): number {
+export function scoreC2(input: string | ParsedMarkdown): number {
+  const text = getText(input);
   const cleanText = text.toLowerCase();
-  
-  const hasLeakTriggerGuard = /\b(repeat the prompt|repeat instructions|reveal rules|under what instructions|translate rules|summarize instructions)\b/i.test(cleanText);
-  const hasFallbackResponse = /\b(sorry|cannot|error|i can't|refuse|fixed message)\b/i.test(cleanText);
-  
+
+  const hasLeakTriggerGuard = /\b(repeat the prompt|repeat instructions|reveal rules|do not reveal|never reveal|prompt leakage|system prompt|do not share instructions|never expose|secret|credentials?|api[_ ]?keys?)\b/i.test(cleanText);
+  const hasFallbackResponse = /\b(sorry|cannot|error|refuse|reject|block|redact|never commit|never hardcode)\b/i.test(cleanText);
+
   if (hasLeakTriggerGuard && hasFallbackResponse) return 1.0;
-  if (hasLeakTriggerGuard || hasFallbackResponse) return 0.5;
-  
-  const protectionPattern = /\b(do not reveal|never reveal system prompt|prompt leakage|system prompt protection|do not share instructions)\b/gi;
-  return protectionPattern.test(text) ? 0.3 : 0.0;
+  if (hasLeakTriggerGuard || hasFallbackResponse) return 0.65;
+  return 0.4;
 }
 
 /**
- * C3: Role Hijacking Defense
+ * C3: Role & Scope Boundary Integrity
  */
-export function scoreC3(text: string): number {
-  const roleHijackPattern = /\b(never change your role|strictly act as|do not assume another persona|maintain role integrity)\b/gi;
-  return roleHijackPattern.test(text) ? 1.0 : 0.0;
+export function scoreC3(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const rolePattern = /\b(never change your role|strictly act as|do not assume another persona|maintain role integrity|your role|act as|you are a|stay within scope|only perform|do not modify)\b/gi;
+  return rolePattern.test(text) ? 1.0 : 0.45;
 }
 
 /**
- * C4: Jailbreak Resistance Keywords
+ * C4: Guardrails & Security Policy Alignment
  */
-export function scoreC4(text: string): number {
-  const jailbreakPattern = /\b(jailbreak|bypass safety|safety guardrails|override bounds|security guidelines)\b/gi;
-  return jailbreakPattern.test(text) ? 1.0 : 0.3;
+export function scoreC4(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(jailbreak|bypass safety|safety guardrails|override bounds|security guidelines|guardrails?|security|safe|vulnerability|vulnerabilities|owasp)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.45;
 }
 
 /**
- * C5: Exfiltration Defense
+ * C5: Exfiltration & Data Leakage Defense
  */
-export function scoreC5(text: string): number {
-  const exfiltrationPattern = /\b(exfiltrate|data leak|do not send prompt|leak system prompt|unauthorized destination)\b/gi;
-  return exfiltrationPattern.test(text) ? 1.0 : 0.4;
+export function scoreC5(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(exfiltrate|data leak|do not send|leak|unauthorized|never push|never upload|private data|sensitive data|confidential)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.45;
 }
 
 /**
- * C6: PII Masking Instructions
+ * C6: PII & Sensitive Data Masking
  */
-export function scoreC6(text: string): number {
-  const piiPattern = /\b(pii|personally identifiable|remove sensitive|mask passwords|anonymize)\b/gi;
-  return piiPattern.test(text) ? 1.0 : 0.5;
+export function scoreC6(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(pii|personally identifiable|remove sensitive|mask passwords?|anonymize|redact|sensitive|personal data|gdpr|privacy)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
- * C7: Sandbox Constraints
+ * C7: Sandbox & Safe Execution Constraints
  */
-export function scoreC7(text: string): number {
-  const sandboxPattern = /\b(sandbox|restricted execution|isolated environment|local shell only|containerized)\b/gi;
-  return sandboxPattern.test(text) ? 1.0 : 0.5;
+export function scoreC7(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(sandbox|restricted execution|isolated|local shell|containerized|dry[- ]run|read[- ]only|staging|non-destructive|destructive|confirm before)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
- * C8: Command Authority Scope
+ * C8: Command Authority & Least Privilege
  */
-export function scoreC8(text: string): number {
-  const authorityPattern = /\b(authority|privilege|permissions limit|least privilege|allowed commands)\b/gi;
-  return authorityPattern.test(text) ? 1.0 : 0.4;
+export function scoreC8(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(authority|privilege|permissions?|least privilege|allowed commands?|approval|explicit confirmation|ask before|requires? approval|sudo|root)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.45;
 }
 
 /**
- * C9: Compliance Rules
+ * C9: Compliance & Standards Adherence
  */
-export function scoreC9(text: string): number {
-  const compliancePattern = /\b(compliance|policy guidelines|standard guidelines|organizational policy)\b/gi;
-  return compliancePattern.test(text) ? 1.0 : 0.5;
+export function scoreC9(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(compliance|policy|standard guidelines|standards?|convention|conventions|best practices?|policy guidelines|audit)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
- * C10: Input Sanitization Instructions
+ * C10: Input Sanitization & Validation Instructions
  */
-export function scoreC10(text: string): number {
-  const sanitizePattern = /\b(sanitize|clean input|filter tags|escape strings|input validation)\b/gi;
-  return sanitizePattern.test(text) ? 1.0 : 0.4;
+export function scoreC10(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(sanitize|clean input|filter tags|escape|input validation|validate input|parameterized|prepared statement|sql injection|xss|csrf)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.45;
 }
 
 /**
  * C11: Output Validation Directives
  */
-export function scoreC11(text: string): number {
-  const validationPattern = /\b(validate output|self-correct|verify results|post-process validation|ensure format validity)\b/gi;
-  return validationPattern.test(text) ? 1.0 : 0.4;
+export function scoreC11(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(validate output|self-correct|verify results?|verify output|post-process|ensure format|check output|run tests?|lint|typecheck)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.45;
 }
 
 /**
- * C12: Trust Boundary Checking
+ * C12: Trust Boundary & Source Verification
  */
-export function scoreC12(text: string): number {
-  const trustBoundaryPattern = /\b(trust boundary|verify api endpoints|validation source|secure connection|untrusted source)\b/gi;
-  return trustBoundaryPattern.test(text) ? 1.0 : 0.5;
+export function scoreC12(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(trust boundary|verify api|validation source|secure connection|untrusted|https|tls|ssl|verify source|origin|cors)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
- * C13: Access Control Rules
+ * C13: Access Control & Auth Rules
  */
-export function scoreC13(text: string): number {
-  const accessControlPattern = /\b(access control|role permissions|authorization|authentication|access rights)\b/gi;
-  return accessControlPattern.test(text) ? 1.0 : 0.5;
+export function scoreC13(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(access control|role permissions?|authorization|authentication|auth|rbac|rls|acl|oauth|jwt|access rights)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
- * C14: Override Blockers
+ * C14: Override Blockers & Rule Priority
  */
-export function scoreC14(text: string): number {
-  const overrideBlockerPattern = /\b(block overrides|cannot override|immutable guidelines|final rules)\b/gi;
-  return overrideBlockerPattern.test(text) ? 1.0 : 0.4;
+export function scoreC14(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(block overrides?|cannot override|immutable|final rules?|non-negotiable|mandatory|never skip|never bypass|hard rule|must not)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.45;
 }
 
 /**
- * C15: Log Obfuscation
+ * C15: Log Obfuscation & Secret Hygiene
  */
-export function scoreC15(text: string): number {
-  const obfuscatePattern = /\b(obfuscate|hide passwords|mask tokens|do not log secrets|redact)\b/gi;
-  return obfuscatePattern.test(text) ? 1.0 : 0.5;
+export function scoreC15(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(obfuscate|hide passwords?|mask tokens?|do not log secrets?|redact|env var|environment variable|\.env|secret manager|secrets?)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }

@@ -1,136 +1,155 @@
-import { getWords } from './dimA.js';
+import { ParsedMarkdown } from '../types.js';
 
-// Helper to count words inside parameter blocks
+/**
+ * Dimension D: Tool-Use & MCP Clarity (15 Scorer Functions)
+ */
+
+function getText(input: string | ParsedMarkdown): string {
+  return typeof input === 'string' ? input : input.bodyText;
+}
+
 function getParams(text: string): string[] {
-  const matches = text.match(/\b(parameter|argument|field|property)\b/gi);
+  const matches = text.match(/\b(parameter|argument|field|property|flag|option)\b/gi);
   return matches || [];
 }
 
 /**
  * D1: Parameter Spec Clarity
  */
-export function scoreD1(text: string): number {
+export function scoreD1(input: string | ParsedMarkdown): number {
+  const text = getText(input);
   const params = getParams(text);
-  if (params.length === 0) return 1.0;
-  
-  // Look for types like string, number, boolean, array, object
-  const types = text.match(/\b(string|number|boolean|array|object|integer|float)\b/gi) || [];
-  return Math.min(1.0, types.length / params.length);
+  if (params.length === 0) return 0.85;
+
+  const types = text.match(/\b(string|number|boolean|array|object|integer|float|enum|path|url|json|yaml)\b/gi) || [];
+  return Math.min(1.0, Math.max(0.4, types.length / params.length));
 }
 
 /**
  * D2: Required Field Spec
  */
-export function scoreD2(text: string): number {
-  return /\b(required|mandatory|required fields|required properties)\b/gi.test(text) ? 1.0 : 0.5;
+export function scoreD2(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  return /\b(required|mandatory|optional|required fields?|required properties|must provide|must specify)\b/gi.test(text) ? 1.0 : 0.5;
 }
 
 /**
  * D3: Argument Description Quality
  */
-export function scoreD3(text: string): number {
+export function scoreD3(input: string | ParsedMarkdown): number {
+  const text = getText(input);
   const params = getParams(text);
-  if (params.length === 0) return 1.0;
-  
-  // Find parameters defined with descriptions (usually separated by colon or dash)
-  const descriptions = text.match(/[-:]\s*[a-zA-Z0-9\s]{10,}/gi) || [];
-  return Math.min(1.0, descriptions.length / params.length);
+  if (params.length === 0) return 0.85;
+
+  const descriptions = text.match(/[-:]\s*[a-zA-Z0-9\s`'"_./-]{10,}/gi) || [];
+  return Math.min(1.0, Math.max(0.4, descriptions.length / params.length));
 }
 
 /**
- * D4: Parallel Call Control
+ * D4: Parallel / Sequential Execution Control
  */
-export function scoreD4(text: string): number {
-  const parallelPattern = /\b(parallel call|simultaneous tool|sequential call|execute in parallel|sequential execution)\b/gi;
-  return parallelPattern.test(text) ? 1.0 : 0.5;
+export function scoreD4(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(parallel|simultaneous|sequential|in parallel|one at a time|concurrent|async|await|order)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
- * D5: Rate Limit Guidelines
+ * D5: Rate Limit & Quota Guidelines
  */
-export function scoreD5(text: string): number {
-  const rateLimitPattern = /\b(rate limit|exponential backoff|429|too many requests|retry budget)\b/gi;
-  return rateLimitPattern.test(text) ? 1.0 : 0.4;
+export function scoreD5(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(rate limit|exponential backoff|429|too many requests|retry budget|quota|throttle|backoff)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
- * D6: Error Response Handling
+ * D6: Tool / API Error Response Handling
  */
-export function scoreD6(text: string): number {
-  const errorPattern = /\b(tool failure|api error|response code|unexpected status|network failure)\b/gi;
-  const matches = text.match(errorPattern);
-  const count = matches ? matches.length : 0;
-  return Math.min(1.0, count / 3.0);
+export function scoreD6(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(tool failure|api error|response code|status code|exit code|non-zero|network failure|error handling|fails?|failure|stderr|exception)\b/gi;
+  const count = (text.match(pattern) || []).length;
+  return Math.min(1.0, 0.4 + count * 0.2);
 }
 
 /**
- * D7: Tool Output Parsers
+ * D7: Tool Output Parsing & Extraction
  */
-export function scoreD7(text: string): number {
-  const parserPattern = /\b(parse tool response|extract json|output parser|regex matches|response extraction)\b/gi;
-  return parserPattern.test(text) ? 1.0 : 0.5;
+export function scoreD7(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(parse|extract|output parser|regex|json|jq|stdout|response|inspect output|read output)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
  * D8: Tool Selection Logic
  */
-export function scoreD8(text: string): number {
-  const selectionPattern = /\b(choose tool|select api|determine which tool|tool criteria|decision logic)\b/gi;
-  return selectionPattern.test(text) ? 1.0 : 0.4;
+export function scoreD8(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(choose|select|prefer|use\s+[`a-z0-9_-]+\s+(?:over|instead|when|for)|decision|criteria|when to use|mcp|cli|tool)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.45;
 }
 
 /**
- * D9: Input Encoding Specifications
+ * D9: Input Encoding & Format Specifications
  */
-export function scoreD9(text: string): number {
-  const encodingPattern = /\b(encoding|base64|utf-8|url encode|binary conversion)\b/gi;
-  return encodingPattern.test(text) ? 1.0 : 0.5;
+export function scoreD9(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(encoding|base64|utf-?8|url[- ]?encode|escape|serialize|format|json|yaml|markdown|csv)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
- * D10: Execution Sequence Constraints
+ * D10: Execution Sequence & Dependency Constraints
  */
-export function scoreD10(text: string): number {
-  const sequencePattern = /\b(first call|then call|sequence constraints|pre-requisite tool|dependency chain)\b/gi;
-  return sequencePattern.test(text) ? 1.0 : 0.5;
+export function scoreD10(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(first|before|after|then|prerequisite|pre-requisite|dependency|depends on|in order|step\s*1)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
  * D11: Fail-safe Defaults
  */
-export function scoreD11(text: string): number {
-  const failsafePattern = /\b(failsafe|default value|backup data|fallback value|graceful default)\b/gi;
-  return failsafePattern.test(text) ? 1.0 : 0.3;
+export function scoreD11(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(failsafe|fail[- ]?safe|default|backup|fallback|graceful|safe default)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.45;
 }
 
 /**
- * D12: Schema Conformance checks
+ * D12: Schema & Contract Conformance Checks
  */
-export function scoreD12(text: string): number {
-  const conformancePattern = /\b(validate schema|conformance|schema compliance|validate parameters|check argument structure)\b/gi;
-  return conformancePattern.test(text) ? 1.0 : 0.5;
+export function scoreD12(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(validate|conformance|schema|compliance|type[- ]?check|verify|assert|contract)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
- * D13: Payload Size Limits
+ * D13: Payload & Output Size Limits
  */
-export function scoreD13(text: string): number {
-  const payloadLimitPattern = /\b(payload limit|max size|chunk size|split payload|truncate body)\b/gi;
-  return payloadLimitPattern.test(text) ? 1.0 : 0.5;
+export function scoreD13(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(payload limit|max size|chunk|split|truncate|pagination|paginate|limit|offset|cursor|size limit)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
- * D14: Callback Specifications
+ * D14: Async / Callback / Polling Specifications
  */
-export function scoreD14(text: string): number {
-  const callbackPattern = /\b(callback|webhook|async event|listener|polling response)\b/gi;
-  return callbackPattern.test(text) ? 1.0 : 0.5;
+export function scoreD14(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(callback|webhook|async|event|listener|polling|stream|background|await|promise)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }
 
 /**
  * D15: Resource Clean-up
  */
-export function scoreD15(text: string): number {
-  const cleanupPattern = /\b(release resources|close connection|clean up handles|free memory|dispose)\b/gi;
-  return cleanupPattern.test(text) ? 1.0 : 0.5;
+export function scoreD15(input: string | ParsedMarkdown): number {
+  const text = getText(input);
+  const pattern = /\b(release resources?|close connection|clean ?up|free memory|dispose|teardown|remove temp|delete temp|rollback|revert)\b/gi;
+  return pattern.test(text) ? 1.0 : 0.5;
 }

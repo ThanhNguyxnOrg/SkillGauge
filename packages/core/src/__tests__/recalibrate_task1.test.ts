@@ -1,4 +1,4 @@
-import { auditSkill } from '../engine.js';
+import { auditSkill, DIM_FAIL_BAR } from '../engine.js';
 import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
@@ -6,27 +6,31 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function loadSkill(rel: string): string {
-  const p = path.resolve(__dirname, '..', '..', '..', '..', rel);
+  const p = path.resolve(process.cwd(), '..', '..', rel);
   return fs.readFileSync(p, 'utf-8');
 }
 
-describe('Recalibrate Task 1: percentile tiers', () => {
-  it('top leaderboard skill reaches Tier 1', () => {
-    const c = loadSkill('skills/ecc/laravel-security.md');
+describe('Recalibrate Task 1: 7-dim weighted scoring & percentile tiers', () => {
+  it('top production skill reaches Tier 1 on 0..100 scale', () => {
+    const c = loadSkill('skills/ecc/windows-desktop-e2e.md');
     const r = auditSkill(c);
-    expect(r.overallScore).toBeGreaterThan(34.0);
-    expect(r.tier).not.toBe('Tier 3');
+    expect(r.overallScore).toBeGreaterThan(86.0);
+    expect(r.tier).toBe('Tier 1');
   });
-  it('single 70% failedDims bar applies to C', () => {
-    // dimC 7.6: old code (C<7.5) would NOT flag C; single 10.5 bar must flag it
-    const c = loadSkill('skills/superpowers/brainstorming.md');
-    const r = auditSkill(c);
-    expect(r.dimensions.dimC).toBeLessThan(10.5);
-    expect(r.explanation).toMatch(/C/);
+
+  it('DIM_FAIL_BAR flags weak dimensions accurately without H-Z noise', () => {
+    const minimal = '---\nname: tiny\ndescription: Minimal test skill for bar check\n---\n# Tiny\nJust do the thing.\n';
+    const r = auditSkill(minimal);
+    expect(r.dimensions.dimC).toBeLessThan(DIM_FAIL_BAR);
+    expect(r.explanation).toMatch(/Needs improvements in:/);
+    // Should never mention removed synthetic dims H..Z
+    expect(r.explanation).not.toMatch(/\b[H-Z]\b/);
   });
+
   it('raw aliases exposed under b*_raw with back-compat', () => {
     const r = auditSkill('---\nname: x\ndescription: y\n---\n# T\nBody.\n');
     expect(r.scores['b1_raw']).toBeDefined();
     expect(r.scores['friction']).toBeDefined();
+    expect(r.scores['antiGaming']).toBeDefined();
   });
 });
