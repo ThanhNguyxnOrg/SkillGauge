@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { getNormalizedHash } = require('../packages/cli/src/content-hash.cjs');
 
 const leaderboardPath = path.resolve('leaderboard.json');
 const outputDir = path.resolve('packages/web/src/data');
@@ -31,9 +32,10 @@ function walk(dir) {
     if (!content.trim().startsWith('---') || !content.includes('name:') || !content.includes('description:')) continue;
     const fm = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
     const nameMatch = fm && fm[1].match(/^name:\s*(.+)$/m);
-    const key = (nameMatch ? nameMatch[1] : path.basename(e.name, '.md')).trim().replace(/^["']|["']$/g, '');
+    const name = (nameMatch ? nameMatch[1] : path.basename(e.name, '.md')).trim().replace(/^["']|["']$/g, '');
+    const key = getNormalizedHash(content);
     if (!bundle[key]) {
-      bundle[key] = { name: key, path: path.relative(path.resolve('.'), p).replace(/\\/g, '/'), content };
+      bundle[key] = { name, path: path.relative(path.resolve('.'), p).replace(/\\/g, '/'), content };
     }
   }
 }
