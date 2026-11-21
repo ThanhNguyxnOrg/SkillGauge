@@ -287,7 +287,8 @@ export const SubmitSkill: React.FC = () => {
         attempts++;
         if (attempts > maxAttempts) {
           clearAllIntervals();
-          setSubmitError('Still waiting — the bot runs once a maintainer applies the `submission-request` label on your issue.');
+          setSubmitStep('error');
+          setSubmitError('Still waiting — the bot runs once a maintainer applies the `submission-request` label on your issue. You can submit again to keep watching for the PR.');
           return;
         }
 
