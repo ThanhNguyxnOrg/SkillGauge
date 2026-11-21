@@ -14,7 +14,7 @@ interface LeaderboardSkill {
 interface LeaderboardProps {
   skills: LeaderboardSkill[];
   onSelectSkill: (key: string) => void;
-  localKeys: string[];
+  localHashes: ReadonlySet<string>;
 }
 
 const PAGE_SIZE = 50;
@@ -25,16 +25,9 @@ function tierIcon(tier: string) {
   return <ShieldAlert size={12} aria-hidden="true" />;
 }
 
-export const Leaderboard: React.FC<LeaderboardProps> = ({ skills, onSelectSkill, localKeys }) => {
+export const Leaderboard: React.FC<LeaderboardProps> = ({ skills, onSelectSkill, localHashes }) => {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(0);
-  const findLocalKey = (name: string) => {
-    const cleanName = name.replace('🌟 ', '').toLowerCase();
-    return localKeys.find(key => {
-      const kLow = key.toLowerCase();
-      return kLow === cleanName || cleanName.includes(kLow) || kLow.includes(cleanName);
-    });
-  };
 
   // Sort skills descending by score to guarantee correct ranking order
   const sortedSkills = useMemo(
@@ -120,17 +113,16 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ skills, onSelectSkill,
             </thead>
             <tbody>
               {visible.map((skill) => {
-                const localKey = findLocalKey(skill.name);
                 const rank = rankOf.get(skill.hash) ?? 0;
                 const rankClass = rank === 1 ? 'rank-1' : rank === 2 ? 'rank-2' : rank === 3 ? 'rank-3' : '';
                 const tierClass = skill.tier === 'Tier 1' ? 'tier-1' : skill.tier === 'Tier 2' ? 'tier-2' : 'tier-3';
-                const clickable = Boolean(localKey);
+                const clickable = localHashes.has(skill.hash);
 
                 return (
                   <tr
                     key={skill.hash}
-                    onClick={() => localKey && onSelectSkill(localKey)}
-                    onKeyDown={(e) => { if (clickable && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); onSelectSkill(localKey as string); } }}
+                    onClick={() => clickable && onSelectSkill(skill.hash)}
+                    onKeyDown={(e) => { if (clickable && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); onSelectSkill(skill.hash); } }}
                     tabIndex={clickable ? 0 : undefined}
                     role={clickable ? 'button' : undefined}
                     aria-label={clickable ? `View details for ${skill.name}` : undefined}

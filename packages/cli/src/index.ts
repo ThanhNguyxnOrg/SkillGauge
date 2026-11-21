@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import { glob } from 'glob';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as crypto from 'crypto';
+import { getNormalizedHash } from './content-hash.cjs';
 import { execSync } from 'child_process';
 import * as os from 'os';
 import { auditSkill, auditSkillAsync, auditPackage, VirtualFile, optimizeSkill, runDynamicTests, isDuplicateEntry, nearDupeWarnings, getRepositoryName as coreGetRepositoryName } from '@skillgauge/core';
@@ -16,15 +16,6 @@ program
   .description('Audit agent skills for efficacy and token costs')
   .version('0.1.0');
 
-
-// Normalize and hash helper for duplicate detection
-function getNormalizedHash(content: string): string {
-  const normalized = content
-    .replace(/<!--[\s\S]*?-->/g, '') // remove comments
-    .replace(/\s+/g, '')            // remove whitespaces
-    .toLowerCase();
-  return crypto.createHash('sha256').update(normalized).digest('hex');
-}
 
 function getRepositoryName(filePath: string): string {
   const normalized = filePath.replace(/\\/g, '/');

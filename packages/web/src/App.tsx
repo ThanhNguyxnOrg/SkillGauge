@@ -26,13 +26,14 @@ interface SkillFile {
   content: string;
 }
 
+const localSkills: Record<string, SkillFile> = skillsData;
+const localHashes = new Set(Object.keys(localSkills));
+
 function App() {
   const [activeTab, setActiveTab] = useState<'leaderboard' | 'submit' | 'contribute'>('leaderboard');
   const [selectedSkillKey, setSelectedSkillKey] = useState<string | null>(null);
 
   const leaderboardSkills = (leaderboardData as { skills: LeaderboardSkill[] }).skills;
-  const localSkills = skillsData as { [key: string]: SkillFile };
-  const localKeys = Object.keys(localSkills);
 
   const selectedLocalSkill = selectedSkillKey ? localSkills[selectedSkillKey] : null;
   
@@ -45,7 +46,7 @@ function App() {
     try {
       activeReport = auditSkill(selectedLocalSkill.content);
       activeContent = selectedLocalSkill.content;
-      activeName = selectedSkillKey!;
+      activeName = selectedLocalSkill.name;
     } catch (err) {
       console.error('Failed to audit local skill', err);
     }
@@ -106,7 +107,7 @@ function App() {
             <div style={{ width: '100%', animation: 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1)' }}>
               <Leaderboard
                 skills={leaderboardSkills}
-                localKeys={localKeys}
+                localHashes={localHashes}
                 onSelectSkill={(key) => setSelectedSkillKey(key)}
               />
             </div>
