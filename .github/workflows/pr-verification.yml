@@ -20,7 +20,7 @@ jobs:
       - name: Mint scoped ThanhNguyxnAgent token
         id: agent
         if: github.event.pull_request.head.repo.full_name == github.repository
-        uses: ThanhNguyxnOrg/.github/.github/actions/agent-token@2b5c5cad571ee93fd091e16e1734ebd819191e68
+        uses: ThanhNguyxnOrg/.github/.github/actions/agent-token@agent-v1
         with:
           profile: issues
           app-id: ${{ vars.BOT_APP_ID }}
@@ -155,7 +155,7 @@ jobs:
     steps:
       - name: Mint scoped ThanhNguyxnAgent token
         id: agent
-        uses: ThanhNguyxnOrg/.github/.github/actions/agent-token@da9d02544f60aeec92f8c851846ee3a587044beb
+        uses: ThanhNguyxnOrg/.github/.github/actions/agent-token@agent-v1
         with:
           profile: issues
           app-id: ${{ vars.BOT_APP_ID }}
