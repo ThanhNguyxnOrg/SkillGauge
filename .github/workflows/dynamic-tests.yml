@@ -16,7 +16,12 @@ permissions:
 jobs:
   dynamic-testing:
     # Runs on every bot-created contrib-* submission PR and on manual dispatch.
-    if: github.event_name == 'workflow_dispatch' || startsWith(github.head_ref, 'contrib-')
+    # Forks cannot provide the App key or Gemini secret, so only same-repo PRs qualify.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request' &&
+       github.event.pull_request.head.repo.full_name == github.repository &&
+       startsWith(github.head_ref, 'contrib-'))
     runs-on: ubuntu-latest
     steps:
       - name: 📁 Checkout Code
