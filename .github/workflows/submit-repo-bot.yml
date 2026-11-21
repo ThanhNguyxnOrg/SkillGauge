@@ -65,9 +65,10 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
+          SUBMITTED_REPOSITORY: ${{ steps.submission.outputs.repository }}
         run: |
           gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" \
-            --body "🤖 Submission accepted — auditing \`${{ steps.submission.outputs.repository }}\` and opening a Pull Request with the results."
+            --body "🤖 Submission accepted — auditing \`$SUBMITTED_REPOSITORY\` and opening a Pull Request with the results."
 
       - name: 📁 Checkout Code
         uses: actions/checkout@v4
@@ -97,5 +98,6 @@ jobs:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
           GEMINI_API_KEY: ${{ github.event.inputs.gemini_api_key || secrets.GEMINI_API_KEY }}
+          SUBMITTED_REPOSITORY: ${{ steps.submission.outputs.repository }}
         run: |
-          node scripts/submit-bot.mjs --repository "${{ steps.submission.outputs.repository }}"
+          node scripts/submit-bot.mjs --repository "$SUBMITTED_REPOSITORY"
