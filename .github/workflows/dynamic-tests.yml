@@ -23,6 +23,11 @@ jobs:
        github.event.pull_request.head.repo.full_name == github.repository &&
        startsWith(github.head_ref, 'contrib-'))
     runs-on: ubuntu-latest
+    # One run per contribution branch: a newer push cancels the stale run so an
+    # older audit cannot overwrite newer Phase 2 scores on the PR body.
+    concurrency:
+      group: dynamic-tests-${{ github.head_ref || github.run_id }}
+      cancel-in-progress: true
     steps:
       - name: 📁 Checkout Code
         uses: actions/checkout@v4

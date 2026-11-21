@@ -53,6 +53,8 @@ jobs:
             repo="$(printf '%s' "${ISSUE_TITLE:-}" | grep -oE '[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+' | head -1 || true)"
             [ -n "$repo" ] && repo="https://github.com/$repo"
           fi
+          repo="${repo%.git}"
+          repo="${repo%/}"
           if ! printf '%s' "$repo" | grep -qE '^https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$'; then
             echo "::error::Could not resolve a github.com/owner/repo URL from the submission."
             exit 1
