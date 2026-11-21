@@ -11,22 +11,22 @@ The system splits responsibilities into dedicated GitHub Actions workflows to en
 ```mermaid
 graph TD
     %% Web Submission Flow
-    Web[Web Dashboard] -->|1. Workflow Dispatch via VITE_SUBMIT_TOKEN| SubmitWorkflow[submit-repo-bot.yml]
-    SubmitWorkflow -->|2. Run submit-bot.mjs| BotScript[Clone, Audit & Sync]
-    BotScript -->|3. Push Branch & Create PR| PR[Pull Request]
+    Web[Web Dashboard] -->|1. Open pre-filled Issue| Issue[Submission Issue]
+    Issue -->|2. Maintainer applies submission-request label| SubmitWorkflow[submit-repo-bot.yml]
+    SubmitWorkflow -->|3. Run submit-bot.mjs| BotScript[Clone, Audit & Sync]
+    BotScript -->|4. Push Branch & Create PR| PR[Pull Request]
 
     %% PR Verification Flow
     Manual[Manual Fork & PR] --> PR
-    PR -->|4. Trigger pr-verification.yml| Verify[Check Duplicates & Run Audit]
+    PR -->|5. Trigger pr-verification.yml + dynamic-tests.yml| Verify[Check Duplicates, Audit & Dynamic Tests]
 
     %% Merge / Update Leaderboard Flow
-    PR -->|5. Merge to main| Merge[Push to main]
-    Merge -->|6. Trigger update-leaderboard.yml| UpdateLeaderboard[Run Auto-Optimizer & Update Leaderboard JSON]
-    UpdateLeaderboard -->|7. Commit back to main| MainRepo[main branch]
+    PR -->|6. Merge to main| Merge[Push to main]
+    Merge -->|7. Trigger update-leaderboard.yml| UpdateLeaderboard[Run Auto-Optimizer & Update Leaderboard JSON]
+    UpdateLeaderboard -->|8. Commit back to main| MainRepo[main branch]
 
     %% Deploy Web Dashboard
-    MainRepo -->|8. Trigger deploy-pages.yml| DeployPages[Build Web & Deploy Pages]
-    DeployPages -->|Inject secrets.SUBMIT_PAT as VITE_SUBMIT_TOKEN| Web
+    MainRepo -->|9. Trigger deploy-pages.yml| DeployPages[Build Web & Deploy Pages]
 ```
 
 ---
@@ -36,10 +36,10 @@ graph TD
 All workflow files are stored in the [.github/workflows/](file:///.github/workflows/) directory.
 
 ### 1. PR Submission Bot (`submit-repo-bot.yml`)
-This workflow is triggered automatically from the SkillGauge website via the GitHub Actions workflow dispatch API. It executes the backend bot script to clone, evaluate, and open a submission Pull Request on behalf of the submitter.
+This workflow processes repository submissions. The SkillGauge website opens a pre-filled `[Submission]` issue; a maintainer approves it by applying the `submission-request` label, which triggers this workflow to clone, evaluate, and open a submission Pull Request on behalf of the submitter. This design keeps credentials out of the public Pages bundle: no token is baked into the website, and the maintainer label acts as a human approval gate so anonymous visitors cannot spam the bot.
 
-*   **Trigger**: `workflow_dispatch` with input `repository` (the URL of the target repository to scan).
-*   **Permissions**: `contents: write`, `pull-requests: write`.
+*   **Trigger**: `workflow_dispatch` with input `repository` (manual override), or `issues` `labeled` when the `submission-request` label is applied to a `[Submission]` issue (the repository URL is parsed from the issue body or title).
+*   **Permissions**: `contents: write`, `pull-requests: write`, `issues: write` (to acknowledge the submission issue).
 *   **Core Logic**:
     *   Clones the monorepo and sets up Node.js.
     *   Builds the `@skillgauge/core` and `@skillgauge/cli` packages.
@@ -84,14 +84,13 @@ Compiles and deploys the frontend web interface.
 *   **Trigger**: `push` on `main` affecting `packages/web/**`, `packages/core/**`, `leaderboard.json`, or the deploy script.
 *   **Permissions**: `contents: read`, `pages: write`, `id-token: write`.
 *   **Core Logic**:
-    *   Injects the `SUBMIT_PAT` secret as a build-time environment variable `VITE_SUBMIT_TOKEN`.
-    *   Builds the React application for production.
+    *   Builds the React application for production (no secrets are injected into the bundle).
     *   Uploads the output bundle (`packages/web/dist`) and deploys it to GitHub Pages.
 
 ### 6. Dynamic Runtime Tests (`dynamic-tests.yml`)
 Runs dynamic LLM tests on skill prompt files using the Gemini API.
 
-*   **Trigger**: Manual trigger via `workflow_dispatch`.
+*   **Trigger**: `pull_request` (`opened`, `synchronize`, `reopened`) on bot-created `contrib-*` branches, or manual `workflow_dispatch`.
 *   **Permissions**: `contents: read`.
 *   **Core Logic**:
     *   Builds the `@skillgauge/core` and `@skillgauge/cli` packages.
@@ -112,17 +111,5 @@ By default, GitHub Actions are restricted from creating or approving Pull Reques
 4. Check **Allow GitHub Actions to create and approve pull requests**.
 5. Click **Save**.
 
-### 2. Configure `SUBMIT_PAT` Secret
-Because the client-side website needs to trigger a `workflow_dispatch` on your repository to execute the bot, it requires an API token.
-To keep the main repository secure, configure a **Fine-grained Personal Access Token** with restricted scopes:
-1. Go to your GitHub account **Settings** > **Developer settings** > **Personal access tokens** > **Fine-grained tokens**.
-2. Click **Generate new token**.
-3. Set Repository access to **Only select repositories** and pick your `SkillGauge` repository.
-4. Under **Permissions**, select:
-   * **Actions**: **Read and write** (required to dispatch workflows).
-   * **Contents**: **Read and write** (required to checkout and read paths).
-5. Generate the token.
-6. Copy the token, then navigate to your repository's **Settings** > **Secrets and variables** > **Actions**.
-7. Click **New repository secret**, name it `SUBMIT_PAT`, and paste the copied token.
-
-During the compilation process, this token will be injected securely into the static HTML/JS bundle under the environment variable `VITE_SUBMIT_TOKEN`, allowing the website's Submit button to trigger the bot.
+### 2. Web submissions need no secret
+The website does not ship any credential: the Submit button opens a pre-filled `[Submission]` issue on this repository, and a maintainer starts the bot by applying the `submission-request` label. The legacy `SUBMIT_PAT` secret is no longer used and should be deleted — any token previously baked into the deployed bundle must be treated as compromised and revoked.

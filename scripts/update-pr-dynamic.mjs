@@ -4,7 +4,9 @@ import * as path from 'path';
 import { auditSkill, auditSkillAsync } from '../packages/core/dist/index.js';
 
 async function main() {
-  const branchName = process.env.GITHUB_REF_NAME;
+  // On pull_request events GITHUB_REF_NAME is '<number>/merge'; the head
+  // branch lives in GITHUB_HEAD_REF. workflow_dispatch has no head ref.
+  const branchName = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME;
   const apiKey = process.env.GEMINI_API_KEY || '';
 
   if (!branchName) {

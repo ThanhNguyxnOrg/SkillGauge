@@ -6,6 +6,8 @@ on:
       gemini_api_key:
         description: 'Optional Gemini API Key for running dynamic tests'
         required: false
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
@@ -13,7 +15,19 @@ permissions:
 
 jobs:
   dynamic-testing:
+    # Runs on every bot-created contrib-* submission PR and on manual dispatch.
+    # Forks cannot provide the App key or Gemini secret, so only same-repo PRs qualify.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request' &&
+       github.event.pull_request.head.repo.full_name == github.repository &&
+       startsWith(github.head_ref, 'contrib-'))
     runs-on: ubuntu-latest
+    # One run per contribution branch: a newer push cancels the stale run so an
+    # older audit cannot overwrite newer Phase 2 scores on the PR body.
+    concurrency:
+      group: dynamic-tests-${{ github.head_ref || github.run_id }}
+      cancel-in-progress: true
     steps:
       - name: 📁 Checkout Code
         uses: actions/checkout@v4
