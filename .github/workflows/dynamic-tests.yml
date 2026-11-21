@@ -56,7 +56,7 @@ jobs:
 
       - name: 🤖 Generate GitHub App Token
         id: app-token
-        uses: ThanhNguyxnOrg/.github/.github/actions/agent-token@2b5c5cad571ee93fd091e16e1734ebd819191e68
+        uses: ThanhNguyxnOrg/.github/.github/actions/agent-token@agent-v1
         with:
           profile: issues
           app-id: ${{ vars.BOT_APP_ID }}
