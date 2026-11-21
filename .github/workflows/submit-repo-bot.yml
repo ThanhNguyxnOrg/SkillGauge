@@ -9,13 +9,24 @@ on:
       gemini_api_key:
         description: 'Optional Gemini API Key for running Phase 2 dynamic/semantic audit'
         required: false
+  issues:
+    types: [labeled]
 
 permissions:
   contents: write
   pull-requests: write
+  issues: write
 
 jobs:
   process-submission:
+    # Issue intake: the public web dashboard files a `[Submission]` issue;
+    # applying the `submission-request` label is the maintainer approval gate
+    # that starts the bot. This replaces the leaked-PAT workflow_dispatch flow.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issues' &&
+       github.event.label.name == 'submission-request' &&
+       startsWith(github.event.issue.title, '[Submission]'))
     runs-on: ubuntu-latest
     steps:
       - name: 🤖 Generate GitHub App Token
@@ -25,6 +36,38 @@ jobs:
           profile: remediation
           app-id: ${{ vars.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+
+      - name: 🔎 Resolve submitted repository
+        id: submission
+        env:
+          INPUT_REPOSITORY: ${{ github.event.inputs.repository }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          set -euo pipefail
+          repo="${INPUT_REPOSITORY:-}"
+          if [ -z "$repo" ]; then
+            repo="$(printf '%s' "${ISSUE_BODY:-}" | grep -oE 'https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+' | head -1 || true)"
+          fi
+          if [ -z "$repo" ]; then
+            repo="$(printf '%s' "${ISSUE_TITLE:-}" | grep -oE '[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+' | head -1 || true)"
+            [ -n "$repo" ] && repo="https://github.com/$repo"
+          fi
+          if ! printf '%s' "$repo" | grep -qE '^https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$'; then
+            echo "::error::Could not resolve a github.com/owner/repo URL from the submission."
+            exit 1
+          fi
+          echo "repository=$repo" >> "$GITHUB_OUTPUT"
+          echo "Resolved repository: $repo"
+
+      - name: 💬 Acknowledge the submission issue
+        if: github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" \
+            --body "🤖 Submission accepted — auditing \`${{ steps.submission.outputs.repository }}\` and opening a Pull Request with the results."
 
       - name: 📁 Checkout Code
         uses: actions/checkout@v4
@@ -55,5 +98,4 @@ jobs:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
           GEMINI_API_KEY: ${{ github.event.inputs.gemini_api_key || secrets.GEMINI_API_KEY }}
         run: |
-          node scripts/submit-bot.mjs --repository "${{ github.event.inputs.repository }}"
-
+          node scripts/submit-bot.mjs --repository "${{ steps.submission.outputs.repository }}"

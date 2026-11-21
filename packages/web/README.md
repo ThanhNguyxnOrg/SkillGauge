@@ -32,12 +32,12 @@ npm run web:build
 
 ## 🔌 API & Submission Flow Integration
 
-The **Submit Skill** page enables users to submit a public GitHub repository for auditing without needing to log in or supply their own credentials.
+The **Submit Skill** page lets users submit a public GitHub repository for auditing. Filing the submission issue requires the submitter's own GitHub sign-in; no credentials are embedded in the site.
 
 ### How it Works:
-1. **Triggering Workflow Dispatch**: When a user inputs a repository URL and clicks **Submit**, the frontend sends a `POST` request to the GitHub Actions `workflow_dispatch` API for `submit-repo-bot.yml`.
-2. **Access Token (`VITE_SUBMIT_TOKEN`)**: To dispatch the workflow, the request is authenticated using a build-time token. This is injected during the build phase via the environment variable `VITE_SUBMIT_TOKEN`.
-3. **PR Polling**: Once triggered, the frontend polls the GitHub Pull Requests API for the repository (`ThanhNguyxnOrg/SkillGauge`) to find a PR created by the bot branch (`contrib-[repo_name]`).
+1. **Submission Issue**: When a user inputs a repository URL and clicks **Submit**, the frontend opens a pre-filled `[Submission]` issue on `ThanhNguyxnOrg/SkillGauge` in a new tab. No credential is embedded in the bundle — GitHub requires the submitter's own signed-in account to file the issue.
+2. **Maintainer Approval**: A maintainer applies the `submission-request` label to the issue, which triggers `submit-repo-bot.yml` to run the audit and open a PR.
+3. **PR Polling**: Once the issue is filed, the frontend polls the public GitHub Pull Requests API for the repository (`ThanhNguyxnOrg/SkillGauge`) to find a PR created by the bot branch (`contrib-[repo_name]`).
 4. **Displaying the Link**: When the PR is found, the polling halts and the live Pull Request URL is displayed to the user.
 
 ---

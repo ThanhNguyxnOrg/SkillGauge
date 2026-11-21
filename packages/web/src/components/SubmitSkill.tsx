@@ -19,12 +19,6 @@ interface PrSkill {
   tests: ParsedTest[];
 }
 
-interface RunStep {
-  name?: string;
-  status?: string;
-  conclusion?: string | null;
-}
-
 function parseFrontmatter(markdown: string) {
   const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) return { metadata: {} as ParsedMetadata, body: markdown };
@@ -91,18 +85,14 @@ function parseFrontmatter(markdown: string) {
 export const SubmitSkill: React.FC = () => {
   const [repoUrl, setRepoUrl] = useState('');
   const [geminiApiKey, setGeminiApiKey] = useState('');
-  const [submitStep, setSubmitStep] = useState<'idle' | 'triggering' | 'bot_running' | 'success' | 'error'>('idle');
+  const [submitStep, setSubmitStep] = useState<'idle' | 'awaiting_approval' | 'bot_running' | 'success' | 'error'>('idle');
   const [submitError, setSubmitError] = useState('');
   const [prLink, setPrLink] = useState('');
-  const [prBranch, setPrBranch] = useState('');
-  const [runSteps, setRunSteps] = useState<RunStep[]>([]);
 
   // Dynamic test states
   const [prSkills, setPrSkills] = useState<PrSkill[]>([]);
   const [dynamicRunning, setDynamicRunning] = useState(false);
   const [dynamicConsoleLogs, setDynamicConsoleLogs] = useState<string[]>([]);
-  const [actionsTriggering, setActionsTriggering] = useState(false);
-  const [actionsRunLink, setActionsRunLink] = useState('');
 
   const parseGitUrl = (url: string): { owner: string; repo: string } => {
     const normalized = url.trim();
@@ -146,46 +136,6 @@ export const SubmitSkill: React.FC = () => {
       setPrSkills(skillsToTest);
     } catch (err) {
       console.error('Error fetching PR files:', err);
-    }
-  };
-
-  const triggerActionsDynamicTests = async () => {
-    if (!prBranch) return;
-    setActionsTriggering(true);
-    try {
-      const targetOwner = 'ThanhNguyxnOrg';
-      const targetRepo = 'SkillGauge';
-      const token = import.meta.env.VITE_SUBMIT_TOKEN || '';
-      
-      if (!token) {
-        throw new Error('Web submission token is not configured.');
-      }
-
-      const dispatchUrl = `https://api.github.com/repos/${targetOwner}/${targetRepo}/actions/workflows/dynamic-tests.yml/dispatches`;
-      const dispatchRes = await fetch(dispatchUrl, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          ref: prBranch,
-          inputs: {
-            gemini_api_key: geminiApiKey.trim() || undefined
-          }
-        })
-      });
-
-      if (!dispatchRes.ok) {
-        throw new Error(`Failed to trigger dynamic tests: ${dispatchRes.statusText}`);
-      }
-
-      setActionsRunLink(`https://github.com/${targetOwner}/${targetRepo}/actions/workflows/dynamic-tests.yml`);
-    } catch (err: unknown) {
-      alert(err instanceof Error ? err.message : 'Failed to trigger Actions run');
-    } finally {
-      setActionsTriggering(false);
     }
   };
 
@@ -291,134 +241,53 @@ export const SubmitSkill: React.FC = () => {
       return;
     }
 
-    setSubmitStep('triggering');
+    setSubmitStep('awaiting_approval');
     setSubmitError('');
     setPrLink('');
-    setPrBranch('');
     setPrSkills([]);
     setDynamicConsoleLogs([]);
-    setActionsRunLink('');
-    setRunSteps([]);
 
     let prPoll: ReturnType<typeof setInterval> | null = null;
-    let jobsInterval: ReturnType<typeof setInterval> | null = null;
 
     const clearAllIntervals = () => {
       if (prPoll) clearInterval(prPoll);
-      if (jobsInterval) clearInterval(jobsInterval);
     };
 
     try {
       const { owner, repo } = parseGitUrl(repoUrl);
       const targetOwner = 'ThanhNguyxnOrg';
       const targetRepo = 'SkillGauge';
-      const token = import.meta.env.VITE_SUBMIT_TOKEN || '';
 
-      if (!token) {
-        throw new Error('Web submission token is not configured. Please contact the administrator or build with VITE_SUBMIT_TOKEN.');
-      }
+      // No credentials are baked into this site: the submission is a
+      // pre-filled GitHub issue that a maintainer approves by applying the
+      // `submission-request` label, which runs submit-repo-bot.yml.
+      const issueTitle = `[Submission] ${owner}/${repo}`;
+      const issueBody = [
+        'Repository submission requested from the SkillGauge web dashboard.',
+        '',
+        `repository: https://github.com/${owner}/${repo}`,
+        '',
+        'A maintainer applies the `submission-request` label to start the audit bot.'
+      ].join('\n');
+      window.open(
+        `https://github.com/${targetOwner}/${targetRepo}/issues/new?title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}`,
+        '_blank',
+        'noopener'
+      );
 
-      // 1. Trigger the workflow dispatch
-      const dispatchUrl = `https://api.github.com/repos/${targetOwner}/${targetRepo}/actions/workflows/submit-repo-bot.yml/dispatches`;
-      const dispatchRes = await fetch(dispatchUrl, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          ref: 'main',
-          inputs: {
-            repository: `https://github.com/${owner}/${repo}`,
-            gemini_api_key: geminiApiKey.trim() || undefined
-          }
-        })
-      });
-
-      if (!dispatchRes.ok) {
-        throw new Error(`Failed to trigger submission bot: ${dispatchRes.statusText}`);
-      }
-
-      setSubmitStep('bot_running');
-
-      // 2. Fetch the newly triggered run ID
-      let fetchedRunId: number | null = null;
-      for (let i = 0; i < 6; i++) {
-        await new Promise(r => setTimeout(r, 2000));
-        try {
-          const runsRes = await fetch(`https://api.github.com/repos/${targetOwner}/${targetRepo}/actions/workflows/submit-repo-bot.yml/runs?event=workflow_dispatch`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              Accept: 'application/vnd.github.v3+json'
-            }
-          });
-          if (runsRes.ok) {
-            const data = await runsRes.json();
-            if (data.workflow_runs && data.workflow_runs.length > 0) {
-              const latestRun = data.workflow_runs[0];
-              const runTime = new Date(latestRun.created_at).getTime();
-              const now = Date.now();
-              if (now - runTime < 60000) {
-                fetchedRunId = latestRun.id;
-                break;
-              }
-            }
-          }
-        } catch (e) {
-          console.error('Error fetching run ID:', e);
-        }
-      }
-
-      // 3. Poll Action run jobs/steps logs
-      if (fetchedRunId) {
-        const jobsUrl = `https://api.github.com/repos/${targetOwner}/${targetRepo}/actions/runs/${fetchedRunId}/jobs`;
-        jobsInterval = setInterval(async () => {
-          try {
-            const res = await fetch(jobsUrl, {
-              headers: {
-                Authorization: `Bearer ${token}`,
-                Accept: 'application/vnd.github.v3+json'
-              }
-            });
-            if (res.ok) {
-              const data = await res.json();
-              if (data.jobs && data.jobs.length > 0) {
-                const job = data.jobs[0];
-                if (job.steps && job.steps.length > 0) {
-                  setRunSteps(job.steps);
-                }
-                if (job.status === 'completed') {
-                  if (jobsInterval) clearInterval(jobsInterval);
-                  if (job.conclusion !== 'success') {
-                    setSubmitStep('error');
-                    setSubmitError('The submission bot execution failed on GitHub Actions.');
-                    clearAllIntervals();
-                  }
-                }
-              }
-            }
-          } catch (e) {
-            console.error('Error polling run jobs:', e);
-          }
-        }, 3000);
-      }
-
-      // 4. Poll for the created Pull Request (branch uses owner-qualified slug, mirroring submit-bot.mjs)
+      // Poll for the Pull Request the bot opens (public, unauthenticated).
       const slug = `${owner}-${repo}`.toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '');
       const branchName = `contrib-${slug}`;
-      setPrBranch(branchName);
       const prUrl = `https://api.github.com/repos/${targetOwner}/${targetRepo}/pulls?head=${targetOwner}:${branchName}`;
-      
+
       let attempts = 0;
       const maxAttempts = 60;
-      
+
       prPoll = setInterval(async () => {
         attempts++;
         if (attempts > maxAttempts) {
           clearAllIntervals();
-          setSubmitStep('error');
-          setSubmitError('The Pull Request creation timed out. Please check GitHub Actions for details.');
+          setSubmitError('Still waiting — the bot runs once a maintainer applies the `submission-request` label on your issue.');
           return;
         }
 
@@ -435,7 +304,7 @@ export const SubmitSkill: React.FC = () => {
               const prInfo = prs[0];
               setPrLink(prInfo.html_url);
               setSubmitStep('success');
-              
+
               // Load PR files and test specification definitions
               fetchPrFiles(prInfo.number);
             }
@@ -443,7 +312,7 @@ export const SubmitSkill: React.FC = () => {
         } catch (err) {
           console.error('Error polling for PR:', err);
         }
-      }, 5000);
+      }, 30000);
 
     } catch (err: unknown) {
       clearAllIntervals();
@@ -470,7 +339,7 @@ export const SubmitSkill: React.FC = () => {
                 placeholder="Repository shorthand: owner/repo (e.g. obra/superpowers)"
                 value={repoUrl}
                 onChange={(e) => setRepoUrl(e.target.value)}
-                disabled={submitStep === 'triggering' || submitStep === 'bot_running'}
+                disabled={submitStep === 'awaiting_approval' || submitStep === 'bot_running'}
                 style={{
                   flexGrow: 1,
                   minWidth: '280px',
@@ -486,15 +355,15 @@ export const SubmitSkill: React.FC = () => {
               <button
                 className="btn-pill btn-primary"
                 onClick={handleSubmitToGitHub}
-                disabled={submitStep === 'triggering' || submitStep === 'bot_running'}
+                disabled={submitStep === 'awaiting_approval' || submitStep === 'bot_running'}
                 style={{ whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '8px' }}
               >
-                {submitStep === 'triggering' || submitStep === 'bot_running' ? (
+                {submitStep === 'awaiting_approval' || submitStep === 'bot_running' ? (
                   <Loader2 className="animate-spin" size={14} />
                 ) : (
                   <Send size={14} />
                 )}
-                {submitStep === 'triggering' || submitStep === 'bot_running' ? 'Submitting...' : 'Submit Repository'}
+                {submitStep === 'awaiting_approval' || submitStep === 'bot_running' ? 'Submitting...' : 'Submit Repository'}
               </button>
             </div>
 
@@ -544,13 +413,13 @@ export const SubmitSkill: React.FC = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <strong>How the Submission works:</strong>
               <span style={{ color: 'var(--text-secondary)' }}>
-                1. Clicking submit triggers our remote GitHub Actions runner bot.
+                1. Clicking submit opens a pre-filled GitHub issue; a maintainer approves it by applying the <code>submission-request</code> label.
               </span>
               <span style={{ color: 'var(--text-secondary)' }}>
-                2. The bot clones your repo, audits all valid skills against the 390-signal static matrix, and opens a Pull Request.
+                2. The bot then clones your repo, audits all valid skills against the 390-signal static matrix, and opens a Pull Request.
               </span>
               <span style={{ color: 'var(--text-secondary)' }}>
-                3. Once the PR is ready, you can choose to run dynamic runtime tests either instantly in the browser or on the CI runner.
+                3. Dynamic runtime tests run automatically on the PR, or instantly in the browser with your own Gemini API key.
               </span>
             </div>
           </div>
@@ -573,13 +442,13 @@ export const SubmitSkill: React.FC = () => {
             </h3>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '20px' }}>
-              {/* Step 1: Trigger Action */}
+              {/* Step 1: Submission issue filed */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <div style={{
                   width: '20px',
                   height: '20px',
                   borderRadius: '50%',
-                  background: submitStep === 'triggering' ? '#5b21b6' : 'var(--color-tier-1)',
+                  background: 'var(--color-tier-1)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -587,25 +456,25 @@ export const SubmitSkill: React.FC = () => {
                   fontWeight: 'bold',
                   color: '#fff'
                 }}>
-                  {submitStep === 'triggering' ? '1' : '✓'}
+                  ✓
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <span style={{ fontSize: '13px', fontWeight: submitStep === 'triggering' ? '700' : '400', color: submitStep === 'triggering' ? '#fff' : 'var(--text-secondary)' }}>
-                    Triggering Auditing Runner...
+                  <span style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>
+                    Submission issue opened on GitHub.
                   </span>
                   <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
-                    Calling GitHub Actions dispatch API.
+                    File it by confirming the pre-filled issue in the new tab.
                   </span>
                 </div>
               </div>
 
-              {/* Step 2: Bot Auditing */}
+              {/* Step 2: Maintainer approval + bot run */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <div style={{
                   width: '20px',
                   height: '20px',
                   borderRadius: '50%',
-                  background: submitStep === 'triggering' ? '#334155' : (submitStep === 'bot_running' ? '#5b21b6' : 'var(--color-tier-1)'),
+                  background: submitStep === 'awaiting_approval' || submitStep === 'bot_running' ? '#5b21b6' : 'var(--color-tier-1)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -613,14 +482,14 @@ export const SubmitSkill: React.FC = () => {
                   fontWeight: 'bold',
                   color: '#fff'
                 }}>
-                  {submitStep === 'triggering' ? '2' : (submitStep === 'bot_running' ? '2' : '✓')}
+                  {submitStep === 'awaiting_approval' || submitStep === 'bot_running' ? '2' : '✓'}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <span style={{ fontSize: '13px', fontWeight: submitStep === 'bot_running' ? '700' : '400', color: submitStep === 'bot_running' ? '#fff' : 'var(--text-secondary)' }}>
-                    Cloning & Auditing Repository...
+                    Awaiting maintainer approval & bot audit...
                   </span>
                   <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
-                    The runner is cloning your repository and evaluating files against the 390-signal static matrix.
+                    The bot starts when a maintainer applies the `submission-request` label, then audits the 390-signal static matrix.
                   </span>
                 </div>
               </div>
@@ -652,60 +521,7 @@ export const SubmitSkill: React.FC = () => {
               </div>
             </div>
 
-            {/* Runner Execution Logs Console */}
-            {(submitStep === 'bot_running' || runSteps.length > 0) && (
-              <div style={{
-                marginTop: '20px',
-                padding: '16px',
-                background: '#0a0a0a',
-                border: '1px solid var(--border-muted)',
-                borderRadius: '8px',
-                fontFamily: 'var(--mono-font)',
-                fontSize: '12px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '8px',
-                maxWidth: '100%'
-              }}>
-                <div style={{ color: '#a78bfa', fontWeight: 'bold', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '1px solid var(--border-muted)', paddingBottom: '6px', marginBottom: '4px' }}>
-                  Runner Execution Log Console
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '180px', overflowY: 'auto' }}>
-                  {runSteps.length === 0 ? (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-secondary)' }}>
-                      <Loader2 className="animate-spin" size={14} style={{ color: '#a78bfa' }} />
-                      <span>Connecting to GitHub Actions runner and fetching execution steps...</span>
-                    </div>
-                  ) : (
-                    runSteps.map((step, idx) => {
-                      let emoji = '⚙️';
-                      let statusColor = 'var(--text-secondary)';
-                      if (step.status === 'completed') {
-                        if (step.conclusion === 'success') {
-                          emoji = '✅';
-                          statusColor = 'var(--color-tier-1)';
-                        } else {
-                          emoji = '❌';
-                          statusColor = 'var(--color-tier-3)';
-                        }
-                      } else if (step.status === 'in_progress') {
-                        emoji = '⚡';
-                        statusColor = '#a78bfa';
-                      }
-                      return (
-                        <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: statusColor }}>
-                          <span>{emoji}</span>
-                          <span>{step.name}</span>
-                          <span style={{ fontSize: '10px', color: 'var(--text-muted)', marginLeft: 'auto' }}>
-                            {step.status === 'completed' ? `Completed (${step.conclusion})` : 'Running...'}
-                          </span>
-                        </div>
-                      );
-                    })
-                  )}
-                </div>
-              </div>
-            )}
+
 
             {/* Dynamic Prompts Verification Console (Step 4) */}
             {submitStep === 'success' && prSkills.length > 0 && (
@@ -723,12 +539,12 @@ export const SubmitSkill: React.FC = () => {
                   <Zap size={16} style={{ color: '#a78bfa' }} /> Step 4: Dynamic Runtime Verification
                 </h4>
                 <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0 }}>
-                  We found <strong>{prSkills.length}</strong> skill prompt file(s) with dynamic test scenarios. You can run them either instantly in your browser or trigger them as a manual GitHub Actions test job.
+                  We found <strong>{prSkills.length}</strong> skill prompt file(s) with dynamic test scenarios. Dynamic tests also run automatically on the PR via GitHub Actions.
                 </p>
 
                 {/* API Key Present or Missing Action Panel */}
-                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                  {geminiApiKey ? (
+                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
+                  {geminiApiKey && (
                     <button
                       className="btn-pill btn-primary"
                       onClick={runBrowserDynamicTests}
@@ -738,17 +554,15 @@ export const SubmitSkill: React.FC = () => {
                       {dynamicRunning ? <Loader2 className="animate-spin" size={13} /> : <Terminal size={13} />}
                       Run Browser-Based Dynamic Tests
                     </button>
-                  ) : (
-                    <button
-                      className="btn-pill btn-secondary"
-                      onClick={triggerActionsDynamicTests}
-                      disabled={actionsTriggering}
-                      style={{ fontSize: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}
-                    >
-                      {actionsTriggering ? <Loader2 className="animate-spin" size={13} /> : <ExternalLink size={13} />}
-                      Trigger Dynamic Tests on GitHub Actions
-                    </button>
                   )}
+                  <a
+                    href="https://github.com/ThanhNguyxnOrg/SkillGauge/actions/workflows/dynamic-tests.yml"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: '12px', display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#a78bfa', textDecoration: 'underline' }}
+                  >
+                    View CI Dynamic Tests <ExternalLink size={13} />
+                  </a>
                 </div>
 
                 {/* Local Browser Logs Terminal */}
@@ -769,22 +583,7 @@ export const SubmitSkill: React.FC = () => {
                   </div>
                 )}
 
-                {/* Actions Run Link */}
-                {actionsRunLink && (
-                  <div style={{
-                    padding: '12px 16px',
-                    background: 'rgba(16, 185, 129, 0.05)',
-                    border: '1px solid rgba(16, 185, 129, 0.2)',
-                    borderRadius: '8px',
-                    fontSize: '12px',
-                    color: 'var(--color-tier-1)'
-                  }}>
-                    🎉 Dynamic tests run triggered successfully! {' '}
-                    <a href={actionsRunLink} target="_blank" rel="noopener noreferrer" style={{ color: '#6ee7b7', fontWeight: 'bold', textDecoration: 'underline' }}>
-                      View GitHub Actions Test Logs <ExternalLink size={12} style={{ display: 'inline', marginLeft: '2px' }} />
-                    </a>
-                  </div>
-                )}
+
               </div>
             )}
 
