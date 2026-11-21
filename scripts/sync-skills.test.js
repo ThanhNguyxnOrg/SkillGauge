@@ -1,10 +1,22 @@
 const assert = require('node:assert/strict');
+const { createHash } = require('node:crypto');
 const { execFileSync } = require('node:child_process');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const test = require('node:test');
 const { getNormalizedHash } = require('../packages/cli/src/content-hash.cjs');
+
+test('skill hashes retain the leaderboard normalization', () => {
+  for (const [source, canonical] of [
+    [' A<!-- first\ncomment -->B <!---->\tc\r\n', 'abc'],
+    ['A<!-- unclosed', 'a<!--unclosed'],
+    ['<X<!-- comment -->Y>', '<xy>'],
+    ['Ο Σ<!-- separator -->Α', 'οσα'],
+  ]) {
+    assert.equal(getNormalizedHash(source), createHash('sha256').update(canonical).digest('hex'));
+  }
+});
 
 test('leaderboard hashes select the right file for overlapping and repeated skill names', t => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'skillgauge-'));
