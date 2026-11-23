@@ -330,7 +330,7 @@ export const SubmitSkill: React.FC = () => {
             <FolderOpen style={{ color: '#10b981' }} /> Leaderboard Repository Submitter
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '20px' }}>
-            Submit a public GitHub repository containing agent skill markdown files (e.g., Anthropic-style <code>SKILL.md</code> or files with YAML headers under <code>skills/</code>). Our automated bot will clone, audit, optimize, and generate a Pull Request for you.
+            Submit a public GitHub repository containing agent skill markdown files (e.g., Anthropic-style <code>SKILL.md</code> or files with YAML headers under <code>skills/</code>). Submitting opens a pre-filled GitHub issue that you file from your own GitHub account; once a maintainer approves it, our automated bot clones, audits, and opens a Pull Request for you.
           </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '20px' }}>
@@ -414,7 +414,7 @@ export const SubmitSkill: React.FC = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <strong>How the Submission works:</strong>
               <span style={{ color: 'var(--text-secondary)' }}>
-                1. Clicking submit opens a pre-filled GitHub issue; a maintainer approves it by applying the <code>submission-request</code> label.
+                1. Clicking submit opens a pre-filled GitHub issue for you to file while signed in to GitHub; a maintainer approves it by applying the <code>submission-request</code> label.
               </span>
               <span style={{ color: 'var(--text-secondary)' }}>
                 2. The bot then clones your repo, audits all valid skills against the 390-signal static matrix, and opens a Pull Request.

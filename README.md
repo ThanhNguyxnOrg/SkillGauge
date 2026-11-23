@@ -81,13 +81,14 @@ To learn more about the scientific methodology, CLI commands, and automated pipe
 
 ## 🚀 How to Submit a Skill
 
-Submitting your agent skills to the global leaderboard is incredibly simple and requires no login:
+Both ways go through GitHub, so you need a signed-in GitHub account, and a maintainer reviews every submission before anything is merged into the leaderboard:
 
 1. **Via Web Dashboard (Recommended)**:
    * Navigate to the **Submit Skill** tab on the live dashboard.
-   * Paste your GitHub repository URL (e.g., `https://github.com/owner/my-agent-skills`).
-   * Click **Submit**. The backend will trigger a background Action that clones your repository, audits all valid skills, and opens a Pull Request on your behalf.
-   * Follow the live Pull Request link returned by the website to view your detailed score report!
+   * Paste your GitHub repository URL (e.g., `https://github.com/owner/my-agent-skills`) or `owner/repo` shorthand.
+   * Click **Submit Repository**. The site opens a pre-filled `[Submission] owner/repo` issue on this repository in a new tab; file it from your GitHub account. The site holds no credentials and does not trigger any workflow itself.
+   * A maintainer approves the submission by applying the `submission-request` label. That label starts `submit-repo-bot.yml`, which clones your repository, audits all valid skills, and opens a Pull Request from the `contrib-<owner>-<repo>` branch.
+   * The dashboard watches for that Pull Request and links it once it exists; until a maintainer applies the label, the submission waits.
 
 2. **Via Manual Pull Request**:
    * Place your markdown skill files (which must start with YAML frontmatter containing `name:` and `description:`) in a folder named `skills/<your-repo-name>/<skill-name>.md`.

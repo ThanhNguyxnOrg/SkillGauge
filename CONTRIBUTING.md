@@ -47,15 +47,15 @@ You can submit new agent skills (e.g. `SKILL.md` or custom prompt instruction se
 ### Method A: Using the Web UI (Recommended)
 1. Open the SkillGauge Web Dashboard (either running locally or on the official GitHub Pages deployment).
 2. Navigate to the **Submit Skill** tab.
-3. Paste the URL of the public GitHub repository containing your agent skill files (e.g., `https://github.com/owner/my-agent-skills`). No login or Personal Access Token is required!
-4. Click **Submit**. The dashboard will securely trigger the remote GitHub Actions pipeline (`submit-repo-bot.yml`) on your behalf using a dedicated dispatch token.
-5. The page will display live polling status while the bot executes:
+3. Paste the URL of the public GitHub repository containing your agent skill files (e.g., `https://github.com/owner/my-agent-skills`) or its `owner/repo` shorthand.
+4. Click **Submit Repository**. The dashboard opens a pre-filled `[Submission] owner/repo` issue on `ThanhNguyxnOrg/SkillGauge` in a new tab. Filing it requires your own signed-in GitHub account; the site embeds no token and does not start any workflow itself.
+5. A maintainer reviews the issue and approves it by applying the `submission-request` label. Only then does the `submit-repo-bot.yml` pipeline run:
    * Clones your repository.
    * Scans for valid skill files (markdown files containing frontmatter `name:` and `description:`).
    * Audits all found skills using the static auditing core engine.
-   * Copies the skill files to `skills/<repository-name>/`.
-   * Force-pushes a new branch `contrib-<repository-name>` and creates a Pull Request on the main SkillGauge repository.
-6. Once completed, a direct link to the created Pull Request will be displayed on the page. Follow that link to review the scores posted by the bot!
+   * Copies the skill files to `skills/<owner>-<repo>/`.
+   * Force-pushes a new branch `contrib-<owner>-<repo>` and creates a Pull Request on the main SkillGauge repository.
+6. The page polls for that Pull Request and shows a direct link to it once the bot has opened it. Follow that link to review the scores posted by the bot!
 
 ### Method B: Manual Fork & Pull Request
 1. Fork this repository to your GitHub account.
